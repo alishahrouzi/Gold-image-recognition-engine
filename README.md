@@ -5,7 +5,7 @@
 ## Project Structure
 
 ## Installation
-
+Python Version 3.12.1
 ## Usage
 
 ## Dataset
