@@ -1,0 +1,11 @@
+__pycache__/
+.venv/
+.env
+data/
+models/
+checkpoints/
+runs/
+outputs/
+*.pt
+*.pth
+*.onnx
