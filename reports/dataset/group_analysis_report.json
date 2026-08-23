@@ -1,0 +1,109 @@
+{
+  "dataset": "E:\\Privat File\\Projects\\Zargar Interview\\dataset\\ai-tool-pool-jewelry-vision",
+  "total_images": 4969,
+  "parsed_images": 4969,
+  "unparsed_images": 0,
+  "total_groups": 2135,
+  "group_size_distribution": {
+    "1": 655,
+    "2": 126,
+    "3": 1354,
+    "4+": 0
+  },
+  "category_statistics": {
+    "Bracelet": {
+      "total_groups": 372,
+      "total_images": 862,
+      "group_size_distribution": {
+        "1": 110,
+        "2": 34,
+        "3": 228,
+        "4+": 0
+      }
+    },
+    "Earrings": {
+      "total_groups": 397,
+      "total_images": 895,
+      "group_size_distribution": {
+        "1": 128,
+        "2": 40,
+        "3": 229,
+        "4+": 0
+      }
+    },
+    "Necklace": {
+      "total_groups": 1049,
+      "total_images": 2456,
+      "group_size_distribution": {
+        "1": 325,
+        "2": 41,
+        "3": 683,
+        "4+": 0
+      }
+    },
+    "Pendant": {
+      "total_groups": 164,
+      "total_images": 394,
+      "group_size_distribution": {
+        "1": 49,
+        "2": 0,
+        "3": 115,
+        "4+": 0
+      }
+    },
+    "Ring": {
+      "total_groups": 153,
+      "total_images": 362,
+      "group_size_distribution": {
+        "1": 43,
+        "2": 11,
+        "3": 99,
+        "4+": 0
+      }
+    }
+  },
+  "split_statistics": {
+    "train": {
+      "total_images": 4328,
+      "parsed_images": 4328,
+      "unparsed_images": 0,
+      "total_groups": 1494
+    },
+    "valid": {
+      "total_images": 429,
+      "parsed_images": 429,
+      "unparsed_images": 0,
+      "total_groups": 429
+    },
+    "test": {
+      "total_images": 212,
+      "parsed_images": 212,
+      "unparsed_images": 0,
+      "total_groups": 212
+    }
+  },
+  "cross_split_groups": [],
+  "cross_category_groups": [],
+  "unparsed_files": [],
+  "non_image_files_skipped": 3,
+  "skipped_non_image_files": [
+    {
+      "split": "train",
+      "category": "UNCATEGORIZED",
+      "filename": "_tokenization.txt",
+      "path": "E:\\Privat File\\Projects\\Zargar Interview\\dataset\\ai-tool-pool-jewelry-vision\\train\\_tokenization.txt"
+    },
+    {
+      "split": "valid",
+      "category": "UNCATEGORIZED",
+      "filename": "_tokenization.txt",
+      "path": "E:\\Privat File\\Projects\\Zargar Interview\\dataset\\ai-tool-pool-jewelry-vision\\valid\\_tokenization.txt"
+    },
+    {
+      "split": "test",
+      "category": "UNCATEGORIZED",
+      "filename": "_tokenization.txt",
+      "path": "E:\\Privat File\\Projects\\Zargar Interview\\dataset\\ai-tool-pool-jewelry-vision\\test\\_tokenization.txt"
+    }
+  ]
+}
