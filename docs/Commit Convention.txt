@@ -1,0 +1,6 @@
+feat: add image preprocessing
+fix: fix corrupted image handling
+refactor: simplify dataset loader
+test: add dataset validation tests
+docs: update README
+chore: update dependencies
