@@ -28,7 +28,7 @@ from typing import List
 # Make `src/` importable without requiring the package to be installed.
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
 
-from evaluation.evaluator import (  # noqa: E402
+from src.evaluation.evaluator import (  # noqa: E402
     EvaluationReport,
     ManifestRecord,
     RetrievalEvaluator,
