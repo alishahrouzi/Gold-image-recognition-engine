@@ -57,8 +57,8 @@ following fields.
 
 - `image_id` must be unique.
 - `category_id` must belong to the internal category vocabulary.
-- `dataset_source` must identify the original dataset.
-- `split` must be one of `train`, `val`, or `test` for images
+- `source` must identify the original dataset.
+- `split` must be one of `train`, `valid`, or `test` for images
   included in a training dataset.
 - `product_id` may be null when the original dataset does not provide
   reliable product identity.
@@ -108,14 +108,8 @@ Images from the same group must remain in the same dataset split.
 The standardized dataset uses three split labels:
 
 - `train`
-- `val`
+- `valid`
 - `test`
-
-The current Dataset 1 split is inherited from its original structure:
-
-- `train` → `train`
-- `valid` → `val`
-- `test` → `test`
 
 Group-level isolation must be maintained.
 

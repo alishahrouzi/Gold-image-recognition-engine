@@ -1,0 +1,5 @@
+Total samples: 4969
+train 4328 / valid 429 / test 212
+groups 2135 (train 1494, valid 429, test 212)
+Unit tests: 20 passed (tests/data)
+evaluation: 19 passed
