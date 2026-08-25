@@ -32,6 +32,8 @@ The main reasons for selecting Dataset 1 are:
 The exclusion of Dataset 2 does not imply that it has lower absolute
 quality. Its usefulness may be evaluated in future experiments.
 
+Dataset 1 uses a predefined split and the project does not perform any random splits; therefore, Seed is not applicable for the Dataset Split step.
+
 ---
 
 ## 3. Image Record Schema
