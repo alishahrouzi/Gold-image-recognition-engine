@@ -29,14 +29,14 @@ class UnifiedDataset(TorchDataset):
 
     ``__getitem__`` returns a DatasetItem (Sample + RGB PIL image) so a
     PyTorch DataLoader can batch metadata together with images. Use
-    ``collate_samples`` as ``collate_fn`` because PIL images cannot be
-    stacked without model-specific resizing.
+    ``collate_samples`` for PIL batches, or wrap with ``PreprocessedDataset``
+    and ``collate_preprocessed_samples`` for stacked float32 tensors.
 
     Example::
 
         dataset = UnifiedDataset(manifest_path, dataset_root=root, split="train")
         sample = dataset.get_sample(0)
-        item = dataset[0]  # DatasetItem
+        item = dataset[0]  # DatasetItem with RGB PIL image
     """
 
     def __init__(

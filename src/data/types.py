@@ -93,10 +93,10 @@ class Sample:
 
 @dataclass(frozen=True)
 class DatasetItem:
-    """Indexed dataset element: contract metadata plus a loaded RGB image.
+    """Indexed dataset element: contract metadata plus an image payload.
 
-    The image is a PIL Image in RGB mode. Resizing, normalization, and
-    augmentation are not applied here.
+    UnifiedDataset sets ``image`` to an RGB PIL Image. PreprocessedDataset
+    replaces it with a float32 CHW tensor after deterministic preprocessing.
     """
 
     sample: Sample
