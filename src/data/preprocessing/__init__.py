@@ -1,11 +1,23 @@
-"""Deterministic image preprocessing (Sprint S1.8).
+"""Image preprocessing and optional training-only augmentation.
 
-Converts loaded images to encoder-ready tensors. Does not load datasets,
-modify files, or apply training augmentations.
-
-Pipeline: RGB (in memory) → resize → float32 CHW tensor in [0, 1] → normalize.
+Deterministic path (S1.8): RGB → resize → float32 CHW tensor → normalize.
+Training path (S1.9): RGB → TrainingAugmentor → ImagePreprocessor.
 """
 
+from .augmentation import (
+    AugmentationConfig,
+    BrightnessConfig,
+    ColorConfig,
+    ContrastConfig,
+    DETERMINISTIC_ROLES,
+    HorizontalFlipConfig,
+    PIPELINE_ROLES,
+    RandomCropConfig,
+    RotationConfig,
+    TRAINING_ROLE,
+    TrainingAugmentor,
+    augmentor_for_role,
+)
 from .config import (
     DEFAULT_IMAGE_SIZE,
     DEFAULT_INTERPOLATION,
@@ -13,14 +25,27 @@ from .config import (
     DEFAULT_STD,
     ImagePreprocessingConfig,
 )
-from .pipeline import ImagePreprocessor, PreprocessedDataset
+from .pipeline import ImagePreprocessor, PreprocessedDataset, build_preprocessed_dataset
 
 __all__ = [
     "DEFAULT_IMAGE_SIZE",
     "DEFAULT_INTERPOLATION",
     "DEFAULT_MEAN",
     "DEFAULT_STD",
+    "DETERMINISTIC_ROLES",
+    "PIPELINE_ROLES",
+    "TRAINING_ROLE",
+    "AugmentationConfig",
+    "BrightnessConfig",
+    "ColorConfig",
+    "ContrastConfig",
+    "HorizontalFlipConfig",
     "ImagePreprocessingConfig",
     "ImagePreprocessor",
     "PreprocessedDataset",
+    "RandomCropConfig",
+    "RotationConfig",
+    "TrainingAugmentor",
+    "augmentor_for_role",
+    "build_preprocessed_dataset",
 ]

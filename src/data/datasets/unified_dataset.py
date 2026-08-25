@@ -37,6 +37,7 @@ class UnifiedDataset(TorchDataset):
         dataset = UnifiedDataset(manifest_path, dataset_root=root, split="train")
         sample = dataset.get_sample(0)
         item = dataset[0]  # DatasetItem with RGB PIL image
+        # Tensor path: PreprocessedDataset(..., role="train"|"valid"|"test")
     """
 
     def __init__(

@@ -1,7 +1,10 @@
-"""Dataset ingestion and preprocessing layers (S1.1–S1.8).
+"""Dataset ingestion, preprocessing, and training-only augmentation (S1.1–S1.9).
 
 Manifest → Samples → UnifiedDataset → Image loader (RGB PIL)
-    → ImagePreprocessor → DataLoader (collate_preprocessed_samples).
+    → [train: TrainingAugmentor] → ImagePreprocessor
+    → DataLoader (collate_preprocessed_samples).
+
+Valid / test / query / gallery skip augmentation and use ImagePreprocessor only.
 
 Ingestion DataLoader (PIL lists): collate_samples.
 Image-level readability / quality reports: inspect_samples.
@@ -32,7 +35,7 @@ from .duplicates import (
     detect_duplicates,
     write_duplicate_report,
 )
-from .errors import DatasetIngestionError, PreprocessingError
+from .errors import AugmentationError, DatasetIngestionError, PreprocessingError
 from .image_quality import (
     ImageQualityResult,
     build_image_validation_report,
@@ -55,6 +58,9 @@ _LAZY_EXPORTS = {
     "ImagePreprocessingConfig": (".preprocessing", "ImagePreprocessingConfig"),
     "ImagePreprocessor": (".preprocessing", "ImagePreprocessor"),
     "PreprocessedDataset": (".preprocessing", "PreprocessedDataset"),
+    "AugmentationConfig": (".preprocessing", "AugmentationConfig"),
+    "TrainingAugmentor": (".preprocessing", "TrainingAugmentor"),
+    "build_preprocessed_dataset": (".preprocessing", "build_preprocessed_dataset"),
 }
 
 
@@ -70,6 +76,8 @@ def __getattr__(name: str) -> _Any:
     raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
 
 __all__ = [
+    "AugmentationConfig",
+    "AugmentationError",
     "ALLOWED_SPLITS",
     "CATEGORY_TO_ID",
     "SPLIT_ORDER",
@@ -89,9 +97,11 @@ __all__ = [
     "PreprocessingError",
     "SOURCE_DATASET1",
     "Sample",
+    "TrainingAugmentor",
     "UnifiedDataset",
     "audit_dataset_cleaning",
     "build_image_validation_report",
+    "build_preprocessed_dataset",
     "build_validation_report",
     "collate_preprocessed_samples",
     "collate_samples",

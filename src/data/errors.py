@@ -9,3 +9,7 @@ class DatasetIngestionError(ValueError):
 
 class PreprocessingError(ValueError):
     """Raised when image preprocessing input or configuration is invalid."""
+
+
+class AugmentationError(PreprocessingError):
+    """Raised when training-augmentation input or configuration is invalid."""

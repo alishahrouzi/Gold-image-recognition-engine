@@ -96,7 +96,8 @@ class DatasetItem:
     """Indexed dataset element: contract metadata plus an image payload.
 
     UnifiedDataset sets ``image`` to an RGB PIL Image. PreprocessedDataset
-    replaces it with a float32 CHW tensor after deterministic preprocessing.
+    may apply training-only augmentation, then replaces ``image`` with a
+    float32 CHW tensor from ImagePreprocessor.
     """
 
     sample: Sample

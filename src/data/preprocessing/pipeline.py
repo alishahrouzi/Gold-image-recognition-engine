@@ -1,7 +1,8 @@
 """Reusable preprocessing pipeline for training, evaluation, and retrieval.
 
-ImagePreprocessor can run on a standalone PIL image (query or gallery).
-PreprocessedDataset wraps UnifiedDataset so DataLoader batching stays in collate.
+ImagePreprocessor is deterministic (RGB → resize → normalize). Training
+augmentation is applied only by PreprocessedDataset when role='train'.
+Query and gallery paths must call ImagePreprocessor directly (no augmentor).
 """
 
 from __future__ import annotations
@@ -14,6 +15,12 @@ from torch.utils.data import Dataset as TorchDataset
 
 from ..errors import PreprocessingError
 from ..types import DatasetItem
+from .augmentation import (
+    AugmentationConfig,
+    TrainingAugmentor,
+    augmentor_for_role,
+    validate_pipeline_role,
+)
 from .config import ImagePreprocessingConfig
 from .transforms import (
     assert_finite,
@@ -27,8 +34,9 @@ from .transforms import (
 class ImagePreprocessor:
     """Deterministic RGB → resize → tensor → normalize pipeline.
 
-    The same instance is used for train, valid, test, query, and gallery.
-    Augmentation is out of scope for S1.8.
+    The same instance is used for train (after optional augmentation),
+    valid, test, query, and gallery. This class never applies random
+    augmentation.
     """
 
     def __init__(self, config: Optional[ImagePreprocessingConfig] = None) -> None:
@@ -74,20 +82,32 @@ class ImagePreprocessor:
 
 
 class PreprocessedDataset(TorchDataset):
-    """Apply ImagePreprocessor to UnifiedDataset items.
+    """Optional training augmentation, then ImagePreprocessor.
 
     Ingestion stays responsible for locating samples and loading RGB images.
-    This wrapper only converts each in-memory image to a tensor.
-    Original files and the dataset split are never modified.
+    Original files are never modified.
+
+    Augmentation runs only when ``role='train'`` and an enabled
+    ``AugmentationConfig`` is provided. Roles ``valid``, ``test``,
+    ``query``, and ``gallery`` are always deterministic.
     """
 
     def __init__(
         self,
         dataset: TorchDataset,
         preprocessor: Optional[ImagePreprocessor] = None,
+        *,
+        role: str = "valid",
+        augmentation: Optional[AugmentationConfig] = None,
     ) -> None:
         self.dataset = dataset
         self.preprocessor = preprocessor or ImagePreprocessor()
+        self.role = validate_pipeline_role(role)
+        self.augmentation = augmentation
+        self.augmentor: Optional[TrainingAugmentor] = augmentor_for_role(
+            self.role,
+            augmentation,
+        )
 
     def __len__(self) -> int:
         return len(self.dataset)
@@ -98,5 +118,30 @@ class PreprocessedDataset(TorchDataset):
             raise PreprocessingError(
                 "PreprocessedDataset expects DatasetItem values from the wrapped dataset."
             )
-        tensor = self.preprocessor(item.image)
+        image = item.image
+        if self.augmentor is not None:
+            image = self.augmentor(image)
+        tensor = self.preprocessor(image)
         return DatasetItem(sample=item.sample, image=tensor)
+
+
+def build_preprocessed_dataset(
+    dataset: TorchDataset,
+    *,
+    role: str,
+    preprocessor: Optional[ImagePreprocessor] = None,
+    augmentation: Optional[AugmentationConfig] = None,
+) -> PreprocessedDataset:
+    """Construct a split/role-aware view.
+
+    Pass ``role='train'`` plus an enabled config to apply S1.9 augmentation.
+    Query and gallery should use ``ImagePreprocessor`` on a loaded PIL image,
+    or this helper with ``role='query'`` / ``role='gallery'`` and no enabled
+    augmentation.
+    """
+    return PreprocessedDataset(
+        dataset,
+        preprocessor,
+        role=role,
+        augmentation=augmentation,
+    )
