@@ -1,0 +1,307 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-08-25T10:54:12Z",
+  "mode": "audit",
+  "destructive_operations": false,
+  "dataset": {
+    "name": "dataset1",
+    "root": "E:\\Privat File\\Projects\\Zargar Interview\\dataset\\ai-tool-pool-jewelry-vision",
+    "source": "dataset1",
+    "manifest": "E:\\Privat File\\Projects\\Zargar Interview\\code\\reports\\dataset\\dataset1_manifest.csv"
+  },
+  "baseline": {
+    "image_count": 4969,
+    "train": 4328,
+    "valid": 429,
+    "test": 212,
+    "groups": 2135,
+    "group_size_distribution": {
+      "1": 655,
+      "2": 126,
+      "3": 1354,
+      "4+": 0
+    }
+  },
+  "cleaning_summary": {
+    "corrupted_removed": 0,
+    "duplicates_removed": "not_available_from_repository",
+    "invalid_removed": "not_available_from_repository",
+    "format_converted": 0,
+    "metadata_modified": 0,
+    "note": "Historical exact/perceptual duplicate and invalid removals were performed manually in Sprint 0/1. Exact removal counts are not recorded in repository artifacts."
+  },
+  "current_state": {
+    "images": 4969,
+    "filesystem_images": 4969,
+    "readable": 4969,
+    "corrupted": 0,
+    "warnings": 114,
+    "invalid": 0,
+    "exact_duplicates": 0,
+    "perceptual_duplicates": 8,
+    "near_duplicate_pairs": 121,
+    "groups": 2135,
+    "cross_split_groups": 0
+  },
+  "contract_validation": {
+    "passed": true,
+    "issues": [],
+    "total_samples": 4969,
+    "total_groups": 2135,
+    "split_counts": {
+      "train": 4328,
+      "valid": 429,
+      "test": 212
+    },
+    "category_counts": {
+      "Bracelet": 862,
+      "Earrings": 895,
+      "Necklace": 2456,
+      "Pendant": 394,
+      "Ring": 362
+    },
+    "groups_per_split": {
+      "train": 1494,
+      "valid": 429,
+      "test": 212
+    },
+    "source_consistent": true,
+    "category_ids_consistent": true
+  },
+  "filesystem_validation": {
+    "dataset_root": "E:\\Privat File\\Projects\\Zargar Interview\\dataset\\ai-tool-pool-jewelry-vision",
+    "total_images": 4969,
+    "split_counts": {
+      "train": 4328,
+      "valid": 429,
+      "test": 212
+    },
+    "category_counts": {
+      "Bracelet": 862,
+      "Earrings": 895,
+      "Necklace": 2456,
+      "Pendant": 394,
+      "Ring": 362
+    },
+    "unexpected_path_count": 0,
+    "unexpected_paths": [],
+    "matches_baseline_total": true,
+    "matches_baseline_splits": true
+  },
+  "format_policy": {
+    "status": "already_compliant",
+    "policy": {
+      "source_files_unchanged": true,
+      "allowed_extensions": [
+        ".jpg",
+        ".jpeg"
+      ],
+      "allowed_decoded_formats": [
+        "JPEG"
+      ],
+      "rgb_conversion": "in_memory_only",
+      "reencode": false,
+      "preprocessing_belongs_elsewhere": true
+    },
+    "extension_counts": {
+      ".jpg": 4969
+    },
+    "non_jpeg_extension_count": 0,
+    "non_jpeg_extension_image_ids": [],
+    "decoded_format_sample_counts": {},
+    "non_jpeg_decoded_sample_ids": [],
+    "rgb_policy_satisfied": true,
+    "format_converted": 0
+  },
+  "metadata_policy": {
+    "status": "compliant",
+    "required_internal_fields": [
+      "category",
+      "category_id",
+      "group_id",
+      "image_id",
+      "image_path",
+      "source",
+      "split"
+    ],
+    "present_fields": [
+      "category",
+      "category_id",
+      "group_id",
+      "image_id",
+      "image_path",
+      "source",
+      "split"
+    ],
+    "missing_required_fields": [],
+    "external_metadata": "External metadata correction is not applicable to Dataset 1 MVP.",
+    "dataset2_metadata": "out_of_scope",
+    "metadata_modified": 0
+  },
+  "manifest_validation": {
+    "passed": true,
+    "manifest_count": 4969,
+    "filesystem_count": 4969,
+    "counts_equal": true,
+    "baseline_match": true,
+    "split_counts_manifest": {
+      "train": 4328,
+      "valid": 429,
+      "test": 212
+    },
+    "split_counts_filesystem": {
+      "train": 4328,
+      "valid": 429,
+      "test": 212
+    },
+    "split_counts_equal": {
+      "train": true,
+      "valid": true,
+      "test": true
+    },
+    "missing_manifest_files": [],
+    "missing_manifest_file_count": 0,
+    "orphan_filesystem_files": [],
+    "orphan_filesystem_file_count": 0,
+    "orphan_manifest_entries": [],
+    "orphan_manifest_entry_count": 0,
+    "resolved_manifest_paths": 4969,
+    "resolved_filesystem_paths": 4969
+  },
+  "group_validation": {
+    "passed": true,
+    "total_groups": 2135,
+    "expected_groups": 2135,
+    "group_size_distribution": {
+      "1": 655,
+      "2": 126,
+      "3": 1354,
+      "4+": 0
+    },
+    "expected_group_size_distribution": {
+      "1": 655,
+      "2": 126,
+      "3": 1354,
+      "4+": 0
+    },
+    "enforce_baseline": true,
+    "matches_baseline_distribution": true,
+    "cross_split_group_count": 0,
+    "cross_split_groups": [],
+    "no_split_leakage": true
+  },
+  "image_quality": {
+    "total": 4969,
+    "readable": 4969,
+    "corrupted": 0,
+    "warnings": 114,
+    "invalid": 0,
+    "rgb": 4969,
+    "rgb_convertible": 4969,
+    "warning_not_treated_as_invalid": true,
+    "corrupted_image_ids": [],
+    "invalid_image_ids": [],
+    "warning_image_ids": [
+      "DS1_IMG_000022",
+      "DS1_IMG_000042",
+      "DS1_IMG_000064",
+      "DS1_IMG_000072",
+      "DS1_IMG_000094",
+      "DS1_IMG_000101",
+      "DS1_IMG_000130",
+      "DS1_IMG_000155",
+      "DS1_IMG_000160",
+      "DS1_IMG_000175",
+      "DS1_IMG_000200",
+      "DS1_IMG_000255",
+      "DS1_IMG_000261",
+      "DS1_IMG_000284",
+      "DS1_IMG_000286",
+      "DS1_IMG_000418",
+      "DS1_IMG_000726",
+      "DS1_IMG_000795",
+      "DS1_IMG_000797",
+      "DS1_IMG_000806",
+      "DS1_IMG_000809",
+      "DS1_IMG_000817",
+      "DS1_IMG_000896",
+      "DS1_IMG_000908",
+      "DS1_IMG_001517",
+      "DS1_IMG_001529",
+      "DS1_IMG_001591",
+      "DS1_IMG_001610",
+      "DS1_IMG_001667",
+      "DS1_IMG_001679",
+      "DS1_IMG_001720",
+      "DS1_IMG_001721",
+      "DS1_IMG_001737",
+      "DS1_IMG_001759",
+      "DS1_IMG_001803",
+      "DS1_IMG_001857",
+      "DS1_IMG_001858",
+      "DS1_IMG_001879",
+      "DS1_IMG_001886",
+      "DS1_IMG_001983",
+      "DS1_IMG_001985",
+      "DS1_IMG_002032",
+      "DS1_IMG_002049",
+      "DS1_IMG_002057",
+      "DS1_IMG_002115",
+      "DS1_IMG_002160",
+      "DS1_IMG_002169",
+      "DS1_IMG_002190",
+      "DS1_IMG_002212",
+      "DS1_IMG_002215"
+    ],
+    "passed": true
+  },
+  "duplicates": {
+    "exact_duplicate_groups": 0,
+    "perceptual_duplicate_groups": 8,
+    "near_duplicate_pairs": 121,
+    "unreadable_images": 0,
+    "near_duplicate_search_status": "complete",
+    "exact_duplicates_absent": true,
+    "perceptual_candidates_remain": true,
+    "near_candidates_remain": true,
+    "policy": "Exact duplicates must be absent. Remaining perceptual/near hits are candidates (not auto-confirmed). Manual Sprint 0/1 review removed confirmed duplicates; candidate collisions may remain.",
+    "passed": true
+  },
+  "requirements": {
+    "corrupted_images": {
+      "requirement": "Remove corrupted images",
+      "status": "PASS",
+      "evidence": "readable=4969, corrupted=0",
+      "action": "none (already clean)"
+    },
+    "duplicate_removal": {
+      "requirement": "Remove duplicates",
+      "status": "PASS",
+      "evidence": "exact_groups=0; perceptual_candidates=8; near_pairs=121",
+      "action": "none (exact duplicates absent; perceptual/near remain candidates)"
+    },
+    "format_standardization": {
+      "requirement": "Standardize image format",
+      "status": "PASS",
+      "evidence": "status=already_compliant; extensions={'.jpg': 4969}",
+      "action": "none (already_compliant; no re-encode)"
+    },
+    "metadata": {
+      "requirement": "Correct metadata",
+      "status": "PASS",
+      "evidence": "internal_fields=['category', 'category_id', 'group_id', 'image_id', 'image_path', 'source', 'split']; External metadata correction is not applicable to Dataset 1 MVP.",
+      "action": "none (internal manifest fields compliant)"
+    },
+    "invalid_data": {
+      "requirement": "Remove invalid data",
+      "status": "PASS",
+      "evidence": "invalid=0; warnings=114 (warnings are not invalid)",
+      "action": "none (warnings retained after manual review)"
+    },
+    "notes": {
+      "unexpected_checks": []
+    }
+  },
+  "unexpected_dataset_state": [],
+  "status": "PASS"
+}

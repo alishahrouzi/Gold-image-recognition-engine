@@ -343,3 +343,34 @@ on similar studio jewelry (especially Bracelets). Several groups span more
 than one `group_id` or split and must be reviewed before any deletion.
 This task does not delete or move those files.
 
+---
+
+## 13. Dataset Cleaning Audit (S1.4)
+
+Dataset 1 was cleaned manually / semi-automatically in Sprint 0 and Sprint 1.
+S1.4 is a **non-destructive audit** of that cleaned baseline. It does not
+re-run destructive cleaning by default.
+
+Full policy: `docs/dataset-cleaning-policy.md`.
+
+### Behavior
+
+- Reuses S1.1 contract validation, S1.2 image inspection, and S1.3 duplicate
+  detection.
+- Verifies manifest ↔ filesystem consistency, group/split leakage, format
+  policy (JPEG on disk, RGB in memory), and internal metadata fields.
+- Never deletes, moves, renames, recompresses, or overwrites images.
+- Never regenerates the authoritative manifest as part of the audit.
+- Historical removal counts that cannot be derived from repository evidence
+  are recorded as `not_available_from_repository`.
+
+### CLI
+
+```
+python scripts/audit_dataset_cleaning.py --dataset-root "<dataset-root>" --output reports/dataset/dataset_cleaning_report.json
+```
+
+### Output
+
+`reports/dataset/dataset_cleaning_report.json`
+
