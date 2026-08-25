@@ -200,44 +200,87 @@ other modules.
 
 --- 
 
-## 6.Preprocessing Module
-Responsibility
+## 6. Preprocessing Module
 
-The preprocessing module converts raw images into tensors that
-can be consumed by the encoder.
+### Responsibility
 
-Responsibilities:
+The preprocessing module converts loaded images into tensors that
+can be consumed by the encoder. File I/O and readability checks remain
+in the ingestion / validation layers (`load_rgb_image`, S1.2).
 
-image loading
-image validation
-color conversion
-resizing
-tensor conversion
-pixel normalization
+S1.8 pipeline (in memory only; original files are never modified):
 
-The same deterministic preprocessing pipeline must be used for:
+```
+Loaded image (any supported PIL mode)
+    → RGB (reuse ingestion channel handling)
+    → Resize to image_size × image_size (deterministic stretch)
+    → float32 tensor in [0, 1], layout [C, H, W]
+    → Normalize: (x - mean) / std
+    → Batch stack → [B, 3, H, W]
+```
 
-validation
-test
-gallery generation
-inference
+### Shared contract
 
-Training may additionally use augmentation.
+The same deterministic preprocessing must be used for:
 
-Input:   Raw Image
-        
-Output:  Tensor[B, 3, H, W]
+- train (without augmentation in S1.8)
+- validation
+- test
+- gallery generation
+- query / inference
 
-Where:
+Training may later add augmentation on top of this base pipeline.
+Do not maintain a separate query vs gallery preprocessor.
 
-B = batch size
-3 = RGB channels
-H = target height
-W = target width
+### Default configuration (configurable)
 
-The initial target resolution is configurable and must be
-determined experimentally based on GPU memory and model
-performance.
+| Setting | Default | Notes |
+|---|---|---|
+| `image_size` | `224` | Square CNN input; Architecture leaves H/W experimental; 224 is the MVP default |
+| `mean` | `(0.485, 0.456, 0.406)` | ImageNet RGB stats (no jewelry-specific contract yet) |
+| `std` | `(0.229, 0.224, 0.225)` | ImageNet RGB stats |
+| `interpolation` | `bilinear` | Deterministic stretch-resize (no random crop) |
+
+Implementation: `ImagePreprocessingConfig` + `ImagePreprocessor` in
+`src/data/preprocessing/`.
+
+### Tensor / batch contract
+
+| Scope | Shape | dtype |
+|---|---|---|
+| Single image (`preprocessor(image)`) | `[3, H, W]` | `torch.float32` |
+| DataLoader batch (`collate_preprocessed_samples`) | `[B, 3, H, W]` | `torch.float32` |
+
+Channel convention: always RGB (`C = 3`). RGBA / L / P are converted in
+memory via the existing RGB loader helpers.
+
+Batch metadata stays list-aligned with the image tensor:
+
+```
+batch = {
+  "image": Tensor[B, 3, H, W],
+  "image_id": [...],
+  "group_id": [...],
+  "category": [...],
+  "category_id": [...],
+  "split": [...],
+  "source": [...],
+}
+```
+
+`batch["image"][i]` corresponds to `batch["image_id"][i]`,
+`batch["group_id"][i]`, etc. `group_id` remains product identity;
+`image_id` remains the per-image identifier.
+
+Dataset integration:
+
+```
+Manifest → UnifiedDataset → RGB PIL
+    → PreprocessedDataset(ImagePreprocessor)
+    → DataLoader(collate_fn=collate_preprocessed_samples)
+```
+
+Standalone query/gallery path: `ImagePreprocessor(config)(pil_image)`.
 
 ---
 
@@ -1090,11 +1133,14 @@ The following interfaces define the boundaries between modules.
 
 # 17.1 Preprocessor Interface
 
-preprocess(image)
+preprocess(image)  # ImagePreprocessor.__call__
 
-Input:  Raw Image
+Input:  Loaded PIL image (any supported mode; converted to RGB in memory)
 
-Output: Tensor[B, 3, H, W]
+Output: Tensor[3, H, W]  (float32; H = W = configured image_size)
+
+Batched output Tensor[B, 3, H, W] is produced by the DataLoader collate
+step (`collate_preprocessed_samples`), not by the single-image API.
 
 # 17.2 Encoder Interface
 
