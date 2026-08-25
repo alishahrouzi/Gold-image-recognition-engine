@@ -1,0 +1,3307 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-08-25T08:26:34Z",
+  "configuration": {
+    "image_extensions": [
+      ".jpg",
+      ".jpeg",
+      ".png",
+      ".bmp",
+      ".gif",
+      ".tiff",
+      ".tif",
+      ".webp"
+    ],
+    "exact_hash": "sha256",
+    "perceptual_hash": "phash",
+    "threshold": 5,
+    "threshold_meaning": "Inclusive maximum Hamming distance on a 64-bit phash for near-duplicates. Distance 0 is perceptual identity and is reported separately.",
+    "max_candidates": null,
+    "max_pairs": null,
+    "comparison_mode": "both",
+    "manifest_a": "dataset1_manifest.csv",
+    "manifest_b": null
+  },
+  "datasets": {
+    "dataset_a": {
+      "name": "ai-tool-pool-jewelry-vision",
+      "label": "ai-tool-pool-jewelry-vision",
+      "total_images": 4969,
+      "hashed_images": 4969,
+      "perceptual_hashed_images": 4969,
+      "unreadable_images": 0
+    },
+    "dataset_b": null
+  },
+  "summary": {
+    "total_images": 4969,
+    "dataset_a_images": 4969,
+    "dataset_b_images": 0,
+    "exact_duplicate_groups": 0,
+    "perceptual_duplicate_groups": 8,
+    "near_duplicate_pairs": 121,
+    "cross_dataset_matches": 0,
+    "unreadable_images": 0,
+    "near_duplicate_search": {
+      "status": "complete",
+      "comparisons_completed": 120470,
+      "comparisons_skipped": 0,
+      "skip_reasons": []
+    }
+  },
+  "exact_duplicates": [],
+  "perceptual_duplicates": [
+    {
+      "duplicate_type": "perceptual",
+      "dataset": "dataset_a",
+      "hash": "973c6a87258e8769",
+      "hamming_distance": 0,
+      "files": [
+        {
+          "image_id": "DS1_IMG_003852",
+          "relative_path": "train/Pendant/IMG_2828_c95edb5d_jpg.rf.a9c5d2263b8061ca6e381bdaab3b4ea9.jpg",
+          "dataset": "dataset_a",
+          "category": "Pendant",
+          "split": "train",
+          "group_id": "IMG_2828_c95edb5d",
+          "exact_hash": "937ddd6e8f5474af216f276f6ed182ab1b6930d5133fb379356d7c27502fb364",
+          "perceptual_hash": "973c6a87258e8769"
+        },
+        {
+          "image_id": "DS1_IMG_003853",
+          "relative_path": "train/Pendant/IMG_2828_c95edb5d_jpg.rf.ab310445e0ff5b39e60c9a2c1bbb13b4.jpg",
+          "dataset": "dataset_a",
+          "category": "Pendant",
+          "split": "train",
+          "group_id": "IMG_2828_c95edb5d",
+          "exact_hash": "6bb7ae2ae8e6dc0dbe0dec4e6d2056878e96381f50f742280765b6a8096c6092",
+          "perceptual_hash": "973c6a87258e8769"
+        }
+      ]
+    },
+    {
+      "duplicate_type": "perceptual",
+      "dataset": "dataset_a",
+      "hash": "b847e73882c638cf",
+      "hamming_distance": 0,
+      "files": [
+        {
+          "image_id": "DS1_IMG_004773",
+          "relative_path": "test/Bracelet/bracelet_104_jpg.rf.dd3759009b36003212ef4eaf0a647842.jpg",
+          "dataset": "dataset_a",
+          "category": "Bracelet",
+          "split": "test",
+          "group_id": "bracelet_104",
+          "exact_hash": "db120b068aaf82aa49c5dc75f2b89107d48456e82fd2351bf881b5d506c49166",
+          "perceptual_hash": "b847e73882c638cf"
+        },
+        {
+          "image_id": "DS1_IMG_000456",
+          "relative_path": "train/Bracelet/bracelet_102_jpg.rf.fa31d36071558fa9ed73f8ed58fbf2c1.jpg",
+          "dataset": "dataset_a",
+          "category": "Bracelet",
+          "split": "train",
+          "group_id": "bracelet_102",
+          "exact_hash": "8bd89397c4f61ff9eadb7826ab772baa09bb52ed8c2cd77b1638423849d49702",
+          "perceptual_hash": "b847e73882c638cf"
+        },
+        {
+          "image_id": "DS1_IMG_000461",
+          "relative_path": "train/Bracelet/bracelet_105_jpg.rf.cee152acd799a3c0ff4d2648c1e034a0.jpg",
+          "dataset": "dataset_a",
+          "category": "Bracelet",
+          "split": "train",
+          "group_id": "bracelet_105",
+          "exact_hash": "3c21262e7252133a1bd2eecec428a0ab1e6eaddeb1526c1e0cf73ac3757efa25",
+          "perceptual_hash": "b847e73882c638cf"
+        },
+        {
+          "image_id": "DS1_IMG_000463",
+          "relative_path": "train/Bracelet/bracelet_107_jpg.rf.5756f54a554dc97b70f5345de525c5b3.jpg",
+          "dataset": "dataset_a",
+          "category": "Bracelet",
+          "split": "train",
+          "group_id": "bracelet_107",
+          "exact_hash": "243bd5240ec7bb17e4ad629c1ea8ac68f0e058227c486485f62ca7237876297c",
+          "perceptual_hash": "b847e73882c638cf"
+        },
+        {
+          "image_id": "DS1_IMG_000466",
+          "relative_path": "train/Bracelet/bracelet_108_jpg.rf.279c893d1db34e3b6ef42b6faedf6484.jpg",
+          "dataset": "dataset_a",
+          "category": "Bracelet",
+          "split": "train",
+          "group_id": "bracelet_108",
+          "exact_hash": "457c5659133d890bef6d9362da84ec3de45ee7c6db8b40cf205cd16ec0b9e1de",
+          "perceptual_hash": "b847e73882c638cf"
+        },
+        {
+          "image_id": "DS1_IMG_000470",
+          "relative_path": "train/Bracelet/bracelet_109_jpg.rf.42cb6969a989f0bf329954c5cedf329e.jpg",
+          "dataset": "dataset_a",
+          "category": "Bracelet",
+          "split": "train",
+          "group_id": "bracelet_109",
+          "exact_hash": "30289a36fedf712a32daff23bc58f3da3f68d63cb5b03b38b6623d21b26500e7",
+          "perceptual_hash": "b847e73882c638cf"
+        },
+        {
+          "image_id": "DS1_IMG_000472",
+          "relative_path": "train/Bracelet/bracelet_110_jpg.rf.b986f075033e36a4b9e38fc1f2ba148c.jpg",
+          "dataset": "dataset_a",
+          "category": "Bracelet",
+          "split": "train",
+          "group_id": "bracelet_110",
+          "exact_hash": "4707fc1d53fba60337b2f37f175c86129e6c52d3238f32ac4d5237f44c3bceaa",
+          "perceptual_hash": "b847e73882c638cf"
+        },
+        {
+          "image_id": "DS1_IMG_000479",
+          "relative_path": "train/Bracelet/bracelet_112_jpg.rf.c8e32cd24246a4d23496f58c63b5c45c.jpg",
+          "dataset": "dataset_a",
+          "category": "Bracelet",
+          "split": "train",
+          "group_id": "bracelet_112",
+          "exact_hash": "d2542ca94f270c1daa8923547d507bcb341f5cd49e608c3a208b4ebb7d12865c",
+          "perceptual_hash": "b847e73882c638cf"
+        },
+        {
+          "image_id": "DS1_IMG_000485",
+          "relative_path": "train/Bracelet/bracelet_117_jpg.rf.ce02a3c15ca5d5e0f3404fb528f9e392.jpg",
+          "dataset": "dataset_a",
+          "category": "Bracelet",
+          "split": "train",
+          "group_id": "bracelet_117",
+          "exact_hash": "3c4f1fc809e1811e1d118fd245a1a6c5af8b86ffeba9a7f44fbf53ec883a342a",
+          "perceptual_hash": "b847e73882c638cf"
+        },
+        {
+          "image_id": "DS1_IMG_000488",
+          "relative_path": "train/Bracelet/bracelet_118_jpg.rf.9cec66cadbb8a073c6211fd5175bbb8a.jpg",
+          "dataset": "dataset_a",
+          "category": "Bracelet",
+          "split": "train",
+          "group_id": "bracelet_118",
+          "exact_hash": "068faf4ddd77b331d7bf69e1777797ef17fe1a0542f4becff073c79ce060c91a",
+          "perceptual_hash": "b847e73882c638cf"
+        },
+        {
+          "image_id": "DS1_IMG_000493",
+          "relative_path": "train/Bracelet/bracelet_121_jpg.rf.fcb152c95af89607b0f9a662017506a0.jpg",
+          "dataset": "dataset_a",
+          "category": "Bracelet",
+          "split": "train",
+          "group_id": "bracelet_121",
+          "exact_hash": "8124e4550ca459000f8f26ab2ed7ca29f4e8faae8723af4a6fa75367b4f42ce1",
+          "perceptual_hash": "b847e73882c638cf"
+        },
+        {
+          "image_id": "DS1_IMG_004380",
+          "relative_path": "valid/Bracelet/bracelet_116_jpg.rf.0eaba7c6fd1e8aedb268aeb679096080.jpg",
+          "dataset": "dataset_a",
+          "category": "Bracelet",
+          "split": "valid",
+          "group_id": "bracelet_116",
+          "exact_hash": "22a5b023466affa6015769fa28cd5b636106face5b0bcc846907ffba24dfd7ef",
+          "perceptual_hash": "b847e73882c638cf"
+        }
+      ]
+    },
+    {
+      "duplicate_type": "perceptual",
+      "dataset": "dataset_a",
+      "hash": "b8c3e73892c43a8f",
+      "hamming_distance": 0,
+      "files": [
+        {
+          "image_id": "DS1_IMG_000317",
+          "relative_path": "train/Bracelet/bracelet_009_jpg.rf.6a3855f515efa9aa91fd56b586b89c84.jpg",
+          "dataset": "dataset_a",
+          "category": "Bracelet",
+          "split": "train",
+          "group_id": "bracelet_009",
+          "exact_hash": "f5bbb31bd4bbbad1e93e300703bc3b9cf7ee31828e2e0560e3bc5e4d9b282118",
+          "perceptual_hash": "b8c3e73892c43a8f"
+        },
+        {
+          "image_id": "DS1_IMG_000458",
+          "relative_path": "train/Bracelet/bracelet_103_jpg.rf.a1db0441495fca93603f46702736fb0f.jpg",
+          "dataset": "dataset_a",
+          "category": "Bracelet",
+          "split": "train",
+          "group_id": "bracelet_103",
+          "exact_hash": "0b6997114b4b6bf40da40fbabbef1d73f01c8c8d41015a36080215cdef413d08",
+          "perceptual_hash": "b8c3e73892c43a8f"
+        },
+        {
+          "image_id": "DS1_IMG_000490",
+          "relative_path": "train/Bracelet/bracelet_119_jpg.rf.73303a49b143a41081c30241d6a4dc3e.jpg",
+          "dataset": "dataset_a",
+          "category": "Bracelet",
+          "split": "train",
+          "group_id": "bracelet_119",
+          "exact_hash": "314d99a36545abc67449f187811d214feafe8fad374dfebfa50f1aca186d5e51",
+          "perceptual_hash": "b8c3e73892c43a8f"
+        }
+      ]
+    },
+    {
+      "duplicate_type": "perceptual",
+      "dataset": "dataset_a",
+      "hash": "b8c3e73892c6388f",
+      "hamming_distance": 0,
+      "files": [
+        {
+          "image_id": "DS1_IMG_000477",
+          "relative_path": "train/Bracelet/bracelet_111_jpg.rf.789208b3771dd26cb3668d5069d8d2c1.jpg",
+          "dataset": "dataset_a",
+          "category": "Bracelet",
+          "split": "train",
+          "group_id": "bracelet_111",
+          "exact_hash": "b4b753cde6c38d3445f3b8f2a9707aaf37aab8c29d2963ca3b30bdba1c9e291e",
+          "perceptual_hash": "b8c3e73892c6388f"
+        },
+        {
+          "image_id": "DS1_IMG_004379",
+          "relative_path": "valid/Bracelet/bracelet_114_jpg.rf.fbadc6bd5bb7d7cd4165efff8ec1b212.jpg",
+          "dataset": "dataset_a",
+          "category": "Bracelet",
+          "split": "valid",
+          "group_id": "bracelet_114",
+          "exact_hash": "58a7e23dbf1cd8c67cafeb2888a8624be0f5a2e56c107669fbe91089ee5cd6f0",
+          "perceptual_hash": "b8c3e73892c6388f"
+        },
+        {
+          "image_id": "DS1_IMG_004381",
+          "relative_path": "valid/Bracelet/bracelet_120_jpg.rf.6bf7e3bb5e9b145a7485783228d2b50a.jpg",
+          "dataset": "dataset_a",
+          "category": "Bracelet",
+          "split": "valid",
+          "group_id": "bracelet_120",
+          "exact_hash": "f0f4265a9acb4cfc2987e8fa21848f29b2ba7d8cc736a29f58f65dce39a29fc2",
+          "perceptual_hash": "b8c3e73892c6388f"
+        }
+      ]
+    },
+    {
+      "duplicate_type": "perceptual",
+      "dataset": "dataset_a",
+      "hash": "bec3c11c1ee3631c",
+      "hamming_distance": 0,
+      "files": [
+        {
+          "image_id": "DS1_IMG_004771",
+          "relative_path": "test/Bracelet/bracelet_076_jpg.rf.b4a1641d086b9392476fd429471965a2.jpg",
+          "dataset": "dataset_a",
+          "category": "Bracelet",
+          "split": "test",
+          "group_id": "bracelet_076",
+          "exact_hash": "3e0074246e12124bb8dd7c5d428f26cd770b2f7e042ee4d9c4d58254d7fe7349",
+          "perceptual_hash": "bec3c11c1ee3631c"
+        },
+        {
+          "image_id": "DS1_IMG_004375",
+          "relative_path": "valid/Bracelet/bracelet_072_jpg.rf.4f6ab9578693fa4896574bfa455ac137.jpg",
+          "dataset": "dataset_a",
+          "category": "Bracelet",
+          "split": "valid",
+          "group_id": "bracelet_072",
+          "exact_hash": "381c47835113618e21a2d998206010d6e30538f50fe23964bea841d533ab098b",
+          "perceptual_hash": "bec3c11c1ee3631c"
+        }
+      ]
+    },
+    {
+      "duplicate_type": "perceptual",
+      "dataset": "dataset_a",
+      "hash": "de58694996869ada",
+      "hamming_distance": 0,
+      "files": [
+        {
+          "image_id": "DS1_IMG_003830",
+          "relative_path": "train/Pendant/IMG_2750_393840e9_jpg.rf.4111fc8da1dd3f63da15b2f3775edb84.jpg",
+          "dataset": "dataset_a",
+          "category": "Pendant",
+          "split": "train",
+          "group_id": "IMG_2750_393840e9",
+          "exact_hash": "afefc1770f3e571e9ee6a6115e6a19b63c7a0a918be42d6a2471c8689b861680",
+          "perceptual_hash": "de58694996869ada"
+        },
+        {
+          "image_id": "DS1_IMG_003831",
+          "relative_path": "train/Pendant/IMG_2750_393840e9_jpg.rf.809ad525493b335ea1dffa6cdc9fa874.jpg",
+          "dataset": "dataset_a",
+          "category": "Pendant",
+          "split": "train",
+          "group_id": "IMG_2750_393840e9",
+          "exact_hash": "2eed83898c327a4914e06b56d5878ecbbbda06adc7f3058a80ad19574913ede3",
+          "perceptual_hash": "de58694996869ada"
+        }
+      ]
+    },
+    {
+      "duplicate_type": "perceptual",
+      "dataset": "dataset_a",
+      "hash": "ec9249a69b6d9649",
+      "hamming_distance": 0,
+      "files": [
+        {
+          "image_id": "DS1_IMG_003612",
+          "relative_path": "train/Necklace/necklace_59_jpg.rf.031a1bfc196cd4d1fff9feabe46b1b3e.jpg",
+          "dataset": "dataset_a",
+          "category": "Necklace",
+          "split": "train",
+          "group_id": "necklace_59",
+          "exact_hash": "3a7821226f7e7426546ffdcfce6f34f153ae098d9ebee84d527d0ecee6f37180",
+          "perceptual_hash": "ec9249a69b6d9649"
+        },
+        {
+          "image_id": "DS1_IMG_004694",
+          "relative_path": "valid/Necklace/necklace_68_jpg.rf.eb487670ad77540318d9b809dcdaddbf.jpg",
+          "dataset": "dataset_a",
+          "category": "Necklace",
+          "split": "valid",
+          "group_id": "necklace_68",
+          "exact_hash": "04a615f8cd8d34a4b7360cdf1327d36576fc7360120caa382830b829ad30efdd",
+          "perceptual_hash": "ec9249a69b6d9649"
+        }
+      ]
+    },
+    {
+      "duplicate_type": "perceptual",
+      "dataset": "dataset_a",
+      "hash": "ec936d9699649361",
+      "hamming_distance": 0,
+      "files": [
+        {
+          "image_id": "DS1_IMG_004932",
+          "relative_path": "test/Necklace/necklace_64_jpg.rf.302fc64c48139b7c07f8bbad5e18d172.jpg",
+          "dataset": "dataset_a",
+          "category": "Necklace",
+          "split": "test",
+          "group_id": "necklace_64",
+          "exact_hash": "791d90418395e66c7b2fc5003456633d020b949e961900ed81b37bf959afe001",
+          "perceptual_hash": "ec936d9699649361"
+        },
+        {
+          "image_id": "DS1_IMG_003618",
+          "relative_path": "train/Necklace/necklace_62_jpg.rf.cf2d9eef83004e889fd1996f8cf69b92.jpg",
+          "dataset": "dataset_a",
+          "category": "Necklace",
+          "split": "train",
+          "group_id": "necklace_62",
+          "exact_hash": "df6c8d84b1c9da8e6637282a03e6a6762fa22834605dbb2771a3c68cbd2105e5",
+          "perceptual_hash": "ec936d9699649361"
+        }
+      ]
+    }
+  ],
+  "near_duplicates": [
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 2,
+      "file_a": {
+        "image_id": "DS1_IMG_004804",
+        "relative_path": "test/Earrings/earring_144_jpg.rf.e7083be4695ea67ef78128202f869733.jpg",
+        "dataset": "dataset_a",
+        "category": "Earrings",
+        "split": "test",
+        "group_id": "earring_144",
+        "exact_hash": "b9023d4a1d6dde839ba75bd4f71f31c28b1b5dbb04549689d903ac294ba060c7",
+        "perceptual_hash": "bc9a6c38c63292e7"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_000981",
+        "relative_path": "train/Earrings/earring_142_jpg.rf.173848bdf4219da520049bfc5fb8ad6a.jpg",
+        "dataset": "dataset_a",
+        "category": "Earrings",
+        "split": "train",
+        "group_id": "earring_142",
+        "exact_hash": "2ab6a736879275a3763593a98867c00504e93dc748c520a69c0a822edebc8e93",
+        "perceptual_hash": "bc9a6c38c63296e3"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 2,
+      "file_a": {
+        "image_id": "DS1_IMG_004932",
+        "relative_path": "test/Necklace/necklace_64_jpg.rf.302fc64c48139b7c07f8bbad5e18d172.jpg",
+        "dataset": "dataset_a",
+        "category": "Necklace",
+        "split": "test",
+        "group_id": "necklace_64",
+        "exact_hash": "791d90418395e66c7b2fc5003456633d020b949e961900ed81b37bf959afe001",
+        "perceptual_hash": "ec936d9699649361"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004693",
+        "relative_path": "valid/Necklace/necklace_61_jpg.rf.910debbfa416698e0df86886e9d894a7.jpg",
+        "dataset": "dataset_a",
+        "category": "Necklace",
+        "split": "valid",
+        "group_id": "necklace_61",
+        "exact_hash": "1f15876b719443b20245cddf5c341a6df06fd5091fded54311842aa61e86c704",
+        "perceptual_hash": "ec936d9299649365"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 2,
+      "file_a": {
+        "image_id": "DS1_IMG_000314",
+        "relative_path": "train/Bracelet/bracelet_003_jpg.rf.0473459dbcca1933aeac97ded9bd5f10.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_003",
+        "exact_hash": "06b9b73102580cfbb861d5069c840183e59cbc9da71a4f9b44c529d62326d3a6",
+        "perceptual_hash": "bcc3e33cc2c33e41"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_000316",
+        "relative_path": "train/Bracelet/bracelet_003_jpg.rf.dd5fea7daf674390c7cdfc01aa0b9a07.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_003",
+        "exact_hash": "034201fd687785af63583e63d68b9eaf72dd7d257ec6dd756cbd94f39db4321a",
+        "perceptual_hash": "bcc3e13cc2c33e61"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 2,
+      "file_a": {
+        "image_id": "DS1_IMG_000317",
+        "relative_path": "train/Bracelet/bracelet_009_jpg.rf.6a3855f515efa9aa91fd56b586b89c84.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_009",
+        "exact_hash": "f5bbb31bd4bbbad1e93e300703bc3b9cf7ee31828e2e0560e3bc5e4d9b282118",
+        "perceptual_hash": "b8c3e73892c43a8f"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_000477",
+        "relative_path": "train/Bracelet/bracelet_111_jpg.rf.789208b3771dd26cb3668d5069d8d2c1.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_111",
+        "exact_hash": "b4b753cde6c38d3445f3b8f2a9707aaf37aab8c29d2963ca3b30bdba1c9e291e",
+        "perceptual_hash": "b8c3e73892c6388f"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 2,
+      "file_a": {
+        "image_id": "DS1_IMG_000317",
+        "relative_path": "train/Bracelet/bracelet_009_jpg.rf.6a3855f515efa9aa91fd56b586b89c84.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_009",
+        "exact_hash": "f5bbb31bd4bbbad1e93e300703bc3b9cf7ee31828e2e0560e3bc5e4d9b282118",
+        "perceptual_hash": "b8c3e73892c43a8f"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004379",
+        "relative_path": "valid/Bracelet/bracelet_114_jpg.rf.fbadc6bd5bb7d7cd4165efff8ec1b212.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "valid",
+        "group_id": "bracelet_114",
+        "exact_hash": "58a7e23dbf1cd8c67cafeb2888a8624be0f5a2e56c107669fbe91089ee5cd6f0",
+        "perceptual_hash": "b8c3e73892c6388f"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 2,
+      "file_a": {
+        "image_id": "DS1_IMG_000317",
+        "relative_path": "train/Bracelet/bracelet_009_jpg.rf.6a3855f515efa9aa91fd56b586b89c84.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_009",
+        "exact_hash": "f5bbb31bd4bbbad1e93e300703bc3b9cf7ee31828e2e0560e3bc5e4d9b282118",
+        "perceptual_hash": "b8c3e73892c43a8f"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004381",
+        "relative_path": "valid/Bracelet/bracelet_120_jpg.rf.6bf7e3bb5e9b145a7485783228d2b50a.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "valid",
+        "group_id": "bracelet_120",
+        "exact_hash": "f0f4265a9acb4cfc2987e8fa21848f29b2ba7d8cc736a29f58f65dce39a29fc2",
+        "perceptual_hash": "b8c3e73892c6388f"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 2,
+      "file_a": {
+        "image_id": "DS1_IMG_000318",
+        "relative_path": "train/Bracelet/bracelet_009_jpg.rf.ba457de7829cc7e0afea96b604c48a33.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_009",
+        "exact_hash": "80af906dcbc7f1c1102203b8521110ac3e7a20a1569c6b2ae65da9d416d91883",
+        "perceptual_hash": "91df4530463b598f"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_000491",
+        "relative_path": "train/Bracelet/bracelet_121_jpg.rf.0ba04c7637c3b4209236bbca677c4ca7.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_121",
+        "exact_hash": "3714a2224c72020c7afb0d51556e4feab8d47c9858a80ccba4fd8625a926bd60",
+        "perceptual_hash": "91df4530563b198f"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 2,
+      "file_a": {
+        "image_id": "DS1_IMG_000402",
+        "relative_path": "train/Bracelet/bracelet_063_jpg.rf.3555aead6ce41cd16f34010174c5cd2f.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_063",
+        "exact_hash": "19e2e052ded67bf7d2955da915bf49364f51a26dd70d5c494919dc273a14c33e",
+        "perceptual_hash": "b09d4733cb264e27"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_000404",
+        "relative_path": "train/Bracelet/bracelet_063_jpg.rf.7df136f831ed81d92c28054a6987899d.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_063",
+        "exact_hash": "d66c6ddb960b27d8bd6d90b967e30b8fd277a52640a1239bf55c9822bddc7302",
+        "perceptual_hash": "b09d4733cf264e26"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 2,
+      "file_a": {
+        "image_id": "DS1_IMG_000411",
+        "relative_path": "train/Bracelet/bracelet_073_jpg.rf.14aa628609179d34ce19677d0a90b892.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_073",
+        "exact_hash": "5fdc62b0bdd57032b23e5d027c607a6207cbbe870a47c54cf45c22597149267e",
+        "perceptual_hash": "be81e17e1f85681a"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_000650",
+        "relative_path": "train/Bracelet/bracelet_218_jpg.rf.9efeaee109d424af870c99fadcc3de43.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_218",
+        "exact_hash": "83bf900b4ba37ddff9ff58341ca07b27c4779fbe360d4493c186881c7cdabae1",
+        "perceptual_hash": "be81e17a1f85689a"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 2,
+      "file_a": {
+        "image_id": "DS1_IMG_000458",
+        "relative_path": "train/Bracelet/bracelet_103_jpg.rf.a1db0441495fca93603f46702736fb0f.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_103",
+        "exact_hash": "0b6997114b4b6bf40da40fbabbef1d73f01c8c8d41015a36080215cdef413d08",
+        "perceptual_hash": "b8c3e73892c43a8f"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_000477",
+        "relative_path": "train/Bracelet/bracelet_111_jpg.rf.789208b3771dd26cb3668d5069d8d2c1.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_111",
+        "exact_hash": "b4b753cde6c38d3445f3b8f2a9707aaf37aab8c29d2963ca3b30bdba1c9e291e",
+        "perceptual_hash": "b8c3e73892c6388f"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 2,
+      "file_a": {
+        "image_id": "DS1_IMG_000458",
+        "relative_path": "train/Bracelet/bracelet_103_jpg.rf.a1db0441495fca93603f46702736fb0f.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_103",
+        "exact_hash": "0b6997114b4b6bf40da40fbabbef1d73f01c8c8d41015a36080215cdef413d08",
+        "perceptual_hash": "b8c3e73892c43a8f"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004379",
+        "relative_path": "valid/Bracelet/bracelet_114_jpg.rf.fbadc6bd5bb7d7cd4165efff8ec1b212.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "valid",
+        "group_id": "bracelet_114",
+        "exact_hash": "58a7e23dbf1cd8c67cafeb2888a8624be0f5a2e56c107669fbe91089ee5cd6f0",
+        "perceptual_hash": "b8c3e73892c6388f"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 2,
+      "file_a": {
+        "image_id": "DS1_IMG_000458",
+        "relative_path": "train/Bracelet/bracelet_103_jpg.rf.a1db0441495fca93603f46702736fb0f.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_103",
+        "exact_hash": "0b6997114b4b6bf40da40fbabbef1d73f01c8c8d41015a36080215cdef413d08",
+        "perceptual_hash": "b8c3e73892c43a8f"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004381",
+        "relative_path": "valid/Bracelet/bracelet_120_jpg.rf.6bf7e3bb5e9b145a7485783228d2b50a.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "valid",
+        "group_id": "bracelet_120",
+        "exact_hash": "f0f4265a9acb4cfc2987e8fa21848f29b2ba7d8cc736a29f58f65dce39a29fc2",
+        "perceptual_hash": "b8c3e73892c6388f"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 2,
+      "file_a": {
+        "image_id": "DS1_IMG_000464",
+        "relative_path": "train/Bracelet/bracelet_107_jpg.rf.8c5461e7dc9f2ee02bbe332ba3462dae.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_107",
+        "exact_hash": "4d9809fafc3b1f75fcb5728fa6f55295f73c1ae820b3efb15b675321f0c40a7a",
+        "perceptual_hash": "91df45301e3b198f"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_000491",
+        "relative_path": "train/Bracelet/bracelet_121_jpg.rf.0ba04c7637c3b4209236bbca677c4ca7.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_121",
+        "exact_hash": "3714a2224c72020c7afb0d51556e4feab8d47c9858a80ccba4fd8625a926bd60",
+        "perceptual_hash": "91df4530563b198f"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 2,
+      "file_a": {
+        "image_id": "DS1_IMG_000473",
+        "relative_path": "train/Bracelet/bracelet_110_jpg.rf.e8ac400553558473dee6f4522aeea4e2.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_110",
+        "exact_hash": "eda331bc0d5b5e759c220c5de5c84a7226087364e6e36491f4cb61d70060d89b",
+        "perceptual_hash": "84ff109a532d4f2d"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_000475",
+        "relative_path": "train/Bracelet/bracelet_111_jpg.rf.44c0c260e7d0ef9e46271f6880d88c44.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_111",
+        "exact_hash": "e363e3b79184b63db1f2405176fdf9026d738689aa4fb96f3f01fb988e5e4512",
+        "perceptual_hash": "84ff119a532d4d2d"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 2,
+      "file_a": {
+        "image_id": "DS1_IMG_000477",
+        "relative_path": "train/Bracelet/bracelet_111_jpg.rf.789208b3771dd26cb3668d5069d8d2c1.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_111",
+        "exact_hash": "b4b753cde6c38d3445f3b8f2a9707aaf37aab8c29d2963ca3b30bdba1c9e291e",
+        "perceptual_hash": "b8c3e73892c6388f"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_000490",
+        "relative_path": "train/Bracelet/bracelet_119_jpg.rf.73303a49b143a41081c30241d6a4dc3e.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_119",
+        "exact_hash": "314d99a36545abc67449f187811d214feafe8fad374dfebfa50f1aca186d5e51",
+        "perceptual_hash": "b8c3e73892c43a8f"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 2,
+      "file_a": {
+        "image_id": "DS1_IMG_000490",
+        "relative_path": "train/Bracelet/bracelet_119_jpg.rf.73303a49b143a41081c30241d6a4dc3e.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_119",
+        "exact_hash": "314d99a36545abc67449f187811d214feafe8fad374dfebfa50f1aca186d5e51",
+        "perceptual_hash": "b8c3e73892c43a8f"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004379",
+        "relative_path": "valid/Bracelet/bracelet_114_jpg.rf.fbadc6bd5bb7d7cd4165efff8ec1b212.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "valid",
+        "group_id": "bracelet_114",
+        "exact_hash": "58a7e23dbf1cd8c67cafeb2888a8624be0f5a2e56c107669fbe91089ee5cd6f0",
+        "perceptual_hash": "b8c3e73892c6388f"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 2,
+      "file_a": {
+        "image_id": "DS1_IMG_000490",
+        "relative_path": "train/Bracelet/bracelet_119_jpg.rf.73303a49b143a41081c30241d6a4dc3e.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_119",
+        "exact_hash": "314d99a36545abc67449f187811d214feafe8fad374dfebfa50f1aca186d5e51",
+        "perceptual_hash": "b8c3e73892c43a8f"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004381",
+        "relative_path": "valid/Bracelet/bracelet_120_jpg.rf.6bf7e3bb5e9b145a7485783228d2b50a.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "valid",
+        "group_id": "bracelet_120",
+        "exact_hash": "f0f4265a9acb4cfc2987e8fa21848f29b2ba7d8cc736a29f58f65dce39a29fc2",
+        "perceptual_hash": "b8c3e73892c6388f"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 2,
+      "file_a": {
+        "image_id": "DS1_IMG_000719",
+        "relative_path": "train/Bracelet/bracelet_262_jpg.rf.04815007a15d356bfc78233c6344d075.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_262",
+        "exact_hash": "9c9cd2437acbed2fdba203d28fb863a1348c304b66ef6ed62020b1cd6894c760",
+        "perceptual_hash": "917f44951f2a4a97"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_000720",
+        "relative_path": "train/Bracelet/bracelet_262_jpg.rf.749aa1737d796c9183409cff0947cc28.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_262",
+        "exact_hash": "81b79d9b37d42905ed0053837f5e246679a3d9fbfdc5bfa0118e318d25c543e2",
+        "perceptual_hash": "917f40951f2a4a9f"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 2,
+      "file_a": {
+        "image_id": "DS1_IMG_000870",
+        "relative_path": "train/Earrings/Roberto-Coin-Black-Jade-18K-Rose-Gold-Earrings-with-Mother-of-Pearl-and-Diamonds-8881985AXERJ_png.rf.52f09ed3758e323d9e6886e9663953e8.jpg",
+        "dataset": "dataset_a",
+        "category": "Earrings",
+        "split": "train",
+        "group_id": "Roberto-Coin-Black-Jade-18K-Rose-Gold-Earrings-with-Mother-of-Pearl-and-Diamonds-8881985AXERJ",
+        "exact_hash": "7f1e27c6ce7e79a17c7eee0c2e430276c2592217cf2a1fc0b84e9d83e26f1288",
+        "perceptual_hash": "e992966d60926f6c"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_000872",
+        "relative_path": "train/Earrings/Roberto-Coin-Black-Jade-18K-Rose-Gold-Earrings-with-Mother-of-Pearl-and-Diamonds-8881985AXERJ_png.rf.fb3014ebb842972e041ba4aa2e5b7a62.jpg",
+        "dataset": "dataset_a",
+        "category": "Earrings",
+        "split": "train",
+        "group_id": "Roberto-Coin-Black-Jade-18K-Rose-Gold-Earrings-with-Mother-of-Pearl-and-Diamonds-8881985AXERJ",
+        "exact_hash": "227f45de0530e32ad250ef7f3cb2df888ec95116788e0f7ca85ff6874212d667",
+        "perceptual_hash": "e992966d60924f6d"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 2,
+      "file_a": {
+        "image_id": "DS1_IMG_003383",
+        "relative_path": "train/Necklace/necklace_132_jpg.rf.4df45193d47d14252d5f9a6713dcf8c4.jpg",
+        "dataset": "dataset_a",
+        "category": "Necklace",
+        "split": "train",
+        "group_id": "necklace_132",
+        "exact_hash": "135ef17f14b7f7dd0201fa186cf6da1054d22c4a145af20b1effc1c093eaa2b6",
+        "perceptual_hash": "c05f55351f25099f"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_003385",
+        "relative_path": "train/Necklace/necklace_132_jpg.rf.b7eda8d49eeb79607594093254e1ee60.jpg",
+        "dataset": "dataset_a",
+        "category": "Necklace",
+        "split": "train",
+        "group_id": "necklace_132",
+        "exact_hash": "4d8599cc34ecdb4145ae8a7508a066f098c5afd3bdb16881fbb79eb22c907df5",
+        "perceptual_hash": "805f55351f27099f"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 2,
+      "file_a": {
+        "image_id": "DS1_IMG_003610",
+        "relative_path": "train/Necklace/necklace_57_jpg.rf.3d7508d2e59e101e32791648dde7c444.jpg",
+        "dataset": "dataset_a",
+        "category": "Necklace",
+        "split": "train",
+        "group_id": "necklace_57",
+        "exact_hash": "a1ece08a2eddd055d62aececa6666ff235122c1eb4330907b5770fecc02f895d",
+        "perceptual_hash": "ec9269a6996d9649"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_003612",
+        "relative_path": "train/Necklace/necklace_59_jpg.rf.031a1bfc196cd4d1fff9feabe46b1b3e.jpg",
+        "dataset": "dataset_a",
+        "category": "Necklace",
+        "split": "train",
+        "group_id": "necklace_59",
+        "exact_hash": "3a7821226f7e7426546ffdcfce6f34f153ae098d9ebee84d527d0ecee6f37180",
+        "perceptual_hash": "ec9249a69b6d9649"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 2,
+      "file_a": {
+        "image_id": "DS1_IMG_003610",
+        "relative_path": "train/Necklace/necklace_57_jpg.rf.3d7508d2e59e101e32791648dde7c444.jpg",
+        "dataset": "dataset_a",
+        "category": "Necklace",
+        "split": "train",
+        "group_id": "necklace_57",
+        "exact_hash": "a1ece08a2eddd055d62aececa6666ff235122c1eb4330907b5770fecc02f895d",
+        "perceptual_hash": "ec9269a6996d9649"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004694",
+        "relative_path": "valid/Necklace/necklace_68_jpg.rf.eb487670ad77540318d9b809dcdaddbf.jpg",
+        "dataset": "dataset_a",
+        "category": "Necklace",
+        "split": "valid",
+        "group_id": "necklace_68",
+        "exact_hash": "04a615f8cd8d34a4b7360cdf1327d36576fc7360120caa382830b829ad30efdd",
+        "perceptual_hash": "ec9249a69b6d9649"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 2,
+      "file_a": {
+        "image_id": "DS1_IMG_003612",
+        "relative_path": "train/Necklace/necklace_59_jpg.rf.031a1bfc196cd4d1fff9feabe46b1b3e.jpg",
+        "dataset": "dataset_a",
+        "category": "Necklace",
+        "split": "train",
+        "group_id": "necklace_59",
+        "exact_hash": "3a7821226f7e7426546ffdcfce6f34f153ae098d9ebee84d527d0ecee6f37180",
+        "perceptual_hash": "ec9249a69b6d9649"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_003614",
+        "relative_path": "train/Necklace/necklace_60_jpg.rf.76067cf8acc274cbc7265a898b599a2b.jpg",
+        "dataset": "dataset_a",
+        "category": "Necklace",
+        "split": "train",
+        "group_id": "necklace_60",
+        "exact_hash": "85c8f87a030edac61ca77be96debc260bd1ee30a3dc42542ac1f7e6e84ccaf32",
+        "perceptual_hash": "ed9249a69b6d9249"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 2,
+      "file_a": {
+        "image_id": "DS1_IMG_003614",
+        "relative_path": "train/Necklace/necklace_60_jpg.rf.76067cf8acc274cbc7265a898b599a2b.jpg",
+        "dataset": "dataset_a",
+        "category": "Necklace",
+        "split": "train",
+        "group_id": "necklace_60",
+        "exact_hash": "85c8f87a030edac61ca77be96debc260bd1ee30a3dc42542ac1f7e6e84ccaf32",
+        "perceptual_hash": "ed9249a69b6d9249"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004694",
+        "relative_path": "valid/Necklace/necklace_68_jpg.rf.eb487670ad77540318d9b809dcdaddbf.jpg",
+        "dataset": "dataset_a",
+        "category": "Necklace",
+        "split": "valid",
+        "group_id": "necklace_68",
+        "exact_hash": "04a615f8cd8d34a4b7360cdf1327d36576fc7360120caa382830b829ad30efdd",
+        "perceptual_hash": "ec9249a69b6d9649"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 2,
+      "file_a": {
+        "image_id": "DS1_IMG_003618",
+        "relative_path": "train/Necklace/necklace_62_jpg.rf.cf2d9eef83004e889fd1996f8cf69b92.jpg",
+        "dataset": "dataset_a",
+        "category": "Necklace",
+        "split": "train",
+        "group_id": "necklace_62",
+        "exact_hash": "df6c8d84b1c9da8e6637282a03e6a6762fa22834605dbb2771a3c68cbd2105e5",
+        "perceptual_hash": "ec936d9699649361"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004693",
+        "relative_path": "valid/Necklace/necklace_61_jpg.rf.910debbfa416698e0df86886e9d894a7.jpg",
+        "dataset": "dataset_a",
+        "category": "Necklace",
+        "split": "valid",
+        "group_id": "necklace_61",
+        "exact_hash": "1f15876b719443b20245cddf5c341a6df06fd5091fded54311842aa61e86c704",
+        "perceptual_hash": "ec936d9299649365"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 2,
+      "file_a": {
+        "image_id": "DS1_IMG_003863",
+        "relative_path": "train/Pendant/IMG_2845_73c46a80_jpg.rf.6f4a67cd1e23908c13363c15ab446efb.jpg",
+        "dataset": "dataset_a",
+        "category": "Pendant",
+        "split": "train",
+        "group_id": "IMG_2845_73c46a80",
+        "exact_hash": "f2ab835194bfec2d58eebd3f1e459bcfb8f1010927ca6e306a859017b898b888",
+        "perceptual_hash": "97d16087e7766161"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_003864",
+        "relative_path": "train/Pendant/IMG_2845_73c46a80_jpg.rf.72b1af37d7d3bf088d66b3b6f39a724f.jpg",
+        "dataset": "dataset_a",
+        "category": "Pendant",
+        "split": "train",
+        "group_id": "IMG_2845_73c46a80",
+        "exact_hash": "c1cffad130f5b55fd64540e89bbbd74b6c82ff145b02eb31448cea54f113343a",
+        "perceptual_hash": "97d16087e7366169"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 2,
+      "file_a": {
+        "image_id": "DS1_IMG_004095",
+        "relative_path": "train/Ring/ring_058_jpg.rf.dbfc6ab55994ade0bc7ff869e8b7017a.jpg",
+        "dataset": "dataset_a",
+        "category": "Ring",
+        "split": "train",
+        "group_id": "ring_058",
+        "exact_hash": "e55a084ad4ca9502e4e322ad96019b502eb8d346f869caf1837a5df14992b7e6",
+        "perceptual_hash": "e4899b3639cc6693"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004098",
+        "relative_path": "train/Ring/ring_060_jpg.rf.c9c69907b7105ca597fb4d72e172afd5.jpg",
+        "dataset": "dataset_a",
+        "category": "Ring",
+        "split": "train",
+        "group_id": "ring_060",
+        "exact_hash": "2bb32ba8bbc10a81e29872a269a5cf309ac6c14646a42381a13660bfb2022da8",
+        "perceptual_hash": "e4899b3639cc6633"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 2,
+      "file_a": {
+        "image_id": "DS1_IMG_004257",
+        "relative_path": "train/Ring/ring_155_jpg.rf.bc20671d53e518e728d2f99a8121dfb2.jpg",
+        "dataset": "dataset_a",
+        "category": "Ring",
+        "split": "train",
+        "group_id": "ring_155",
+        "exact_hash": "0e35d54aab5396df2e786a978c905a1ddd4efcacf54ab426919ea8e5dc30ce25",
+        "perceptual_hash": "b2609f9ec9396664"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004295",
+        "relative_path": "train/Ring/ring_172_jpg.rf.314e255414eaf38b64703f4ec4a1feea.jpg",
+        "dataset": "dataset_a",
+        "category": "Ring",
+        "split": "train",
+        "group_id": "ring_172",
+        "exact_hash": "73d1fb2d7fa5076b4200d8f721f95dc16e69e4e0cba666b52908e27afec59a07",
+        "perceptual_hash": "b2e09f9ec8396664"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 2,
+      "file_a": {
+        "image_id": "DS1_IMG_004356",
+        "relative_path": "valid/Bracelet/bracelet_001_jpg.rf.a0c302c09946ac1537b6ab62fbb56b90.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "valid",
+        "group_id": "bracelet_001",
+        "exact_hash": "5af6f79cbc006c61c5ffdb8731839749c598659b2a2ed7ec401ae2396a43264f",
+        "perceptual_hash": "b3a1cc4e33b1cc4e"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004387",
+        "relative_path": "valid/Bracelet/bracelet_195_jpg.rf.447d172749ca32919ae6cb1c7b8294c8.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "valid",
+        "group_id": "bracelet_195",
+        "exact_hash": "5dbba94c623a1b04511ccd19c75fad9553ad3e065da2e89021494eff6df30e49",
+        "perceptual_hash": "b3b1cc4c33b1cc4e"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_004771",
+        "relative_path": "test/Bracelet/bracelet_076_jpg.rf.b4a1641d086b9392476fd429471965a2.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "test",
+        "group_id": "bracelet_076",
+        "exact_hash": "3e0074246e12124bb8dd7c5d428f26cd770b2f7e042ee4d9c4d58254d7fe7349",
+        "perceptual_hash": "bec3c11c1ee3631c"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_000416",
+        "relative_path": "train/Bracelet/bracelet_077_jpg.rf.1cdaa293c5ac17958c729052552449bd.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_077",
+        "exact_hash": "a3de1571dfafa67b7992a12b9e41f7d0562afa0ff6966d1c8f30be2d77dddae7",
+        "perceptual_hash": "bec3e11c1ee3291c"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_004771",
+        "relative_path": "test/Bracelet/bracelet_076_jpg.rf.b4a1641d086b9392476fd429471965a2.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "test",
+        "group_id": "bracelet_076",
+        "exact_hash": "3e0074246e12124bb8dd7c5d428f26cd770b2f7e042ee4d9c4d58254d7fe7349",
+        "perceptual_hash": "bec3c11c1ee3631c"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004370",
+        "relative_path": "valid/Bracelet/bracelet_058_jpg.rf.0c31c34b9064f0c4538060b622341b86.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "valid",
+        "group_id": "bracelet_058",
+        "exact_hash": "1d4ccddbe4ea0fe6b994a9f7ff13b6f5fc31260f97c6f3d241e078c55452468b",
+        "perceptual_hash": "bcc3c31c1ce3639c"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_004771",
+        "relative_path": "test/Bracelet/bracelet_076_jpg.rf.b4a1641d086b9392476fd429471965a2.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "test",
+        "group_id": "bracelet_076",
+        "exact_hash": "3e0074246e12124bb8dd7c5d428f26cd770b2f7e042ee4d9c4d58254d7fe7349",
+        "perceptual_hash": "bec3c11c1ee3631c"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004397",
+        "relative_path": "valid/Bracelet/bracelet_264_jpg.rf.713a93accbeaf429d799995209a91a32.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "valid",
+        "group_id": "bracelet_264",
+        "exact_hash": "bcaf90330d9c6e0cff15cbefc5348069b6389c5a1176232819b3113606841b93",
+        "perceptual_hash": "bec3e11c1cc3633c"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_004773",
+        "relative_path": "test/Bracelet/bracelet_104_jpg.rf.dd3759009b36003212ef4eaf0a647842.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "test",
+        "group_id": "bracelet_104",
+        "exact_hash": "db120b068aaf82aa49c5dc75f2b89107d48456e82fd2351bf881b5d506c49166",
+        "perceptual_hash": "b847e73882c638cf"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_000477",
+        "relative_path": "train/Bracelet/bracelet_111_jpg.rf.789208b3771dd26cb3668d5069d8d2c1.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_111",
+        "exact_hash": "b4b753cde6c38d3445f3b8f2a9707aaf37aab8c29d2963ca3b30bdba1c9e291e",
+        "perceptual_hash": "b8c3e73892c6388f"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_004773",
+        "relative_path": "test/Bracelet/bracelet_104_jpg.rf.dd3759009b36003212ef4eaf0a647842.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "test",
+        "group_id": "bracelet_104",
+        "exact_hash": "db120b068aaf82aa49c5dc75f2b89107d48456e82fd2351bf881b5d506c49166",
+        "perceptual_hash": "b847e73882c638cf"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004379",
+        "relative_path": "valid/Bracelet/bracelet_114_jpg.rf.fbadc6bd5bb7d7cd4165efff8ec1b212.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "valid",
+        "group_id": "bracelet_114",
+        "exact_hash": "58a7e23dbf1cd8c67cafeb2888a8624be0f5a2e56c107669fbe91089ee5cd6f0",
+        "perceptual_hash": "b8c3e73892c6388f"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_004773",
+        "relative_path": "test/Bracelet/bracelet_104_jpg.rf.dd3759009b36003212ef4eaf0a647842.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "test",
+        "group_id": "bracelet_104",
+        "exact_hash": "db120b068aaf82aa49c5dc75f2b89107d48456e82fd2351bf881b5d506c49166",
+        "perceptual_hash": "b847e73882c638cf"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004381",
+        "relative_path": "valid/Bracelet/bracelet_120_jpg.rf.6bf7e3bb5e9b145a7485783228d2b50a.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "valid",
+        "group_id": "bracelet_120",
+        "exact_hash": "f0f4265a9acb4cfc2987e8fa21848f29b2ba7d8cc736a29f58f65dce39a29fc2",
+        "perceptual_hash": "b8c3e73892c6388f"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_004774",
+        "relative_path": "test/Bracelet/bracelet_138_jpg.rf.116c19563dc4785a6d96621b76b36c3e.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "test",
+        "group_id": "bracelet_138",
+        "exact_hash": "b4d7094ade36c803136a8ec0b9e069252cef04ace692384a11801a842fc1ab5b",
+        "perceptual_hash": "9a93e178c4e73a94"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_000523",
+        "relative_path": "train/Bracelet/bracelet_144_jpg.rf.6420b3b47808ea60789a5cf40032f42d.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_144",
+        "exact_hash": "e465c75f2baa8eac90d1f060a4137a95ee56ad9a7ec3424f184541822f818042",
+        "perceptual_hash": "9a93e968c5673a94"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_004964",
+        "relative_path": "test/Ring/ring_094_jpg.rf.0e95bb1c734c2bf3f824ddc0eb6f50cd.jpg",
+        "dataset": "dataset_a",
+        "category": "Ring",
+        "split": "test",
+        "group_id": "ring_094",
+        "exact_hash": "6a620541bfb57aeb7db7bfba4649c5eb5377aeb099c170d9dbc7c43dbfc63f72",
+        "perceptual_hash": "b8c19b9ec43bc23c"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004281",
+        "relative_path": "train/Ring/ring_166_jpg.rf.d9321a3c59fe9b9287f98455e02b7cff.jpg",
+        "dataset": "dataset_a",
+        "category": "Ring",
+        "split": "train",
+        "group_id": "ring_166",
+        "exact_hash": "8c8c3dcfa246207a0c38455fb6ae6099f73e6fd79f50560507b2520dc01f1c80",
+        "perceptual_hash": "b8c1979ec43bc32c"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_000318",
+        "relative_path": "train/Bracelet/bracelet_009_jpg.rf.ba457de7829cc7e0afea96b604c48a33.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_009",
+        "exact_hash": "80af906dcbc7f1c1102203b8521110ac3e7a20a1569c6b2ae65da9d416d91883",
+        "perceptual_hash": "91df4530463b598f"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_000464",
+        "relative_path": "train/Bracelet/bracelet_107_jpg.rf.8c5461e7dc9f2ee02bbe332ba3462dae.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_107",
+        "exact_hash": "4d9809fafc3b1f75fcb5728fa6f55295f73c1ae820b3efb15b675321f0c40a7a",
+        "perceptual_hash": "91df45301e3b198f"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_000332",
+        "relative_path": "train/Bracelet/bracelet_019_jpg.rf.34c81f48d0572573280f4ae94c4e9c80.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_019",
+        "exact_hash": "12f218f02ea80415376c82f74ee39021d58f8cf838b69c5aa266812367fb6b9c",
+        "perceptual_hash": "b3a6cc1933a6cc4b"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_000334",
+        "relative_path": "train/Bracelet/bracelet_020_jpg.rf.89f1c434c9511533b27729d00cc8cba3.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_020",
+        "exact_hash": "45c82cc0aa7086361a9061371e606928e7ac93b051f583f967cdff0a4496270c",
+        "perceptual_hash": "b3a6cc5933a6c459"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_000344",
+        "relative_path": "train/Bracelet/bracelet_031_jpg.rf.125f4c2901ce11d497dfe188b7f72231.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_031",
+        "exact_hash": "293c5d54a85a2d28746e35ad15504cb1b12185dcb97d9d5feb4bda7f66c9100a",
+        "perceptual_hash": "e49b19265e2e59ac"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_000346",
+        "relative_path": "train/Bracelet/bracelet_031_jpg.rf.c2cbe21f7c66633eb40f6a0f3fbd5ee0.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_031",
+        "exact_hash": "ddaa5ec1f70112ba5e58b173980b1bbdac06465006f687241bf05e1ea9495431",
+        "perceptual_hash": "e49f11265e2e1bac"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_000380",
+        "relative_path": "train/Bracelet/bracelet_048_jpg.rf.cfda510328a5af23a5bb48ab86db5649.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_048",
+        "exact_hash": "b2ea5b4d459c5bb81252d86f9ebcd7cdf48c65eafebc3f47ebef780ed16e474c",
+        "perceptual_hash": "be63c19c1cc3633c"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004397",
+        "relative_path": "valid/Bracelet/bracelet_264_jpg.rf.713a93accbeaf429d799995209a91a32.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "valid",
+        "group_id": "bracelet_264",
+        "exact_hash": "bcaf90330d9c6e0cff15cbefc5348069b6389c5a1176232819b3113606841b93",
+        "perceptual_hash": "bec3e11c1cc3633c"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_000403",
+        "relative_path": "train/Bracelet/bracelet_063_jpg.rf.6ca34bcafdab54934606b8e067153303.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_063",
+        "exact_hash": "9476e46557ae7ca18ae2f104cd6aa357b6f44125b412b6782e51dd8f057814eb",
+        "perceptual_hash": "ba85e57a1b8568d2"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_000419",
+        "relative_path": "train/Bracelet/bracelet_078_jpg.rf.680848745cf6d31907d013727e2bfecf.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_078",
+        "exact_hash": "524df4aebf6a467f8a62db2d9560595150aeb0b7c3bc5507bd910eede90f77b5",
+        "perceptual_hash": "ba95e56a1ba56892"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_000403",
+        "relative_path": "train/Bracelet/bracelet_063_jpg.rf.6ca34bcafdab54934606b8e067153303.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_063",
+        "exact_hash": "9476e46557ae7ca18ae2f104cd6aa357b6f44125b412b6782e51dd8f057814eb",
+        "perceptual_hash": "ba85e57a1b8568d2"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004374",
+        "relative_path": "valid/Bracelet/bracelet_070_jpg.rf.b8d3e07b09a54ffd99246204043b1d79.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "valid",
+        "group_id": "bracelet_070",
+        "exact_hash": "3eb5f8eec5c738b9fb6bf0756d8021e9334ee858a2f20e7fef80c486b9d88d4f",
+        "perceptual_hash": "ba81e57a1b856c5a"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_000405",
+        "relative_path": "train/Bracelet/bracelet_064_jpg.rf.53fd0248b51f5c8c279f4cde303e6cd7.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_064",
+        "exact_hash": "389fa659aafdead11d6675d8df7a49b88be46d618611b26bd2f1d6c643e06d34",
+        "perceptual_hash": "b6c9c1363ec9861e"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_000590",
+        "relative_path": "train/Bracelet/bracelet_179_jpg.rf.4f441d582d4fb7aa88fc2263fc30aeee.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_179",
+        "exact_hash": "c1b08d6cd24bda522df86b11909c5d3fb2a98d18fe15ff0717f45fa849610477",
+        "perceptual_hash": "bec9c1363fc98416"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_000416",
+        "relative_path": "train/Bracelet/bracelet_077_jpg.rf.1cdaa293c5ac17958c729052552449bd.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_077",
+        "exact_hash": "a3de1571dfafa67b7992a12b9e41f7d0562afa0ff6966d1c8f30be2d77dddae7",
+        "perceptual_hash": "bec3e11c1ee3291c"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004375",
+        "relative_path": "valid/Bracelet/bracelet_072_jpg.rf.4f6ab9578693fa4896574bfa455ac137.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "valid",
+        "group_id": "bracelet_072",
+        "exact_hash": "381c47835113618e21a2d998206010d6e30538f50fe23964bea841d533ab098b",
+        "perceptual_hash": "bec3c11c1ee3631c"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_000418",
+        "relative_path": "train/Bracelet/bracelet_077_jpg.rf.f39474f357f53d56bfe741579870afb4.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_077",
+        "exact_hash": "5081e54950a118d0402c81162b29a9fc97911c1a5e1809a5dbb100d69a3e3cd2",
+        "perceptual_hash": "9ce2c17c1ee3611e"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_000704",
+        "relative_path": "train/Bracelet/bracelet_255_jpg.rf.9cad8bd32bfcbe3b0d6c012c86a55d73.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_255",
+        "exact_hash": "85f327ff3b913af3876ee233dd9691fda9e39b9154976aa78cc16535a3d262fe",
+        "perceptual_hash": "9ce2c17c1ec3653c"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_000443",
+        "relative_path": "train/Bracelet/bracelet_093_jpg.rf.fc812bfdc0dc1659148c20db85839dc8.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_093",
+        "exact_hash": "a0ca3df551dd558df9885e51194a62511a1b1d229b05c469f358b38162c3fe31",
+        "perceptual_hash": "804055fa5f5d4c7b"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_000487",
+        "relative_path": "train/Bracelet/bracelet_118_jpg.rf.6a13e1680a9d3e700554b13e15d8e132.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_118",
+        "exact_hash": "ebcf75b4dde9bf4d5fbed40ac74b3ce78949f7afccb4cdaadc95f8adc03075e5",
+        "perceptual_hash": "804045fa5f5f587b"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_000456",
+        "relative_path": "train/Bracelet/bracelet_102_jpg.rf.fa31d36071558fa9ed73f8ed58fbf2c1.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_102",
+        "exact_hash": "8bd89397c4f61ff9eadb7826ab772baa09bb52ed8c2cd77b1638423849d49702",
+        "perceptual_hash": "b847e73882c638cf"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_000477",
+        "relative_path": "train/Bracelet/bracelet_111_jpg.rf.789208b3771dd26cb3668d5069d8d2c1.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_111",
+        "exact_hash": "b4b753cde6c38d3445f3b8f2a9707aaf37aab8c29d2963ca3b30bdba1c9e291e",
+        "perceptual_hash": "b8c3e73892c6388f"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_000456",
+        "relative_path": "train/Bracelet/bracelet_102_jpg.rf.fa31d36071558fa9ed73f8ed58fbf2c1.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_102",
+        "exact_hash": "8bd89397c4f61ff9eadb7826ab772baa09bb52ed8c2cd77b1638423849d49702",
+        "perceptual_hash": "b847e73882c638cf"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004379",
+        "relative_path": "valid/Bracelet/bracelet_114_jpg.rf.fbadc6bd5bb7d7cd4165efff8ec1b212.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "valid",
+        "group_id": "bracelet_114",
+        "exact_hash": "58a7e23dbf1cd8c67cafeb2888a8624be0f5a2e56c107669fbe91089ee5cd6f0",
+        "perceptual_hash": "b8c3e73892c6388f"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_000456",
+        "relative_path": "train/Bracelet/bracelet_102_jpg.rf.fa31d36071558fa9ed73f8ed58fbf2c1.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_102",
+        "exact_hash": "8bd89397c4f61ff9eadb7826ab772baa09bb52ed8c2cd77b1638423849d49702",
+        "perceptual_hash": "b847e73882c638cf"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004381",
+        "relative_path": "valid/Bracelet/bracelet_120_jpg.rf.6bf7e3bb5e9b145a7485783228d2b50a.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "valid",
+        "group_id": "bracelet_120",
+        "exact_hash": "f0f4265a9acb4cfc2987e8fa21848f29b2ba7d8cc736a29f58f65dce39a29fc2",
+        "perceptual_hash": "b8c3e73892c6388f"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_000457",
+        "relative_path": "train/Bracelet/bracelet_103_jpg.rf.2950f65ea98f6a217396a705bbe6466e.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_103",
+        "exact_hash": "e2637260e9bd5a64313f637a656819c2275e356c79d9e9ec334a782d7146c90b",
+        "perceptual_hash": "c44a1565537e4dda"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_000486",
+        "relative_path": "train/Bracelet/bracelet_118_jpg.rf.54aac7ee6a90af36aa0c70cb072fae19.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_118",
+        "exact_hash": "a6e7ef602035e2e82dbaf0d780aab5c685289900bb8584e5c00a4f3ed3fc34a3",
+        "perceptual_hash": "c4ca106553fe4dda"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_000461",
+        "relative_path": "train/Bracelet/bracelet_105_jpg.rf.cee152acd799a3c0ff4d2648c1e034a0.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_105",
+        "exact_hash": "3c21262e7252133a1bd2eecec428a0ab1e6eaddeb1526c1e0cf73ac3757efa25",
+        "perceptual_hash": "b847e73882c638cf"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_000477",
+        "relative_path": "train/Bracelet/bracelet_111_jpg.rf.789208b3771dd26cb3668d5069d8d2c1.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_111",
+        "exact_hash": "b4b753cde6c38d3445f3b8f2a9707aaf37aab8c29d2963ca3b30bdba1c9e291e",
+        "perceptual_hash": "b8c3e73892c6388f"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_000461",
+        "relative_path": "train/Bracelet/bracelet_105_jpg.rf.cee152acd799a3c0ff4d2648c1e034a0.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_105",
+        "exact_hash": "3c21262e7252133a1bd2eecec428a0ab1e6eaddeb1526c1e0cf73ac3757efa25",
+        "perceptual_hash": "b847e73882c638cf"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004379",
+        "relative_path": "valid/Bracelet/bracelet_114_jpg.rf.fbadc6bd5bb7d7cd4165efff8ec1b212.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "valid",
+        "group_id": "bracelet_114",
+        "exact_hash": "58a7e23dbf1cd8c67cafeb2888a8624be0f5a2e56c107669fbe91089ee5cd6f0",
+        "perceptual_hash": "b8c3e73892c6388f"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_000461",
+        "relative_path": "train/Bracelet/bracelet_105_jpg.rf.cee152acd799a3c0ff4d2648c1e034a0.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_105",
+        "exact_hash": "3c21262e7252133a1bd2eecec428a0ab1e6eaddeb1526c1e0cf73ac3757efa25",
+        "perceptual_hash": "b847e73882c638cf"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004381",
+        "relative_path": "valid/Bracelet/bracelet_120_jpg.rf.6bf7e3bb5e9b145a7485783228d2b50a.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "valid",
+        "group_id": "bracelet_120",
+        "exact_hash": "f0f4265a9acb4cfc2987e8fa21848f29b2ba7d8cc736a29f58f65dce39a29fc2",
+        "perceptual_hash": "b8c3e73892c6388f"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_000463",
+        "relative_path": "train/Bracelet/bracelet_107_jpg.rf.5756f54a554dc97b70f5345de525c5b3.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_107",
+        "exact_hash": "243bd5240ec7bb17e4ad629c1ea8ac68f0e058227c486485f62ca7237876297c",
+        "perceptual_hash": "b847e73882c638cf"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_000477",
+        "relative_path": "train/Bracelet/bracelet_111_jpg.rf.789208b3771dd26cb3668d5069d8d2c1.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_111",
+        "exact_hash": "b4b753cde6c38d3445f3b8f2a9707aaf37aab8c29d2963ca3b30bdba1c9e291e",
+        "perceptual_hash": "b8c3e73892c6388f"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_000463",
+        "relative_path": "train/Bracelet/bracelet_107_jpg.rf.5756f54a554dc97b70f5345de525c5b3.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_107",
+        "exact_hash": "243bd5240ec7bb17e4ad629c1ea8ac68f0e058227c486485f62ca7237876297c",
+        "perceptual_hash": "b847e73882c638cf"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004379",
+        "relative_path": "valid/Bracelet/bracelet_114_jpg.rf.fbadc6bd5bb7d7cd4165efff8ec1b212.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "valid",
+        "group_id": "bracelet_114",
+        "exact_hash": "58a7e23dbf1cd8c67cafeb2888a8624be0f5a2e56c107669fbe91089ee5cd6f0",
+        "perceptual_hash": "b8c3e73892c6388f"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_000463",
+        "relative_path": "train/Bracelet/bracelet_107_jpg.rf.5756f54a554dc97b70f5345de525c5b3.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_107",
+        "exact_hash": "243bd5240ec7bb17e4ad629c1ea8ac68f0e058227c486485f62ca7237876297c",
+        "perceptual_hash": "b847e73882c638cf"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004381",
+        "relative_path": "valid/Bracelet/bracelet_120_jpg.rf.6bf7e3bb5e9b145a7485783228d2b50a.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "valid",
+        "group_id": "bracelet_120",
+        "exact_hash": "f0f4265a9acb4cfc2987e8fa21848f29b2ba7d8cc736a29f58f65dce39a29fc2",
+        "perceptual_hash": "b8c3e73892c6388f"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_000466",
+        "relative_path": "train/Bracelet/bracelet_108_jpg.rf.279c893d1db34e3b6ef42b6faedf6484.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_108",
+        "exact_hash": "457c5659133d890bef6d9362da84ec3de45ee7c6db8b40cf205cd16ec0b9e1de",
+        "perceptual_hash": "b847e73882c638cf"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_000477",
+        "relative_path": "train/Bracelet/bracelet_111_jpg.rf.789208b3771dd26cb3668d5069d8d2c1.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_111",
+        "exact_hash": "b4b753cde6c38d3445f3b8f2a9707aaf37aab8c29d2963ca3b30bdba1c9e291e",
+        "perceptual_hash": "b8c3e73892c6388f"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_000466",
+        "relative_path": "train/Bracelet/bracelet_108_jpg.rf.279c893d1db34e3b6ef42b6faedf6484.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_108",
+        "exact_hash": "457c5659133d890bef6d9362da84ec3de45ee7c6db8b40cf205cd16ec0b9e1de",
+        "perceptual_hash": "b847e73882c638cf"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004379",
+        "relative_path": "valid/Bracelet/bracelet_114_jpg.rf.fbadc6bd5bb7d7cd4165efff8ec1b212.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "valid",
+        "group_id": "bracelet_114",
+        "exact_hash": "58a7e23dbf1cd8c67cafeb2888a8624be0f5a2e56c107669fbe91089ee5cd6f0",
+        "perceptual_hash": "b8c3e73892c6388f"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_000466",
+        "relative_path": "train/Bracelet/bracelet_108_jpg.rf.279c893d1db34e3b6ef42b6faedf6484.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_108",
+        "exact_hash": "457c5659133d890bef6d9362da84ec3de45ee7c6db8b40cf205cd16ec0b9e1de",
+        "perceptual_hash": "b847e73882c638cf"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004381",
+        "relative_path": "valid/Bracelet/bracelet_120_jpg.rf.6bf7e3bb5e9b145a7485783228d2b50a.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "valid",
+        "group_id": "bracelet_120",
+        "exact_hash": "f0f4265a9acb4cfc2987e8fa21848f29b2ba7d8cc736a29f58f65dce39a29fc2",
+        "perceptual_hash": "b8c3e73892c6388f"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_000468",
+        "relative_path": "train/Bracelet/bracelet_108_jpg.rf.7825f26c052a8a6491fa82477b891b5f.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_108",
+        "exact_hash": "db6311037e284baa46cc97acf2470368e6502c5f7b9cb737856481a84c734937",
+        "perceptual_hash": "8402516d57d74edb"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_000474",
+        "relative_path": "train/Bracelet/bracelet_110_jpg.rf.e9862aeacac83e9a157823a32e92ff07.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_110",
+        "exact_hash": "98ca12a0d7aa189f573d67811a457c3354457854bf0d8d8e622d104fb08df007",
+        "perceptual_hash": "8402116d5fdf4ecb"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_000470",
+        "relative_path": "train/Bracelet/bracelet_109_jpg.rf.42cb6969a989f0bf329954c5cedf329e.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_109",
+        "exact_hash": "30289a36fedf712a32daff23bc58f3da3f68d63cb5b03b38b6623d21b26500e7",
+        "perceptual_hash": "b847e73882c638cf"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_000477",
+        "relative_path": "train/Bracelet/bracelet_111_jpg.rf.789208b3771dd26cb3668d5069d8d2c1.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_111",
+        "exact_hash": "b4b753cde6c38d3445f3b8f2a9707aaf37aab8c29d2963ca3b30bdba1c9e291e",
+        "perceptual_hash": "b8c3e73892c6388f"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_000470",
+        "relative_path": "train/Bracelet/bracelet_109_jpg.rf.42cb6969a989f0bf329954c5cedf329e.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_109",
+        "exact_hash": "30289a36fedf712a32daff23bc58f3da3f68d63cb5b03b38b6623d21b26500e7",
+        "perceptual_hash": "b847e73882c638cf"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004379",
+        "relative_path": "valid/Bracelet/bracelet_114_jpg.rf.fbadc6bd5bb7d7cd4165efff8ec1b212.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "valid",
+        "group_id": "bracelet_114",
+        "exact_hash": "58a7e23dbf1cd8c67cafeb2888a8624be0f5a2e56c107669fbe91089ee5cd6f0",
+        "perceptual_hash": "b8c3e73892c6388f"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_000470",
+        "relative_path": "train/Bracelet/bracelet_109_jpg.rf.42cb6969a989f0bf329954c5cedf329e.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_109",
+        "exact_hash": "30289a36fedf712a32daff23bc58f3da3f68d63cb5b03b38b6623d21b26500e7",
+        "perceptual_hash": "b847e73882c638cf"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004381",
+        "relative_path": "valid/Bracelet/bracelet_120_jpg.rf.6bf7e3bb5e9b145a7485783228d2b50a.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "valid",
+        "group_id": "bracelet_120",
+        "exact_hash": "f0f4265a9acb4cfc2987e8fa21848f29b2ba7d8cc736a29f58f65dce39a29fc2",
+        "perceptual_hash": "b8c3e73892c6388f"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_000472",
+        "relative_path": "train/Bracelet/bracelet_110_jpg.rf.b986f075033e36a4b9e38fc1f2ba148c.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_110",
+        "exact_hash": "4707fc1d53fba60337b2f37f175c86129e6c52d3238f32ac4d5237f44c3bceaa",
+        "perceptual_hash": "b847e73882c638cf"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_000477",
+        "relative_path": "train/Bracelet/bracelet_111_jpg.rf.789208b3771dd26cb3668d5069d8d2c1.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_111",
+        "exact_hash": "b4b753cde6c38d3445f3b8f2a9707aaf37aab8c29d2963ca3b30bdba1c9e291e",
+        "perceptual_hash": "b8c3e73892c6388f"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_000472",
+        "relative_path": "train/Bracelet/bracelet_110_jpg.rf.b986f075033e36a4b9e38fc1f2ba148c.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_110",
+        "exact_hash": "4707fc1d53fba60337b2f37f175c86129e6c52d3238f32ac4d5237f44c3bceaa",
+        "perceptual_hash": "b847e73882c638cf"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004379",
+        "relative_path": "valid/Bracelet/bracelet_114_jpg.rf.fbadc6bd5bb7d7cd4165efff8ec1b212.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "valid",
+        "group_id": "bracelet_114",
+        "exact_hash": "58a7e23dbf1cd8c67cafeb2888a8624be0f5a2e56c107669fbe91089ee5cd6f0",
+        "perceptual_hash": "b8c3e73892c6388f"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_000472",
+        "relative_path": "train/Bracelet/bracelet_110_jpg.rf.b986f075033e36a4b9e38fc1f2ba148c.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_110",
+        "exact_hash": "4707fc1d53fba60337b2f37f175c86129e6c52d3238f32ac4d5237f44c3bceaa",
+        "perceptual_hash": "b847e73882c638cf"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004381",
+        "relative_path": "valid/Bracelet/bracelet_120_jpg.rf.6bf7e3bb5e9b145a7485783228d2b50a.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "valid",
+        "group_id": "bracelet_120",
+        "exact_hash": "f0f4265a9acb4cfc2987e8fa21848f29b2ba7d8cc736a29f58f65dce39a29fc2",
+        "perceptual_hash": "b8c3e73892c6388f"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_000477",
+        "relative_path": "train/Bracelet/bracelet_111_jpg.rf.789208b3771dd26cb3668d5069d8d2c1.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_111",
+        "exact_hash": "b4b753cde6c38d3445f3b8f2a9707aaf37aab8c29d2963ca3b30bdba1c9e291e",
+        "perceptual_hash": "b8c3e73892c6388f"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_000479",
+        "relative_path": "train/Bracelet/bracelet_112_jpg.rf.c8e32cd24246a4d23496f58c63b5c45c.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_112",
+        "exact_hash": "d2542ca94f270c1daa8923547d507bcb341f5cd49e608c3a208b4ebb7d12865c",
+        "perceptual_hash": "b847e73882c638cf"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_000477",
+        "relative_path": "train/Bracelet/bracelet_111_jpg.rf.789208b3771dd26cb3668d5069d8d2c1.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_111",
+        "exact_hash": "b4b753cde6c38d3445f3b8f2a9707aaf37aab8c29d2963ca3b30bdba1c9e291e",
+        "perceptual_hash": "b8c3e73892c6388f"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_000485",
+        "relative_path": "train/Bracelet/bracelet_117_jpg.rf.ce02a3c15ca5d5e0f3404fb528f9e392.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_117",
+        "exact_hash": "3c4f1fc809e1811e1d118fd245a1a6c5af8b86ffeba9a7f44fbf53ec883a342a",
+        "perceptual_hash": "b847e73882c638cf"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_000477",
+        "relative_path": "train/Bracelet/bracelet_111_jpg.rf.789208b3771dd26cb3668d5069d8d2c1.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_111",
+        "exact_hash": "b4b753cde6c38d3445f3b8f2a9707aaf37aab8c29d2963ca3b30bdba1c9e291e",
+        "perceptual_hash": "b8c3e73892c6388f"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_000488",
+        "relative_path": "train/Bracelet/bracelet_118_jpg.rf.9cec66cadbb8a073c6211fd5175bbb8a.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_118",
+        "exact_hash": "068faf4ddd77b331d7bf69e1777797ef17fe1a0542f4becff073c79ce060c91a",
+        "perceptual_hash": "b847e73882c638cf"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_000477",
+        "relative_path": "train/Bracelet/bracelet_111_jpg.rf.789208b3771dd26cb3668d5069d8d2c1.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_111",
+        "exact_hash": "b4b753cde6c38d3445f3b8f2a9707aaf37aab8c29d2963ca3b30bdba1c9e291e",
+        "perceptual_hash": "b8c3e73892c6388f"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_000493",
+        "relative_path": "train/Bracelet/bracelet_121_jpg.rf.fcb152c95af89607b0f9a662017506a0.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_121",
+        "exact_hash": "8124e4550ca459000f8f26ab2ed7ca29f4e8faae8723af4a6fa75367b4f42ce1",
+        "perceptual_hash": "b847e73882c638cf"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_000477",
+        "relative_path": "train/Bracelet/bracelet_111_jpg.rf.789208b3771dd26cb3668d5069d8d2c1.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_111",
+        "exact_hash": "b4b753cde6c38d3445f3b8f2a9707aaf37aab8c29d2963ca3b30bdba1c9e291e",
+        "perceptual_hash": "b8c3e73892c6388f"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004380",
+        "relative_path": "valid/Bracelet/bracelet_116_jpg.rf.0eaba7c6fd1e8aedb268aeb679096080.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "valid",
+        "group_id": "bracelet_116",
+        "exact_hash": "22a5b023466affa6015769fa28cd5b636106face5b0bcc846907ffba24dfd7ef",
+        "perceptual_hash": "b847e73882c638cf"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_000479",
+        "relative_path": "train/Bracelet/bracelet_112_jpg.rf.c8e32cd24246a4d23496f58c63b5c45c.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_112",
+        "exact_hash": "d2542ca94f270c1daa8923547d507bcb341f5cd49e608c3a208b4ebb7d12865c",
+        "perceptual_hash": "b847e73882c638cf"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004379",
+        "relative_path": "valid/Bracelet/bracelet_114_jpg.rf.fbadc6bd5bb7d7cd4165efff8ec1b212.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "valid",
+        "group_id": "bracelet_114",
+        "exact_hash": "58a7e23dbf1cd8c67cafeb2888a8624be0f5a2e56c107669fbe91089ee5cd6f0",
+        "perceptual_hash": "b8c3e73892c6388f"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_000479",
+        "relative_path": "train/Bracelet/bracelet_112_jpg.rf.c8e32cd24246a4d23496f58c63b5c45c.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_112",
+        "exact_hash": "d2542ca94f270c1daa8923547d507bcb341f5cd49e608c3a208b4ebb7d12865c",
+        "perceptual_hash": "b847e73882c638cf"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004381",
+        "relative_path": "valid/Bracelet/bracelet_120_jpg.rf.6bf7e3bb5e9b145a7485783228d2b50a.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "valid",
+        "group_id": "bracelet_120",
+        "exact_hash": "f0f4265a9acb4cfc2987e8fa21848f29b2ba7d8cc736a29f58f65dce39a29fc2",
+        "perceptual_hash": "b8c3e73892c6388f"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_000485",
+        "relative_path": "train/Bracelet/bracelet_117_jpg.rf.ce02a3c15ca5d5e0f3404fb528f9e392.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_117",
+        "exact_hash": "3c4f1fc809e1811e1d118fd245a1a6c5af8b86ffeba9a7f44fbf53ec883a342a",
+        "perceptual_hash": "b847e73882c638cf"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004379",
+        "relative_path": "valid/Bracelet/bracelet_114_jpg.rf.fbadc6bd5bb7d7cd4165efff8ec1b212.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "valid",
+        "group_id": "bracelet_114",
+        "exact_hash": "58a7e23dbf1cd8c67cafeb2888a8624be0f5a2e56c107669fbe91089ee5cd6f0",
+        "perceptual_hash": "b8c3e73892c6388f"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_000485",
+        "relative_path": "train/Bracelet/bracelet_117_jpg.rf.ce02a3c15ca5d5e0f3404fb528f9e392.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_117",
+        "exact_hash": "3c4f1fc809e1811e1d118fd245a1a6c5af8b86ffeba9a7f44fbf53ec883a342a",
+        "perceptual_hash": "b847e73882c638cf"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004381",
+        "relative_path": "valid/Bracelet/bracelet_120_jpg.rf.6bf7e3bb5e9b145a7485783228d2b50a.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "valid",
+        "group_id": "bracelet_120",
+        "exact_hash": "f0f4265a9acb4cfc2987e8fa21848f29b2ba7d8cc736a29f58f65dce39a29fc2",
+        "perceptual_hash": "b8c3e73892c6388f"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_000488",
+        "relative_path": "train/Bracelet/bracelet_118_jpg.rf.9cec66cadbb8a073c6211fd5175bbb8a.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_118",
+        "exact_hash": "068faf4ddd77b331d7bf69e1777797ef17fe1a0542f4becff073c79ce060c91a",
+        "perceptual_hash": "b847e73882c638cf"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004379",
+        "relative_path": "valid/Bracelet/bracelet_114_jpg.rf.fbadc6bd5bb7d7cd4165efff8ec1b212.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "valid",
+        "group_id": "bracelet_114",
+        "exact_hash": "58a7e23dbf1cd8c67cafeb2888a8624be0f5a2e56c107669fbe91089ee5cd6f0",
+        "perceptual_hash": "b8c3e73892c6388f"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_000488",
+        "relative_path": "train/Bracelet/bracelet_118_jpg.rf.9cec66cadbb8a073c6211fd5175bbb8a.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_118",
+        "exact_hash": "068faf4ddd77b331d7bf69e1777797ef17fe1a0542f4becff073c79ce060c91a",
+        "perceptual_hash": "b847e73882c638cf"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004381",
+        "relative_path": "valid/Bracelet/bracelet_120_jpg.rf.6bf7e3bb5e9b145a7485783228d2b50a.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "valid",
+        "group_id": "bracelet_120",
+        "exact_hash": "f0f4265a9acb4cfc2987e8fa21848f29b2ba7d8cc736a29f58f65dce39a29fc2",
+        "perceptual_hash": "b8c3e73892c6388f"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_000493",
+        "relative_path": "train/Bracelet/bracelet_121_jpg.rf.fcb152c95af89607b0f9a662017506a0.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_121",
+        "exact_hash": "8124e4550ca459000f8f26ab2ed7ca29f4e8faae8723af4a6fa75367b4f42ce1",
+        "perceptual_hash": "b847e73882c638cf"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004379",
+        "relative_path": "valid/Bracelet/bracelet_114_jpg.rf.fbadc6bd5bb7d7cd4165efff8ec1b212.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "valid",
+        "group_id": "bracelet_114",
+        "exact_hash": "58a7e23dbf1cd8c67cafeb2888a8624be0f5a2e56c107669fbe91089ee5cd6f0",
+        "perceptual_hash": "b8c3e73892c6388f"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_000493",
+        "relative_path": "train/Bracelet/bracelet_121_jpg.rf.fcb152c95af89607b0f9a662017506a0.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_121",
+        "exact_hash": "8124e4550ca459000f8f26ab2ed7ca29f4e8faae8723af4a6fa75367b4f42ce1",
+        "perceptual_hash": "b847e73882c638cf"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004381",
+        "relative_path": "valid/Bracelet/bracelet_120_jpg.rf.6bf7e3bb5e9b145a7485783228d2b50a.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "valid",
+        "group_id": "bracelet_120",
+        "exact_hash": "f0f4265a9acb4cfc2987e8fa21848f29b2ba7d8cc736a29f58f65dce39a29fc2",
+        "perceptual_hash": "b8c3e73892c6388f"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_000499",
+        "relative_path": "train/Bracelet/bracelet_124_jpg.rf.02c135ca7fa8a4555e5c28c53afbdaff.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_124",
+        "exact_hash": "4271a6a58728ea056604b2a12ce1647fdd4f1ff0f5f1ac1527db2059ab0d93b3",
+        "perceptual_hash": "9ee1e11c856b3e25"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004382",
+        "relative_path": "valid/Bracelet/bracelet_127_jpg.rf.cd318c08920e5405d1cd99dc26ca0ba7.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "valid",
+        "group_id": "bracelet_127",
+        "exact_hash": "aed9f9308642ea51ee5d9ff2365753b0e90604e2df332cc1cc8f7cf0ad4de558",
+        "perceptual_hash": "9ee1e91e846b3e24"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_000512",
+        "relative_path": "train/Bracelet/bracelet_131_jpg.rf.bed356592d07bf4caa07802135792189.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_131",
+        "exact_hash": "1eabb606db46d6ace573e34752f280ab6535aca835ff96bac3ca90520b575e19",
+        "perceptual_hash": "9ec3e138c3c43a1f"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_000538",
+        "relative_path": "train/Bracelet/bracelet_152_jpg.rf.86824af293cf12b31f8d9585a8ad458d.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_152",
+        "exact_hash": "d58b2c919ee3a6e8ddbd0343db4efc1ecef156b19faa7228f6caeca442064b27",
+        "perceptual_hash": "9ac7e138c7c03a1f"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_000519",
+        "relative_path": "train/Bracelet/bracelet_141_jpg.rf.d472658db51b83e688274c28fb6d2660.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_141",
+        "exact_hash": "b30bd75aec7a3481b724c35129d9715d73c7f86c733818489d00eb832e9866a9",
+        "perceptual_hash": "9e93e848c5e73a94"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_000523",
+        "relative_path": "train/Bracelet/bracelet_144_jpg.rf.6420b3b47808ea60789a5cf40032f42d.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_144",
+        "exact_hash": "e465c75f2baa8eac90d1f060a4137a95ee56ad9a7ec3424f184541822f818042",
+        "perceptual_hash": "9a93e968c5673a94"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_000552",
+        "relative_path": "train/Bracelet/bracelet_158_jpg.rf.2141da4b41a0b8aaf454cac2215bfaa8.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_158",
+        "exact_hash": "6d3be5ef515ec318292d71e5be0e51bd7f53825ed234045e2f2022b739b9aefe",
+        "perceptual_hash": "ee98a444d36a3f94"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004357",
+        "relative_path": "valid/Bracelet/bracelet_004_jpg.rf.11dac9ce59af9cdb94e004f92523d7e1.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "valid",
+        "group_id": "bracelet_004",
+        "exact_hash": "49d0cffbc3bcdd5f4a385c4c69086a2ae367f6686ba94e168a35ef8d9be52908",
+        "perceptual_hash": "ee98a445d16b2f94"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_000640",
+        "relative_path": "train/Bracelet/bracelet_215_jpg.rf.48a25da267214c1ada8dc75c975c6d2f.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_215",
+        "exact_hash": "deea04c86e9ef9d8b0e8a4050f1d385ecbdbb0a875e1a54f071645b1ece41eb7",
+        "perceptual_hash": "bac2e51dc2c03da7"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_000647",
+        "relative_path": "train/Bracelet/bracelet_217_jpg.rf.d0daf59d1ecdee904b8ba988aa95d2d7.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_217",
+        "exact_hash": "8765d6e02bf125d8fc1ff3b4f0ec212837abfd44bf883249e23d64aeb8a7c0a2",
+        "perceptual_hash": "bac3e53dc2c03d85"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_000701",
+        "relative_path": "train/Bracelet/bracelet_254_jpg.rf.76e0b6c13ceebb3231b53608335041f9.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_254",
+        "exact_hash": "2ea069f7de1fe2990571033429e81fbe2ad98d3d8b9c69bd098f75f187d782f6",
+        "perceptual_hash": "bec7c1381ac36c3c"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_000705",
+        "relative_path": "train/Bracelet/bracelet_255_jpg.rf.a07bd48132061949bbbe7143ecec960f.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_255",
+        "exact_hash": "a1ba6efb602c0260c4f8b4fb816576a3214cd44edac5471898f7888f09f16c5e",
+        "perceptual_hash": "bec3c13c1ac3653c"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_000719",
+        "relative_path": "train/Bracelet/bracelet_262_jpg.rf.04815007a15d356bfc78233c6344d075.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_262",
+        "exact_hash": "9c9cd2437acbed2fdba203d28fb863a1348c304b66ef6ed62020b1cd6894c760",
+        "perceptual_hash": "917f44951f2a4a97"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_002744",
+        "relative_path": "train/Necklace/IMG_2279_7458756b_JPG.rf.504360b3dd4b460d8b005cddd4a775e2.jpg",
+        "dataset": "dataset_a",
+        "category": "Necklace",
+        "split": "train",
+        "group_id": "IMG_2279_7458756b",
+        "exact_hash": "2fca0197f7cdf49a6b163d5e282b638e0a4614c2e0c26109db2954d00b41356c",
+        "perceptual_hash": "917f40911f2a5ab7"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_000720",
+        "relative_path": "train/Bracelet/bracelet_262_jpg.rf.749aa1737d796c9183409cff0947cc28.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "train",
+        "group_id": "bracelet_262",
+        "exact_hash": "81b79d9b37d42905ed0053837f5e246679a3d9fbfdc5bfa0118e318d25c543e2",
+        "perceptual_hash": "917f40951f2a4a9f"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_002744",
+        "relative_path": "train/Necklace/IMG_2279_7458756b_JPG.rf.504360b3dd4b460d8b005cddd4a775e2.jpg",
+        "dataset": "dataset_a",
+        "category": "Necklace",
+        "split": "train",
+        "group_id": "IMG_2279_7458756b",
+        "exact_hash": "2fca0197f7cdf49a6b163d5e282b638e0a4614c2e0c26109db2954d00b41356c",
+        "perceptual_hash": "917f40911f2a5ab7"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_001420",
+        "relative_path": "train/Earrings/images-38-_jpeg.rf.72c1732600182a43f6796f42d77f012e.jpg",
+        "dataset": "dataset_a",
+        "category": "Earrings",
+        "split": "train",
+        "group_id": "images-38-",
+        "exact_hash": "dd59286ad07f8e95766e8214a390a0f43c2133f863b140d17a95d066297de619",
+        "perceptual_hash": "b11d44364c3f7bc8"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_001421",
+        "relative_path": "train/Earrings/images-38-_jpeg.rf.756116158856b45945069fe42a5fa5b5.jpg",
+        "dataset": "dataset_a",
+        "category": "Earrings",
+        "split": "train",
+        "group_id": "images-38-",
+        "exact_hash": "e07b2eb772f0c1a575793eb94c35ffe4df948794f570c9f6ad9c965737b6865f",
+        "perceptual_hash": "913d4436453f7bc8"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_001718",
+        "relative_path": "train/Necklace/IMG_0419_2058b182_jpg.rf.0690f1616b7b8e23979b470e526b5551.jpg",
+        "dataset": "dataset_a",
+        "category": "Necklace",
+        "split": "train",
+        "group_id": "IMG_0419_2058b182",
+        "exact_hash": "53f2edc8204f111c750534cd53a3e2369b7fdcc93c588d864382e7625b6e12c1",
+        "perceptual_hash": "916ac4c91bec19f6"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_003593",
+        "relative_path": "train/Necklace/necklace_20241125_122545_83830387_jpg.rf.6da65aa9bec656952238c3e5481960e0.jpg",
+        "dataset": "dataset_a",
+        "category": "Necklace",
+        "split": "train",
+        "group_id": "necklace_20241125_122545_83830387",
+        "exact_hash": "c18a3a85fbb7ec8eac64ae7abd06a58044e517ff4eab3a512b1b7d3fd329e50f",
+        "perceptual_hash": "9322c5c91bec19f6"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_001936",
+        "relative_path": "train/Necklace/IMG_0566-1-_758c0b30_jpg.rf.da4e084e7c3e00c1d437012b84137289.jpg",
+        "dataset": "dataset_a",
+        "category": "Necklace",
+        "split": "train",
+        "group_id": "IMG_0566-1-_758c0b30",
+        "exact_hash": "572c76044031f76f90a203ec2afeea161f28beffef3336b1e467dabcc8436ac7",
+        "perceptual_hash": "e1d896c7d02c9e3c"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004512",
+        "relative_path": "valid/Necklace/IMG_0547-1-_8b359e9f_jpg.rf.647630c6ab497f14df914e74fa3f18b8.jpg",
+        "dataset": "dataset_a",
+        "category": "Necklace",
+        "split": "valid",
+        "group_id": "IMG_0547-1-_8b359e9f",
+        "exact_hash": "ac67fec40d02ed43ba1b7ac862382aa6ed159397befd83c6db9154f01f29334d",
+        "perceptual_hash": "e5d896c3d00cde3c"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_001993",
+        "relative_path": "train/Necklace/IMG_0591-1-Copy_5f3b2c50_JPG.rf.f13865204b18956faae1b54fed8d9ba2.jpg",
+        "dataset": "dataset_a",
+        "category": "Necklace",
+        "split": "train",
+        "group_id": "IMG_0591-1-Copy_5f3b2c50",
+        "exact_hash": "81bacebb20869766432aa7900b66958764fc7a4e61ffcebf48e5691c63b3dfb5",
+        "perceptual_hash": "b44fc390cc7b489d"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004517",
+        "relative_path": "valid/Necklace/IMG_0569-1-_f04bae58_JPG.rf.5205727df050df5d7cca44099b0f9c63.jpg",
+        "dataset": "dataset_a",
+        "category": "Necklace",
+        "split": "valid",
+        "group_id": "IMG_0569-1-_f04bae58",
+        "exact_hash": "aaa103170bc61771dabc55cc70cb331a49ffbb501b95b617e901240e8aef7279",
+        "perceptual_hash": "b44fc390cc6f48ad"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_002887",
+        "relative_path": "train/Necklace/IMG_2437_b615c1df_JPG.rf.4cc4bad8569cb0d8143b6f4d51032004.jpg",
+        "dataset": "dataset_a",
+        "category": "Necklace",
+        "split": "train",
+        "group_id": "IMG_2437_b615c1df",
+        "exact_hash": "7d229e7efd2426c612599ae57e3b64c017ea78a7c9932095fa3cdc3b977b57c3",
+        "perceptual_hash": "819d34247af22fcb"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_002888",
+        "relative_path": "train/Necklace/IMG_2437_b615c1df_JPG.rf.8d488336a3ff38a08b79acbf3f89bacd.jpg",
+        "dataset": "dataset_a",
+        "category": "Necklace",
+        "split": "train",
+        "group_id": "IMG_2437_b615c1df",
+        "exact_hash": "5523675a29dad242f86ec2e9c0adbe77e21e6522571a446cbb4b864933390d7f",
+        "perceptual_hash": "819d74a47a722ecb"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_003173",
+        "relative_path": "train/Necklace/IMG_3514_31829c59_JPG.rf.1c1b70d25ff664d417a43ec11dbdfa8b.jpg",
+        "dataset": "dataset_a",
+        "category": "Necklace",
+        "split": "train",
+        "group_id": "IMG_3514_31829c59",
+        "exact_hash": "7dc582a6b5a8e96d53243601be879e73c6fb9609754236b24925161f6c1bc8bb",
+        "perceptual_hash": "e09f15217af26ac6"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_003175",
+        "relative_path": "train/Necklace/IMG_3514_31829c59_JPG.rf.c6226ee176b10fbfd58642bdd53fd8f8.jpg",
+        "dataset": "dataset_a",
+        "category": "Necklace",
+        "split": "train",
+        "group_id": "IMG_3514_31829c59",
+        "exact_hash": "a97710595df9e34e3c4653c302182d653f6dc0546a990f0a7f641d4cf939d431",
+        "perceptual_hash": "a09f55217af263c6"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_003531",
+        "relative_path": "train/Necklace/necklace_20241125_122545_62602030_jpg.rf.e30063697a537f0f36414bc14a5c1e01.jpg",
+        "dataset": "dataset_a",
+        "category": "Necklace",
+        "split": "train",
+        "group_id": "necklace_20241125_122545_62602030",
+        "exact_hash": "54d8fbcb622e15c65b4d53891b3838f63329f24b51513856e49f3b8049f9fd15",
+        "perceptual_hash": "c723116cf61c1f47"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004685",
+        "relative_path": "valid/Necklace/necklace_20241125_122545_60602030_jpg.rf.bc302d3e70bbc04fea9848ed165336eb.jpg",
+        "dataset": "dataset_a",
+        "category": "Necklace",
+        "split": "valid",
+        "group_id": "necklace_20241125_122545_60602030",
+        "exact_hash": "83eb48799942698d72ca94201c29546a02f323d1d1646a45548cbffb9f61e411",
+        "perceptual_hash": "c72311ac763c1f47"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_003556",
+        "relative_path": "train/Necklace/necklace_20241125_122545_7c7f8180_jpg.rf.2c7960d040346f753099400d132a720f.jpg",
+        "dataset": "dataset_a",
+        "category": "Necklace",
+        "split": "train",
+        "group_id": "necklace_20241125_122545_7c7f8180",
+        "exact_hash": "2c6749771f6415751dc058c9a90e102bae5e8dd03619f3a1bdef4de783900d5b",
+        "perceptual_hash": "ec2291c756794e72"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_003558",
+        "relative_path": "train/Necklace/necklace_20241125_122545_7c7f8180_jpg.rf.da436f037d5a986b33e6ed2a9ad0c685.jpg",
+        "dataset": "dataset_a",
+        "category": "Necklace",
+        "split": "train",
+        "group_id": "necklace_20241125_122545_7c7f8180",
+        "exact_hash": "7c6da7b7e3fb8337837d96e916df7c3aa0a4db2f5b73d272a3dda35eb4e200df",
+        "perceptual_hash": "c42291c75e794e73"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_003610",
+        "relative_path": "train/Necklace/necklace_57_jpg.rf.3d7508d2e59e101e32791648dde7c444.jpg",
+        "dataset": "dataset_a",
+        "category": "Necklace",
+        "split": "train",
+        "group_id": "necklace_57",
+        "exact_hash": "a1ece08a2eddd055d62aececa6666ff235122c1eb4330907b5770fecc02f895d",
+        "perceptual_hash": "ec9269a6996d9649"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_003614",
+        "relative_path": "train/Necklace/necklace_60_jpg.rf.76067cf8acc274cbc7265a898b599a2b.jpg",
+        "dataset": "dataset_a",
+        "category": "Necklace",
+        "split": "train",
+        "group_id": "necklace_60",
+        "exact_hash": "85c8f87a030edac61ca77be96debc260bd1ee30a3dc42542ac1f7e6e84ccaf32",
+        "perceptual_hash": "ed9249a69b6d9249"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_003648",
+        "relative_path": "train/Necklace/necklace_91_jpg.rf.9d32d76e831c9757f7e1a7d7b68aca32.jpg",
+        "dataset": "dataset_a",
+        "category": "Necklace",
+        "split": "train",
+        "group_id": "necklace_91",
+        "exact_hash": "4a5d25dce3e12d153f9662ed7df2113421ecb739b7048fcdcb57964c0ba75dc2",
+        "perceptual_hash": "bf87f03c8de03087"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_003658",
+        "relative_path": "train/Necklace/necklace_96_jpg.rf.a388eac44a9c60e3d6f39e5ec63862d0.jpg",
+        "dataset": "dataset_a",
+        "category": "Necklace",
+        "split": "train",
+        "group_id": "necklace_96",
+        "exact_hash": "89bc448e78d1f9b60d38c407d42ca051fddd0b50edaadd278825e08a22f7ac29",
+        "perceptual_hash": "bf83e03c8de0708f"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_003797",
+        "relative_path": "train/Pendant/IMG_2371_c0acc0f4_JPG.rf.3cd0f97fef1745c04f3251be7561f08f.jpg",
+        "dataset": "dataset_a",
+        "category": "Pendant",
+        "split": "train",
+        "group_id": "IMG_2371_c0acc0f4",
+        "exact_hash": "e7f23b63f623d9a36a887abb5a0fc1273cc05b3e59d4dfeab2d707af42395aaf",
+        "perceptual_hash": "b91f96674b2721d0"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_003799",
+        "relative_path": "train/Pendant/IMG_2371_c0acc0f4_JPG.rf.74e979089930e2cfced17f12392281df.jpg",
+        "dataset": "dataset_a",
+        "category": "Pendant",
+        "split": "train",
+        "group_id": "IMG_2371_c0acc0f4",
+        "exact_hash": "3e7cba8c07ade157af7e20cb8318481781b2dab898923e42cf404ad78692f277",
+        "perceptual_hash": "b91f966e4f0721d0"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_004116",
+        "relative_path": "train/Ring/ring_072_jpg.rf.a5ef7c4bfe697914046fd271e4e373f5.jpg",
+        "dataset": "dataset_a",
+        "category": "Ring",
+        "split": "train",
+        "group_id": "ring_072",
+        "exact_hash": "b2d7f72d0cb3be954c86ee05f982052394405624c95ee4607ec4dceadbaabb49",
+        "perceptual_hash": "b8e3c79ec0394b64"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004286",
+        "relative_path": "train/Ring/ring_168_jpg.rf.96dc251c8f963ab6701944661fd31967.jpg",
+        "dataset": "dataset_a",
+        "category": "Ring",
+        "split": "train",
+        "group_id": "ring_168",
+        "exact_hash": "3e35776be33afeaaa953b4a5668f6e120765a6575696753ed9d89f2d826c73b3",
+        "perceptual_hash": "b0e1cf9ec4394b64"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_004129",
+        "relative_path": "train/Ring/ring_080_jpg.rf.a2eb3cee368d012e365ea724b9f94037.jpg",
+        "dataset": "dataset_a",
+        "category": "Ring",
+        "split": "train",
+        "group_id": "ring_080",
+        "exact_hash": "59648387beccf16be9f53cb107f48c79c03717bba217e562983e3493426d9808",
+        "perceptual_hash": "b8c98f3cc17263cc"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004276",
+        "relative_path": "train/Ring/ring_164_jpg.rf.000796b55b9d6b466017f6d17c698b2f.jpg",
+        "dataset": "dataset_a",
+        "category": "Ring",
+        "split": "train",
+        "group_id": "ring_164",
+        "exact_hash": "09b617dd46b4f2e7bf8be662691af3e6dc77f2dc5cbff8503fa5f1946e8b2dfd",
+        "perceptual_hash": "b8c5873cc97263cc"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_004135",
+        "relative_path": "train/Ring/ring_083_jpg.rf.3065633f41355d108488a51f51a7b78f.jpg",
+        "dataset": "dataset_a",
+        "category": "Ring",
+        "split": "train",
+        "group_id": "ring_083",
+        "exact_hash": "f890367e0fdb48342dbba853117574eb5d5a136e5bb1fba8fd21418935755b51",
+        "perceptual_hash": "b9c1961cc13b676c"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004142",
+        "relative_path": "train/Ring/ring_085_jpg.rf.cc8dfbc1720ff32a98b782a7736b8b10.jpg",
+        "dataset": "dataset_a",
+        "category": "Ring",
+        "split": "train",
+        "group_id": "ring_085",
+        "exact_hash": "48e3d5033ded500b608c67cf71d24c1a5402063e4000d624834cfbdfbbc15e17",
+        "perceptual_hash": "bac1969cc03b676c"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_004135",
+        "relative_path": "train/Ring/ring_083_jpg.rf.3065633f41355d108488a51f51a7b78f.jpg",
+        "dataset": "dataset_a",
+        "category": "Ring",
+        "split": "train",
+        "group_id": "ring_083",
+        "exact_hash": "f890367e0fdb48342dbba853117574eb5d5a136e5bb1fba8fd21418935755b51",
+        "perceptual_hash": "b9c1961cc13b676c"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004191",
+        "relative_path": "train/Ring/ring_112_jpg.rf.406caa84b004eab671180df326537275.jpg",
+        "dataset": "dataset_a",
+        "category": "Ring",
+        "split": "train",
+        "group_id": "ring_112",
+        "exact_hash": "8769f7d94a9cbbcc1ad158c219695f8ae6b8e36034a98662f701ad7a863997a5",
+        "perceptual_hash": "b9c3861cc13b67cc"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_004135",
+        "relative_path": "train/Ring/ring_083_jpg.rf.3065633f41355d108488a51f51a7b78f.jpg",
+        "dataset": "dataset_a",
+        "category": "Ring",
+        "split": "train",
+        "group_id": "ring_083",
+        "exact_hash": "f890367e0fdb48342dbba853117574eb5d5a136e5bb1fba8fd21418935755b51",
+        "perceptual_hash": "b9c1961cc13b676c"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004744",
+        "relative_path": "valid/Ring/ring_129_jpg.rf.c02c468f436aa4c1fb7046edda8e5e6a.jpg",
+        "dataset": "dataset_a",
+        "category": "Ring",
+        "split": "valid",
+        "group_id": "ring_129",
+        "exact_hash": "3fde98f97ea1edb099c4fc75109a4a30d378e8e45b4f8193a06be16cbaab2086",
+        "perceptual_hash": "b8c7961cc13b674c"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_004146",
+        "relative_path": "train/Ring/ring_087_jpg.rf.012b072186dca0316af564b7b6f45fea.jpg",
+        "dataset": "dataset_a",
+        "category": "Ring",
+        "split": "train",
+        "group_id": "ring_087",
+        "exact_hash": "a0d55e4e6fdd325eccbd100f54cb85efb8cf09dd5f7b96365959226aab557f86",
+        "perceptual_hash": "b3e39c9cc439634c"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004251",
+        "relative_path": "train/Ring/ring_153_jpg.rf.df9ddb695171bbcffbc07668c9f147ca.jpg",
+        "dataset": "dataset_a",
+        "category": "Ring",
+        "split": "train",
+        "group_id": "ring_153",
+        "exact_hash": "9d2292f43c6ec82265ccecdbbebb928b9558abcdcbf6a844ae99f2226d253861",
+        "perceptual_hash": "b3c39c9cc43363cc"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_004182",
+        "relative_path": "train/Ring/ring_105_jpg.rf.8242ce0a2fafc90012afdf33b40cbf69.jpg",
+        "dataset": "dataset_a",
+        "category": "Ring",
+        "split": "train",
+        "group_id": "ring_105",
+        "exact_hash": "7aea6484f1b0b8b26e50af88f8c92f49432a02e7d4c131fdbb5dac9ff6a73397",
+        "perceptual_hash": "b161ce9ec43863e5"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004253",
+        "relative_path": "train/Ring/ring_154_jpg.rf.9010486d78ab098423b4a0079082ba77.jpg",
+        "dataset": "dataset_a",
+        "category": "Ring",
+        "split": "train",
+        "group_id": "ring_154",
+        "exact_hash": "1f6fbf083f5ce800020e08d2ab42c3b17c348f02fb4d7a16773814be5fb8a424",
+        "perceptual_hash": "b1618f9ec43963c5"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_004191",
+        "relative_path": "train/Ring/ring_112_jpg.rf.406caa84b004eab671180df326537275.jpg",
+        "dataset": "dataset_a",
+        "category": "Ring",
+        "split": "train",
+        "group_id": "ring_112",
+        "exact_hash": "8769f7d94a9cbbcc1ad158c219695f8ae6b8e36034a98662f701ad7a863997a5",
+        "perceptual_hash": "b9c3861cc13b67cc"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004200",
+        "relative_path": "train/Ring/ring_116_jpg.rf.1457cb714d4af30b83b80b47517b221e.jpg",
+        "dataset": "dataset_a",
+        "category": "Ring",
+        "split": "train",
+        "group_id": "ring_116",
+        "exact_hash": "89023ebc7ba7e284c79b078380fda986bded8e891ac3ca3879036c9f144b3cd1",
+        "perceptual_hash": "b8e3c61cc13b67c4"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_004191",
+        "relative_path": "train/Ring/ring_112_jpg.rf.406caa84b004eab671180df326537275.jpg",
+        "dataset": "dataset_a",
+        "category": "Ring",
+        "split": "train",
+        "group_id": "ring_112",
+        "exact_hash": "8769f7d94a9cbbcc1ad158c219695f8ae6b8e36034a98662f701ad7a863997a5",
+        "perceptual_hash": "b9c3861cc13b67cc"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004744",
+        "relative_path": "valid/Ring/ring_129_jpg.rf.c02c468f436aa4c1fb7046edda8e5e6a.jpg",
+        "dataset": "dataset_a",
+        "category": "Ring",
+        "split": "valid",
+        "group_id": "ring_129",
+        "exact_hash": "3fde98f97ea1edb099c4fc75109a4a30d378e8e45b4f8193a06be16cbaab2086",
+        "perceptual_hash": "b8c7961cc13b674c"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_004191",
+        "relative_path": "train/Ring/ring_112_jpg.rf.406caa84b004eab671180df326537275.jpg",
+        "dataset": "dataset_a",
+        "category": "Ring",
+        "split": "train",
+        "group_id": "ring_112",
+        "exact_hash": "8769f7d94a9cbbcc1ad158c219695f8ae6b8e36034a98662f701ad7a863997a5",
+        "perceptual_hash": "b9c3861cc13b67cc"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004745",
+        "relative_path": "valid/Ring/ring_132_jpg.rf.a160e73673b026766189a6a96c490d94.jpg",
+        "dataset": "dataset_a",
+        "category": "Ring",
+        "split": "valid",
+        "group_id": "ring_132",
+        "exact_hash": "00936b9bbf745546731c17e925b4a15e428c95b9d794cb62bc04590904391606",
+        "perceptual_hash": "b8c38e3cc13b63cc"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_004197",
+        "relative_path": "train/Ring/ring_114_jpg.rf.b3297239ba52fb9f486c7337672916c4.jpg",
+        "dataset": "dataset_a",
+        "category": "Ring",
+        "split": "train",
+        "group_id": "ring_114",
+        "exact_hash": "a66d3f9eb8c20cc667b323dd35396c2332b9c787f649306f91bcf3501e4f90bc",
+        "perceptual_hash": "b9c7969cc53846c6"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004198",
+        "relative_path": "train/Ring/ring_114_jpg.rf.f6f15c6505b26b3fde0e5f48608d30dd.jpg",
+        "dataset": "dataset_a",
+        "category": "Ring",
+        "split": "train",
+        "group_id": "ring_114",
+        "exact_hash": "2dafc0a2ab2a61ab29e80df47bc3bdb92691194d4c5953eccb2cfebdcf0fc32a",
+        "perceptual_hash": "b9c7869cc13866e6"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_004229",
+        "relative_path": "train/Ring/ring_135_jpg.rf.7a8b64d60c50558f0f2fb798a6f3165c.jpg",
+        "dataset": "dataset_a",
+        "category": "Ring",
+        "split": "train",
+        "group_id": "ring_135",
+        "exact_hash": "8d67f2b9b5395c35acd4082088671094d51ac8fb0d9d53c4f77abc66f5eb1211",
+        "perceptual_hash": "a43f91e1442e173f"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004268",
+        "relative_path": "train/Ring/ring_159_jpg.rf.0f8b68d0bdc9881580282b4ecd045e49.jpg",
+        "dataset": "dataset_a",
+        "category": "Ring",
+        "split": "train",
+        "group_id": "ring_159",
+        "exact_hash": "c90bb89a43f37e358f0b5fce4eda6bf8f7209b91028025a9631fc6e4f29069a4",
+        "perceptual_hash": "ac3f91c14c2e173b"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_004251",
+        "relative_path": "train/Ring/ring_153_jpg.rf.df9ddb695171bbcffbc07668c9f147ca.jpg",
+        "dataset": "dataset_a",
+        "category": "Ring",
+        "split": "train",
+        "group_id": "ring_153",
+        "exact_hash": "9d2292f43c6ec82265ccecdbbebb928b9558abcdcbf6a844ae99f2226d253861",
+        "perceptual_hash": "b3c39c9cc43363cc"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004743",
+        "relative_path": "valid/Ring/ring_126_jpg.rf.51c9b35f6303701e3e8b02e0e1b26dfd.jpg",
+        "dataset": "dataset_a",
+        "category": "Ring",
+        "split": "valid",
+        "group_id": "ring_126",
+        "exact_hash": "a49d715f0deb8a52cf61cb38e04738bdcb575bf67233d8cbb6303c25f95b0c52",
+        "perceptual_hash": "bac39d1cc43363cc"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_004311",
+        "relative_path": "train/Ring/ring_185_jpg.rf.000ee0293ff7993e73a70da863a1db3c.jpg",
+        "dataset": "dataset_a",
+        "category": "Ring",
+        "split": "train",
+        "group_id": "ring_185",
+        "exact_hash": "ceb78a6cc0f645cb209ef1d9d0f69b63e6a05a844d30cd8a49afcb3aa94b41b5",
+        "perceptual_hash": "bcc0c73e417972c6"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004312",
+        "relative_path": "train/Ring/ring_185_jpg.rf.419273107d36caedbff7dcff7112ae20.jpg",
+        "dataset": "dataset_a",
+        "category": "Ring",
+        "split": "train",
+        "group_id": "ring_185",
+        "exact_hash": "74f984b1baa075b31e836a9543fee1590c96ab4cecf8a29db9e56b7f5d482148",
+        "perceptual_hash": "bcc1863ec17972c6"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_004312",
+        "relative_path": "train/Ring/ring_185_jpg.rf.419273107d36caedbff7dcff7112ae20.jpg",
+        "dataset": "dataset_a",
+        "category": "Ring",
+        "split": "train",
+        "group_id": "ring_185",
+        "exact_hash": "74f984b1baa075b31e836a9543fee1590c96ab4cecf8a29db9e56b7f5d482148",
+        "perceptual_hash": "bcc1863ec17972c6"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004746",
+        "relative_path": "valid/Ring/ring_136_jpg.rf.5138eceb34910b55bf9831905542f676.jpg",
+        "dataset": "dataset_a",
+        "category": "Ring",
+        "split": "valid",
+        "group_id": "ring_136",
+        "exact_hash": "2aa4e73f2aab862ab1418fab9c2a28ba780dabab5ddad47f6e72cf120a2dc5f7",
+        "perceptual_hash": "bcc1823ec47973c6"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_004370",
+        "relative_path": "valid/Bracelet/bracelet_058_jpg.rf.0c31c34b9064f0c4538060b622341b86.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "valid",
+        "group_id": "bracelet_058",
+        "exact_hash": "1d4ccddbe4ea0fe6b994a9f7ff13b6f5fc31260f97c6f3d241e078c55452468b",
+        "perceptual_hash": "bcc3c31c1ce3639c"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004375",
+        "relative_path": "valid/Bracelet/bracelet_072_jpg.rf.4f6ab9578693fa4896574bfa455ac137.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "valid",
+        "group_id": "bracelet_072",
+        "exact_hash": "381c47835113618e21a2d998206010d6e30538f50fe23964bea841d533ab098b",
+        "perceptual_hash": "bec3c11c1ee3631c"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_004375",
+        "relative_path": "valid/Bracelet/bracelet_072_jpg.rf.4f6ab9578693fa4896574bfa455ac137.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "valid",
+        "group_id": "bracelet_072",
+        "exact_hash": "381c47835113618e21a2d998206010d6e30538f50fe23964bea841d533ab098b",
+        "perceptual_hash": "bec3c11c1ee3631c"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004397",
+        "relative_path": "valid/Bracelet/bracelet_264_jpg.rf.713a93accbeaf429d799995209a91a32.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "valid",
+        "group_id": "bracelet_264",
+        "exact_hash": "bcaf90330d9c6e0cff15cbefc5348069b6389c5a1176232819b3113606841b93",
+        "perceptual_hash": "bec3e11c1cc3633c"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_004379",
+        "relative_path": "valid/Bracelet/bracelet_114_jpg.rf.fbadc6bd5bb7d7cd4165efff8ec1b212.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "valid",
+        "group_id": "bracelet_114",
+        "exact_hash": "58a7e23dbf1cd8c67cafeb2888a8624be0f5a2e56c107669fbe91089ee5cd6f0",
+        "perceptual_hash": "b8c3e73892c6388f"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004380",
+        "relative_path": "valid/Bracelet/bracelet_116_jpg.rf.0eaba7c6fd1e8aedb268aeb679096080.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "valid",
+        "group_id": "bracelet_116",
+        "exact_hash": "22a5b023466affa6015769fa28cd5b636106face5b0bcc846907ffba24dfd7ef",
+        "perceptual_hash": "b847e73882c638cf"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_004380",
+        "relative_path": "valid/Bracelet/bracelet_116_jpg.rf.0eaba7c6fd1e8aedb268aeb679096080.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "valid",
+        "group_id": "bracelet_116",
+        "exact_hash": "22a5b023466affa6015769fa28cd5b636106face5b0bcc846907ffba24dfd7ef",
+        "perceptual_hash": "b847e73882c638cf"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004381",
+        "relative_path": "valid/Bracelet/bracelet_120_jpg.rf.6bf7e3bb5e9b145a7485783228d2b50a.jpg",
+        "dataset": "dataset_a",
+        "category": "Bracelet",
+        "split": "valid",
+        "group_id": "bracelet_120",
+        "exact_hash": "f0f4265a9acb4cfc2987e8fa21848f29b2ba7d8cc736a29f58f65dce39a29fc2",
+        "perceptual_hash": "b8c3e73892c6388f"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_004418",
+        "relative_path": "valid/Earrings/UE00018-YG0000_1_lar_jpg.rf.c41fa9f86d88a1a3c993c767a0c01595.jpg",
+        "dataset": "dataset_a",
+        "category": "Earrings",
+        "split": "valid",
+        "group_id": "UE00018-YG0000_1_lar",
+        "exact_hash": "925aa4e91de373c73fc465987d530a0b9c827e1f8aa8de3aec6ac0a868b1899c",
+        "perceptual_hash": "b992c76c369198c7"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004443",
+        "relative_path": "valid/Earrings/earring_326_jpg.rf.b3e7c80ba81be95755ddca748f081d34.jpg",
+        "dataset": "dataset_a",
+        "category": "Earrings",
+        "split": "valid",
+        "group_id": "earring_326",
+        "exact_hash": "c131d8ee8bbdd604f968311f0cf910784c08b6b49aa49ae4f1b959468fd61b4e",
+        "perceptual_hash": "b893c36c3691d8c7"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_004511",
+        "relative_path": "valid/Necklace/IMG_0543_6bd62e53_jpg.rf.7dbf3749a7928f0a00a4cc1d99103a5b.jpg",
+        "dataset": "dataset_a",
+        "category": "Necklace",
+        "split": "valid",
+        "group_id": "IMG_0543_6bd62e53",
+        "exact_hash": "b05e2f9546da624ff6e576e40cc08da8e493223c29faa4dbca04dd0425a6f7e5",
+        "perceptual_hash": "b44f83c0d54bce2d"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004519",
+        "relative_path": "valid/Necklace/IMG_0582-Copy_7ec83d21_jpg.rf.f5b840f838d30a95dee3c240fa74042e.jpg",
+        "dataset": "dataset_a",
+        "category": "Necklace",
+        "split": "valid",
+        "group_id": "IMG_0582-Copy_7ec83d21",
+        "exact_hash": "0c35235d25932464330f919c3009c888e265511d5a2490a5aa847aee5d6052fb",
+        "perceptual_hash": "b44fc3c0d34ace2d"
+      }
+    },
+    {
+      "duplicate_type": "near",
+      "hamming_distance": 4,
+      "file_a": {
+        "image_id": "DS1_IMG_004633",
+        "relative_path": "valid/Necklace/IMG_3066_c25a6dbb_JPG.rf.c23d51a7261f41480b8def87c5b5f3ec.jpg",
+        "dataset": "dataset_a",
+        "category": "Necklace",
+        "split": "valid",
+        "group_id": "IMG_3066_c25a6dbb",
+        "exact_hash": "6333570f3cd3c7ea1cdd7db68dd8b6878ed7651fb6d24c0894591affeb1b99e3",
+        "perceptual_hash": "ea9781f0c748de29"
+      },
+      "file_b": {
+        "image_id": "DS1_IMG_004657",
+        "relative_path": "valid/Necklace/IMG_3580_6c923f24_JPG.rf.131cff7f774b7b29f4484b9a88e2062d.jpg",
+        "dataset": "dataset_a",
+        "category": "Necklace",
+        "split": "valid",
+        "group_id": "IMG_3580_6c923f24",
+        "exact_hash": "d1ab7ed194ddfd4830c3d8f66d829aa800bd8b3a91cd208e28e48b8fa1ce1c45",
+        "perceptual_hash": "ea9781dac7489e29"
+      }
+    }
+  ],
+  "cross_dataset_duplicates": [],
+  "limitations": []
+}
