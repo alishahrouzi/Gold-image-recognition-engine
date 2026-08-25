@@ -80,6 +80,18 @@ Example:
 
 `DS1_IMG_000001`
 
+### Category ID 
+
+`category_id` is mapping internal Category vocabulary into numbers.
+
+Example: 
+
+0 = Bracelet
+1 = Earrings
+2 = Necklace
+3 = Pendant
+4 = Ring
+
 ### Product ID
 
 `product_id` identifies a known physical product.
