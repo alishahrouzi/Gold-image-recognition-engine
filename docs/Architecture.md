@@ -221,16 +221,37 @@ Loaded image (any supported PIL mode)
 
 ### Shared contract
 
-The same deterministic preprocessing must be used for:
+The same deterministic `ImagePreprocessor` is used for:
 
-- train (without augmentation in S1.8)
+- train (after optional S1.9 augmentation)
 - validation
 - test
 - gallery generation
 - query / inference
 
-Training may later add augmentation on top of this base pipeline.
+Training augmentation is a separate layer (`TrainingAugmentor`) and is
+attached only when `PreprocessedDataset(..., role="train")` is given an
+enabled `AugmentationConfig`. It is never inside `ImagePreprocessor`.
+
 Do not maintain a separate query vs gallery preprocessor.
+
+Train path:
+
+```
+Loaded RGB image
+    → TrainingAugmentor (train role only)
+    → ImagePreprocessor (resize → tensor → ImageNet normalize)
+```
+
+Valid / test / query / gallery path:
+
+```
+Loaded RGB image
+    → ImagePreprocessor
+```
+
+Query and gallery embeddings must use this deterministic path. Random
+augmentation on either side would make retrieval scores unstable.
 
 ### Default configuration (configurable)
 
@@ -239,10 +260,54 @@ Do not maintain a separate query vs gallery preprocessor.
 | `image_size` | `224` | Square CNN input; Architecture leaves H/W experimental; 224 is the MVP default |
 | `mean` | `(0.485, 0.456, 0.406)` | ImageNet RGB stats (no jewelry-specific contract yet) |
 | `std` | `(0.229, 0.224, 0.225)` | ImageNet RGB stats |
-| `interpolation` | `bilinear` | Deterministic stretch-resize (no random crop) |
+| `interpolation` | `bilinear` | Deterministic stretch-resize (no random crop in the preprocessor) |
 
 Implementation: `ImagePreprocessingConfig` + `ImagePreprocessor` in
 `src/data/preprocessing/`.
+
+### Training augmentation (S1.9)
+
+Augmentation is identity-preserving: `Augment(product X)` must remain
+product X. It exists to simulate viewpoint, lighting, and mild
+photography variation that already occurs in Dataset 1.
+
+| Setting | S1.9 default | Notes |
+|---|---|---|
+| `enabled` | `true` (train role only) | Ignored / rejected for valid, test, query, gallery |
+| horizontal flip | on, `p=0.5` | Left/right does not change jewelry identity |
+| rotation | on, `±10°` (cap `15°`) | Small camera tilt only; 90°/180° rejected |
+| brightness | on, `±15%` (cap `25%`) | Lighting robustness |
+| contrast | on, `±15%` (cap `25%`) | Mild exposure variation |
+| color | on, saturation `±8%`, hue `±0.02` | Conservative; must not turn gold into silver/orange |
+| random crop | **off** | Cropping can drop distinctive jewelry regions; hook exists with `enabled=false` |
+
+Out of scope: vertical flip, large rotation, perspective warp, heavy
+blur/noise, random erasing, aggressive hue, aggressive crop.
+
+Configuration is serializable via `AugmentationConfig.as_loggable_dict()`
+for future experiment logs (experiment ID + config + seed). No retrieval
+metrics are produced in S1.9.
+
+Reproducibility: `TrainingAugmentor` uses a dedicated `random.Random`
+seeded by `AugmentationConfig.seed`. It does not set global
+`random` / NumPy / PyTorch seeds. With `num_workers=0` and a fixed seed,
+the same call sequence is reproducible. DataLoader workers can diverge
+unless a future training loop reseeds each worker (`worker_seed`).
+Bit-level determinism across CUDA/PyTorch versions is not claimed.
+
+All augmentation is in memory. Dataset 1 files and the manifest are
+never modified.
+
+Dataset integration:
+
+```
+Manifest → UnifiedDataset → RGB PIL
+    → PreprocessedDataset(role=train|valid|test, optional AugmentationConfig)
+    → DataLoader(collate_fn=collate_preprocessed_samples)
+```
+
+Standalone query/gallery path: `ImagePreprocessor(config)(pil_image)`.
+
 
 ### Tensor / batch contract
 
@@ -271,16 +336,6 @@ batch = {
 `batch["image"][i]` corresponds to `batch["image_id"][i]`,
 `batch["group_id"][i]`, etc. `group_id` remains product identity;
 `image_id` remains the per-image identifier.
-
-Dataset integration:
-
-```
-Manifest → UnifiedDataset → RGB PIL
-    → PreprocessedDataset(ImagePreprocessor)
-    → DataLoader(collate_fn=collate_preprocessed_samples)
-```
-
-Standalone query/gallery path: `ImagePreprocessor(config)(pil_image)`.
 
 ---
 
@@ -591,28 +646,22 @@ sufficient for losses that require positive pairs.
 
 # 10.5 Training Augmentation
 
-Training augmentation should simulate realistic variation in:
+S1.9 implements identity-preserving training augmentation as a
+separate layer before `ImagePreprocessor`. Defaults and safety
+caps are specified in section 6.
 
-viewpoint
-orientation
-lighting
-scale
-crop
-mild geometric transformation
+Augmentation is train-role only. Validation, test, query, and
+gallery remain deterministic.
 
-Augmentation must not transform the jewelry into an unrealistic
-sample.
+The S1.9 baseline enables horizontal flip, small rotation (±10°),
+brightness/contrast (±15%), and conservative color jitter.
+Random crop is disabled because it can remove distinctive jewelry
+regions.
 
-Augmentations that destroy product identity should be avoided.
+Augmentation configuration remains experimental for later encoder
+training. Parameters are recorded via `AugmentationConfig`; they
+must not be hard-coded in the training loop once that loop exists.
 
-Examples of potentially dangerous augmentation:
-
-excessive rotation
-extreme color changes
-aggressive cropping
-transformations that remove key product details
-
-Augmentation configuration remains experimental.
 
 # 10.6 Loss Function
 

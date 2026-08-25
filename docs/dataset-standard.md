@@ -228,6 +228,14 @@ Image validation reads `reports/dataset/dataset1_manifest.csv` and inspects
 the referenced files. It never deletes, moves, renames, or rewrites images,
 and it never modifies the manifest.
 
+Training augmentation (S1.9) is also in-memory only. It does not rewrite
+Dataset 1 files and it does not change `group_id` or `image_id`.
+
+Difference from preprocessing: preprocessing is deterministic
+(`ImagePreprocessor`: resize + ImageNet normalize). Augmentation is
+stochastic and train-role only (`TrainingAugmentor`). Query and gallery
+must never receive augmentation.
+
 ### Status
 
 - `valid`: the file decodes, width and height are positive, and the image
