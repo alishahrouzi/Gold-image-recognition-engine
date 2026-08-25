@@ -66,3 +66,8 @@ def _to_rgb(image: Image.Image) -> Image.Image:
         return background
 
     return image.convert("RGB")
+
+
+def to_rgb_image(image: Image.Image) -> Image.Image:
+    """Convert a loaded PIL image to RGB in memory. Does not write files."""
+    return _to_rgb(image)
