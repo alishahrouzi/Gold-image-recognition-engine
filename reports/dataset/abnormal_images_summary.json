@@ -1,0 +1,1161 @@
+{
+  "source_report": "reports/dataset/dataset_validation_report.json",
+  "total_abnormal_images": 114,
+  "reason_counts": {
+    "near_black": 102,
+    "near_white": 12
+  },
+  "split_counts": {
+    "train": 113,
+    "test": 1
+  },
+  "category_counts": {
+    "Bracelet": 17,
+    "Earrings": 8,
+    "Necklace": 68,
+    "Pendant": 18,
+    "Ring": 3
+  },
+  "images": [
+    {
+      "image_id": "DS1_IMG_000022",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Bracelet/IMG_0431_69caa589_jpg.rf.72edeb77a51ed38e6044ab62a9f15302.jpg",
+      "category": "Bracelet",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 4.1498,
+      "std": 9.6492
+    },
+    {
+      "image_id": "DS1_IMG_000042",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Bracelet/IMG_0436_b4f3da31_jpg.rf.9716c0b08bd408c1db36481ced9e97ea.jpg",
+      "category": "Bracelet",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 1.3919,
+      "std": 5.2561
+    },
+    {
+      "image_id": "DS1_IMG_000064",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Bracelet/IMG_0830_8ad47e30_JPG.rf.4c80dce4459f54fa66a00a8ab76b1e75.jpg",
+      "category": "Bracelet",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 3.0161,
+      "std": 7.2358
+    },
+    {
+      "image_id": "DS1_IMG_000072",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Bracelet/IMG_0835_6fd40262_JPG.rf.fe277e8cd9e309933148fb2aa3788a57.jpg",
+      "category": "Bracelet",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 4.3253,
+      "std": 9.6456
+    },
+    {
+      "image_id": "DS1_IMG_000094",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Bracelet/IMG_1387_df6d03a0_JPG.rf.71bc0c96f31588f1f62addd19200bed5.jpg",
+      "category": "Bracelet",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 1.8642,
+      "std": 6.115
+    },
+    {
+      "image_id": "DS1_IMG_000101",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Bracelet/IMG_1394_7607b0c2_JPG.rf.d58d338ddcd15f7454cb0f676efdacca.jpg",
+      "category": "Bracelet",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 4.5771,
+      "std": 11.8105
+    },
+    {
+      "image_id": "DS1_IMG_000130",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Bracelet/IMG_1684_ae89634a_JPG.rf.6d9f9b920aa1b8cdb9bdf816eabee53b.jpg",
+      "category": "Bracelet",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 1.3897,
+      "std": 5.6631
+    },
+    {
+      "image_id": "DS1_IMG_000155",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Bracelet/IMG_2384_dd60b133_JPG.rf.d5e470ce11784123eca77e689079d2d3.jpg",
+      "category": "Bracelet",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 3.9975,
+      "std": 10.4292
+    },
+    {
+      "image_id": "DS1_IMG_000160",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Bracelet/IMG_2388_c27a09a3_JPG.rf.a89d436a043e8b602712895551c20b3b.jpg",
+      "category": "Bracelet",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 2.1797,
+      "std": 6.9925
+    },
+    {
+      "image_id": "DS1_IMG_000175",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Bracelet/IMG_2410_07569e2b_JPG.rf.c40a61915defc65ce0a4c24f9982ab78.jpg",
+      "category": "Bracelet",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 5.0328,
+      "std": 11.9035
+    },
+    {
+      "image_id": "DS1_IMG_000200",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Bracelet/IMG_2517_c1151808_JPG.rf.e4bef518fd240f6dc1e164b151435616.jpg",
+      "category": "Bracelet",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 3.6474,
+      "std": 9.4429
+    },
+    {
+      "image_id": "DS1_IMG_000255",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Bracelet/IMG_3041_d0c68029_JPG.rf.41e063ee8928978efe94ba426c536dab.jpg",
+      "category": "Bracelet",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 2.7624,
+      "std": 7.6744
+    },
+    {
+      "image_id": "DS1_IMG_000261",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Bracelet/IMG_3061_50c9e0b3_JPG.rf.03d94019ab5150e09b501c35ec9c897a.jpg",
+      "category": "Bracelet",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 4.2565,
+      "std": 11.1421
+    },
+    {
+      "image_id": "DS1_IMG_000284",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Bracelet/IMG_3132_77d5cd36_JPG.rf.b4b2d631b97c7a1dba80a2945c23e4ab.jpg",
+      "category": "Bracelet",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 2.3643,
+      "std": 7.0702
+    },
+    {
+      "image_id": "DS1_IMG_000286",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Bracelet/IMG_3136_e1214d2d_JPG.rf.43d6eb43a1a65998d0fc4095171fff90.jpg",
+      "category": "Bracelet",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 2.4883,
+      "std": 7.3998
+    },
+    {
+      "image_id": "DS1_IMG_000418",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Bracelet/bracelet_077_jpg.rf.f39474f357f53d56bfe741579870afb4.jpg",
+      "category": "Bracelet",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_white",
+      "mean": 253.3271,
+      "std": 10.9031
+    },
+    {
+      "image_id": "DS1_IMG_000726",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Bracelet/bracelet_268_jpg.rf.cf798bf3a6f6bc0d8fdafd3a23de79c6.jpg",
+      "category": "Bracelet",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_white",
+      "mean": 253.9696,
+      "std": 4.4425
+    },
+    {
+      "image_id": "DS1_IMG_000795",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Earrings/IMG_1599_fd3daedc_JPG.rf.f80f8d987ac17baebccac2f6b1d0ae2f.jpg",
+      "category": "Earrings",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 3.8765,
+      "std": 9.4199
+    },
+    {
+      "image_id": "DS1_IMG_000797",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Earrings/IMG_1664_027e16c7_JPG.rf.ce69255527e7987819b5253b9ea30d82.jpg",
+      "category": "Earrings",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 2.3932,
+      "std": 7.0378
+    },
+    {
+      "image_id": "DS1_IMG_000806",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Earrings/IMG_2035_e9e50fa5_JPG.rf.a565a8d0cff27aafda206d4cdf71f9fc.jpg",
+      "category": "Earrings",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 2.0016,
+      "std": 6.6827
+    },
+    {
+      "image_id": "DS1_IMG_000809",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Earrings/IMG_2036_0a196c6e_JPG.rf.9146d6ca77f59c575b365bcefb629130.jpg",
+      "category": "Earrings",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 2.1714,
+      "std": 7.4536
+    },
+    {
+      "image_id": "DS1_IMG_000817",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Earrings/IMG_2149_63a6aecb_JPG.rf.635ad1eb647aa87b56e185e86662feb2.jpg",
+      "category": "Earrings",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 3.7232,
+      "std": 8.529
+    },
+    {
+      "image_id": "DS1_IMG_000896",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Earrings/Screenshot_20181121-190612_1544080568440_png.rf.f848f82b31d224d9240869a0ed4a37f6.jpg",
+      "category": "Earrings",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 3.5531,
+      "std": 10.3216
+    },
+    {
+      "image_id": "DS1_IMG_000908",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Earrings/Screenshot_20190101-212741_1546422287531_png.rf.d238b898cb5af39d56b4d211289530f0.jpg",
+      "category": "Earrings",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 4.2633,
+      "std": 11.1203
+    },
+    {
+      "image_id": "DS1_IMG_001517",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Earrings/pirouette_by_harry_winston_earrings__diamond__EADPRFPRSPIR_trans-1h_png.rf.01547890470cad7c854fb99e5f25319d.jpg",
+      "category": "Earrings",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 2.2539,
+      "std": 10.6533
+    },
+    {
+      "image_id": "DS1_IMG_001529",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Necklace/IMG_0135_c69f859a_JPG.rf.8989ea734f6e932ea6dd86f999d0f4f3.jpg",
+      "category": "Necklace",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 1.8939,
+      "std": 6.9045
+    },
+    {
+      "image_id": "DS1_IMG_001591",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Necklace/IMG_0263_53d56de3_JPG.rf.fc2f7fd00be284b94f716486dd18598f.jpg",
+      "category": "Necklace",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 7.0593,
+      "std": 10.7763
+    },
+    {
+      "image_id": "DS1_IMG_001610",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Necklace/IMG_0358_097d4a90_jpg.rf.0702c5bf0f8f9e5084b924e5cb09b25c.jpg",
+      "category": "Necklace",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 2.6697,
+      "std": 7.2216
+    },
+    {
+      "image_id": "DS1_IMG_001667",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Necklace/IMG_0386_fb581654_jpg.rf.1b3ce80b56dfb8f4933468b9f461d07a.jpg",
+      "category": "Necklace",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 6.8941,
+      "std": 11.0789
+    },
+    {
+      "image_id": "DS1_IMG_001679",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Necklace/IMG_0390_fafb7e18_jpg.rf.514b19b501b09f34ba72b8ebda083d13.jpg",
+      "category": "Necklace",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 4.0946,
+      "std": 9.406
+    },
+    {
+      "image_id": "DS1_IMG_001720",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Necklace/IMG_0419_2058b182_jpg.rf.9904e968c305f8fafb5720c8f9ac063e.jpg",
+      "category": "Necklace",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 3.5122,
+      "std": 11.8864
+    },
+    {
+      "image_id": "DS1_IMG_001721",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Necklace/IMG_0421-1-_77c3f84b_jpg.rf.3a45ceb8b67b3e4f99884ecb3de2ed02.jpg",
+      "category": "Necklace",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 3.3457,
+      "std": 8.0286
+    },
+    {
+      "image_id": "DS1_IMG_001737",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Necklace/IMG_0442_7e7a3b25_jpg.rf.391da5cd3a57c5b43216bcb3d26cc359.jpg",
+      "category": "Necklace",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 3.9524,
+      "std": 9.5568
+    },
+    {
+      "image_id": "DS1_IMG_001759",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Necklace/IMG_0447_50c25d6a_jpg.rf.c4bb0c413607c73f8162eb2114aec8fc.jpg",
+      "category": "Necklace",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 3.073,
+      "std": 10.1869
+    },
+    {
+      "image_id": "DS1_IMG_001803",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Necklace/IMG_0497-1-_991979e3_jpg.rf.9c3e791d97e7890255fbe655080dcaa1.jpg",
+      "category": "Necklace",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 4.2382,
+      "std": 7.2038
+    },
+    {
+      "image_id": "DS1_IMG_001857",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Necklace/IMG_0525_5424396e_jpg.rf.4c9a3cd3ac5a7ce6843c49078bb1b520.jpg",
+      "category": "Necklace",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 0.9466,
+      "std": 3.7834
+    },
+    {
+      "image_id": "DS1_IMG_001858",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Necklace/IMG_0525_5424396e_jpg.rf.bb6678d9f8e631d64e7ee14cb8f9de0e.jpg",
+      "category": "Necklace",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 0.5598,
+      "std": 2.8111
+    },
+    {
+      "image_id": "DS1_IMG_001879",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Necklace/IMG_0535_a92bf730_jpg.rf.705045bf356d2d8a64127b78d27c1845.jpg",
+      "category": "Necklace",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 3.1142,
+      "std": 7.6433
+    },
+    {
+      "image_id": "DS1_IMG_001886",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Necklace/IMG_0538_ac61ff4e_jpg.rf.4de837d260cd90a7bac7b414fb0d1e29.jpg",
+      "category": "Necklace",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 4.1818,
+      "std": 8.5628
+    },
+    {
+      "image_id": "DS1_IMG_001983",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Necklace/IMG_0588-Copy_27548d5c_jpg.rf.cea98d9e05933ff8626ce2411fd97006.jpg",
+      "category": "Necklace",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 3.062,
+      "std": 8.4722
+    },
+    {
+      "image_id": "DS1_IMG_001985",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Necklace/IMG_0589-1-_7972f252_JPG.rf.8e3365f740a3f98b02ce5f71b7b9d862.jpg",
+      "category": "Necklace",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 2.0606,
+      "std": 8.5901
+    },
+    {
+      "image_id": "DS1_IMG_002032",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Necklace/IMG_0612_18d97c27_jpg.rf.244371cb59053c989e24ec599289ef28.jpg",
+      "category": "Necklace",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 4.8863,
+      "std": 10.2789
+    },
+    {
+      "image_id": "DS1_IMG_002049",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Necklace/IMG_0622_jpg.rf.eb8694d56afae35e9123635c4d99741b.jpg",
+      "category": "Necklace",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 5.6995,
+      "std": 10.3188
+    },
+    {
+      "image_id": "DS1_IMG_002057",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Necklace/IMG_0625-1-_d93fcd5c_JPG.rf.ee176f9f6497fa6c7f3d733532936aac.jpg",
+      "category": "Necklace",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 1.7034,
+      "std": 7.8697
+    },
+    {
+      "image_id": "DS1_IMG_002115",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Necklace/IMG_1319_d47f3dcc_JPG.rf.5e0661d30fdcfe8a3b811051b6034c6a.jpg",
+      "category": "Necklace",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 1.8103,
+      "std": 6.2616
+    },
+    {
+      "image_id": "DS1_IMG_002160",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Necklace/IMG_1339_be32dfe7_JPG.rf.b63e9fc003f1058e7dd3f61e6de3f5e8.jpg",
+      "category": "Necklace",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 1.3448,
+      "std": 4.7801
+    },
+    {
+      "image_id": "DS1_IMG_002169",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Necklace/IMG_1347_0e60935e_JPG.rf.908b6d1637b5b5665e9e1d7b3bea26f6.jpg",
+      "category": "Necklace",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 2.5211,
+      "std": 7.0267
+    },
+    {
+      "image_id": "DS1_IMG_002190",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Necklace/IMG_1371_c4aa0275_JPG.rf.d33765d89347f8a401ff02b683b65936.jpg",
+      "category": "Necklace",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 0.7163,
+      "std": 4.1399
+    },
+    {
+      "image_id": "DS1_IMG_002212",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Necklace/IMG_1399_ec43f3b7_JPG.rf.1f12c888332d296dec0696e3e13c9a81.jpg",
+      "category": "Necklace",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 2.3245,
+      "std": 8.2046
+    },
+    {
+      "image_id": "DS1_IMG_002215",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Necklace/IMG_1400_56ff7cdf_JPG.rf.006bc919877ff0bc4cbf564439175b3a.jpg",
+      "category": "Necklace",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 5.2001,
+      "std": 11.2885
+    },
+    {
+      "image_id": "DS1_IMG_002237",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Necklace/IMG_1419_5168252a_JPG.rf.726024e10d7a7332bd2d80be4c0b39f0.jpg",
+      "category": "Necklace",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 2.9857,
+      "std": 8.2874
+    },
+    {
+      "image_id": "DS1_IMG_002268",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Necklace/IMG_1435_aec49ee8_JPG.rf.9609b037c97703d54246b09a2b280f45.jpg",
+      "category": "Necklace",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 3.559,
+      "std": 9.3527
+    },
+    {
+      "image_id": "DS1_IMG_002286",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Necklace/IMG_1453_4a0ca50d_JPG.rf.dc8cba26c7ff621bc6db662ad8eb26e1.jpg",
+      "category": "Necklace",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 2.2621,
+      "std": 7.8139
+    },
+    {
+      "image_id": "DS1_IMG_002300",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Necklace/IMG_1462_75d8e03c_JPG.rf.2396afbec580d5967bd6cca34d805ff9.jpg",
+      "category": "Necklace",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 4.7025,
+      "std": 11.0561
+    },
+    {
+      "image_id": "DS1_IMG_002308",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Necklace/IMG_1472_e366edf3_JPG.rf.8fc53fc2b02550ef6498b30de1dd76d1.jpg",
+      "category": "Necklace",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 2.2082,
+      "std": 7.2995
+    },
+    {
+      "image_id": "DS1_IMG_002309",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Necklace/IMG_1472_e366edf3_JPG.rf.dd85e2cd15f39bbe0cc1049a20139d62.jpg",
+      "category": "Necklace",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 3.4959,
+      "std": 8.9734
+    },
+    {
+      "image_id": "DS1_IMG_002380",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Necklace/IMG_1518_943d08e8_JPG.rf.8f0f2fb73f8f7409f9a57094fccb842b.jpg",
+      "category": "Necklace",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 4.4054,
+      "std": 10.6905
+    },
+    {
+      "image_id": "DS1_IMG_002415",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Necklace/IMG_1557_abf86615_JPG.rf.8ccec170ccc6aaca09b182ee7713989c.jpg",
+      "category": "Necklace",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 1.185,
+      "std": 4.6097
+    },
+    {
+      "image_id": "DS1_IMG_002420",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Necklace/IMG_1559_7d0bdaef_JPG.rf.95baae546f9750c26e280e8578526fdb.jpg",
+      "category": "Necklace",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_white",
+      "mean": 252.1391,
+      "std": 11.503
+    },
+    {
+      "image_id": "DS1_IMG_002446",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Necklace/IMG_1583_94401dfd_JPG.rf.18dda52b344b6de446161b0ec8ce6c7f.jpg",
+      "category": "Necklace",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 1.7838,
+      "std": 7.1949
+    },
+    {
+      "image_id": "DS1_IMG_002496",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Necklace/IMG_1639_3633c2cb_JPG.rf.421b31596640e3651485a851dbb82fdd.jpg",
+      "category": "Necklace",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 3.7534,
+      "std": 10.1996
+    },
+    {
+      "image_id": "DS1_IMG_002549",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Necklace/IMG_1859_70939f18_JPG.rf.5a01e4f10d6dede51ed004de95b01761.jpg",
+      "category": "Necklace",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 3.4725,
+      "std": 7.5038
+    },
+    {
+      "image_id": "DS1_IMG_002559",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Necklace/IMG_1863_8494810c_JPG.rf.f6b21f77759149deb2ecc5f64e9fc266.jpg",
+      "category": "Necklace",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 3.4539,
+      "std": 10.0106
+    },
+    {
+      "image_id": "DS1_IMG_002596",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Necklace/IMG_2147_98ed9476_JPG.rf.6ae7e150cf42ef5e1d281626d3eaa6ff.jpg",
+      "category": "Necklace",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_white",
+      "mean": 251.407,
+      "std": 10.9377
+    },
+    {
+      "image_id": "DS1_IMG_002599",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Necklace/IMG_2179_7edd5f7f_JPG.rf.184408ad70ba1b59160a2da5e5394f71.jpg",
+      "category": "Necklace",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 0.4739,
+      "std": 3.0556
+    },
+    {
+      "image_id": "DS1_IMG_002618",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Necklace/IMG_2193_966b7f4f_JPG.rf.64e01204a72ce432cd17d6d0c41113c3.jpg",
+      "category": "Necklace",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 2.7651,
+      "std": 8.2973
+    },
+    {
+      "image_id": "DS1_IMG_002665",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Necklace/IMG_2222_470c6a9d_JPG.rf.3fb07174415ffe9760f9d4c8ce8104d3.jpg",
+      "category": "Necklace",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 3.3867,
+      "std": 9.6408
+    },
+    {
+      "image_id": "DS1_IMG_002675",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Necklace/IMG_2225_63e4fe29_JPG.rf.8a0b235e5eb12d71976dee9d4875efe6.jpg",
+      "category": "Necklace",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 3.8328,
+      "std": 10.5538
+    },
+    {
+      "image_id": "DS1_IMG_002718",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Necklace/IMG_2251_153f9562_JPG.rf.2fb7868f442e874f27be49b5ad11a511.jpg",
+      "category": "Necklace",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 1.3634,
+      "std": 5.4414
+    },
+    {
+      "image_id": "DS1_IMG_002752",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Necklace/IMG_2287_17a19ef3_JPG.rf.b79c6c6d11537a8e4f1c5d357e5eec95.jpg",
+      "category": "Necklace",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_white",
+      "mean": 252.6302,
+      "std": 11.2704
+    },
+    {
+      "image_id": "DS1_IMG_002784",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Necklace/IMG_2322_5620dcdb_JPG.rf.910ddf801ab91ed12cfd425f77354182.jpg",
+      "category": "Necklace",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 4.2411,
+      "std": 9.9266
+    },
+    {
+      "image_id": "DS1_IMG_002862",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Necklace/IMG_2419_f8fbbdf5_JPG.rf.2497cb5d06739ea9c2ef901b41fb49f7.jpg",
+      "category": "Necklace",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 4.1513,
+      "std": 9.9888
+    },
+    {
+      "image_id": "DS1_IMG_002876",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Necklace/IMG_2425_bef80101_JPG.rf.65a46d0e725dcb050a2ae3934ec61b1a.jpg",
+      "category": "Necklace",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 2.6743,
+      "std": 9.4626
+    },
+    {
+      "image_id": "DS1_IMG_002877",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Necklace/IMG_2428_e19c8047_JPG.rf.05718c1e79a586d43e328f90c9a80bf3.jpg",
+      "category": "Necklace",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_white",
+      "mean": 252.9325,
+      "std": 8.8136
+    },
+    {
+      "image_id": "DS1_IMG_002962",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Necklace/IMG_2879_50d5439a_jpg.rf.54565453bc2833c4189c09582471b02d.jpg",
+      "category": "Necklace",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 4.7163,
+      "std": 10.546
+    },
+    {
+      "image_id": "DS1_IMG_002976",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Necklace/IMG_2898_a1100695_jpg.rf.7d628fba5e184e6f9a7dbaa0ebda7bdf.jpg",
+      "category": "Necklace",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 4.7263,
+      "std": 10.556
+    },
+    {
+      "image_id": "DS1_IMG_003004",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Necklace/IMG_2925_71ba11a0_jpg.rf.505662d4991a1eb8d30d38ef49a9587a.jpg",
+      "category": "Necklace",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 4.8871,
+      "std": 10.6455
+    },
+    {
+      "image_id": "DS1_IMG_003126",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Necklace/IMG_3476_fd33a4ca_JPG.rf.aad1d41a7b24c52b116e457974b47353.jpg",
+      "category": "Necklace",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 1.6985,
+      "std": 6.7118
+    },
+    {
+      "image_id": "DS1_IMG_003205",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Necklace/IMG_3529_db1b5176_JPG.rf.4780366ccf2a0a99aa418efe5e93e799.jpg",
+      "category": "Necklace",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 2.3409,
+      "std": 7.5078
+    },
+    {
+      "image_id": "DS1_IMG_003246",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Necklace/IMG_3552_75bc4506_JPG.rf.e0b1130309c4d8d9cb95b0586b8c73d5.jpg",
+      "category": "Necklace",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 5.5328,
+      "std": 11.9298
+    },
+    {
+      "image_id": "DS1_IMG_003260",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Necklace/IMG_3557_ce569c23_JPG.rf.5019658ebe1fb00ac65d3fbd48f8b2fb.jpg",
+      "category": "Necklace",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 3.1712,
+      "std": 8.593
+    },
+    {
+      "image_id": "DS1_IMG_003263",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Necklace/IMG_3558_d416ae4f_JPG.rf.36983308f57f9afd74c1a68d5b2874f5.jpg",
+      "category": "Necklace",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 4.1393,
+      "std": 10.8142
+    },
+    {
+      "image_id": "DS1_IMG_003295",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Necklace/IMG_3582_8b546d7a_JPG.rf.0ee533f1fe0011e0f30d3896f2bdd6a3.jpg",
+      "category": "Necklace",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 1.9011,
+      "std": 6.6284
+    },
+    {
+      "image_id": "DS1_IMG_003315",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Necklace/IMG_3593_885382d3_JPG.rf.3459f0d092bc8f5f492737e2a3f15cc6.jpg",
+      "category": "Necklace",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 0.6033,
+      "std": 3.2079
+    },
+    {
+      "image_id": "DS1_IMG_003320",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Necklace/IMG_3597_040758e8_JPG.rf.3114f39f7c74bb23300f767c54dfac96.jpg",
+      "category": "Necklace",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 0.5533,
+      "std": 3.973
+    },
+    {
+      "image_id": "DS1_IMG_003321",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Necklace/IMG_3597_040758e8_JPG.rf.bc7a2bcd2be03fc88fefbdec1bc266b7.jpg",
+      "category": "Necklace",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 0.831,
+      "std": 4.9754
+    },
+    {
+      "image_id": "DS1_IMG_003372",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Necklace/necklace_102_jpg.rf.6f43acce7c5eb5be5ccb0bd36f3db887.jpg",
+      "category": "Necklace",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_white",
+      "mean": 252.9576,
+      "std": 11.825
+    },
+    {
+      "image_id": "DS1_IMG_003373",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Necklace/necklace_103_jpg.rf.33c14500761f037a9f723e07e297c87e.jpg",
+      "category": "Necklace",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_white",
+      "mean": 253.0629,
+      "std": 11.9314
+    },
+    {
+      "image_id": "DS1_IMG_003377",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Necklace/necklace_126_jpg.rf.3741c9d2f931e7be54125296a5ce343d.jpg",
+      "category": "Necklace",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_white",
+      "mean": 253.032,
+      "std": 11.7923
+    },
+    {
+      "image_id": "DS1_IMG_003507",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Necklace/necklace_20241125_122545_40014043_jpg.rf.9200937d1087029b948da2e37abb1012.jpg",
+      "category": "Necklace",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 4.0459,
+      "std": 10.8009
+    },
+    {
+      "image_id": "DS1_IMG_003510",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Necklace/necklace_20241125_122545_40474143_jpg.rf.e03e81b235ebed62232880ab2d22cce0.jpg",
+      "category": "Necklace",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 1.4649,
+      "std": 5.9124
+    },
+    {
+      "image_id": "DS1_IMG_003532",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Necklace/necklace_20241125_122545_787767e7_jpg.rf.62c24d3f63372b359f1fd62f578750f5.jpg",
+      "category": "Necklace",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 7.4114,
+      "std": 9.1531
+    },
+    {
+      "image_id": "DS1_IMG_003681",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Pendant/IMG_0457_cb73a0c4_JPG.rf.30ae1873ed6aa7bfbc7425299039cede.jpg",
+      "category": "Pendant",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 1.5152,
+      "std": 7.4152
+    },
+    {
+      "image_id": "DS1_IMG_003714",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Pendant/IMG_0753_2ca36338_jpg.rf.a8bd58bd5b05c3eb8de6faafdb795df3.jpg",
+      "category": "Pendant",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 1.0104,
+      "std": 4.9476
+    },
+    {
+      "image_id": "DS1_IMG_003742",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Pendant/IMG_0862_36a7b364_JPG.rf.72055e291e62a9454ae16929b7477504.jpg",
+      "category": "Pendant",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 1.9065,
+      "std": 6.9126
+    },
+    {
+      "image_id": "DS1_IMG_003771",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Pendant/IMG_1500_0daa4afd_JPG.rf.8a222a7c24210cd2a221e33e397e063a.jpg",
+      "category": "Pendant",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 1.8609,
+      "std": 6.4199
+    },
+    {
+      "image_id": "DS1_IMG_003774",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Pendant/IMG_1553_ba3ba926_JPG.rf.dda56ad2d5b9b8aa47512e54c0dec9cb.jpg",
+      "category": "Pendant",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 3.1672,
+      "std": 7.9945
+    },
+    {
+      "image_id": "DS1_IMG_003800",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Pendant/IMG_2379_ad6a1bf5_JPG.rf.10334a702fdc24fad5af39a02e047228.jpg",
+      "category": "Pendant",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 2.8326,
+      "std": 7.9339
+    },
+    {
+      "image_id": "DS1_IMG_003810",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Pendant/IMG_2456_13fd8ff6_JPG.rf.79873314558e6c8959663711667d6cf3.jpg",
+      "category": "Pendant",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 1.9935,
+      "std": 6.7982
+    },
+    {
+      "image_id": "DS1_IMG_003849",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Pendant/IMG_2827_a2392e84_jpg.rf.45c9bf8d7c8c6acc90c95c20f42f00fc.jpg",
+      "category": "Pendant",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 2.2932,
+      "std": 9.978
+    },
+    {
+      "image_id": "DS1_IMG_003857",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Pendant/IMG_2840_6982f882_jpg.rf.21f24c0e07c3e10323f9e4aefa7ecb30.jpg",
+      "category": "Pendant",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 2.2196,
+      "std": 8.2992
+    },
+    {
+      "image_id": "DS1_IMG_003869",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Pendant/IMG_2850_604c1d7b_jpg.rf.156f178a01907d27df53b84b64b4ddc1.jpg",
+      "category": "Pendant",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 1.5631,
+      "std": 7.7369
+    },
+    {
+      "image_id": "DS1_IMG_003883",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Pendant/IMG_2870_451f1def_jpg.rf.f9667069cab1a1ba0284ec415e4c9c0d.jpg",
+      "category": "Pendant",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 1.7456,
+      "std": 6.7649
+    },
+    {
+      "image_id": "DS1_IMG_003911",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Pendant/IMG_2912_9176f0b9_jpg.rf.b1c655495a993e7042e623a3ac4159a7.jpg",
+      "category": "Pendant",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 2.596,
+      "std": 10.654
+    },
+    {
+      "image_id": "DS1_IMG_003959",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Pendant/necklace_20241125_122545_00801018_jpg.rf.6bd035c9cb23bae2e02135591736c4ed.jpg",
+      "category": "Pendant",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 0.7949,
+      "std": 4.0919
+    },
+    {
+      "image_id": "DS1_IMG_003963",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Pendant/necklace_20241125_122545_01000080_jpg.rf.8673b0cbcb3602cc1dddfdec4a5ed6ba.jpg",
+      "category": "Pendant",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 3.1449,
+      "std": 9.7734
+    },
+    {
+      "image_id": "DS1_IMG_003968",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Pendant/necklace_20241125_122545_08081c1c_jpg.rf.47d5f5dd6d021bea3f37b5dd8e9de48a.jpg",
+      "category": "Pendant",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 4.6342,
+      "std": 9.7285
+    },
+    {
+      "image_id": "DS1_IMG_003971",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Pendant/necklace_20241125_122545_1abac664_jpg.rf.7f6cfc71d1b0e8faf5fa4a0e2aa75d15.jpg",
+      "category": "Pendant",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 3.8366,
+      "std": 9.6143
+    },
+    {
+      "image_id": "DS1_IMG_003991",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Pendant/necklace_20241125_122545_6063e3a7_jpg.rf.d93f306b592711eda79ef704abbf6970.jpg",
+      "category": "Pendant",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 2.0854,
+      "std": 7.763
+    },
+    {
+      "image_id": "DS1_IMG_003995",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Pendant/necklace_20241125_122545_94000018_jpg.rf.16af1c7ba2bae50b74421bbc1cf8506a.jpg",
+      "category": "Pendant",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 3.412,
+      "std": 9.3092
+    },
+    {
+      "image_id": "DS1_IMG_004017",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Ring/Screenshot_20181116-202757_1542453058358_png.rf.8b1eae352767bd2a3f445951afab404a.jpg",
+      "category": "Ring",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_black",
+      "mean": 2.1488,
+      "std": 7.1509
+    },
+    {
+      "image_id": "DS1_IMG_004070",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Ring/ring_046_jpg.rf.b284da642b7c05b05e22692eb44b3d0c.jpg",
+      "category": "Ring",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_white",
+      "mean": 252.3669,
+      "std": 10.7028
+    },
+    {
+      "image_id": "DS1_IMG_004147",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/train/Ring/ring_087_jpg.rf.c642adfc2177157ab92c88f0663c33cd.jpg",
+      "category": "Ring",
+      "split": "train",
+      "status": "warning",
+      "abnormal_reason": "near_white",
+      "mean": 252.2605,
+      "std": 11.757
+    },
+    {
+      "image_id": "DS1_IMG_004917",
+      "path": "E:/Privat File/Projects/Zargar Interview/dataset/ai-tool-pool-jewelry-vision/test/Necklace/necklace_121_jpg.rf.172d7684ff68d7fdda683d15b0decfb7.jpg",
+      "category": "Necklace",
+      "split": "test",
+      "status": "warning",
+      "abnormal_reason": "near_white",
+      "mean": 253.3516,
+      "std": 10.9466
+    }
+  ]
+}

@@ -203,3 +203,54 @@ The validation confirms that no detected image group spans
 multiple dataset splits.
 
 ## 10. Dataset 2 Specific Rules
+
+Dataset 2 remains reserved and is not part of MVP image validation.
+
+---
+
+## 11. Image-Level Validation (S1.2)
+
+Image validation reads `reports/dataset/dataset1_manifest.csv` and inspects
+the referenced files. It never deletes, moves, renames, or rewrites images,
+and it never modifies the manifest.
+
+### Status
+
+- `valid`: the file decodes, width and height are positive, and the image
+  is not near-uniform.
+- `warning`: the file decodes, but luminance statistics look near-uniform
+  (suspicious blank / washed-out frame). This is not corruption.
+- `invalid`: the file is missing, cannot be decoded, or has a non-positive
+  size.
+
+Abnormal (`warning`) and corrupted (`invalid`) are distinct.
+
+### Color mode
+
+The original Pillow mode is recorded (`RGB`, `RGBA`, `L`, `P`, ...).
+Non-RGB is not invalid when the image can be converted to RGB in memory.
+Files are not overwritten.
+
+### Resolution
+
+Width, height, pixel count, and aspect ratio are reported. There is no
+minimum-size rejection rule.
+
+### Abnormal-image thresholds
+
+Luminance is the Pillow `L` channel (0--255). An image is flagged only when
+standard deviation is below `12.0` (near-uniform). Jewelry on a white or
+black background is not flagged merely because many pixels are bright or
+dark.
+
+| Constant | Value |
+|---|---:|
+| `LOW_STD_THRESHOLD` | 12.0 |
+| `NEAR_BLACK_MEAN_THRESHOLD` | 12.0 |
+| `NEAR_WHITE_MEAN_THRESHOLD` | 243.0 |
+| `DARK_PIXEL_VALUE` | 16 |
+| `BRIGHT_PIXEL_VALUE` | 239 |
+| `DARK_PIXEL_RATIO_THRESHOLD` | 0.995 |
+| `BRIGHT_PIXEL_RATIO_THRESHOLD` | 0.995 |
+
+The JSON report is written to `reports/dataset/dataset_validation_report.json`.
