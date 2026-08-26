@@ -17,3 +17,7 @@ class AugmentationError(PreprocessingError):
 
 class PairGenerationError(ValueError):
     """Raised when pair generation input, sampling, or invariants are invalid."""
+
+
+class VisualizationError(ValueError):
+    """Raised when dataset visualization input, sampling, or QA checks fail."""

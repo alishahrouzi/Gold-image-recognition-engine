@@ -1,4 +1,4 @@
-"""Dataset ingestion, preprocessing, augmentation, and pair generation (S1.1–S1.10).
+"""Dataset ingestion, preprocessing, augmentation, pair generation, and visualization (S1.1–S1.11).
 
 Manifest → Samples → UnifiedDataset → Image loader (RGB PIL)
     → [train: TrainingAugmentor] → ImagePreprocessor
@@ -6,6 +6,9 @@ Manifest → Samples → UnifiedDataset → Image loader (RGB PIL)
 
 Pair generation (S1.10) reads Sample metadata only and writes a separate
 pair dataset. It does not load pixels or modify the image manifest.
+
+Visualization (S1.11) is a read-only QA tool over the manifest, pair CSV,
+and source RGB images. It does not train models or regenerate pairs.
 
 Valid / test / query / gallery skip augmentation and use ImagePreprocessor only.
 
@@ -43,12 +46,14 @@ from .errors import (
     DatasetIngestionError,
     PairGenerationError,
     PreprocessingError,
+    VisualizationError,
 )
 from .pairs import (
     Pair,
     PairGenerationConfig,
     PairGenerationResult,
     generate_pair_dataset,
+    load_pairs_csv,
     validate_pairs,
     write_pair_generation_report,
     write_pairs_csv,
@@ -78,6 +83,9 @@ _LAZY_EXPORTS = {
     "AugmentationConfig": (".preprocessing", "AugmentationConfig"),
     "TrainingAugmentor": (".preprocessing", "TrainingAugmentor"),
     "build_preprocessed_dataset": (".preprocessing", "build_preprocessed_dataset"),
+    "VisualizationConfig": (".visualization", "VisualizationConfig"),
+    "generate_dataset_visualizations": (".visualization", "generate_dataset_visualizations"),
+    "load_visualization_inputs": (".visualization", "load_visualization_inputs"),
 }
 
 
@@ -120,6 +128,8 @@ __all__ = [
     "Sample",
     "TrainingAugmentor",
     "UnifiedDataset",
+    "VisualizationConfig",
+    "VisualizationError",
     "audit_dataset_cleaning",
     "build_image_validation_report",
     "build_preprocessed_dataset",
@@ -128,10 +138,13 @@ __all__ = [
     "collate_samples",
     "detect_duplicates",
     "generate_pair_dataset",
+    "generate_dataset_visualizations",
     "inspect_sample",
     "inspect_samples",
     "load_manifest",
+    "load_pairs_csv",
     "load_rgb_image",
+    "load_visualization_inputs",
     "validate_pairs",
     "validate_samples",
     "write_cleaning_report",

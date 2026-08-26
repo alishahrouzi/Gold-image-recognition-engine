@@ -33,6 +33,7 @@ from .types import (
     PAIR_TYPE_NEGATIVE,
     PAIR_TYPE_POSITIVE,
     Pair,
+    pair_from_csv_row,
     sort_pairs,
 )
 from .validation import validate_pairs
@@ -167,6 +168,28 @@ def build_pair_generation_report(
             "checks": dict(validation_checks),
         },
     }
+
+
+def load_pairs_csv(pairs_path: PathLike) -> List[Pair]:
+    """Load the existing pair CSV. Does not regenerate or rewrite pairs."""
+    path = Path(pairs_path)
+    if not path.is_file():
+        raise FileNotFoundError(f"Pair CSV does not exist: {path}")
+
+    with path.open(newline="", encoding="utf-8") as handle:
+        reader = csv.DictReader(handle)
+        fieldnames = set(reader.fieldnames or [])
+        missing = set(PAIR_CSV_FIELDS) - fieldnames
+        if missing:
+            raise PairGenerationError(
+                f"Pair CSV is missing required columns: {sorted(missing)}."
+            )
+        pairs = [pair_from_csv_row(row) for row in reader]
+
+    if not pairs:
+        raise PairGenerationError(f"Pair CSV at {path} contains no rows.")
+    logger.info("Loaded pair dataset %s (%s pairs)", path, len(pairs))
+    return pairs
 
 
 def write_pairs_csv(pairs: Sequence[Pair], output_path: PathLike) -> Path:

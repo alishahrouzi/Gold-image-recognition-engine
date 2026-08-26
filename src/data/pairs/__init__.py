@@ -15,6 +15,7 @@ from .generator import (
     PairGenerationResult,
     build_pair_generation_report,
     generate_pair_dataset,
+    load_pairs_csv,
     write_pair_generation_report,
     write_pairs_csv,
 )
@@ -28,6 +29,7 @@ from .types import (
     Pair,
     canonicalize_image_ids,
     make_pair_id,
+    pair_from_csv_row,
     pair_from_samples,
 )
 from .validation import validate_pairs
@@ -50,7 +52,9 @@ __all__ = [
     "count_available_positive_pairs",
     "generate_pair_dataset",
     "generate_positive_pairs",
+    "load_pairs_csv",
     "make_pair_id",
+    "pair_from_csv_row",
     "pair_from_samples",
     "sample_negative_pairs",
     "validate_pairs",

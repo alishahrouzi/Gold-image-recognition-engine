@@ -7,7 +7,7 @@ and they do not replace the image-level manifest.
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Optional, Sequence, Tuple
+from typing import Mapping, Optional, Sequence, Tuple
 
 from ..errors import PairGenerationError
 from ..types import Sample
@@ -91,6 +91,44 @@ class Pair:
             "pair_type": self.pair_type,
             "negative_type": "" if self.negative_type is None else self.negative_type,
         }
+
+
+def pair_from_csv_row(row: Mapping[str, Optional[str]]) -> Pair:
+    """Parse one pair CSV row into the S1.10 Pair contract. Does not write files."""
+    missing = [name for name in PAIR_CSV_FIELDS if name not in row]
+    if missing:
+        raise PairGenerationError(
+            f"Pair CSV row is missing required columns: {sorted(missing)}."
+        )
+
+    def _text(field_name: str) -> str:
+        return (row.get(field_name) or "").strip()
+
+    def _int(field_name: str) -> int:
+        raw = _text(field_name)
+        try:
+            return int(raw)
+        except ValueError as exc:
+            raise PairGenerationError(
+                f"Invalid {field_name} {raw!r} in pair CSV."
+            ) from exc
+
+    negative_raw = _text("negative_type")
+    return Pair(
+        pair_id=_text("pair_id"),
+        image_id_1=_text("image_id_1"),
+        image_id_2=_text("image_id_2"),
+        group_id_1=_text("group_id_1"),
+        group_id_2=_text("group_id_2"),
+        category_id_1=_int("category_id_1"),
+        category_id_2=_int("category_id_2"),
+        category_1=_text("category_1"),
+        category_2=_text("category_2"),
+        split=_text("split"),
+        label=_int("label"),
+        pair_type=_text("pair_type"),
+        negative_type=negative_raw or None,
+    )
 
 
 def pair_from_samples(
