@@ -1,8 +1,11 @@
-"""Dataset ingestion, preprocessing, and training-only augmentation (S1.1–S1.9).
+"""Dataset ingestion, preprocessing, augmentation, and pair generation (S1.1–S1.10).
 
 Manifest → Samples → UnifiedDataset → Image loader (RGB PIL)
     → [train: TrainingAugmentor] → ImagePreprocessor
     → DataLoader (collate_preprocessed_samples).
+
+Pair generation (S1.10) reads Sample metadata only and writes a separate
+pair dataset. It does not load pixels or modify the image manifest.
 
 Valid / test / query / gallery skip augmentation and use ImagePreprocessor only.
 
@@ -35,7 +38,21 @@ from .duplicates import (
     detect_duplicates,
     write_duplicate_report,
 )
-from .errors import AugmentationError, DatasetIngestionError, PreprocessingError
+from .errors import (
+    AugmentationError,
+    DatasetIngestionError,
+    PairGenerationError,
+    PreprocessingError,
+)
+from .pairs import (
+    Pair,
+    PairGenerationConfig,
+    PairGenerationResult,
+    generate_pair_dataset,
+    validate_pairs,
+    write_pair_generation_report,
+    write_pairs_csv,
+)
 from .image_quality import (
     ImageQualityResult,
     build_image_validation_report,
@@ -87,6 +104,10 @@ __all__ = [
     "DatasetIngestionError",
     "DatasetItem",
     "DatasetValidationReport",
+    "Pair",
+    "PairGenerationConfig",
+    "PairGenerationError",
+    "PairGenerationResult",
     "DuplicateDetectionConfig",
     "ID_TO_CATEGORY",
     "ImagePreprocessingConfig",
@@ -106,12 +127,16 @@ __all__ = [
     "collate_preprocessed_samples",
     "collate_samples",
     "detect_duplicates",
+    "generate_pair_dataset",
     "inspect_sample",
     "inspect_samples",
     "load_manifest",
     "load_rgb_image",
+    "validate_pairs",
     "validate_samples",
     "write_cleaning_report",
     "write_duplicate_report",
     "write_image_validation_report",
+    "write_pair_generation_report",
+    "write_pairs_csv",
 ]

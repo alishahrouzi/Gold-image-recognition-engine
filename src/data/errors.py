@@ -1,4 +1,4 @@
-"""Explicit errors raised by the dataset ingestion and preprocessing layers."""
+"""Explicit errors raised by dataset ingestion, preprocessing, and pair generation."""
 
 from __future__ import annotations
 
@@ -13,3 +13,7 @@ class PreprocessingError(ValueError):
 
 class AugmentationError(PreprocessingError):
     """Raised when training-augmentation input or configuration is invalid."""
+
+
+class PairGenerationError(ValueError):
+    """Raised when pair generation input, sampling, or invariants are invalid."""
