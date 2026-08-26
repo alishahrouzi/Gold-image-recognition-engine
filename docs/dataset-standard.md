@@ -396,3 +396,96 @@ python scripts/audit_dataset_cleaning.py --dataset-root "<dataset-root>" --outpu
 
 `reports/dataset/dataset_cleaning_report.json`
 
+---
+
+## 14. Pair Generation (S1.10)
+
+S1.10 builds a **separate pair dataset** from Dataset 1 manifest metadata.
+It does not load image pixels, does not modify the image manifest, and does
+not implement hard-negative mining or a training batch sampler.
+
+Identity remains `group_id`. Category is used only to type negatives.
+
+### Positive pairs
+
+Within one split, every group with `N >= 2` images contributes all unordered
+combinations `C(N, 2)`.
+
+| Group size | Positive pairs |
+|---|---:|
+| 1 | 0 |
+| 2 | 1 |
+| 3 | 3 |
+
+Singleton groups produce no positives. They remain eligible as negative
+partners.
+
+### Negative pairs
+
+Negatives are **sampled**, never fully enumerated. Sampling is independent
+per split. A pair is negative only when the two images have different
+`group_id` values.
+
+| `negative_type` | Rule |
+|---|---|
+| `same_category` | different `group_id`, same category |
+| `cross_category` | different `group_id`, different category |
+
+Default mix: 50% same-category / 50% cross-category among selected negatives.
+Default count: one negative per selected positive (`positive_negative_ratio=1.0`).
+
+### Leakage rules
+
+- Both images of a pair must belong to the same split.
+- `group_id` must not appear in more than one split.
+- `(A, B)` and `(B, A)` are the same unordered pair.
+- Self-pairs `(A, A)` are invalid.
+- `pair_id` is canonical: `{min(image_id)}__{max(image_id)}`.
+
+Valid and test in Dataset 1 are currently singleton groups, so they contribute
+zero pairs. All generated pairs come from `train`.
+
+### Configuration defaults
+
+These are starting points for later experiments, not frozen training values.
+
+| Setting | Default |
+|---|---|
+| `seed` | `2026` |
+| `positive_negative_ratio` | `1.0` |
+| `same_category_negative_ratio` | `0.5` |
+| included splits | train, valid, test |
+
+Sampling uses a local `random.Random(seed)`. Global RNG state is not modified.
+
+### Pair CSV schema
+
+| Field | Description |
+|---|---|
+| pair_id | Canonical unordered id |
+| image_id_1 / image_id_2 | Lexicographic order, `image_id_1 < image_id_2` |
+| group_id_1 / group_id_2 | Manifest group ids |
+| category_id_1 / category_id_2 | Internal category ids |
+| category_1 / category_2 | Category names |
+| split | `train`, `valid`, or `test` |
+| label | `1` positive, `0` negative |
+| pair_type | `positive` or `negative` |
+| negative_type | empty for positives; `same_category` or `cross_category` |
+
+### CLI
+
+```
+python scripts/generate_dataset1_pairs.py
+```
+
+### Output
+
+| File | Description |
+|---|---|
+| `reports/dataset/dataset1_pairs.csv` | Pair dataset (does not replace the image manifest) |
+| `reports/dataset/dataset1_pair_generation_report.json` | Audit counts, per-split / per-category stats, validation checks |
+
+Dataset 1 baseline (seed `2026`): **4188** available/selected positives,
+**4188** negatives (2094 same-category, 2094 cross-category), **8376** total
+pairs. Counts are derived from the manifest, not hard-coded in the generator.
+

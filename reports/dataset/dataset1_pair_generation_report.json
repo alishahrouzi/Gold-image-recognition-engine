@@ -1,0 +1,105 @@
+{
+  "dataset": "dataset1",
+  "manifest": "E:\\Privat File\\Projects\\Zargar Interview\\code\\reports\\dataset\\dataset1_manifest.csv",
+  "seed": 2026,
+  "configuration": {
+    "seed": 2026,
+    "positive_negative_ratio": 1.0,
+    "same_category_negative_ratio": 0.5,
+    "max_positive_pairs": null,
+    "max_negative_pairs": null,
+    "include_train": true,
+    "include_valid": true,
+    "include_test": true,
+    "policy": "s1.10-group-aware-pairs",
+    "included_splits": [
+      "train",
+      "valid",
+      "test"
+    ]
+  },
+  "total_pairs": 8376,
+  "positive_pairs": 4188,
+  "negative_pairs": 4188,
+  "available_positive_pairs": 4188,
+  "selected_positive_pairs": 4188,
+  "selected_negative_pairs": 4188,
+  "positive_negative_ratio": 1.0,
+  "realized_positive_negative_ratio": 1.0,
+  "same_category_negative_ratio": 0.5,
+  "same_category_negative_count": 2094,
+  "cross_category_negative_count": 2094,
+  "per_split_statistics": {
+    "train": {
+      "total_pairs": 8376,
+      "positive_pairs": 4188,
+      "negative_pairs": 4188,
+      "available_positive_pairs": 4188,
+      "same_category_negative_count": 2094,
+      "cross_category_negative_count": 2094
+    },
+    "valid": {
+      "total_pairs": 0,
+      "positive_pairs": 0,
+      "negative_pairs": 0,
+      "available_positive_pairs": 0,
+      "same_category_negative_count": 0,
+      "cross_category_negative_count": 0
+    },
+    "test": {
+      "total_pairs": 0,
+      "positive_pairs": 0,
+      "negative_pairs": 0,
+      "available_positive_pairs": 0,
+      "same_category_negative_count": 0,
+      "cross_category_negative_count": 0
+    }
+  },
+  "per_category_statistics": {
+    "Bracelet": {
+      "positive_pairs": 718,
+      "same_category_negative_count": 427,
+      "cross_category_negative_count": 813
+    },
+    "Earrings": {
+      "positive_pairs": 727,
+      "same_category_negative_count": 403,
+      "cross_category_negative_count": 870
+    },
+    "Necklace": {
+      "positive_pairs": 2090,
+      "same_category_negative_count": 422,
+      "cross_category_negative_count": 854
+    },
+    "Pendant": {
+      "positive_pairs": 345,
+      "same_category_negative_count": 457,
+      "cross_category_negative_count": 827
+    },
+    "Ring": {
+      "positive_pairs": 308,
+      "same_category_negative_count": 385,
+      "cross_category_negative_count": 824
+    }
+  },
+  "sample_counts": {
+    "images": 4969,
+    "groups": 2135
+  },
+  "validation_results": {
+    "passed": true,
+    "checks": {
+      "no_self_pairs": true,
+      "no_duplicate_unordered_pairs": true,
+      "no_duplicate_pair_ids": true,
+      "positive_correctness": true,
+      "negative_correctness": true,
+      "split_isolation": true,
+      "valid_image_ids": true,
+      "valid_groups": true,
+      "category_consistency": true,
+      "no_cross_split_group_leakage": true,
+      "canonical_pair_ids": true
+    }
+  }
+}

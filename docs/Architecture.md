@@ -562,6 +562,47 @@ A1 ↔ B1
 A2 ↔ B2
 ...
 
+# 10.2.1 Pair dataset generation (S1.10)
+
+S1.10 materializes the relationships above as a leakage-safe pair CSV.
+It is a dataset-layer step, not the group-aware training batch sampler
+in section 10.4, and not hard-negative mining.
+
+```
+dataset1_manifest.csv
+        │
+        ▼
+Sample metadata only (no pixels)
+        │
+        ▼
+Per-split positive enumeration  C(N, 2) within group_id
+        │
+        ▼
+Per-split negative sampling
+   same_category  +  cross_category
+        │
+        ▼
+Fail-loud validation
+        │
+        ▼
+dataset1_pairs.csv
+dataset1_pair_generation_report.json
+```
+
+Rules:
+
+- same `group_id` → positive (`label=1`)
+- different `group_id` → negative (`label=0`)
+- category never defines identity
+- pairs never cross splits
+- `(A, B)` and `(B, A)` are one unordered pair
+- self-pairs are rejected
+- Dataset 1 files and `dataset1_manifest.csv` are not modified
+
+Implementation: `src/data/pairs/`, CLI `scripts/generate_dataset1_pairs.py`.
+Defaults (`seed=2026`, 1:1 positives/negatives, 50% same-category negatives)
+are experimental starting points and must remain configurable.
+
 # 10.3 Training Flow
 
 Dataset
@@ -1334,6 +1375,25 @@ Example:
   "image_path": "train/Bracelet/..."
 }
 
+Pair records (S1.10) are a separate contract. They reference image records
+by `image_id` and do not replace the image-level manifest.
+
+```
+{
+  "pair_id": "DS1_IMG_000001__DS1_IMG_000002",
+  "image_id_1": "DS1_IMG_000001",
+  "image_id_2": "DS1_IMG_000002",
+  "group_id_1": "bracelet_012",
+  "group_id_2": "bracelet_012",
+  "category_1": "Bracelet",
+  "category_2": "Bracelet",
+  "split": "train",
+  "label": 1,
+  "pair_type": "positive",
+  "negative_type": null
+}
+```
+
 ---
 
 ## 19.Separation of Responsibilities
@@ -1347,6 +1407,7 @@ group IDs
 category IDs
 split information
 dataset metadata
+pair dataset generation (S1.10)
 Model Layer
 
 Responsible for:
@@ -1423,6 +1484,11 @@ Rule 5 — Preprocessing Isolation
 
 Any learned preprocessing statistics must be calculated from
 training data only.
+
+Rule 6 — Pair Split Isolation (S1.10)
+
+A pair dataset must never join images from different splits.
+`(A, B)` and `(B, A)` are one unordered pair. Self-pairs are invalid.
 
 ---
 
@@ -1545,6 +1611,7 @@ must not require changing the encoder.
 | Problem Type                | Visual Product Retrieval                    |
 | Dataset                     | Dataset 1                                   |
 | Product Identity            | `group_id`                                  |
+| Pair generation (S1.10)     | Unordered group-aware pairs, split-isolated |
 | Categories                  | Bracelet, Earrings, Necklace, Pendant, Ring |
 | Encoder                     | Custom CNN                                  |
 | Feature Pooling             | Global Average Pooling                      |
