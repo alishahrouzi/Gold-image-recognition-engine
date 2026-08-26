@@ -1,4 +1,4 @@
-"""Dataset ingestion, preprocessing, augmentation, pair generation, and visualization (S1.1–S1.11).
+"""Dataset ingestion, preprocessing, augmentation, pair generation, visualization, and DataLoader benchmark (S1.1–S1.12).
 
 Manifest → Samples → UnifiedDataset → Image loader (RGB PIL)
     → [train: TrainingAugmentor] → ImagePreprocessor
@@ -9,6 +9,9 @@ pair dataset. It does not load pixels or modify the image manifest.
 
 Visualization (S1.11) is a read-only QA tool over the manifest, pair CSV,
 and source RGB images. It does not train models or regenerate pairs.
+
+The DataLoader benchmark (S1.12) measures pipeline throughput and memory.
+It does not implement an Encoder or a training loop.
 
 Valid / test / query / gallery skip augmentation and use ImagePreprocessor only.
 
@@ -86,6 +89,7 @@ _LAZY_EXPORTS = {
     "VisualizationConfig": (".visualization", "VisualizationConfig"),
     "generate_dataset_visualizations": (".visualization", "generate_dataset_visualizations"),
     "load_visualization_inputs": (".visualization", "load_visualization_inputs"),
+    "run_dataloader_benchmark": (".benchmark", "run_dataloader_benchmark"),
 }
 
 
@@ -145,6 +149,7 @@ __all__ = [
     "load_pairs_csv",
     "load_rgb_image",
     "load_visualization_inputs",
+    "run_dataloader_benchmark",
     "validate_pairs",
     "validate_samples",
     "write_cleaning_report",
