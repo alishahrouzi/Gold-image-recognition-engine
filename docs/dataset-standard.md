@@ -489,3 +489,79 @@ Dataset 1 baseline (seed `2026`): **4188** available/selected positives,
 **4188** negatives (2094 same-category, 2094 cross-category), **8376** total
 pairs. Counts are derived from the manifest, not hard-coded in the generator.
 
+---
+
+## 15. Data Visualization (S1.11)
+
+S1.11 is a **read-only QA tool**. It does not modify Dataset 1 images, the
+image manifest, or `dataset1_pairs.csv`. It does not regenerate pairs and
+does not implement encoder, embedding, retrieval, or evaluation logic.
+
+Purpose: visually inspect train / valid / test samples, positive and
+negative pairs, and S1.9 training augmentation (before vs after).
+
+### Sampling strategy
+
+Sampling uses a local `random.Random(seed)`. Global RNG state is not
+modified. Default seed: `2026`.
+
+| CLI flag | Default | Unit |
+|---|---:|---|
+| `--train-samples` | 20 | **groups** (every image in a selected group is shown) |
+| `--valid-samples` | 20 | images |
+| `--test-samples` | 20 | images |
+| `--positive-pairs` | 20 | existing pair CSV rows (`label=1`) |
+| `--negative-pairs` | 20 | existing pair CSV rows (`label=0`), split across `same_category` and `cross_category` |
+| `--augmentation-samples` | 10 | train images (at most one per group) |
+
+Train visualization is **group-aware**: a selected `group_id` is shown as
+one row of 1, 2, or 3+ views so product identity can be checked by eye.
+
+Valid and test images are shown with original RGB pixels. They are never
+augmented.
+
+Pair rows use the S1.10 CSV contract (`image_id_1` / `image_id_2`, not
+`image_id_a` / `image_id_b`). Invalid pair metadata fails loudly; figures
+are not written.
+
+### Pair validation (selected rows)
+
+- Positive: same `group_id`, same category, `label=1`
+- Negative: different `group_id`, `label=0`
+- Same-category negative: same category
+- Cross-category negative: different category
+- No pair crosses train / valid / test
+
+### Augmentation visualization
+
+Reuses `TrainingAugmentor` (S1.9 jewelry-safe defaults). Train only.
+Original RGB and in-memory augmented RGB are shown side by side. Source
+files are never resized or overwritten. Display thumbnails exist only in
+the generated PNG.
+
+### CLI
+
+```
+python scripts/visualize_dataset1.py --dataset-root "<dataset-root>"
+```
+
+Optional flags: `--manifest`, `--pairs`, `--output-dir`, `--seed`,
+`--train-samples`, `--valid-samples`, `--test-samples`, `--positive-pairs`,
+`--negative-pairs`, `--augmentation-samples`.
+
+### Output
+
+`reports/visualization/dataset1/`
+
+| File | Description |
+|---|---|
+| `train_samples.png` | Group-aware train views |
+| `valid_samples.png` | Validation images (no augmentation) |
+| `test_samples.png` | Test images (no augmentation) |
+| `positive_pairs.png` | Side-by-side same-product pairs |
+| `negative_pairs.png` | Combined negatives |
+| `negative_pairs_same_category.png` | Same-category negatives |
+| `negative_pairs_cross_category.png` | Cross-category negatives |
+| `augmentation_samples.png` | Train original vs S1.9 augmented |
+| `visualization_report.json` | Seed, counts, validation errors, reproducibility record |
+

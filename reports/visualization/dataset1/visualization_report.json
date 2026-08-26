@@ -1,0 +1,73 @@
+{
+  "dataset": "dataset1",
+  "manifest": "E:\\Privat File\\Projects\\Zargar Interview\\code\\reports\\dataset\\dataset1_manifest.csv",
+  "pair_source": "E:\\Privat File\\Projects\\Zargar Interview\\code\\reports\\dataset\\dataset1_pairs.csv",
+  "output_dir": "E:\\Privat File\\Projects\\Zargar Interview\\code\\reports\\visualization\\dataset1",
+  "seed": 2026,
+  "sampling_configuration": {
+    "seed": 2026,
+    "train_samples": 20,
+    "valid_samples": 20,
+    "test_samples": 20,
+    "positive_pairs": 20,
+    "negative_pairs": 20,
+    "augmentation_samples": 10,
+    "policy": "s1.11-data-visualization",
+    "train_samples_unit": "groups",
+    "valid_samples_unit": "images",
+    "test_samples_unit": "images",
+    "augmentation_samples_unit": "train_images",
+    "sampling": "local random.Random(seed); global RNG is not modified"
+  },
+  "train": {
+    "requested": 20,
+    "selected": 20,
+    "unit": "groups",
+    "images_shown": 41,
+    "multi_image_groups": 14
+  },
+  "valid": {
+    "requested": 20,
+    "selected": 20,
+    "unit": "images",
+    "augmentation": false
+  },
+  "test": {
+    "requested": 20,
+    "selected": 20,
+    "unit": "images",
+    "augmentation": false
+  },
+  "positive_pairs": {
+    "requested": 20,
+    "selected": 20,
+    "validated": true
+  },
+  "negative_pairs": {
+    "requested": 20,
+    "selected": 20,
+    "validated": true,
+    "same_category_selected": 10,
+    "cross_category_selected": 10
+  },
+  "augmentation": {
+    "requested": 10,
+    "selected": 10,
+    "role": "train",
+    "implementation": "data.preprocessing.augmentation.TrainingAugmentor",
+    "valid_test_augmented": false
+  },
+  "validation_errors": [],
+  "source_files_unchanged": true,
+  "output_files": {
+    "train_samples.png": "E:\\Privat File\\Projects\\Zargar Interview\\code\\reports\\visualization\\dataset1\\train_samples.png",
+    "valid_samples.png": "E:\\Privat File\\Projects\\Zargar Interview\\code\\reports\\visualization\\dataset1\\valid_samples.png",
+    "test_samples.png": "E:\\Privat File\\Projects\\Zargar Interview\\code\\reports\\visualization\\dataset1\\test_samples.png",
+    "positive_pairs.png": "E:\\Privat File\\Projects\\Zargar Interview\\code\\reports\\visualization\\dataset1\\positive_pairs.png",
+    "negative_pairs.png": "E:\\Privat File\\Projects\\Zargar Interview\\code\\reports\\visualization\\dataset1\\negative_pairs.png",
+    "negative_pairs_same_category.png": "E:\\Privat File\\Projects\\Zargar Interview\\code\\reports\\visualization\\dataset1\\negative_pairs_same_category.png",
+    "negative_pairs_cross_category.png": "E:\\Privat File\\Projects\\Zargar Interview\\code\\reports\\visualization\\dataset1\\negative_pairs_cross_category.png",
+    "augmentation_samples.png": "E:\\Privat File\\Projects\\Zargar Interview\\code\\reports\\visualization\\dataset1\\augmentation_samples.png",
+    "visualization_report.json": "E:\\Privat File\\Projects\\Zargar Interview\\code\\reports\\visualization\\dataset1\\visualization_report.json"
+  }
+}

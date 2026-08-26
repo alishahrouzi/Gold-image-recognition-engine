@@ -603,6 +603,36 @@ Implementation: `src/data/pairs/`, CLI `scripts/generate_dataset1_pairs.py`.
 Defaults (`seed=2026`, 1:1 positives/negatives, 50% same-category negatives)
 are experimental starting points and must remain configurable.
 
+# 10.2.2 Data visualization (S1.11)
+
+S1.11 is a dataset-layer QA tool. It reads `dataset1_manifest.csv` and
+`dataset1_pairs.csv`, samples deterministically, validates selected rows,
+and writes PNG figures plus `visualization_report.json`.
+
+It does not regenerate pairs, does not train models, and does not modify
+Dataset 1 files or the pair CSV.
+
+```
+dataset1_manifest.csv
+dataset1_pairs.csv
+        │
+        ▼
+Deterministic local RNG sampling (seed=2026)
+        │
+        ▼
+Fail-loud pair / image QA
+        │
+        ▼
+reports/visualization/dataset1/*.png
+visualization_report.json
+```
+
+Train panels are group-aware (all views of a selected `group_id` together).
+Valid / test remain augmentation-free. Augmentation panels reuse S1.9
+`TrainingAugmentor` on train RGB images in memory only.
+
+Implementation: `src/data/visualization/`, CLI `scripts/visualize_dataset1.py`.
+
 # 10.3 Training Flow
 
 Dataset
@@ -1408,6 +1438,7 @@ category IDs
 split information
 dataset metadata
 pair dataset generation (S1.10)
+data visualization / QA figures (S1.11)
 Model Layer
 
 Responsible for:
@@ -1612,6 +1643,7 @@ must not require changing the encoder.
 | Dataset                     | Dataset 1                                   |
 | Product Identity            | `group_id`                                  |
 | Pair generation (S1.10)     | Unordered group-aware pairs, split-isolated |
+| Data visualization (S1.11)  | Read-only group-aware QA figures            |
 | Categories                  | Bracelet, Earrings, Necklace, Pendant, Ring |
 | Encoder                     | Custom CNN                                  |
 | Feature Pooling             | Global Average Pooling                      |
