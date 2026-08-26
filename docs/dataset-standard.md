@@ -565,3 +565,27 @@ Optional flags: `--manifest`, `--pairs`, `--output-dir`, `--seed`,
 | `augmentation_samples.png` | Train original vs S1.9 augmented |
 | `visualization_report.json` | Seed, counts, validation errors, reproducibility record |
 
+---
+
+## 16. DataLoader Benchmark (S1.12)
+
+S1.12 measures **pipeline throughput and memory** on Dataset 1. It does not
+modify images or the manifest. It does not implement an Encoder or a
+training loop.
+
+It reuses `UnifiedDataset` → `PreprocessedDataset` (S1.9 train augmentation
+only) → `ImagePreprocessor` → `collate_preprocessed_samples`. Valid and
+test remain deterministic.
+
+Two stages: `dataloader` (CPU batch creation) and `dataloader_gpu` (CPU
+batch plus `tensor.to(CUDA)`). Reports:
+
+`reports/benchmark/dataloader/dataset1_dataloader_benchmark.json`
+
+`reports/benchmark/dataloader/dataset1_dataloader_benchmark.md`
+
+CLI: `python scripts/benchmark_dataloader_dataset1.py`
+
+The recommended batch size is **DataLoader-safe**, not the final training
+batch size.
+

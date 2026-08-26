@@ -633,6 +633,64 @@ Valid / test remain augmentation-free. Augmentation panels reuse S1.9
 
 Implementation: `src/data/visualization/`, CLI `scripts/visualize_dataset1.py`.
 
+# 10.2.3 DataLoader benchmark (S1.12)
+
+S1.12 measures the **existing data pipeline** on Dataset 1. It does not
+change preprocessing defaults, augmentation, the manifest, or source
+images. It does not implement an Encoder or a training loop.
+
+```
+UnifiedDataset (split view)
+        │
+        ▼
+PreprocessedDataset
+  train: S1.9 TrainingAugmentor → ImagePreprocessor
+  valid/test: ImagePreprocessor only
+        │
+        ▼
+DataLoader(collate_fn=collate_preprocessed_samples)
+        │
+        ├── stage dataloader: CPU batch creation only
+        └── stage dataloader_gpu: CPU batch + tensor.to(CUDA)
+```
+
+Two stages are recorded separately:
+
+- `dataloader`: image load, RGB conversion, train-only augmentation,
+  resize/normalize, collation, batch creation. No GPU copy.
+- `dataloader_gpu`: the same CPU pipeline plus CPU → GPU transfer of
+  `batch["image"]`. CUDA is synchronized around the transfer. Peak
+  allocated/reserved VRAM is recorded. GPU utilization is reported as
+  `null` unless a reliable in-process measurement exists (short copies
+  are not a trustworthy utilization sample).
+
+Practical matrix (not a full Cartesian product):
+
+| Axis | Values |
+|---|---|
+| `batch_size` | 8, 16, 32, 64 |
+| `num_workers` | 0, 2, 4 |
+| `pin_memory` | false for the core matrix; true on a train subset (and with GPU copies) |
+| `persistent_workers` | false by default; true only for `num_workers > 0` on a sampled train config |
+| split | train is primary; valid and test use a smaller deterministic matrix |
+
+Warmup batches are discarded. Measurement uses a fixed requested count
+(default warmup 5, measurement 30), capped when a split cannot supply
+that many batches. Timing uses `time.perf_counter`. Process RSS is
+measured (not OS-wide RAM). CUDA OOM is recorded as `status=OOM` and
+the next configuration still runs.
+
+Recommendation fields identify the largest successful DataLoader batch,
+fastest / best-throughput config, most memory-efficient config, and a
+stable DataLoader config. The recommended batch size is a
+**DataLoader-safe** value, not the final training batch size. Training
+batch size must be re-evaluated after the Encoder and optimizer exist.
+
+Implementation: `src/data/benchmark/`, CLI
+`scripts/benchmark_dataloader_dataset1.py`. Reports:
+`reports/benchmark/dataloader/dataset1_dataloader_benchmark.json` and
+`.md`.
+
 # 10.3 Training Flow
 
 Dataset
@@ -1439,6 +1497,7 @@ split information
 dataset metadata
 pair dataset generation (S1.10)
 data visualization / QA figures (S1.11)
+DataLoader benchmark / throughput (S1.12)
 Model Layer
 
 Responsible for:
@@ -1644,6 +1703,7 @@ must not require changing the encoder.
 | Product Identity            | `group_id`                                  |
 | Pair generation (S1.10)     | Unordered group-aware pairs, split-isolated |
 | Data visualization (S1.11)  | Read-only group-aware QA figures            |
+| DataLoader benchmark (S1.12)| Pipeline throughput / RAM / VRAM, no Encoder |
 | Categories                  | Bracelet, Earrings, Necklace, Pendant, Ring |
 | Encoder                     | Custom CNN                                  |
 | Feature Pooling             | Global Average Pooling                      |
