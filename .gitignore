@@ -2,7 +2,7 @@ __pycache__/
 .venv/
 .env
 /data/
-models/
+/models/
 checkpoints/
 runs/
 outputs/

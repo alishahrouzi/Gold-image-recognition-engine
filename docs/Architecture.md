@@ -341,12 +341,24 @@ batch = {
 
 ## 7. Encoder Design
 
+S2.1 implements the Encoder module in `src/models/`. It sits after
+preprocessing and before later embedding-head / similarity modules:
+
+```
+Image
+    → Preprocessing (data layer)
+    → Custom CNN Encoder
+    → Embedding  Tensor[B, D]
+```
+
 # 7.1 Responsibility
 
-The encoder extracts visual features from the preprocessed image.
+The encoder extracts visual features from an already-preprocessed
+image tensor and projects them to a fixed-width embedding.
 
 The encoder is a custom CNN implemented specifically for the
-project.
+project. It must not use a pretrained torchvision backbone
+(ResNet, EfficientNet, MobileNet, etc.) as the encoder.
 
 The encoder must learn visual characteristics useful for
 distinguishing jewelry products, including:
@@ -361,62 +373,87 @@ texture
 local visual details
 global product structure
 
-# 7.2 Initial Architecture
+Preprocessing remains in the data layer:
 
-The initial encoder should use a modular block-based CNN.
+- RGB
+- resize
+- ImageNet normalization
+- float32 tensor conversion
 
-Input
-  │
-  ▼
-Stem
-  │
-  ▼
-CNN Block 1
-  │
-  ▼
-CNN Block 2
-  │
-  ▼
-CNN Block 3
-  │
-  ▼
-CNN Block 4
-  │
-  ▼
-Feature Maps
-  │
-  ▼
-Global Average Pooling
-  │
-  ▼
-Feature Vector
+The encoder must **not**:
 
-Each CNN block may contain:
+- load images
+- perform augmentation
+- access metadata, `group_id`, `category_id`, or `image_id`
+- calculate similarity
+- perform ranking
+- L2-normalize embeddings (normalization is a later embedding /
+  retrieval concern)
 
-Conv2D
-   ↓
-Normalization
-   ↓
-Activation
-   ↓
-Optional Downsampling
+# 7.2 S2.1 Baseline Architecture (`CustomCNNEncoder`)
 
-The exact number of blocks and channels will be determined during
-experimentation.
+The S2.1 baseline is a small from-scratch CNN. It is a contract
+implementation, not a frozen production architecture.
+
+```
+Tensor[B, 3, 224, 224]
+    │
+    ▼
+CNN Block 1  Conv → BatchNorm → ReLU → MaxPool
+    │
+    ▼
+CNN Block 2  Conv → BatchNorm → ReLU → MaxPool
+    │
+    ▼
+CNN Block 3  Conv → BatchNorm → ReLU → MaxPool
+    │
+    ▼
+CNN Block 4  Conv → BatchNorm → ReLU → MaxPool
+    │
+    ▼
+Adaptive Global Average Pooling  (AdaptiveAvgPool2d)
+    │
+    ▼
+Flatten
+    │
+    ▼
+Linear projection
+    │
+    ▼
+Embedding Tensor[B, D]
+```
+
+Default block channels: `(32, 64, 128, 256)` via
+`EncoderConfig.block_channels`. Channel counts and the number of
+blocks remain experimental (S2.2 / S2.3).
+
+Adaptive pooling is used so the encoder does not depend on a
+hard-coded flattened spatial size.
+
+There is no classification head, similarity head, or metric-learning
+loss in this module.
 
 # 7.3 Encoder Output
 
-The encoder returns a compact feature representation.
+Input:  `Tensor[B, 3, H, W]`
 
-Input:  [B, 3, H, W]
+- `B` = batch size
+- `3` = RGB channels (`EncoderConfig.input_channels`, default 3)
+- `H` / `W` = configured resolution (MVP default `224 × 224`)
 
-Output: [B, C] 
+Output: `Tensor[B, D]`
 
-Where C is the final encoder feature dimension.
+- `D` = `EncoderConfig.embedding_dim` (S2.1 default **128**,
+  configurable; not hard-coded in downstream code)
+- dtype under normal float32 input: `torch.float32`
+- batch dimension is preserved
+- embeddings are **not** L2-normalized in the encoder
 
-The encoder must not perform final product ranking.
+Invalid ranks or spatial sizes raise `EncoderInputError`. Inputs are
+never silently reshaped.
 
-Its responsibility ends at feature extraction.
+Device placement is external: `model.to(device)` then `model(x)`.
+The encoder does not call `.cuda()`.
 
 # 7.4 Design Constraints
 
@@ -424,9 +461,20 @@ The encoder should:
 
 remain computationally reasonable on a 4 GB GPU
 avoid unnecessarily large architectures
-expose configurable channel sizes
+expose configurable channel sizes and embedding dimension
 support future scaling
 be replaceable without changing retrieval logic
+require no dataset-specific or category-specific branches
+
+Later layers can be added without changing Dataset or preprocessing:
+
+```
+Encoder
+    → Embedding Head
+    → L2 normalization
+    → Similarity
+    → Ranking
+```
 
 ---
 
@@ -436,6 +484,11 @@ The CNN produces spatial feature maps.
 
 Feature pooling converts the spatial representation into a
 compact feature vector.
+
+S2.1 implements pooling **inside** `CustomCNNEncoder` as
+`AdaptiveAvgPool2d(1)` so the projection layer does not depend on a
+fixed spatial map size. A later module may still replace pooling
+without changing Dataset or preprocessing.
 
 Initial strategy:
 
@@ -465,6 +518,11 @@ The pooling strategy remains replaceable.
 
 The embedding head converts encoder features into a fixed-size
 embedding suitable for similarity comparison.
+
+S2.1 does **not** implement a separate embedding-head module. The
+baseline CNN ends with a single linear projection to configurable
+`D`. L2 normalization and a richer projection head remain later
+tasks so Dataset and preprocessing contracts stay unchanged.
 
 Encoder Features
        │
@@ -1322,11 +1380,18 @@ step (`collate_preprocessed_samples`), not by the single-image API.
 
 # 17.2 Encoder Interface
 
-encode(image_tensor)
+Implementation: `models.Encoder` (`nn.Module` ABC) and
+`models.CustomCNNEncoder`.
 
-Input:  Tensor[B, 3, H, W]
+```
+forward(x) / encode(x)
+```
 
-Output: Feature Tensor[B, C]
+Input:  `Tensor[B, 3, H, W]`  (MVP default H = W = 224)
+
+Output: `Tensor[B, D]`
+
+Where `D = encoder.embedding_dim` (configurable; S2.1 default 128).
 
 The encoder must not know anything about:
 
@@ -1334,6 +1399,8 @@ API
 gallery
 ranking
 product IDs
+`group_id` / `category_id` / sample metadata
+preprocessing or augmentation
 
 # 17.3 Embedding Interface
 
@@ -1704,12 +1771,16 @@ must not require changing the encoder.
 | Pair generation (S1.10)     | Unordered group-aware pairs, split-isolated |
 | Data visualization (S1.11)  | Read-only group-aware QA figures            |
 | DataLoader benchmark (S1.12)| Pipeline throughput / RAM / VRAM, no Encoder |
+| Encoder module (S2.1)       | Custom CNN interface + baseline encoder     |
 | Categories                  | Bracelet, Earrings, Necklace, Pendant, Ring |
-| Encoder                     | Custom CNN                                  |
-| Feature Pooling             | Global Average Pooling                      |
-| Embedding Head              | Projection Head                             |
-| Initial Embedding Dimension | 256                                         |
-| Normalization               | L2                                          |
+| Encoder                     | Custom CNN (`CustomCNNEncoder`, S2.1)       |
+| Encoder input               | `Tensor[B, 3, 224, 224]`                    |
+| Encoder output              | `Tensor[B, D]` (unnormalized)               |
+| Feature Pooling             | Adaptive Global Average Pooling (in encoder)|
+| Embedding Head              | Deferred (S2.2+); linear projection in CNN  |
+| S2.1 Encoder embedding dim  | 128 (configurable via `EncoderConfig`)      |
+| Later embedding-head dim    | Experimental (Architecture candidate 256)   |
+| Normalization               | L2 (not inside the encoder)                 |
 | Training Objective          | Metric Learning                             |
 | Initial Loss Candidate      | Supervised Contrastive Loss                 |
 | Similarity                  | Cosine Similarity                           |
@@ -1730,12 +1801,13 @@ Deferred Decisions
 
 The following are intentionally left open for experimentation:
 
-exact CNN architecture
+exact CNN architecture (S2.1 baseline exists; not frozen)
 number of CNN blocks
 channels per block
 exact image resolution
-embedding dimension final value
-exact Embedding Head architecture
+encoder `embedding_dim` final value (S2.1 default 128)
+exact Embedding Head architecture (separate from encoder)
+whether L2 lives on an embedding head vs retrieval layer
 augmentation parameters
 optimizer
 learning rate
