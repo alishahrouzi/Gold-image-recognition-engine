@@ -1,8 +1,11 @@
-"""Encoder contract: preprocessed image tensors → embeddings.
+"""Model contracts: encoder (image → features) and embedding head (features → L2 embedding).
 
 The encoder consumes only an image tensor. It does not load files, apply
 preprocessing or augmentation, read metadata (``group_id``, ``category_id``,
 ``image_id``), compute similarity, or rank products.
+
+The embedding head consumes only a feature tensor. It does not load images,
+run the CNN, compute similarity, rank products, or apply a training loss.
 """
 
 from __future__ import annotations
@@ -11,8 +14,8 @@ from abc import ABC, abstractmethod
 
 from torch import Tensor, nn
 
-from .config import EncoderConfig
-from .errors import EncoderInputError
+from .config import EmbeddingHeadConfig, EncoderConfig
+from .errors import EmbeddingHeadInputError, EncoderInputError
 
 
 def validate_encoder_input(x: Tensor, config: EncoderConfig) -> Tensor:
@@ -45,12 +48,36 @@ def validate_encoder_input(x: Tensor, config: EncoderConfig) -> Tensor:
     return x
 
 
-class Encoder(nn.Module, ABC):
-    """PyTorch encoder: ``Tensor[B, 3, H, W]`` → ``Tensor[B, D]``.
+def validate_embedding_head_input(x: Tensor, config: EmbeddingHeadConfig) -> Tensor:
+    """Fail loud on contract violations. Never silently reshape, pad, or truncate."""
+    if not isinstance(x, Tensor):
+        raise EmbeddingHeadInputError(
+            f"EmbeddingHead input must be a torch.Tensor, got {type(x).__name__}."
+        )
+    if x.ndim != 2:
+        raise EmbeddingHeadInputError(
+            f"EmbeddingHead input must have rank 2 [B, feature_dim], got shape {tuple(x.shape)}."
+        )
+    batch, features = x.shape
+    if batch < 1:
+        raise EmbeddingHeadInputError(f"EmbeddingHead batch size must be >= 1, got {batch}.")
+    if features != config.feature_dim:
+        raise EmbeddingHeadInputError(
+            f"EmbeddingHead expects feature_dim={config.feature_dim}, got {features}."
+        )
+    if not x.is_floating_point():
+        raise EmbeddingHeadInputError(
+            f"EmbeddingHead input dtype must be a floating type, got {x.dtype}."
+        )
+    return x
 
-    ``D`` is ``embedding_dim``. Batch dimension 0 is preserved. Output is a
-    2-D embedding tensor suitable for later heads (projection, L2, similarity)
-    without changing the data or preprocessing contracts.
+
+class Encoder(nn.Module, ABC):
+    """PyTorch encoder: ``Tensor[B, 3, H, W]`` → ``Tensor[B, C]`` raw features.
+
+    ``C`` is ``feature_dim`` (GAP width). Batch dimension 0 is preserved.
+    Output is unnormalized and is not the retrieval embedding; projection
+    and L2 live on ``EmbeddingHead``.
 
     Subclasses must not call ``.cuda()`` internally. Device placement belongs
     to the training / inference caller via ``model.to(device)``.
@@ -59,7 +86,12 @@ class Encoder(nn.Module, ABC):
     @property
     @abstractmethod
     def embedding_dim(self) -> int:
-        """Width of the embedding dimension ``D``."""
+        """Width of the encoder output (raw feature dim ``C``)."""
+
+    @property
+    def feature_dim(self) -> int:
+        """Alias for the raw GAP width (same as ``embedding_dim`` after S2.3)."""
+        return self.embedding_dim
 
     @property
     @abstractmethod
@@ -68,6 +100,10 @@ class Encoder(nn.Module, ABC):
 
     def encode(self, x: Tensor) -> Tensor:
         """Architecture 17.2 alias for ``forward`` (image tensor only)."""
+        return self.forward(x)
+
+    def encode_features(self, x: Tensor) -> Tensor:
+        """Image tensor → raw GAP features. Same as ``forward`` for Custom CNN v1."""
         return self.forward(x)
 
     def forward(self, x: Tensor) -> Tensor:

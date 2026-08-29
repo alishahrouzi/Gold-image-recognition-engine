@@ -53,7 +53,6 @@ def _dataset_root() -> Path:
 
 def parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="S2.2 Custom CNN v1 encoder smoke test.")
-    parser.add_argument("--embedding-dim", type=int, default=EncoderConfig().embedding_dim)
     parser.add_argument("--batch-size", type=int, default=8)
     parser.add_argument(
         "--skip-dataset1",
@@ -77,14 +76,14 @@ def _make_images(encoder: CustomCNNEncoder, batch_size: int, device: torch.devic
 def _forward_once(encoder: CustomCNNEncoder, images: torch.Tensor) -> torch.Tensor:
     encoder.eval()
     with torch.no_grad():
-        embeddings = encoder(images)
-    if embeddings.shape != (images.shape[0], encoder.embedding_dim):
-        raise RuntimeError(f"Unexpected embedding shape {tuple(embeddings.shape)}.")
-    if embeddings.dtype != torch.float32 and images.dtype == torch.float32:
-        raise RuntimeError(f"Unexpected embedding dtype {embeddings.dtype}.")
-    if torch.isnan(embeddings).any() or torch.isinf(embeddings).any():
-        raise RuntimeError("Non-finite embeddings.")
-    return embeddings
+        features = encoder(images)
+    if features.shape != (images.shape[0], encoder.feature_dim):
+        raise RuntimeError(f"Unexpected feature shape {tuple(features.shape)}.")
+    if features.dtype != torch.float32 and images.dtype == torch.float32:
+        raise RuntimeError(f"Unexpected feature dtype {features.dtype}.")
+    if torch.isnan(features).any() or torch.isinf(features).any():
+        raise RuntimeError("Non-finite features.")
+    return features
 
 
 def _dataset1_forward_report(encoder: CustomCNNEncoder) -> str:
@@ -116,10 +115,10 @@ def _dataset1_forward_report(encoder: CustomCNNEncoder) -> str:
         collate_fn=collate_preprocessed_samples,
     )
     images = next(iter(loader))["image"]
-    embeddings = _forward_once(encoder.cpu(), images)
+    features = _forward_once(encoder.cpu(), images)
     return (
-        f"dataset1: ok images={tuple(images.shape)} embeddings={tuple(embeddings.shape)} "
-        f"dtype={embeddings.dtype} finite=true"
+        f"dataset1: ok images={tuple(images.shape)} features={tuple(features.shape)} "
+        f"dtype={features.dtype} finite=true"
     )
 
 
@@ -157,7 +156,7 @@ def _cuda_forward_report(encoder: CustomCNNEncoder, batch_size: int) -> str:
 def main(argv: Optional[List[str]] = None) -> int:
     logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
     args = parse_args(argv)
-    config = EncoderConfig(embedding_dim=args.embedding_dim)
+    config = EncoderConfig()
     encoder = CustomCNNEncoder(config)
     n_params = count_parameters(encoder, trainable_only=False)
     n_trainable = count_parameters(encoder, trainable_only=True)
@@ -165,8 +164,8 @@ def main(argv: Optional[List[str]] = None) -> int:
     size_mb = size_bytes / (1024 * 1024)
 
     logger.info("architecture_id=%s", ARCHITECTURE_ID)
-    logger.info("architecture=CustomCNNEncoder v1 (S2.2)")
-    logger.info("embedding_dim=%s", encoder.embedding_dim)
+    logger.info("architecture=CustomCNNEncoder v1 (S2.2 backbone; S2.3 projection on EmbeddingHead)")
+    logger.info("feature_dim=%s", encoder.feature_dim)
     logger.info("input_shape=[B, %s, %s, %s]", *config.input_shape)
     logger.info("block_channels=%s", list(config.block_channels))
     logger.info("convs_per_stage=%s", config.convs_per_stage)
@@ -185,7 +184,7 @@ def main(argv: Optional[List[str]] = None) -> int:
             "cpu batch=%s: ok shape=(%s, %s) dtype=torch.float32 finite=true time=%.2f ms",
             batch_size,
             batch_size,
-            encoder.embedding_dim,
+            encoder.feature_dim,
             cpu_time * 1000,
         )
 

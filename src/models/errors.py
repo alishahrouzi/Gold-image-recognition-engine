@@ -13,3 +13,11 @@ class EncoderConfigError(ModelError):
 
 class EncoderInputError(ModelError):
     """Raised when an encoder input tensor does not match the contract."""
+
+
+class EmbeddingHeadConfigError(ModelError):
+    """Raised when embedding-head configuration is invalid."""
+
+
+class EmbeddingHeadInputError(ModelError):
+    """Raised when an embedding-head input tensor does not match the contract."""

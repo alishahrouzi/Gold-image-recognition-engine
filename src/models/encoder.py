@@ -1,4 +1,4 @@
-"""Custom CNN v1 encoder (no pretrained weights)."""
+"""Custom CNN v1 encoder (no pretrained weights): image tensor → raw features."""
 
 from __future__ import annotations
 
@@ -15,9 +15,9 @@ ShapeTrace = List[Tuple[str, Tuple[int, ...]]]
 
 
 class CustomCNNEncoder(Encoder):
-    """From-scratch CNN v1: image tensor → unnormalized embedding.
+    """From-scratch CNN v1: image tensor → unnormalized raw feature vector.
 
-    Architecture (S2.2 Custom CNN v1)::
+    Architecture (S2.2 Custom CNN v1 backbone; S2.3 projection lives on EmbeddingHead)::
 
         Stem (Conv → BN → ReLU, no downsample)
             → Stage 1..N-1 (2× ConvBlock, then MaxPool)
@@ -25,7 +25,7 @@ class CustomCNNEncoder(Encoder):
             → AdaptiveAvgPool2d(1)
             → Flatten
             → optional dropout
-            → Linear projection to ``embedding_dim``
+            → Tensor[B, feature_dim]   (default 256)
 
     Default spatial path at 224×224 with four stages and three 2× pools:
 
@@ -36,9 +36,10 @@ class CustomCNNEncoder(Encoder):
             → 28  (stage 3, 128)
             → 28  (stage 4, 256)
             → 1×1 GAP
-            → D
+            → 256
 
-    There is no classification head, similarity head, or L2 normalization.
+    There is no classification head, similarity head, linear embedding
+    projection, or L2 normalization in this module.
     """
 
     def __init__(self, config: Optional[EncoderConfig] = None) -> None:
@@ -70,15 +71,23 @@ class CustomCNNEncoder(Encoder):
         self.flatten = nn.Flatten(1)
         dropout = self._config.projection_dropout
         self.projection_dropout = nn.Dropout(dropout) if dropout > 0.0 else nn.Identity()
-        self.projection = nn.Linear(in_channels, self._config.embedding_dim)
+
+    @property
+    def feature_dim(self) -> int:
+        return self._config.feature_dim
 
     @property
     def embedding_dim(self) -> int:
-        return self._config.embedding_dim
+        """Encoder output width (raw features). Retrieval D lives on EmbeddingHead."""
+        return self.feature_dim
 
     @property
     def config(self) -> EncoderConfig:
         return self._config
+
+    def encode_features(self, x: Tensor) -> Tensor:
+        """Image tensor → raw GAP features ``[B, feature_dim]`` (unnormalized)."""
+        return self.forward(x)
 
     def forward(self, x: Tensor) -> Tensor:
         validate_encoder_input(x, self._config)
@@ -87,7 +96,7 @@ class CustomCNNEncoder(Encoder):
             features = stage(features)
         pooled = self.pool(features)
         flat = self.flatten(pooled)
-        return self.projection(self.projection_dropout(flat))
+        return self.projection_dropout(flat)
 
 
 def count_parameters(module: nn.Module, *, trainable_only: bool = True) -> int:
@@ -108,7 +117,7 @@ def trace_encoder_shapes(
     batch_size: int = 1,
     device: Optional[torch.device] = None,
 ) -> ShapeTrace:
-    """Record tensor shapes through stem, stages, GAP, and projection."""
+    """Record tensor shapes through stem, stages, GAP, and flatten."""
     config = encoder.config
     device = device or next(encoder.parameters()).device
     images = torch.zeros(
@@ -132,8 +141,9 @@ def trace_encoder_shapes(
         flat = encoder.flatten(pooled)
         steps.append(("flatten", tuple(flat.shape)))
         dropped = encoder.projection_dropout(flat)
-        embedding = encoder.projection(dropped)
-        steps.append(("projection", tuple(embedding.shape)))
+        if not isinstance(encoder.projection_dropout, nn.Identity):
+            steps.append(("projection_dropout", tuple(dropped.shape)))
+        steps.append(("features", tuple(dropped.shape)))
     return steps
 
 
@@ -156,13 +166,7 @@ def summarize_encoder(encoder: CustomCNNEncoder) -> List[Tuple[str, str, int]]:
     rows.append(("flatten", "N/A", 0))
     if not isinstance(encoder.projection_dropout, nn.Identity):
         rows.append(("projection_dropout", "Dropout", 0))
-    rows.append(
-        (
-            "projection",
-            f"Linear -> {encoder.embedding_dim}",
-            count_parameters(encoder.projection, trainable_only=False),
-        )
-    )
+    rows.append(("features", f"raw GAP vector [{encoder.feature_dim}]", 0))
     return rows
 
 
