@@ -7,6 +7,10 @@ import pytest
 from models import (
     ARCHITECTURE_ID,
     ARCHITECTURE_POLICY,
+    EMBEDDING_HEAD_POLICY,
+    SUPPORTED_EMBEDDING_DIMS,
+    EmbeddingHeadConfig,
+    EmbeddingHeadConfigError,
     EncoderConfig,
     EncoderConfigError,
 )
@@ -38,6 +42,7 @@ def test_default_config() -> None:
     assert config.projection_dropout == 0.0
     assert config.input_shape == (3, 224, 224)
     assert config.number_of_stages == 4
+    assert config.feature_dim == 256
     assert DEFAULT_EMBEDDING_DIM == 128
 
 
@@ -103,6 +108,38 @@ def test_as_loggable_dict() -> None:
     assert payload["architecture_id"] == "custom-cnn-v1"
     assert payload["policy"] == "s2.2-custom-cnn-v1"
     assert payload["block_channels"] == [32, 64, 128, 256]
+    assert payload["feature_dim"] == 256
     assert payload["number_of_stages"] == 4
     assert payload["activation"] == "relu"
     assert payload["normalization"] == "batch"
+
+
+def test_embedding_head_config_accepts_supported_dims() -> None:
+    for dim in SUPPORTED_EMBEDDING_DIMS:
+        config = EmbeddingHeadConfig(embedding_dim=dim)
+        assert config.embedding_dim == dim
+        assert config.feature_dim == 256
+        assert config.l2_eps > 0
+        payload = config.as_loggable_dict()
+        assert payload["policy"] == EMBEDDING_HEAD_POLICY
+        assert payload["embedding_dim"] == dim
+
+
+def test_embedding_head_config_rejects_invalid_dims() -> None:
+    for dim in (0, -1, 64, 127, 512, 1024):
+        with pytest.raises(EmbeddingHeadConfigError):
+            EmbeddingHeadConfig(embedding_dim=dim)
+    with pytest.raises(EmbeddingHeadConfigError):
+        EmbeddingHeadConfig(feature_dim=0)
+    with pytest.raises(EmbeddingHeadConfigError):
+        EmbeddingHeadConfig(feature_dim=-8)
+    with pytest.raises(EmbeddingHeadConfigError):
+        EmbeddingHeadConfig(l2_eps=0.0)
+    with pytest.raises(EmbeddingHeadConfigError):
+        EmbeddingHeadConfig(l2_eps=-1e-6)
+    with pytest.raises(EmbeddingHeadConfigError):
+        EmbeddingHeadConfig(l2_eps=float("inf"))
+    with pytest.raises(EmbeddingHeadConfigError):
+        EmbeddingHeadConfig(embedding_dim=True)  # type: ignore[arg-type]
+    with pytest.raises(EmbeddingHeadConfigError):
+        EmbeddingHeadConfig(feature_dim="256")  # type: ignore[arg-type]

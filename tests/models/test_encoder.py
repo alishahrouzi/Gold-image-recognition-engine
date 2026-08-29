@@ -37,7 +37,9 @@ def test_encoder_instantiates() -> None:
     encoder = CustomCNNEncoder()
     assert isinstance(encoder, Encoder)
     assert isinstance(encoder, torch.nn.Module)
-    assert encoder.embedding_dim == EncoderConfig().embedding_dim
+    assert encoder.feature_dim == 256
+    assert encoder.embedding_dim == encoder.feature_dim
+    assert encoder.config.feature_dim == 256
 
 
 def test_forward_output_shape_and_dtype() -> None:
@@ -58,12 +60,14 @@ def test_batch_dimension_preserved() -> None:
     assert embeddings.shape[0] == images.shape[0]
 
 
-@pytest.mark.parametrize("embedding_dim", [64, 128, 256])
-def test_configurable_embedding_dimension(embedding_dim: int) -> None:
-    encoder = CustomCNNEncoder(EncoderConfig(embedding_dim=embedding_dim))
-    embeddings = encoder(_random_batch(4, encoder.config))
-    assert embeddings.shape == (4, embedding_dim)
-    assert encoder.embedding_dim == embedding_dim
+@pytest.mark.parametrize("unused_encoder_embedding_dim", [64, 128, 256])
+def test_encoder_output_is_raw_feature_dim(unused_encoder_embedding_dim: int) -> None:
+    """S2.3: CNN no longer projects to EncoderConfig.embedding_dim."""
+    encoder = CustomCNNEncoder(EncoderConfig(embedding_dim=unused_encoder_embedding_dim))
+    features = encoder(_random_batch(4, encoder.config))
+    assert features.shape == (4, encoder.feature_dim)
+    assert encoder.feature_dim == 256
+    assert encoder.embedding_dim == 256
 
 
 def test_cpu_execution() -> None:
@@ -156,11 +160,12 @@ def test_does_not_modify_input_inplace() -> None:
     assert torch.equal(images, original)
 
 
-def test_encode_alias_matches_forward() -> None:
+def test_encode_features_matches_forward() -> None:
     encoder = CustomCNNEncoder()
     encoder.eval()
     images = _random_batch(2)
     with torch.no_grad():
+        assert torch.equal(encoder.encode_features(images), encoder.forward(images))
         assert torch.equal(encoder.encode(images), encoder.forward(images))
 
 
@@ -181,17 +186,19 @@ def test_default_spatial_shape_trace() -> None:
     assert trace["stage_4"] == (2, 256, 28, 28)
     assert trace["global_average_pool"] == (2, 256, 1, 1)
     assert trace["flatten"] == (2, 256)
-    assert trace["projection"] == (2, 128)
+    assert trace["features"] == (2, 256)
+    assert "projection" not in trace
 
 
-def test_programmatic_summary_includes_gap_and_projection() -> None:
+def test_programmatic_summary_includes_gap_and_features() -> None:
     encoder = CustomCNNEncoder()
     names = [name for name, _role, _params in summarize_encoder(encoder)]
     assert names[0] == "stem"
     assert "stage_1" in names
     assert "stage_4" in names
     assert "global_average_pool" in names
-    assert "projection" in names
+    assert "features" in names
+    assert "projection" not in names
     text = format_encoder_summary(encoder)
     assert "Input Shape" in text
     assert "Output Shape" in text
@@ -205,8 +212,7 @@ def test_no_classification_head() -> None:
     forbidden = (torch.nn.Softmax, torch.nn.LogSoftmax, torch.nn.CrossEntropyLoss)
     assert not any(isinstance(module, forbidden) for module in encoder.modules())
     linear_layers = [module for module in encoder.modules() if isinstance(module, torch.nn.Linear)]
-    assert len(linear_layers) == 1
-    assert linear_layers[0].out_features == encoder.embedding_dim
+    assert linear_layers == []
 
 
 def test_embeddings_are_unnormalized() -> None:
@@ -228,8 +234,9 @@ def test_configurable_activation_forward(activation: str) -> None:
 def test_stage_count_follows_block_channels() -> None:
     encoder = CustomCNNEncoder(EncoderConfig(block_channels=(16, 32, 64)))
     assert len(encoder.stages) == 3
-    embeddings = encoder(_random_batch(2, encoder.config))
-    assert embeddings.shape == (2, 128)
+    features = encoder(_random_batch(2, encoder.config))
+    assert encoder.feature_dim == 64
+    assert features.shape == (2, 64)
 
 
 def test_global_average_pooling_present() -> None:

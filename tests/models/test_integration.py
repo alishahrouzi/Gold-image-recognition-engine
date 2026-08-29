@@ -11,7 +11,7 @@ from data.collate import collate_preprocessed_samples
 from data.constants import CATEGORY_TO_ID, SOURCE_DATASET1
 from data.datasets.unified_dataset import UnifiedDataset
 from data.preprocessing import ImagePreprocessor, PreprocessedDataset
-from models import CustomCNNEncoder
+from models import CustomCNNEncoder, EmbeddingHead, EncoderWithEmbeddingHead
 from tests.data.helpers import write_manifest, write_rgb_image
 
 
@@ -47,9 +47,18 @@ def test_encoder_accepts_preprocessed_dataloader_batch(tmp_path: Path) -> None:
     assert images.dtype == torch.float32
 
     encoder = CustomCNNEncoder()
-    embeddings = encoder(images)
-    assert embeddings.shape == (4, encoder.embedding_dim)
-    assert embeddings.dtype == torch.float32
+    features = encoder(images)
+    assert features.shape == (4, encoder.feature_dim)
+    assert encoder.feature_dim == 256
+    assert features.dtype == torch.float32
     # Metadata stays on the batch; the encoder never consumes it.
     assert "group_id" in batch
     assert "category_id" in batch
+
+    head = EmbeddingHead(embedding_dim=128)
+    model = EncoderWithEmbeddingHead(encoder, head)
+    embeddings = model(images)
+    assert embeddings.shape == (4, 128)
+    assert torch.isfinite(embeddings).all()
+    norms = torch.linalg.vector_norm(embeddings, ord=2, dim=1)
+    assert torch.allclose(norms, torch.ones_like(norms), atol=1e-5)
