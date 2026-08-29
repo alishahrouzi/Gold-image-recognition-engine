@@ -236,6 +236,91 @@ Valid / test / query / gallery must log augmentation as disabled / unused.
 
 ---
 
-Dataset Version:
-Model Version:
-Evaluation Protocol Version: 
+## S2.2 — Architecture / Model Definition (not a training experiment)
+
+This entry records Custom CNN v1. It is **not** a trained-model
+evaluation. Do not read the checks below as Top-1 / Recall@K / MRR.
+
+### Status
+
+- Status: `ACCEPTED` as the S2.2 architecture definition
+- Date: 2026-08-29
+- Architecture ID: `custom-cnn-v1`
+- Policy: `s2.2-custom-cnn-v1`
+
+### Configuration
+
+```
+input: [B, 3, 224, 224]
+embedding_dim: 128
+block_channels: [32, 64, 128, 256]
+number_of_stages: 4
+convs_per_stage: 2
+kernel_size: 3
+activation: relu
+normalization: batch
+downsample: max_pool (stages 1–3 only; stem and stage 4 do not pool)
+projection_dropout: 0.0
+l2_normalize: false (encoder boundary)
+pretrained_weights: none
+```
+
+### Architecture
+
+```
+Stem (3→32, no pool)
+  → Stage1 (32→32, MaxPool)
+  → Stage2 (32→64, MaxPool)
+  → Stage3 (64→128, MaxPool)
+  → Stage4 (128→256, no pool)
+  → AdaptiveAvgPool2d(1)
+  → Linear 256→128
+```
+
+Spatial trace: 224 → 224 → 112 → 56 → 28 → 28 → 1×1 → D
+
+Parameter count (float32, untrained):
+
+- total: 1,215,392
+- trainable: 1,215,392
+- parameter bytes: 4,861,568 (~4.64 MiB)
+
+### Dataset used for smoke / integration
+
+Dataset 1 only (`dataset1_manifest.csv` → UnifiedDataset →
+PreprocessedDataset → DataLoader → `batch["image"]` → encoder).
+No training. Dataset 2 unused.
+
+### Validation result
+
+Architecture / contract validation only (2026-08-29, GTX 1650 4 GB):
+
+- CPU forward smoke: batch 1 / 8 / 16 / 32, finite embeddings
+  - batch 1: ~85 ms
+  - batch 8: ~608 ms
+  - batch 16: ~1259 ms
+  - batch 32: ~2659 ms
+- CUDA forward smoke (GTX 1650): batch 1 / 8 / 16 / 32 succeeded (forward-only)
+  - batch 1: ~4.6 ms, peak allocated 37.85 MiB, reserved 46.00 MiB
+  - batch 8: ~30 ms, peak allocated 217.37 MiB, reserved 312.00 MiB
+  - batch 16: ~57 ms, peak allocated 413.97 MiB, reserved 1092.00 MiB
+  - batch 32: ~109 ms, peak allocated 815.15 MiB, reserved 2454.00 MiB
+- Dataset 1 integration: `images=(4, 3, 224, 224)` → `embeddings=(4, 128)`, finite
+
+These CUDA numbers are **not** a training batch-size decision.
+Training will add activations, gradients, optimizer state, and loss.
+
+No retrieval metrics. No training loss. No accuracy.
+
+### Decision
+
+ACCEPT as the Custom CNN v1 backbone for later S2.3 embedding-head
+and training tasks. Default embedding width stays 128 until a trained
+retrieval experiment justifies a change.
+
+---
+
+Dataset Version: Dataset 1 cleaned baseline (4969 images / 2135 groups)
+Model Version: custom-cnn-v1 (architecture only; untrained)
+Evaluation Protocol Version: not applicable (no retrieval evaluation)
+ 
