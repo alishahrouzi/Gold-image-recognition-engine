@@ -1,4 +1,4 @@
-"""Custom CNN encoder and S2.3 embedding head.
+"""Custom CNN encoder, embedding head, and S2.4 forward-pass validation.
 
 Preprocessed image tensor → raw features → L2-normalized embedding.
 No training loop, loss, similarity, ranking, or pretrained backbones.
@@ -37,7 +37,24 @@ from .errors import (
     EmbeddingHeadInputError,
     EncoderConfigError,
     EncoderInputError,
+    ForwardPassValidationError,
     ModelError,
+)
+from .forward_pass import (
+    ENCODER_FEATURE_DIM,
+    EXPECTED_IMAGE_SHAPE,
+    L2_ATOL,
+    REQUIRED_BATCH_SIZES,
+    collect_l2_stats,
+    collect_tensor_stats,
+    dataset1_available,
+    detect_device,
+    load_dataset1_image_batch,
+    preprocessed_images_from_preprocessor,
+    run_forward_pass,
+    validate_embeddings,
+    validate_encoder_features,
+    validate_input_tensor,
 )
 from .interfaces import Encoder, validate_embedding_head_input, validate_encoder_input
 
@@ -67,7 +84,22 @@ __all__ = [
     "EncoderConfigError",
     "EncoderInputError",
     "EncoderWithEmbeddingHead",
+    "ENCODER_FEATURE_DIM",
+    "EXPECTED_IMAGE_SHAPE",
+    "ForwardPassValidationError",
+    "L2_ATOL",
     "ModelError",
+    "REQUIRED_BATCH_SIZES",
+    "collect_l2_stats",
+    "collect_tensor_stats",
+    "dataset1_available",
+    "detect_device",
+    "load_dataset1_image_batch",
+    "preprocessed_images_from_preprocessor",
+    "run_forward_pass",
+    "validate_embeddings",
+    "validate_encoder_features",
+    "validate_input_tensor",
     "count_parameters",
     "estimate_parameter_bytes",
     "format_encoder_summary",

@@ -21,3 +21,7 @@ class EmbeddingHeadConfigError(ModelError):
 
 class EmbeddingHeadInputError(ModelError):
     """Raised when an embedding-head input tensor does not match the contract."""
+
+
+class ForwardPassValidationError(ModelError):
+    """Raised when S2.4 forward-pass validation fails."""
