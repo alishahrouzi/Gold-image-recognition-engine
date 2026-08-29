@@ -1,0 +1,3428 @@
+{
+  "milestone": "S2.4",
+  "status": "PASS",
+  "l2_atol": 1e-05,
+  "hardware": {
+    "python": "3.12.10",
+    "pytorch": "2.6.0+cu124",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "cuda_available": true,
+    "cuda_version": "12.4",
+    "gpu_name": "NVIDIA GeForce GTX 1650",
+    "vram_total_mib": 4095.6875,
+    "detected_device": "cuda"
+  },
+  "required_batch_sizes": [
+    1,
+    8,
+    32
+  ],
+  "embedding_dims": [
+    128,
+    256
+  ],
+  "notes": [
+    "Forward-pass validation only. No training, loss, optimizer, or retrieval.",
+    "Raw encoder features are not L2-normalized; embeddings are L2-normalized.",
+    "Neither 128-D nor 256-D is declared the retrieval winner.",
+    "Dataset 2 unused. Manifest and source images were not modified.",
+    "CUDA absence is not a model failure; CUDA rows are omitted when unavailable."
+  ],
+  "warnings": [],
+  "failure_count": 0,
+  "run_count": 64,
+  "runs": [
+    {
+      "device": "cpu",
+      "batch_size": 1,
+      "embedding_dim": 128,
+      "split": "preprocessor",
+      "sample_count": 1,
+      "source": "image_preprocessor",
+      "passed": true,
+      "failures": [],
+      "input": {
+        "shape": [
+          1,
+          3,
+          224,
+          224
+        ],
+        "dtype": "torch.float32",
+        "min": -1.9124069213867188,
+        "max": -0.23581691086292267,
+        "mean": -1.1612192392349243,
+        "std": 0.6954622268676758
+      },
+      "encoder_features": {
+        "shape": [
+          1,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 0.0011689477832987905,
+        "mean": 0.0002002608380280435,
+        "std": 0.0002840304805431515,
+        "has_nan": false,
+        "has_inf": false
+      },
+      "embedding": {
+        "shape": [
+          1,
+          128
+        ],
+        "dtype": "torch.float32",
+        "min": -0.14976908266544342,
+        "max": 0.15100397169589996,
+        "mean": -0.005605265498161316,
+        "std": 0.08821044117212296,
+        "has_nan": false,
+        "has_inf": false,
+        "l2_norm_min": 1.0000001192092896,
+        "l2_norm_max": 1.0000001192092896,
+        "l2_norm_mean": 1.0000001192092896,
+        "max_l2_error": 1.1920928955078125e-07
+      }
+    },
+    {
+      "device": "cpu",
+      "batch_size": 1,
+      "embedding_dim": 256,
+      "split": "preprocessor",
+      "sample_count": 1,
+      "source": "image_preprocessor",
+      "passed": true,
+      "failures": [],
+      "input": {
+        "shape": [
+          1,
+          3,
+          224,
+          224
+        ],
+        "dtype": "torch.float32",
+        "min": -1.9124069213867188,
+        "max": -0.23581691086292267,
+        "mean": -1.1612192392349243,
+        "std": 0.6954622268676758
+      },
+      "encoder_features": {
+        "shape": [
+          1,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 0.0011689477832987905,
+        "mean": 0.0002002608380280435,
+        "std": 0.0002840304805431515,
+        "has_nan": false,
+        "has_inf": false
+      },
+      "embedding": {
+        "shape": [
+          1,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": -0.10829171538352966,
+        "max": 0.1082197055220604,
+        "mean": -0.0018294225446879864,
+        "std": 0.06247321888804436,
+        "has_nan": false,
+        "has_inf": false,
+        "l2_norm_min": 1.0,
+        "l2_norm_max": 1.0,
+        "l2_norm_mean": 1.0,
+        "max_l2_error": 0.0
+      }
+    },
+    {
+      "device": "cpu",
+      "batch_size": 8,
+      "embedding_dim": 128,
+      "split": "preprocessor",
+      "sample_count": 8,
+      "source": "image_preprocessor",
+      "passed": true,
+      "failures": [],
+      "input": {
+        "shape": [
+          8,
+          3,
+          224,
+          224
+        ],
+        "dtype": "torch.float32",
+        "min": -1.9124069213867188,
+        "max": -0.23581691086292267,
+        "mean": -1.1612192392349243,
+        "std": 0.6954622268676758
+      },
+      "encoder_features": {
+        "shape": [
+          8,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 0.0011689477832987905,
+        "mean": 0.0002002608380280435,
+        "std": 0.0002840304805431515,
+        "has_nan": false,
+        "has_inf": false
+      },
+      "embedding": {
+        "shape": [
+          8,
+          128
+        ],
+        "dtype": "torch.float32",
+        "min": -0.14976908266544342,
+        "max": 0.15100397169589996,
+        "mean": -0.005605264566838741,
+        "std": 0.08821044117212296,
+        "has_nan": false,
+        "has_inf": false,
+        "l2_norm_min": 1.0000001192092896,
+        "l2_norm_max": 1.0000001192092896,
+        "l2_norm_mean": 1.0000001192092896,
+        "max_l2_error": 1.1920928955078125e-07
+      }
+    },
+    {
+      "device": "cpu",
+      "batch_size": 8,
+      "embedding_dim": 256,
+      "split": "preprocessor",
+      "sample_count": 8,
+      "source": "image_preprocessor",
+      "passed": true,
+      "failures": [],
+      "input": {
+        "shape": [
+          8,
+          3,
+          224,
+          224
+        ],
+        "dtype": "torch.float32",
+        "min": -1.9124069213867188,
+        "max": -0.23581691086292267,
+        "mean": -1.1612192392349243,
+        "std": 0.6954622268676758
+      },
+      "encoder_features": {
+        "shape": [
+          8,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 0.0011689477832987905,
+        "mean": 0.0002002608380280435,
+        "std": 0.0002840304805431515,
+        "has_nan": false,
+        "has_inf": false
+      },
+      "embedding": {
+        "shape": [
+          8,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": -0.10829171538352966,
+        "max": 0.1082197055220604,
+        "mean": -0.001829422079026699,
+        "std": 0.06247321888804436,
+        "has_nan": false,
+        "has_inf": false,
+        "l2_norm_min": 1.0,
+        "l2_norm_max": 1.0,
+        "l2_norm_mean": 1.0,
+        "max_l2_error": 0.0
+      }
+    },
+    {
+      "device": "cpu",
+      "batch_size": 32,
+      "embedding_dim": 128,
+      "split": "preprocessor",
+      "sample_count": 32,
+      "source": "image_preprocessor",
+      "passed": true,
+      "failures": [],
+      "input": {
+        "shape": [
+          32,
+          3,
+          224,
+          224
+        ],
+        "dtype": "torch.float32",
+        "min": -1.9124069213867188,
+        "max": -0.23581691086292267,
+        "mean": -1.1612192392349243,
+        "std": 0.6954622268676758
+      },
+      "encoder_features": {
+        "shape": [
+          32,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 0.0011689477832987905,
+        "mean": 0.00020026082347612828,
+        "std": 0.0002840304805431515,
+        "has_nan": false,
+        "has_inf": false
+      },
+      "embedding": {
+        "shape": [
+          32,
+          128
+        ],
+        "dtype": "torch.float32",
+        "min": -0.14976908266544342,
+        "max": 0.15100397169589996,
+        "mean": -0.005605266895145178,
+        "std": 0.08821044117212296,
+        "has_nan": false,
+        "has_inf": false,
+        "l2_norm_min": 1.0000001192092896,
+        "l2_norm_max": 1.0000001192092896,
+        "l2_norm_mean": 1.0000001192092896,
+        "max_l2_error": 1.1920928955078125e-07
+      }
+    },
+    {
+      "device": "cpu",
+      "batch_size": 32,
+      "embedding_dim": 256,
+      "split": "preprocessor",
+      "sample_count": 32,
+      "source": "image_preprocessor",
+      "passed": true,
+      "failures": [],
+      "input": {
+        "shape": [
+          32,
+          3,
+          224,
+          224
+        ],
+        "dtype": "torch.float32",
+        "min": -1.9124069213867188,
+        "max": -0.23581691086292267,
+        "mean": -1.1612192392349243,
+        "std": 0.6954622268676758
+      },
+      "encoder_features": {
+        "shape": [
+          32,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 0.0011689477832987905,
+        "mean": 0.00020026082347612828,
+        "std": 0.0002840304805431515,
+        "has_nan": false,
+        "has_inf": false
+      },
+      "embedding": {
+        "shape": [
+          32,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": -0.10829171538352966,
+        "max": 0.1082197055220604,
+        "mean": -0.0018294216133654118,
+        "std": 0.06247321888804436,
+        "has_nan": false,
+        "has_inf": false,
+        "l2_norm_min": 1.0,
+        "l2_norm_max": 1.0,
+        "l2_norm_mean": 1.0,
+        "max_l2_error": 0.0
+      }
+    },
+    {
+      "device": "cpu",
+      "batch_size": 8,
+      "embedding_dim": 128,
+      "split": "edge_zero",
+      "sample_count": 8,
+      "source": "synthetic_finite",
+      "passed": true,
+      "failures": [],
+      "input": {
+        "shape": [
+          8,
+          3,
+          224,
+          224
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 0.0,
+        "mean": 0.0,
+        "std": 0.0
+      },
+      "encoder_features": {
+        "shape": [
+          8,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 0.0,
+        "mean": 0.0,
+        "std": 0.0,
+        "has_nan": false,
+        "has_inf": false
+      },
+      "embedding": {
+        "shape": [
+          8,
+          128
+        ],
+        "dtype": "torch.float32",
+        "min": -0.14914071559906006,
+        "max": 0.1507943719625473,
+        "mean": -0.00560260284692049,
+        "std": 0.08821060508489609,
+        "has_nan": false,
+        "has_inf": false,
+        "l2_norm_min": 1.0,
+        "l2_norm_max": 1.0,
+        "l2_norm_mean": 1.0,
+        "max_l2_error": 0.0
+      }
+    },
+    {
+      "device": "cpu",
+      "batch_size": 8,
+      "embedding_dim": 256,
+      "split": "edge_zero",
+      "sample_count": 8,
+      "source": "synthetic_finite",
+      "passed": true,
+      "failures": [],
+      "input": {
+        "shape": [
+          8,
+          3,
+          224,
+          224
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 0.0,
+        "mean": 0.0,
+        "std": 0.0
+      },
+      "encoder_features": {
+        "shape": [
+          8,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 0.0,
+        "mean": 0.0,
+        "std": 0.0,
+        "has_nan": false,
+        "has_inf": false
+      },
+      "embedding": {
+        "shape": [
+          8,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": -0.10820471495389938,
+        "max": 0.10786508768796921,
+        "mean": -0.0017916916403919458,
+        "std": 0.062474314123392105,
+        "has_nan": false,
+        "has_inf": false,
+        "l2_norm_min": 1.0,
+        "l2_norm_max": 1.0,
+        "l2_norm_mean": 1.0,
+        "max_l2_error": 0.0
+      }
+    },
+    {
+      "device": "cpu",
+      "batch_size": 8,
+      "embedding_dim": 128,
+      "split": "edge_constant",
+      "sample_count": 8,
+      "source": "synthetic_finite",
+      "passed": true,
+      "failures": [],
+      "input": {
+        "shape": [
+          8,
+          3,
+          224,
+          224
+        ],
+        "dtype": "torch.float32",
+        "min": 0.25,
+        "max": 0.25,
+        "mean": 0.25,
+        "std": 0.0
+      },
+      "encoder_features": {
+        "shape": [
+          8,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 0.0002271946577820927,
+        "mean": 3.3021886338246986e-05,
+        "std": 4.7563684347551316e-05,
+        "has_nan": false,
+        "has_inf": false
+      },
+      "embedding": {
+        "shape": [
+          8,
+          128
+        ],
+        "dtype": "torch.float32",
+        "min": -0.1491985023021698,
+        "max": 0.15087668597698212,
+        "mean": -0.005600404925644398,
+        "std": 0.08821073919534683,
+        "has_nan": false,
+        "has_inf": false,
+        "l2_norm_min": 0.9999999403953552,
+        "l2_norm_max": 0.9999999403953552,
+        "l2_norm_mean": 0.9999999403953552,
+        "max_l2_error": 5.960464477539063e-08
+      }
+    },
+    {
+      "device": "cpu",
+      "batch_size": 8,
+      "embedding_dim": 256,
+      "split": "edge_constant",
+      "sample_count": 8,
+      "source": "synthetic_finite",
+      "passed": true,
+      "failures": [],
+      "input": {
+        "shape": [
+          8,
+          3,
+          224,
+          224
+        ],
+        "dtype": "torch.float32",
+        "min": 0.25,
+        "max": 0.25,
+        "mean": 0.25,
+        "std": 0.0
+      },
+      "encoder_features": {
+        "shape": [
+          8,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 0.0002271946577820927,
+        "mean": 3.3021886338246986e-05,
+        "std": 4.7563684347551316e-05,
+        "has_nan": false,
+        "has_inf": false
+      },
+      "embedding": {
+        "shape": [
+          8,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": -0.10819370299577713,
+        "max": 0.10785223543643951,
+        "mean": -0.0017969629261642694,
+        "std": 0.06247415766119957,
+        "has_nan": false,
+        "has_inf": false,
+        "l2_norm_min": 0.9999998807907104,
+        "l2_norm_max": 0.9999998807907104,
+        "l2_norm_mean": 0.9999999403953552,
+        "max_l2_error": 1.1920928955078125e-07
+      }
+    },
+    {
+      "device": "cpu",
+      "batch_size": 8,
+      "embedding_dim": 128,
+      "split": "edge_tiny",
+      "sample_count": 8,
+      "source": "synthetic_finite",
+      "passed": true,
+      "failures": [],
+      "input": {
+        "shape": [
+          8,
+          3,
+          224,
+          224
+        ],
+        "dtype": "torch.float32",
+        "min": -4.813769174938365e-12,
+        "max": 4.938091602291195e-12,
+        "mean": -8.066105762476346e-16,
+        "std": 1.0012620073329703e-12
+      },
+      "encoder_features": {
+        "shape": [
+          8,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 2.240311512962268e-15,
+        "mean": 3.6287632614203074e-16,
+        "std": 5.272895504897083e-16,
+        "has_nan": false,
+        "has_inf": false
+      },
+      "embedding": {
+        "shape": [
+          8,
+          128
+        ],
+        "dtype": "torch.float32",
+        "min": -0.14914071559906006,
+        "max": 0.1507943719625473,
+        "mean": -0.00560260284692049,
+        "std": 0.08821060508489609,
+        "has_nan": false,
+        "has_inf": false,
+        "l2_norm_min": 1.0,
+        "l2_norm_max": 1.0,
+        "l2_norm_mean": 1.0,
+        "max_l2_error": 0.0
+      }
+    },
+    {
+      "device": "cpu",
+      "batch_size": 8,
+      "embedding_dim": 256,
+      "split": "edge_tiny",
+      "sample_count": 8,
+      "source": "synthetic_finite",
+      "passed": true,
+      "failures": [],
+      "input": {
+        "shape": [
+          8,
+          3,
+          224,
+          224
+        ],
+        "dtype": "torch.float32",
+        "min": -4.813769174938365e-12,
+        "max": 4.938091602291195e-12,
+        "mean": -8.066105762476346e-16,
+        "std": 1.0012620073329703e-12
+      },
+      "encoder_features": {
+        "shape": [
+          8,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 2.240311512962268e-15,
+        "mean": 3.6287632614203074e-16,
+        "std": 5.272895504897083e-16,
+        "has_nan": false,
+        "has_inf": false
+      },
+      "embedding": {
+        "shape": [
+          8,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": -0.10820471495389938,
+        "max": 0.10786508768796921,
+        "mean": -0.0017916916403919458,
+        "std": 0.062474314123392105,
+        "has_nan": false,
+        "has_inf": false,
+        "l2_norm_min": 1.0,
+        "l2_norm_max": 1.0,
+        "l2_norm_mean": 1.0,
+        "max_l2_error": 0.0
+      }
+    },
+    {
+      "device": "cpu",
+      "batch_size": 64,
+      "embedding_dim": 128,
+      "split": "preprocessor",
+      "sample_count": 64,
+      "source": "image_preprocessor_optional_b64",
+      "passed": true,
+      "failures": [],
+      "input": {
+        "shape": [
+          64,
+          3,
+          224,
+          224
+        ],
+        "dtype": "torch.float32",
+        "min": -1.9124069213867188,
+        "max": -0.23581691086292267,
+        "mean": -1.1612192392349243,
+        "std": 0.6954622268676758
+      },
+      "encoder_features": {
+        "shape": [
+          64,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 0.0011689477832987905,
+        "mean": 0.00020026082347612828,
+        "std": 0.0002840304805431515,
+        "has_nan": false,
+        "has_inf": false
+      },
+      "embedding": {
+        "shape": [
+          64,
+          128
+        ],
+        "dtype": "torch.float32",
+        "min": -0.14976908266544342,
+        "max": 0.15100397169589996,
+        "mean": -0.005605265032500029,
+        "std": 0.08821044117212296,
+        "has_nan": false,
+        "has_inf": false,
+        "l2_norm_min": 1.0000001192092896,
+        "l2_norm_max": 1.0000001192092896,
+        "l2_norm_mean": 1.0000001192092896,
+        "max_l2_error": 1.1920928955078125e-07
+      }
+    },
+    {
+      "device": "cpu",
+      "batch_size": 64,
+      "embedding_dim": 256,
+      "split": "preprocessor",
+      "sample_count": 64,
+      "source": "image_preprocessor_optional_b64",
+      "passed": true,
+      "failures": [],
+      "input": {
+        "shape": [
+          64,
+          3,
+          224,
+          224
+        ],
+        "dtype": "torch.float32",
+        "min": -1.9124069213867188,
+        "max": -0.23581691086292267,
+        "mean": -1.1612192392349243,
+        "std": 0.6954622268676758
+      },
+      "encoder_features": {
+        "shape": [
+          64,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 0.0011689477832987905,
+        "mean": 0.00020026082347612828,
+        "std": 0.0002840304805431515,
+        "has_nan": false,
+        "has_inf": false
+      },
+      "embedding": {
+        "shape": [
+          64,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": -0.10829171538352966,
+        "max": 0.1082197055220604,
+        "mean": -0.0018294216133654118,
+        "std": 0.06247321888804436,
+        "has_nan": false,
+        "has_inf": false,
+        "l2_norm_min": 1.0,
+        "l2_norm_max": 1.0,
+        "l2_norm_mean": 1.0,
+        "max_l2_error": 0.0
+      }
+    },
+    {
+      "device": "cpu",
+      "batch_size": 1,
+      "embedding_dim": 128,
+      "split": "train",
+      "sample_count": 1,
+      "source": "dataset1",
+      "passed": true,
+      "failures": [],
+      "input": {
+        "shape": [
+          1,
+          3,
+          224,
+          224
+        ],
+        "dtype": "torch.float32",
+        "min": -1.7925336360931396,
+        "max": 2.552854299545288,
+        "mean": 0.6490269303321838,
+        "std": 1.057819128036499
+      },
+      "encoder_features": {
+        "shape": [
+          1,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 0.0014926885487511754,
+        "mean": 0.00022845965577289462,
+        "std": 0.0003082579933106899,
+        "has_nan": false,
+        "has_inf": false
+      },
+      "embedding": {
+        "shape": [
+          1,
+          128
+        ],
+        "dtype": "torch.float32",
+        "min": -0.14968447387218475,
+        "max": 0.15127377212047577,
+        "mean": -0.005583073478192091,
+        "std": 0.08821184188127518,
+        "has_nan": false,
+        "has_inf": false,
+        "l2_norm_min": 1.0,
+        "l2_norm_max": 1.0,
+        "l2_norm_mean": 1.0,
+        "max_l2_error": 0.0
+      }
+    },
+    {
+      "device": "cpu",
+      "batch_size": 1,
+      "embedding_dim": 256,
+      "split": "train",
+      "sample_count": 1,
+      "source": "dataset1",
+      "passed": true,
+      "failures": [],
+      "input": {
+        "shape": [
+          1,
+          3,
+          224,
+          224
+        ],
+        "dtype": "torch.float32",
+        "min": -1.7925336360931396,
+        "max": 2.552854299545288,
+        "mean": 0.6490269303321838,
+        "std": 1.057819128036499
+      },
+      "encoder_features": {
+        "shape": [
+          1,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 0.0014926885487511754,
+        "mean": 0.00022845965577289462,
+        "std": 0.0003082579933106899,
+        "has_nan": false,
+        "has_inf": false
+      },
+      "embedding": {
+        "shape": [
+          1,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": -0.10843268036842346,
+        "max": 0.10780303925275803,
+        "mean": -0.0018304178956896067,
+        "std": 0.06247319281101227,
+        "has_nan": false,
+        "has_inf": false,
+        "l2_norm_min": 0.9999999403953552,
+        "l2_norm_max": 0.9999999403953552,
+        "l2_norm_mean": 0.9999999403953552,
+        "max_l2_error": 5.960464477539063e-08
+      }
+    },
+    {
+      "device": "cpu",
+      "batch_size": 8,
+      "embedding_dim": 128,
+      "split": "train",
+      "sample_count": 8,
+      "source": "dataset1",
+      "passed": true,
+      "failures": [],
+      "input": {
+        "shape": [
+          8,
+          3,
+          224,
+          224
+        ],
+        "dtype": "torch.float32",
+        "min": -2.0665297508239746,
+        "max": 2.640000104904175,
+        "mean": 1.0087096691131592,
+        "std": 1.1502974033355713
+      },
+      "encoder_features": {
+        "shape": [
+          8,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 0.0022768478374928236,
+        "mean": 0.00025937912869267166,
+        "std": 0.0003715200291480869,
+        "has_nan": false,
+        "has_inf": false
+      },
+      "embedding": {
+        "shape": [
+          8,
+          128
+        ],
+        "dtype": "torch.float32",
+        "min": -0.1498134285211563,
+        "max": 0.15162351727485657,
+        "mean": -0.005579914432018995,
+        "std": 0.0882120430469513,
+        "has_nan": false,
+        "has_inf": false,
+        "l2_norm_min": 1.0,
+        "l2_norm_max": 1.0,
+        "l2_norm_mean": 1.0,
+        "max_l2_error": 0.0
+      }
+    },
+    {
+      "device": "cpu",
+      "batch_size": 8,
+      "embedding_dim": 256,
+      "split": "train",
+      "sample_count": 8,
+      "source": "dataset1",
+      "passed": true,
+      "failures": [],
+      "input": {
+        "shape": [
+          8,
+          3,
+          224,
+          224
+        ],
+        "dtype": "torch.float32",
+        "min": -2.0665297508239746,
+        "max": 2.640000104904175,
+        "mean": 1.0087096691131592,
+        "std": 1.1502974033355713
+      },
+      "encoder_features": {
+        "shape": [
+          8,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 0.0022768478374928236,
+        "mean": 0.00025937912869267166,
+        "std": 0.0003715200291480869,
+        "has_nan": false,
+        "has_inf": false
+      },
+      "embedding": {
+        "shape": [
+          8,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": -0.10854767262935638,
+        "max": 0.10785890370607376,
+        "mean": -0.0018356817308813334,
+        "std": 0.06247303634881973,
+        "has_nan": false,
+        "has_inf": false,
+        "l2_norm_min": 0.9999998807907104,
+        "l2_norm_max": 1.0,
+        "l2_norm_mean": 1.0,
+        "max_l2_error": 1.1920928955078125e-07
+      }
+    },
+    {
+      "device": "cpu",
+      "batch_size": 32,
+      "embedding_dim": 128,
+      "split": "train",
+      "sample_count": 32,
+      "source": "dataset1",
+      "passed": true,
+      "failures": [],
+      "input": {
+        "shape": [
+          32,
+          3,
+          224,
+          224
+        ],
+        "dtype": "torch.float32",
+        "min": -2.1179039478302,
+        "max": 2.640000104904175,
+        "mean": 0.38420581817626953,
+        "std": 1.4054069519042969
+      },
+      "encoder_features": {
+        "shape": [
+          32,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 0.0022768478374928236,
+        "mean": 0.00024312821915373206,
+        "std": 0.0003559580072760582,
+        "has_nan": false,
+        "has_inf": false
+      },
+      "embedding": {
+        "shape": [
+          32,
+          128
+        ],
+        "dtype": "torch.float32",
+        "min": -0.14984950423240662,
+        "max": 0.15162351727485657,
+        "mean": -0.005581118632107973,
+        "std": 0.08821196854114532,
+        "has_nan": false,
+        "has_inf": false,
+        "l2_norm_min": 0.9999999403953552,
+        "l2_norm_max": 1.0000001192092896,
+        "l2_norm_mean": 1.0,
+        "max_l2_error": 1.1920928955078125e-07
+      }
+    },
+    {
+      "device": "cpu",
+      "batch_size": 32,
+      "embedding_dim": 256,
+      "split": "train",
+      "sample_count": 32,
+      "source": "dataset1",
+      "passed": true,
+      "failures": [],
+      "input": {
+        "shape": [
+          32,
+          3,
+          224,
+          224
+        ],
+        "dtype": "torch.float32",
+        "min": -2.1179039478302,
+        "max": 2.640000104904175,
+        "mean": 0.38420581817626953,
+        "std": 1.4054069519042969
+      },
+      "encoder_features": {
+        "shape": [
+          32,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 0.0022768478374928236,
+        "mean": 0.00024312821915373206,
+        "std": 0.0003559580072760582,
+        "has_nan": false,
+        "has_inf": false
+      },
+      "embedding": {
+        "shape": [
+          32,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": -0.10854767262935638,
+        "max": 0.10796081274747849,
+        "mean": -0.001832258771173656,
+        "std": 0.06247313693165779,
+        "has_nan": false,
+        "has_inf": false,
+        "l2_norm_min": 0.9999998807907104,
+        "l2_norm_max": 1.0,
+        "l2_norm_mean": 1.0,
+        "max_l2_error": 1.1920928955078125e-07
+      }
+    },
+    {
+      "device": "cpu",
+      "batch_size": 1,
+      "embedding_dim": 128,
+      "split": "valid",
+      "sample_count": 1,
+      "source": "dataset1",
+      "passed": true,
+      "failures": [],
+      "input": {
+        "shape": [
+          1,
+          3,
+          224,
+          224
+        ],
+        "dtype": "torch.float32",
+        "min": -2.0665297508239746,
+        "max": 2.465708017349243,
+        "mean": 0.5772778391838074,
+        "std": 0.8066362142562866
+      },
+      "encoder_features": {
+        "shape": [
+          1,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 0.001285848207771778,
+        "mean": 0.0001960680092452094,
+        "std": 0.00026835635071620345,
+        "has_nan": false,
+        "has_inf": false
+      },
+      "embedding": {
+        "shape": [
+          1,
+          128
+        ],
+        "dtype": "torch.float32",
+        "min": -0.14965875446796417,
+        "max": 0.1511804312467575,
+        "mean": -0.005590344313532114,
+        "std": 0.08821137994527817,
+        "has_nan": false,
+        "has_inf": false,
+        "l2_norm_min": 0.9999999403953552,
+        "l2_norm_max": 0.9999999403953552,
+        "l2_norm_mean": 0.9999999403953552,
+        "max_l2_error": 5.960464477539063e-08
+      }
+    },
+    {
+      "device": "cpu",
+      "batch_size": 1,
+      "embedding_dim": 256,
+      "split": "valid",
+      "sample_count": 1,
+      "source": "dataset1",
+      "passed": true,
+      "failures": [],
+      "input": {
+        "shape": [
+          1,
+          3,
+          224,
+          224
+        ],
+        "dtype": "torch.float32",
+        "min": -2.0665297508239746,
+        "max": 2.465708017349243,
+        "mean": 0.5772778391838074,
+        "std": 0.8066362142562866
+      },
+      "encoder_features": {
+        "shape": [
+          1,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 0.001285848207771778,
+        "mean": 0.0001960680092452094,
+        "std": 0.00026835635071620345,
+        "has_nan": false,
+        "has_inf": false
+      },
+      "embedding": {
+        "shape": [
+          1,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": -0.10838571190834045,
+        "max": 0.10777822881937027,
+        "mean": -0.0018253852613270283,
+        "std": 0.06247333809733391,
+        "has_nan": false,
+        "has_inf": false,
+        "l2_norm_min": 1.0,
+        "l2_norm_max": 1.0,
+        "l2_norm_mean": 1.0,
+        "max_l2_error": 0.0
+      }
+    },
+    {
+      "device": "cpu",
+      "batch_size": 8,
+      "embedding_dim": 128,
+      "split": "valid",
+      "sample_count": 8,
+      "source": "dataset1",
+      "passed": true,
+      "failures": [],
+      "input": {
+        "shape": [
+          8,
+          3,
+          224,
+          224
+        ],
+        "dtype": "torch.float32",
+        "min": -2.1007792949676514,
+        "max": 2.5702831745147705,
+        "mean": 0.48222261667251587,
+        "std": 0.8453547358512878
+      },
+      "encoder_features": {
+        "shape": [
+          8,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 0.0020598534028977156,
+        "mean": 0.00021088497305754572,
+        "std": 0.00030366468126885593,
+        "has_nan": false,
+        "has_inf": false
+      },
+      "embedding": {
+        "shape": [
+          8,
+          128
+        ],
+        "dtype": "torch.float32",
+        "min": -0.15003560483455658,
+        "max": 0.15126213431358337,
+        "mean": -0.005586123093962669,
+        "std": 0.08821164816617966,
+        "has_nan": false,
+        "has_inf": false,
+        "l2_norm_min": 0.9999999403953552,
+        "l2_norm_max": 1.0,
+        "l2_norm_mean": 1.0,
+        "max_l2_error": 5.960464477539063e-08
+      }
+    },
+    {
+      "device": "cpu",
+      "batch_size": 8,
+      "embedding_dim": 256,
+      "split": "valid",
+      "sample_count": 8,
+      "source": "dataset1",
+      "passed": true,
+      "failures": [],
+      "input": {
+        "shape": [
+          8,
+          3,
+          224,
+          224
+        ],
+        "dtype": "torch.float32",
+        "min": -2.1007792949676514,
+        "max": 2.5702831745147705,
+        "mean": 0.48222261667251587,
+        "std": 0.8453547358512878
+      },
+      "encoder_features": {
+        "shape": [
+          8,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 0.0020598534028977156,
+        "mean": 0.00021088497305754572,
+        "std": 0.00030366468126885593,
+        "has_nan": false,
+        "has_inf": false
+      },
+      "embedding": {
+        "shape": [
+          8,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": -0.10861695557832718,
+        "max": 0.10795653611421585,
+        "mean": -0.0018286271952092648,
+        "std": 0.06247324123978615,
+        "has_nan": false,
+        "has_inf": false,
+        "l2_norm_min": 0.9999998807907104,
+        "l2_norm_max": 1.0,
+        "l2_norm_mean": 1.0,
+        "max_l2_error": 1.1920928955078125e-07
+      }
+    },
+    {
+      "device": "cpu",
+      "batch_size": 32,
+      "embedding_dim": 128,
+      "split": "valid",
+      "sample_count": 32,
+      "source": "dataset1",
+      "passed": true,
+      "failures": [],
+      "input": {
+        "shape": [
+          32,
+          3,
+          224,
+          224
+        ],
+        "dtype": "torch.float32",
+        "min": -2.1179039478302,
+        "max": 2.640000104904175,
+        "mean": 0.6960859298706055,
+        "std": 1.099528431892395
+      },
+      "encoder_features": {
+        "shape": [
+          32,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 0.002403521677479148,
+        "mean": 0.0002387461718171835,
+        "std": 0.00034426874481141567,
+        "has_nan": false,
+        "has_inf": false
+      },
+      "embedding": {
+        "shape": [
+          32,
+          128
+        ],
+        "dtype": "torch.float32",
+        "min": -0.15003560483455658,
+        "max": 0.15166273713111877,
+        "mean": -0.005584272556006908,
+        "std": 0.08821176737546921,
+        "has_nan": false,
+        "has_inf": false,
+        "l2_norm_min": 0.9999999403953552,
+        "l2_norm_max": 1.0,
+        "l2_norm_mean": 1.0,
+        "max_l2_error": 5.960464477539063e-08
+      }
+    },
+    {
+      "device": "cpu",
+      "batch_size": 32,
+      "embedding_dim": 256,
+      "split": "valid",
+      "sample_count": 32,
+      "source": "dataset1",
+      "passed": true,
+      "failures": [],
+      "input": {
+        "shape": [
+          32,
+          3,
+          224,
+          224
+        ],
+        "dtype": "torch.float32",
+        "min": -2.1179039478302,
+        "max": 2.640000104904175,
+        "mean": 0.6960859298706055,
+        "std": 1.099528431892395
+      },
+      "encoder_features": {
+        "shape": [
+          32,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 0.002403521677479148,
+        "mean": 0.0002387461718171835,
+        "std": 0.00034426874481141567,
+        "has_nan": false,
+        "has_inf": false
+      },
+      "embedding": {
+        "shape": [
+          32,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": -0.10861695557832718,
+        "max": 0.10795653611421585,
+        "mean": -0.001832909882068634,
+        "std": 0.0624731183052063,
+        "has_nan": false,
+        "has_inf": false,
+        "l2_norm_min": 0.9999998807907104,
+        "l2_norm_max": 1.0000001192092896,
+        "l2_norm_mean": 1.0,
+        "max_l2_error": 1.1920928955078125e-07
+      }
+    },
+    {
+      "device": "cpu",
+      "batch_size": 1,
+      "embedding_dim": 128,
+      "split": "test",
+      "sample_count": 1,
+      "source": "dataset1",
+      "passed": true,
+      "failures": [],
+      "input": {
+        "shape": [
+          1,
+          3,
+          224,
+          224
+        ],
+        "dtype": "torch.float32",
+        "min": -1.998030662536621,
+        "max": 2.288515567779541,
+        "mean": 0.46347537636756897,
+        "std": 0.4886239171028137
+      },
+      "encoder_features": {
+        "shape": [
+          1,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 0.0009250650182366371,
+        "mean": 0.000139179770485498,
+        "std": 0.00018987571820616722,
+        "has_nan": false,
+        "has_inf": false
+      },
+      "embedding": {
+        "shape": [
+          1,
+          128
+        ],
+        "dtype": "torch.float32",
+        "min": -0.1494707614183426,
+        "max": 0.15109500288963318,
+        "mean": -0.00559199508279562,
+        "std": 0.08821127563714981,
+        "has_nan": false,
+        "has_inf": false,
+        "l2_norm_min": 1.0,
+        "l2_norm_max": 1.0,
+        "l2_norm_mean": 1.0,
+        "max_l2_error": 0.0
+      }
+    },
+    {
+      "device": "cpu",
+      "batch_size": 1,
+      "embedding_dim": 256,
+      "split": "test",
+      "sample_count": 1,
+      "source": "dataset1",
+      "passed": true,
+      "failures": [],
+      "input": {
+        "shape": [
+          1,
+          3,
+          224,
+          224
+        ],
+        "dtype": "torch.float32",
+        "min": -1.998030662536621,
+        "max": 2.288515567779541,
+        "mean": 0.46347537636756897,
+        "std": 0.4886239171028137
+      },
+      "encoder_features": {
+        "shape": [
+          1,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 0.0009250650182366371,
+        "mean": 0.000139179770485498,
+        "std": 0.00018987571820616722,
+        "has_nan": false,
+        "has_inf": false
+      },
+      "embedding": {
+        "shape": [
+          1,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": -0.10829920321702957,
+        "max": 0.10782888531684875,
+        "mean": -0.001815136056393385,
+        "std": 0.062473639845848083,
+        "has_nan": false,
+        "has_inf": false,
+        "l2_norm_min": 1.0,
+        "l2_norm_max": 1.0,
+        "l2_norm_mean": 1.0,
+        "max_l2_error": 0.0
+      }
+    },
+    {
+      "device": "cpu",
+      "batch_size": 8,
+      "embedding_dim": 128,
+      "split": "test",
+      "sample_count": 8,
+      "source": "dataset1",
+      "passed": true,
+      "failures": [],
+      "input": {
+        "shape": [
+          8,
+          3,
+          224,
+          224
+        ],
+        "dtype": "torch.float32",
+        "min": -2.1179039478302,
+        "max": 2.640000104904175,
+        "mean": 0.796087384223938,
+        "std": 1.0570803880691528
+      },
+      "encoder_features": {
+        "shape": [
+          8,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 0.002345090266317129,
+        "mean": 0.0002310875424882397,
+        "std": 0.00033581143361516297,
+        "has_nan": false,
+        "has_inf": false
+      },
+      "embedding": {
+        "shape": [
+          8,
+          128
+        ],
+        "dtype": "torch.float32",
+        "min": -0.1498572677373886,
+        "max": 0.15163300931453705,
+        "mean": -0.005585449747741222,
+        "std": 0.08821169286966324,
+        "has_nan": false,
+        "has_inf": false,
+        "l2_norm_min": 0.9999998807907104,
+        "l2_norm_max": 1.0,
+        "l2_norm_mean": 1.0,
+        "max_l2_error": 1.1920928955078125e-07
+      }
+    },
+    {
+      "device": "cpu",
+      "batch_size": 8,
+      "embedding_dim": 256,
+      "split": "test",
+      "sample_count": 8,
+      "source": "dataset1",
+      "passed": true,
+      "failures": [],
+      "input": {
+        "shape": [
+          8,
+          3,
+          224,
+          224
+        ],
+        "dtype": "torch.float32",
+        "min": -2.1179039478302,
+        "max": 2.640000104904175,
+        "mean": 0.796087384223938,
+        "std": 1.0570803880691528
+      },
+      "encoder_features": {
+        "shape": [
+          8,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 0.002345090266317129,
+        "mean": 0.0002310875424882397,
+        "std": 0.00033581143361516297,
+        "has_nan": false,
+        "has_inf": false
+      },
+      "embedding": {
+        "shape": [
+          8,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": -0.10853877663612366,
+        "max": 0.10786008089780807,
+        "mean": -0.0018309933366253972,
+        "std": 0.062473174184560776,
+        "has_nan": false,
+        "has_inf": false,
+        "l2_norm_min": 0.9999999403953552,
+        "l2_norm_max": 1.0,
+        "l2_norm_mean": 1.0,
+        "max_l2_error": 5.960464477539063e-08
+      }
+    },
+    {
+      "device": "cpu",
+      "batch_size": 32,
+      "embedding_dim": 128,
+      "split": "test",
+      "sample_count": 32,
+      "source": "dataset1",
+      "passed": true,
+      "failures": [],
+      "input": {
+        "shape": [
+          32,
+          3,
+          224,
+          224
+        ],
+        "dtype": "torch.float32",
+        "min": -2.1179039478302,
+        "max": 2.640000104904175,
+        "mean": 1.8380417823791504,
+        "std": 1.0156091451644897
+      },
+      "encoder_features": {
+        "shape": [
+          32,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 0.0024277728516608477,
+        "mean": 0.0003134993021376431,
+        "std": 0.0004549104778561741,
+        "has_nan": false,
+        "has_inf": false
+      },
+      "embedding": {
+        "shape": [
+          32,
+          128
+        ],
+        "dtype": "torch.float32",
+        "min": -0.14991416037082672,
+        "max": 0.15166811645030975,
+        "mean": -0.005580327473580837,
+        "std": 0.0882120132446289,
+        "has_nan": false,
+        "has_inf": false,
+        "l2_norm_min": 0.9999998807907104,
+        "l2_norm_max": 1.0000001192092896,
+        "l2_norm_mean": 1.0,
+        "max_l2_error": 1.1920928955078125e-07
+      }
+    },
+    {
+      "device": "cpu",
+      "batch_size": 32,
+      "embedding_dim": 256,
+      "split": "test",
+      "sample_count": 32,
+      "source": "dataset1",
+      "passed": true,
+      "failures": [],
+      "input": {
+        "shape": [
+          32,
+          3,
+          224,
+          224
+        ],
+        "dtype": "torch.float32",
+        "min": -2.1179039478302,
+        "max": 2.640000104904175,
+        "mean": 1.8380417823791504,
+        "std": 1.0156091451644897
+      },
+      "encoder_features": {
+        "shape": [
+          32,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 0.0024277728516608477,
+        "mean": 0.0003134993021376431,
+        "std": 0.0004549104778561741,
+        "has_nan": false,
+        "has_inf": false
+      },
+      "embedding": {
+        "shape": [
+          32,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": -0.10856501013040543,
+        "max": 0.10786008089780807,
+        "mean": -0.0018440125277265906,
+        "std": 0.062472790479660034,
+        "has_nan": false,
+        "has_inf": false,
+        "l2_norm_min": 0.9999998807907104,
+        "l2_norm_max": 1.0,
+        "l2_norm_mean": 1.0,
+        "max_l2_error": 1.1920928955078125e-07
+      }
+    },
+    {
+      "device": "cuda",
+      "batch_size": 1,
+      "embedding_dim": 128,
+      "split": "preprocessor",
+      "sample_count": 1,
+      "source": "image_preprocessor",
+      "passed": true,
+      "failures": [],
+      "input": {
+        "shape": [
+          1,
+          3,
+          224,
+          224
+        ],
+        "dtype": "torch.float32",
+        "min": -1.9124069213867188,
+        "max": -0.23581691086292267,
+        "mean": -1.1612191200256348,
+        "std": 0.6954622268676758
+      },
+      "encoder_features": {
+        "shape": [
+          1,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 0.0007271456415764987,
+        "mean": 0.00012111959222238511,
+        "std": 0.00015894400712568313,
+        "has_nan": false,
+        "has_inf": false
+      },
+      "embedding": {
+        "shape": [
+          1,
+          128
+        ],
+        "dtype": "torch.float32",
+        "min": -0.1505761742591858,
+        "max": 0.15363357961177826,
+        "mean": -0.0051442719995975494,
+        "std": 0.08823851495981216,
+        "has_nan": false,
+        "has_inf": false,
+        "l2_norm_min": 0.9999999403953552,
+        "l2_norm_max": 0.9999999403953552,
+        "l2_norm_mean": 0.9999999403953552,
+        "max_l2_error": 5.960464477539063e-08
+      }
+    },
+    {
+      "device": "cuda",
+      "batch_size": 1,
+      "embedding_dim": 256,
+      "split": "preprocessor",
+      "sample_count": 1,
+      "source": "image_preprocessor",
+      "passed": true,
+      "failures": [],
+      "input": {
+        "shape": [
+          1,
+          3,
+          224,
+          224
+        ],
+        "dtype": "torch.float32",
+        "min": -1.9124069213867188,
+        "max": -0.23581691086292267,
+        "mean": -1.1612191200256348,
+        "std": 0.6954622268676758
+      },
+      "encoder_features": {
+        "shape": [
+          1,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 0.0007271456415764987,
+        "mean": 0.00012111959222238511,
+        "std": 0.00015894400712568313,
+        "has_nan": false,
+        "has_inf": false
+      },
+      "embedding": {
+        "shape": [
+          1,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": -0.10844618827104568,
+        "max": 0.10847552120685577,
+        "mean": -0.00184963783249259,
+        "std": 0.062472619116306305,
+        "has_nan": false,
+        "has_inf": false,
+        "l2_norm_min": 0.9999999403953552,
+        "l2_norm_max": 0.9999999403953552,
+        "l2_norm_mean": 0.9999999403953552,
+        "max_l2_error": 5.960464477539063e-08
+      }
+    },
+    {
+      "device": "cuda",
+      "batch_size": 8,
+      "embedding_dim": 128,
+      "split": "preprocessor",
+      "sample_count": 8,
+      "source": "image_preprocessor",
+      "passed": true,
+      "failures": [],
+      "input": {
+        "shape": [
+          8,
+          3,
+          224,
+          224
+        ],
+        "dtype": "torch.float32",
+        "min": -1.9124069213867188,
+        "max": -0.23581691086292267,
+        "mean": -1.1612192392349243,
+        "std": 0.6954622864723206
+      },
+      "encoder_features": {
+        "shape": [
+          8,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 0.0007271456415764987,
+        "mean": 0.00012111959222238511,
+        "std": 0.00015894400712568313,
+        "has_nan": false,
+        "has_inf": false
+      },
+      "embedding": {
+        "shape": [
+          8,
+          128
+        ],
+        "dtype": "torch.float32",
+        "min": -0.1505761742591858,
+        "max": 0.15363357961177826,
+        "mean": -0.0051442719995975494,
+        "std": 0.08823851495981216,
+        "has_nan": false,
+        "has_inf": false,
+        "l2_norm_min": 0.9999999403953552,
+        "l2_norm_max": 0.9999999403953552,
+        "l2_norm_mean": 0.9999999403953552,
+        "max_l2_error": 5.960464477539063e-08
+      }
+    },
+    {
+      "device": "cuda",
+      "batch_size": 8,
+      "embedding_dim": 256,
+      "split": "preprocessor",
+      "sample_count": 8,
+      "source": "image_preprocessor",
+      "passed": true,
+      "failures": [],
+      "input": {
+        "shape": [
+          8,
+          3,
+          224,
+          224
+        ],
+        "dtype": "torch.float32",
+        "min": -1.9124069213867188,
+        "max": -0.23581691086292267,
+        "mean": -1.1612192392349243,
+        "std": 0.6954622864723206
+      },
+      "encoder_features": {
+        "shape": [
+          8,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 0.0007271456415764987,
+        "mean": 0.00012111959222238511,
+        "std": 0.00015894400712568313,
+        "has_nan": false,
+        "has_inf": false
+      },
+      "embedding": {
+        "shape": [
+          8,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": -0.10844618827104568,
+        "max": 0.10847552120685577,
+        "mean": -0.00184963783249259,
+        "std": 0.062472619116306305,
+        "has_nan": false,
+        "has_inf": false,
+        "l2_norm_min": 0.9999999403953552,
+        "l2_norm_max": 0.9999999403953552,
+        "l2_norm_mean": 0.9999999403953552,
+        "max_l2_error": 5.960464477539063e-08
+      }
+    },
+    {
+      "device": "cuda",
+      "batch_size": 32,
+      "embedding_dim": 128,
+      "split": "preprocessor",
+      "sample_count": 32,
+      "source": "image_preprocessor",
+      "passed": true,
+      "failures": [],
+      "input": {
+        "shape": [
+          32,
+          3,
+          224,
+          224
+        ],
+        "dtype": "torch.float32",
+        "min": -1.9124069213867188,
+        "max": -0.23581691086292267,
+        "mean": -1.1612192392349243,
+        "std": 0.6954622864723206
+      },
+      "encoder_features": {
+        "shape": [
+          32,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 0.0007271458744071424,
+        "mean": 0.00012111961405025795,
+        "std": 0.00015894403622951359,
+        "has_nan": false,
+        "has_inf": false
+      },
+      "embedding": {
+        "shape": [
+          32,
+          128
+        ],
+        "dtype": "torch.float32",
+        "min": -0.1505761742591858,
+        "max": 0.15363357961177826,
+        "mean": -0.0051442719995975494,
+        "std": 0.08823851495981216,
+        "has_nan": false,
+        "has_inf": false,
+        "l2_norm_min": 0.9999999403953552,
+        "l2_norm_max": 0.9999999403953552,
+        "l2_norm_mean": 0.9999999403953552,
+        "max_l2_error": 5.960464477539063e-08
+      }
+    },
+    {
+      "device": "cuda",
+      "batch_size": 32,
+      "embedding_dim": 256,
+      "split": "preprocessor",
+      "sample_count": 32,
+      "source": "image_preprocessor",
+      "passed": true,
+      "failures": [],
+      "input": {
+        "shape": [
+          32,
+          3,
+          224,
+          224
+        ],
+        "dtype": "torch.float32",
+        "min": -1.9124069213867188,
+        "max": -0.23581691086292267,
+        "mean": -1.1612192392349243,
+        "std": 0.6954622864723206
+      },
+      "encoder_features": {
+        "shape": [
+          32,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 0.0007271458744071424,
+        "mean": 0.00012111961405025795,
+        "std": 0.00015894403622951359,
+        "has_nan": false,
+        "has_inf": false
+      },
+      "embedding": {
+        "shape": [
+          32,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": -0.10844618827104568,
+        "max": 0.10847552120685577,
+        "mean": -0.00184963783249259,
+        "std": 0.062472619116306305,
+        "has_nan": false,
+        "has_inf": false,
+        "l2_norm_min": 0.9999999403953552,
+        "l2_norm_max": 0.9999999403953552,
+        "l2_norm_mean": 0.9999999403953552,
+        "max_l2_error": 5.960464477539063e-08
+      }
+    },
+    {
+      "device": "cuda",
+      "batch_size": 8,
+      "embedding_dim": 128,
+      "split": "edge_zero",
+      "sample_count": 8,
+      "source": "synthetic_finite",
+      "passed": true,
+      "failures": [],
+      "input": {
+        "shape": [
+          8,
+          3,
+          224,
+          224
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 0.0,
+        "mean": 0.0,
+        "std": 0.0
+      },
+      "encoder_features": {
+        "shape": [
+          8,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 0.0,
+        "mean": 0.0,
+        "std": 0.0,
+        "has_nan": false,
+        "has_inf": false
+      },
+      "embedding": {
+        "shape": [
+          8,
+          128
+        ],
+        "dtype": "torch.float32",
+        "min": -0.15020805597305298,
+        "max": 0.15340159833431244,
+        "mean": -0.005108531564474106,
+        "std": 0.0882405936717987,
+        "has_nan": false,
+        "has_inf": false,
+        "l2_norm_min": 1.0,
+        "l2_norm_max": 1.0,
+        "l2_norm_mean": 1.0,
+        "max_l2_error": 0.0
+      }
+    },
+    {
+      "device": "cuda",
+      "batch_size": 8,
+      "embedding_dim": 256,
+      "split": "edge_zero",
+      "sample_count": 8,
+      "source": "synthetic_finite",
+      "passed": true,
+      "failures": [],
+      "input": {
+        "shape": [
+          8,
+          3,
+          224,
+          224
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 0.0,
+        "mean": 0.0,
+        "std": 0.0
+      },
+      "encoder_features": {
+        "shape": [
+          8,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 0.0,
+        "mean": 0.0,
+        "std": 0.0,
+        "has_nan": false,
+        "has_inf": false
+      },
+      "embedding": {
+        "shape": [
+          8,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": -0.10847972333431244,
+        "max": 0.10828673839569092,
+        "mean": -0.0018460256978869438,
+        "std": 0.06247273087501526,
+        "has_nan": false,
+        "has_inf": false,
+        "l2_norm_min": 1.0,
+        "l2_norm_max": 1.0,
+        "l2_norm_mean": 1.0,
+        "max_l2_error": 0.0
+      }
+    },
+    {
+      "device": "cuda",
+      "batch_size": 8,
+      "embedding_dim": 128,
+      "split": "edge_constant",
+      "sample_count": 8,
+      "source": "synthetic_finite",
+      "passed": true,
+      "failures": [],
+      "input": {
+        "shape": [
+          8,
+          3,
+          224,
+          224
+        ],
+        "dtype": "torch.float32",
+        "min": 0.25,
+        "max": 0.25,
+        "mean": 0.25,
+        "std": 0.0
+      },
+      "encoder_features": {
+        "shape": [
+          8,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 0.0002896053483709693,
+        "mean": 4.08908017561771e-05,
+        "std": 5.1913768402300775e-05,
+        "has_nan": false,
+        "has_inf": false
+      },
+      "embedding": {
+        "shape": [
+          8,
+          128
+        ],
+        "dtype": "torch.float32",
+        "min": -0.1503095030784607,
+        "max": 0.15347212553024292,
+        "mean": -0.005117275286465883,
+        "std": 0.08824008703231812,
+        "has_nan": false,
+        "has_inf": false,
+        "l2_norm_min": 0.9999999403953552,
+        "l2_norm_max": 0.9999999403953552,
+        "l2_norm_mean": 0.9999999403953552,
+        "max_l2_error": 5.960464477539063e-08
+      }
+    },
+    {
+      "device": "cuda",
+      "batch_size": 8,
+      "embedding_dim": 256,
+      "split": "edge_constant",
+      "sample_count": 8,
+      "source": "synthetic_finite",
+      "passed": true,
+      "failures": [],
+      "input": {
+        "shape": [
+          8,
+          3,
+          224,
+          224
+        ],
+        "dtype": "torch.float32",
+        "min": 0.25,
+        "max": 0.25,
+        "mean": 0.25,
+        "std": 0.0
+      },
+      "encoder_features": {
+        "shape": [
+          8,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 0.0002896053483709693,
+        "mean": 4.08908017561771e-05,
+        "std": 5.1913768402300775e-05,
+        "has_nan": false,
+        "has_inf": false
+      },
+      "embedding": {
+        "shape": [
+          8,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": -0.10848354548215866,
+        "max": 0.10835642367601395,
+        "mean": -0.0018481253646314144,
+        "std": 0.062472667545080185,
+        "has_nan": false,
+        "has_inf": false,
+        "l2_norm_min": 1.0,
+        "l2_norm_max": 1.0,
+        "l2_norm_mean": 1.0,
+        "max_l2_error": 0.0
+      }
+    },
+    {
+      "device": "cuda",
+      "batch_size": 8,
+      "embedding_dim": 128,
+      "split": "edge_tiny",
+      "sample_count": 8,
+      "source": "synthetic_finite",
+      "passed": true,
+      "failures": [],
+      "input": {
+        "shape": [
+          8,
+          3,
+          224,
+          224
+        ],
+        "dtype": "torch.float32",
+        "min": -4.88998251613193e-12,
+        "max": 5.413921914942943e-12,
+        "mean": 1.4131764284301554e-15,
+        "std": 1.0000647228738946e-12
+      },
+      "encoder_features": {
+        "shape": [
+          8,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 2.9257470910229195e-15,
+        "mean": 4.4289944619652554e-16,
+        "std": 5.554213146130365e-16,
+        "has_nan": false,
+        "has_inf": false
+      },
+      "embedding": {
+        "shape": [
+          8,
+          128
+        ],
+        "dtype": "torch.float32",
+        "min": -0.15020805597305298,
+        "max": 0.15340159833431244,
+        "mean": -0.005108531564474106,
+        "std": 0.0882405936717987,
+        "has_nan": false,
+        "has_inf": false,
+        "l2_norm_min": 1.0,
+        "l2_norm_max": 1.0,
+        "l2_norm_mean": 1.0,
+        "max_l2_error": 0.0
+      }
+    },
+    {
+      "device": "cuda",
+      "batch_size": 8,
+      "embedding_dim": 256,
+      "split": "edge_tiny",
+      "sample_count": 8,
+      "source": "synthetic_finite",
+      "passed": true,
+      "failures": [],
+      "input": {
+        "shape": [
+          8,
+          3,
+          224,
+          224
+        ],
+        "dtype": "torch.float32",
+        "min": -4.88998251613193e-12,
+        "max": 5.413921914942943e-12,
+        "mean": 1.4131764284301554e-15,
+        "std": 1.0000647228738946e-12
+      },
+      "encoder_features": {
+        "shape": [
+          8,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 2.9257470910229195e-15,
+        "mean": 4.4289944619652554e-16,
+        "std": 5.554213146130365e-16,
+        "has_nan": false,
+        "has_inf": false
+      },
+      "embedding": {
+        "shape": [
+          8,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": -0.10847972333431244,
+        "max": 0.10828673839569092,
+        "mean": -0.0018460256978869438,
+        "std": 0.06247273087501526,
+        "has_nan": false,
+        "has_inf": false,
+        "l2_norm_min": 1.0,
+        "l2_norm_max": 1.0,
+        "l2_norm_mean": 1.0,
+        "max_l2_error": 0.0
+      }
+    },
+    {
+      "device": "cuda",
+      "batch_size": 64,
+      "embedding_dim": 128,
+      "split": "preprocessor",
+      "sample_count": 64,
+      "source": "image_preprocessor_optional_b64",
+      "passed": true,
+      "failures": [],
+      "input": {
+        "shape": [
+          64,
+          3,
+          224,
+          224
+        ],
+        "dtype": "torch.float32",
+        "min": -1.9124069213867188,
+        "max": -0.23581691086292267,
+        "mean": -1.1612192392349243,
+        "std": 0.6954622268676758
+      },
+      "encoder_features": {
+        "shape": [
+          64,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 0.0007271458744071424,
+        "mean": 0.00012111961405025795,
+        "std": 0.00015894403622951359,
+        "has_nan": false,
+        "has_inf": false
+      },
+      "embedding": {
+        "shape": [
+          64,
+          128
+        ],
+        "dtype": "torch.float32",
+        "min": -0.1505761742591858,
+        "max": 0.15363357961177826,
+        "mean": -0.0051442719995975494,
+        "std": 0.08823851495981216,
+        "has_nan": false,
+        "has_inf": false,
+        "l2_norm_min": 0.9999999403953552,
+        "l2_norm_max": 0.9999999403953552,
+        "l2_norm_mean": 0.9999999403953552,
+        "max_l2_error": 5.960464477539063e-08
+      }
+    },
+    {
+      "device": "cuda",
+      "batch_size": 64,
+      "embedding_dim": 256,
+      "split": "preprocessor",
+      "sample_count": 64,
+      "source": "image_preprocessor_optional_b64",
+      "passed": true,
+      "failures": [],
+      "input": {
+        "shape": [
+          64,
+          3,
+          224,
+          224
+        ],
+        "dtype": "torch.float32",
+        "min": -1.9124069213867188,
+        "max": -0.23581691086292267,
+        "mean": -1.1612192392349243,
+        "std": 0.6954622268676758
+      },
+      "encoder_features": {
+        "shape": [
+          64,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 0.0007271458744071424,
+        "mean": 0.00012111961405025795,
+        "std": 0.00015894403622951359,
+        "has_nan": false,
+        "has_inf": false
+      },
+      "embedding": {
+        "shape": [
+          64,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": -0.10844618827104568,
+        "max": 0.10847552120685577,
+        "mean": -0.0018496369011700153,
+        "std": 0.062472619116306305,
+        "has_nan": false,
+        "has_inf": false,
+        "l2_norm_min": 0.9999999403953552,
+        "l2_norm_max": 0.9999999403953552,
+        "l2_norm_mean": 0.9999999403953552,
+        "max_l2_error": 5.960464477539063e-08
+      }
+    },
+    {
+      "device": "cuda",
+      "batch_size": 1,
+      "embedding_dim": 128,
+      "split": "train",
+      "sample_count": 1,
+      "source": "dataset1",
+      "passed": true,
+      "failures": [],
+      "input": {
+        "shape": [
+          1,
+          3,
+          224,
+          224
+        ],
+        "dtype": "torch.float32",
+        "min": -1.7925336360931396,
+        "max": 2.552854299545288,
+        "mean": 0.6490269899368286,
+        "std": 1.0578190088272095
+      },
+      "encoder_features": {
+        "shape": [
+          1,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 0.0019467880483716726,
+        "mean": 0.00027897796826437116,
+        "std": 0.0003407367621548474,
+        "has_nan": false,
+        "has_inf": false
+      },
+      "embedding": {
+        "shape": [
+          1,
+          128
+        ],
+        "dtype": "torch.float32",
+        "min": -0.15107420086860657,
+        "max": 0.15395167469978333,
+        "mean": -0.00518012885004282,
+        "std": 0.08823642134666443,
+        "has_nan": false,
+        "has_inf": false,
+        "l2_norm_min": 1.0,
+        "l2_norm_max": 1.0,
+        "l2_norm_mean": 1.0,
+        "max_l2_error": 0.0
+      }
+    },
+    {
+      "device": "cuda",
+      "batch_size": 1,
+      "embedding_dim": 256,
+      "split": "train",
+      "sample_count": 1,
+      "source": "dataset1",
+      "passed": true,
+      "failures": [],
+      "input": {
+        "shape": [
+          1,
+          3,
+          224,
+          224
+        ],
+        "dtype": "torch.float32",
+        "min": -1.7925336360931396,
+        "max": 2.552854299545288,
+        "mean": 0.6490269899368286,
+        "std": 1.0578190088272095
+      },
+      "encoder_features": {
+        "shape": [
+          1,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 0.0019467880483716726,
+        "mean": 0.00027897796826437116,
+        "std": 0.0003407367621548474,
+        "has_nan": false,
+        "has_inf": false
+      },
+      "embedding": {
+        "shape": [
+          1,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": -0.10846792906522751,
+        "max": 0.10894514620304108,
+        "mean": -0.0018646195530891418,
+        "std": 0.06247217580676079,
+        "has_nan": false,
+        "has_inf": false,
+        "l2_norm_min": 1.0,
+        "l2_norm_max": 1.0,
+        "l2_norm_mean": 1.0,
+        "max_l2_error": 0.0
+      }
+    },
+    {
+      "device": "cuda",
+      "batch_size": 8,
+      "embedding_dim": 128,
+      "split": "train",
+      "sample_count": 8,
+      "source": "dataset1",
+      "passed": true,
+      "failures": [],
+      "input": {
+        "shape": [
+          8,
+          3,
+          224,
+          224
+        ],
+        "dtype": "torch.float32",
+        "min": -2.0665297508239746,
+        "max": 2.640000104904175,
+        "mean": 1.0087097883224487,
+        "std": 1.1502974033355713
+      },
+      "encoder_features": {
+        "shape": [
+          8,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 0.0030534693505614996,
+        "mean": 0.00033210450783371925,
+        "std": 0.00043048185762017965,
+        "has_nan": false,
+        "has_inf": false
+      },
+      "embedding": {
+        "shape": [
+          8,
+          128
+        ],
+        "dtype": "torch.float32",
+        "min": -0.15144222974777222,
+        "max": 0.15418563783168793,
+        "mean": -0.005192718002945185,
+        "std": 0.08823568373918533,
+        "has_nan": false,
+        "has_inf": false,
+        "l2_norm_min": 0.9999999403953552,
+        "l2_norm_max": 1.0,
+        "l2_norm_mean": 1.0,
+        "max_l2_error": 5.960464477539063e-08
+      }
+    },
+    {
+      "device": "cuda",
+      "batch_size": 8,
+      "embedding_dim": 256,
+      "split": "train",
+      "sample_count": 8,
+      "source": "dataset1",
+      "passed": true,
+      "failures": [],
+      "input": {
+        "shape": [
+          8,
+          3,
+          224,
+          224
+        ],
+        "dtype": "torch.float32",
+        "min": -2.0665297508239746,
+        "max": 2.640000104904175,
+        "mean": 1.0087097883224487,
+        "std": 1.1502974033355713
+      },
+      "encoder_features": {
+        "shape": [
+          8,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 0.0030534693505614996,
+        "mean": 0.00033210450783371925,
+        "std": 0.00043048185762017965,
+        "has_nan": false,
+        "has_inf": false
+      },
+      "embedding": {
+        "shape": [
+          8,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": -0.10849885642528534,
+        "max": 0.10925775021314621,
+        "mean": -0.0018683504313230515,
+        "std": 0.06247206777334213,
+        "has_nan": false,
+        "has_inf": false,
+        "l2_norm_min": 1.0,
+        "l2_norm_max": 1.0,
+        "l2_norm_mean": 1.0,
+        "max_l2_error": 0.0
+      }
+    },
+    {
+      "device": "cuda",
+      "batch_size": 32,
+      "embedding_dim": 128,
+      "split": "train",
+      "sample_count": 32,
+      "source": "dataset1",
+      "passed": true,
+      "failures": [],
+      "input": {
+        "shape": [
+          32,
+          3,
+          224,
+          224
+        ],
+        "dtype": "torch.float32",
+        "min": -2.1179039478302,
+        "max": 2.640000104904175,
+        "mean": 0.38420581817626953,
+        "std": 1.4054069519042969
+      },
+      "encoder_features": {
+        "shape": [
+          32,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 0.003053469816222787,
+        "mean": 0.0002725581871345639,
+        "std": 0.0003732679469976574,
+        "has_nan": false,
+        "has_inf": false
+      },
+      "embedding": {
+        "shape": [
+          32,
+          128
+        ],
+        "dtype": "torch.float32",
+        "min": -0.15144222974777222,
+        "max": 0.15418562293052673,
+        "mean": -0.005178707651793957,
+        "std": 0.088236503303051,
+        "has_nan": false,
+        "has_inf": false,
+        "l2_norm_min": 0.9999999403953552,
+        "l2_norm_max": 1.0,
+        "l2_norm_mean": 1.0,
+        "max_l2_error": 5.960464477539063e-08
+      }
+    },
+    {
+      "device": "cuda",
+      "batch_size": 32,
+      "embedding_dim": 256,
+      "split": "train",
+      "sample_count": 32,
+      "source": "dataset1",
+      "passed": true,
+      "failures": [],
+      "input": {
+        "shape": [
+          32,
+          3,
+          224,
+          224
+        ],
+        "dtype": "torch.float32",
+        "min": -2.1179039478302,
+        "max": 2.640000104904175,
+        "mean": 0.38420581817626953,
+        "std": 1.4054069519042969
+      },
+      "encoder_features": {
+        "shape": [
+          32,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 0.003053469816222787,
+        "mean": 0.0002725581871345639,
+        "std": 0.0003732679469976574,
+        "has_nan": false,
+        "has_inf": false
+      },
+      "embedding": {
+        "shape": [
+          32,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": -0.10872569680213928,
+        "max": 0.10925775021314621,
+        "mean": -0.001863298937678337,
+        "std": 0.06247222051024437,
+        "has_nan": false,
+        "has_inf": false,
+        "l2_norm_min": 0.9999999403953552,
+        "l2_norm_max": 1.0000001192092896,
+        "l2_norm_mean": 1.0,
+        "max_l2_error": 1.1920928955078125e-07
+      }
+    },
+    {
+      "device": "cuda",
+      "batch_size": 1,
+      "embedding_dim": 128,
+      "split": "valid",
+      "sample_count": 1,
+      "source": "dataset1",
+      "passed": true,
+      "failures": [],
+      "input": {
+        "shape": [
+          1,
+          3,
+          224,
+          224
+        ],
+        "dtype": "torch.float32",
+        "min": -2.0665297508239746,
+        "max": 2.465708017349243,
+        "mean": 0.5772777795791626,
+        "std": 0.8066362738609314
+      },
+      "encoder_features": {
+        "shape": [
+          1,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 0.0015516069252043962,
+        "mean": 0.00022940407507121563,
+        "std": 0.00028012203983962536,
+        "has_nan": false,
+        "has_inf": false
+      },
+      "embedding": {
+        "shape": [
+          1,
+          128
+        ],
+        "dtype": "torch.float32",
+        "min": -0.15094347298145294,
+        "max": 0.15388223528862,
+        "mean": -0.005168638192117214,
+        "std": 0.08823709189891815,
+        "has_nan": false,
+        "has_inf": false,
+        "l2_norm_min": 0.9999999403953552,
+        "l2_norm_max": 0.9999999403953552,
+        "l2_norm_mean": 0.9999999403953552,
+        "max_l2_error": 5.960464477539063e-08
+      }
+    },
+    {
+      "device": "cuda",
+      "batch_size": 1,
+      "embedding_dim": 256,
+      "split": "valid",
+      "sample_count": 1,
+      "source": "dataset1",
+      "passed": true,
+      "failures": [],
+      "input": {
+        "shape": [
+          1,
+          3,
+          224,
+          224
+        ],
+        "dtype": "torch.float32",
+        "min": -2.0665297508239746,
+        "max": 2.465708017349243,
+        "mean": 0.5772777795791626,
+        "std": 0.8066362738609314
+      },
+      "encoder_features": {
+        "shape": [
+          1,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 0.0015516069252043962,
+        "mean": 0.00022940407507121563,
+        "std": 0.00028012203983962536,
+        "has_nan": false,
+        "has_inf": false
+      },
+      "embedding": {
+        "shape": [
+          1,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": -0.10845627635717392,
+        "max": 0.108893021941185,
+        "mean": -0.0018587391823530197,
+        "std": 0.062472354620695114,
+        "has_nan": false,
+        "has_inf": false,
+        "l2_norm_min": 1.0,
+        "l2_norm_max": 1.0,
+        "l2_norm_mean": 1.0,
+        "max_l2_error": 0.0
+      }
+    },
+    {
+      "device": "cuda",
+      "batch_size": 8,
+      "embedding_dim": 128,
+      "split": "valid",
+      "sample_count": 8,
+      "source": "dataset1",
+      "passed": true,
+      "failures": [],
+      "input": {
+        "shape": [
+          8,
+          3,
+          224,
+          224
+        ],
+        "dtype": "torch.float32",
+        "min": -2.1007792949676514,
+        "max": 2.5702831745147705,
+        "mean": 0.48222261667251587,
+        "std": 0.8453547358512878
+      },
+      "encoder_features": {
+        "shape": [
+          8,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 0.0027703612577170134,
+        "mean": 0.0002543620939832181,
+        "std": 0.0003306707367300987,
+        "has_nan": false,
+        "has_inf": false
+      },
+      "embedding": {
+        "shape": [
+          8,
+          128
+        ],
+        "dtype": "torch.float32",
+        "min": -0.15162955224514008,
+        "max": 0.15433244407176971,
+        "mean": -0.005176204722374678,
+        "std": 0.08823665231466293,
+        "has_nan": false,
+        "has_inf": false,
+        "l2_norm_min": 0.9999999403953552,
+        "l2_norm_max": 1.0,
+        "l2_norm_mean": 1.0,
+        "max_l2_error": 5.960464477539063e-08
+      }
+    },
+    {
+      "device": "cuda",
+      "batch_size": 8,
+      "embedding_dim": 256,
+      "split": "valid",
+      "sample_count": 8,
+      "source": "dataset1",
+      "passed": true,
+      "failures": [],
+      "input": {
+        "shape": [
+          8,
+          3,
+          224,
+          224
+        ],
+        "dtype": "torch.float32",
+        "min": -2.1007792949676514,
+        "max": 2.5702831745147705,
+        "mean": 0.48222261667251587,
+        "std": 0.8453547358512878
+      },
+      "encoder_features": {
+        "shape": [
+          8,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 0.0027703612577170134,
+        "mean": 0.0002543620939832181,
+        "std": 0.0003306707367300987,
+        "has_nan": false,
+        "has_inf": false
+      },
+      "embedding": {
+        "shape": [
+          8,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": -0.10849645733833313,
+        "max": 0.10932192206382751,
+        "mean": -0.0018626032397150993,
+        "std": 0.06247223541140556,
+        "has_nan": false,
+        "has_inf": false,
+        "l2_norm_min": 0.9999999403953552,
+        "l2_norm_max": 1.0,
+        "l2_norm_mean": 1.0,
+        "max_l2_error": 5.960464477539063e-08
+      }
+    },
+    {
+      "device": "cuda",
+      "batch_size": 32,
+      "embedding_dim": 128,
+      "split": "valid",
+      "sample_count": 32,
+      "source": "dataset1",
+      "passed": true,
+      "failures": [],
+      "input": {
+        "shape": [
+          32,
+          3,
+          224,
+          224
+        ],
+        "dtype": "torch.float32",
+        "min": -2.1179039478302,
+        "max": 2.640000104904175,
+        "mean": 0.6960858702659607,
+        "std": 1.099528431892395
+      },
+      "encoder_features": {
+        "shape": [
+          32,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 0.00317577738314867,
+        "mean": 0.0002903766871895641,
+        "std": 0.0003792703791987151,
+        "has_nan": false,
+        "has_inf": false
+      },
+      "embedding": {
+        "shape": [
+          32,
+          128
+        ],
+        "dtype": "torch.float32",
+        "min": -0.15162955224514008,
+        "max": 0.15433244407176971,
+        "mean": -0.0051842015236616135,
+        "std": 0.08823618292808533,
+        "has_nan": false,
+        "has_inf": false,
+        "l2_norm_min": 0.9999999403953552,
+        "l2_norm_max": 1.0000001192092896,
+        "l2_norm_mean": 1.0,
+        "max_l2_error": 1.1920928955078125e-07
+      }
+    },
+    {
+      "device": "cuda",
+      "batch_size": 32,
+      "embedding_dim": 256,
+      "split": "valid",
+      "sample_count": 32,
+      "source": "dataset1",
+      "passed": true,
+      "failures": [],
+      "input": {
+        "shape": [
+          32,
+          3,
+          224,
+          224
+        ],
+        "dtype": "torch.float32",
+        "min": -2.1179039478302,
+        "max": 2.640000104904175,
+        "mean": 0.6960858702659607,
+        "std": 1.099528431892395
+      },
+      "encoder_features": {
+        "shape": [
+          32,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 0.00317577738314867,
+        "mean": 0.0002903766871895641,
+        "std": 0.0003792703791987151,
+        "has_nan": false,
+        "has_inf": false
+      },
+      "embedding": {
+        "shape": [
+          32,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": -0.10852328687906265,
+        "max": 0.109328992664814,
+        "mean": -0.0018642875365912914,
+        "std": 0.06247219070792198,
+        "has_nan": false,
+        "has_inf": false,
+        "l2_norm_min": 0.9999999403953552,
+        "l2_norm_max": 1.0,
+        "l2_norm_mean": 1.0,
+        "max_l2_error": 5.960464477539063e-08
+      }
+    },
+    {
+      "device": "cuda",
+      "batch_size": 1,
+      "embedding_dim": 128,
+      "split": "test",
+      "sample_count": 1,
+      "source": "dataset1",
+      "passed": true,
+      "failures": [],
+      "input": {
+        "shape": [
+          1,
+          3,
+          224,
+          224
+        ],
+        "dtype": "torch.float32",
+        "min": -1.998030662536621,
+        "max": 2.288515567779541,
+        "mean": 0.46347537636756897,
+        "std": 0.4886239171028137
+      },
+      "encoder_features": {
+        "shape": [
+          1,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 0.0012455141404643655,
+        "mean": 0.00017471861792728305,
+        "std": 0.00021854137594345957,
+        "has_nan": false,
+        "has_inf": false
+      },
+      "embedding": {
+        "shape": [
+          1,
+          128
+        ],
+        "dtype": "torch.float32",
+        "min": -0.15077833831310272,
+        "max": 0.1537814438343048,
+        "mean": -0.005154015496373177,
+        "std": 0.0882379561662674,
+        "has_nan": false,
+        "has_inf": false,
+        "l2_norm_min": 1.0,
+        "l2_norm_max": 1.0,
+        "l2_norm_mean": 1.0,
+        "max_l2_error": 0.0
+      }
+    },
+    {
+      "device": "cuda",
+      "batch_size": 1,
+      "embedding_dim": 256,
+      "split": "test",
+      "sample_count": 1,
+      "source": "dataset1",
+      "passed": true,
+      "failures": [],
+      "input": {
+        "shape": [
+          1,
+          3,
+          224,
+          224
+        ],
+        "dtype": "torch.float32",
+        "min": -1.998030662536621,
+        "max": 2.288515567779541,
+        "mean": 0.46347537636756897,
+        "std": 0.4886239171028137
+      },
+      "encoder_features": {
+        "shape": [
+          1,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 0.0012455141404643655,
+        "mean": 0.00017471861792728305,
+        "std": 0.00021854137594345957,
+        "has_nan": false,
+        "has_inf": false
+      },
+      "embedding": {
+        "shape": [
+          1,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": -0.10848285257816315,
+        "max": 0.108726367354393,
+        "mean": -0.0018573980778455734,
+        "std": 0.0624723955988884,
+        "has_nan": false,
+        "has_inf": false,
+        "l2_norm_min": 1.0,
+        "l2_norm_max": 1.0,
+        "l2_norm_mean": 1.0,
+        "max_l2_error": 0.0
+      }
+    },
+    {
+      "device": "cuda",
+      "batch_size": 8,
+      "embedding_dim": 128,
+      "split": "test",
+      "sample_count": 8,
+      "source": "dataset1",
+      "passed": true,
+      "failures": [],
+      "input": {
+        "shape": [
+          8,
+          3,
+          224,
+          224
+        ],
+        "dtype": "torch.float32",
+        "min": -2.1179039478302,
+        "max": 2.640000104904175,
+        "mean": 0.7960873246192932,
+        "std": 1.0570803880691528
+      },
+      "encoder_features": {
+        "shape": [
+          8,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 0.0031404420733451843,
+        "mean": 0.00028682014090009034,
+        "std": 0.00037763910950161517,
+        "has_nan": false,
+        "has_inf": false
+      },
+      "embedding": {
+        "shape": [
+          8,
+          128
+        ],
+        "dtype": "torch.float32",
+        "min": -0.15145260095596313,
+        "max": 0.1542581170797348,
+        "mean": -0.005182864144444466,
+        "std": 0.0882362648844719,
+        "has_nan": false,
+        "has_inf": false,
+        "l2_norm_min": 0.9999999403953552,
+        "l2_norm_max": 1.0,
+        "l2_norm_mean": 1.0,
+        "max_l2_error": 5.960464477539063e-08
+      }
+    },
+    {
+      "device": "cuda",
+      "batch_size": 8,
+      "embedding_dim": 256,
+      "split": "test",
+      "sample_count": 8,
+      "source": "dataset1",
+      "passed": true,
+      "failures": [],
+      "input": {
+        "shape": [
+          8,
+          3,
+          224,
+          224
+        ],
+        "dtype": "torch.float32",
+        "min": -2.1179039478302,
+        "max": 2.640000104904175,
+        "mean": 0.7960873246192932,
+        "std": 1.0570803880691528
+      },
+      "encoder_features": {
+        "shape": [
+          8,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 0.0031404420733451843,
+        "mean": 0.00028682014090009034,
+        "std": 0.00037763910950161517,
+        "has_nan": false,
+        "has_inf": false
+      },
+      "embedding": {
+        "shape": [
+          8,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": -0.10849082469940186,
+        "max": 0.10931350290775299,
+        "mean": -0.0018637417815625668,
+        "std": 0.062472205609083176,
+        "has_nan": false,
+        "has_inf": false,
+        "l2_norm_min": 0.9999999403953552,
+        "l2_norm_max": 1.0,
+        "l2_norm_mean": 1.0,
+        "max_l2_error": 5.960464477539063e-08
+      }
+    },
+    {
+      "device": "cuda",
+      "batch_size": 32,
+      "embedding_dim": 128,
+      "split": "test",
+      "sample_count": 32,
+      "source": "dataset1",
+      "passed": true,
+      "failures": [],
+      "input": {
+        "shape": [
+          32,
+          3,
+          224,
+          224
+        ],
+        "dtype": "torch.float32",
+        "min": -2.1179039478302,
+        "max": 2.640000104904175,
+        "mean": 1.83804190158844,
+        "std": 1.0156091451644897
+      },
+      "encoder_features": {
+        "shape": [
+          32,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 0.003165962640196085,
+        "mean": 0.00040047403308562934,
+        "std": 0.0005160940927453339,
+        "has_nan": false,
+        "has_inf": false
+      },
+      "embedding": {
+        "shape": [
+          32,
+          128
+        ],
+        "dtype": "torch.float32",
+        "min": -0.15146765112876892,
+        "max": 0.1542721539735794,
+        "mean": -0.00520232692360878,
+        "std": 0.08823511749505997,
+        "has_nan": false,
+        "has_inf": false,
+        "l2_norm_min": 0.9999999403953552,
+        "l2_norm_max": 1.0,
+        "l2_norm_mean": 1.0,
+        "max_l2_error": 5.960464477539063e-08
+      }
+    },
+    {
+      "device": "cuda",
+      "batch_size": 32,
+      "embedding_dim": 256,
+      "split": "test",
+      "sample_count": 32,
+      "source": "dataset1",
+      "passed": true,
+      "failures": [],
+      "input": {
+        "shape": [
+          32,
+          3,
+          224,
+          224
+        ],
+        "dtype": "torch.float32",
+        "min": -2.1179039478302,
+        "max": 2.640000104904175,
+        "mean": 1.83804190158844,
+        "std": 1.0156091451644897
+      },
+      "encoder_features": {
+        "shape": [
+          32,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": 0.0,
+        "max": 0.003165962640196085,
+        "mean": 0.00040047403308562934,
+        "std": 0.0005160940927453339,
+        "has_nan": false,
+        "has_inf": false
+      },
+      "embedding": {
+        "shape": [
+          32,
+          256
+        ],
+        "dtype": "torch.float32",
+        "min": -0.10849081724882126,
+        "max": 0.10932666808366776,
+        "mean": -0.0018690689466893673,
+        "std": 0.06247204914689064,
+        "has_nan": false,
+        "has_inf": false,
+        "l2_norm_min": 0.9999998807907104,
+        "l2_norm_max": 1.0000001192092896,
+        "l2_norm_mean": 1.0,
+        "max_l2_error": 1.1920928955078125e-07
+      }
+    }
+  ]
+}

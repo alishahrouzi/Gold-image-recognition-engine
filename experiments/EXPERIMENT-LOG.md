@@ -398,7 +398,50 @@ Protocol.
 
 ---
 
+## S2.4 — Forward Pass Validation (integration record, not a training experiment)
+
+This entry records that the untrained stack composes correctly:
+
+Preprocessed Tensor `[B, 3, 224, 224]` → CustomCNNEncoder → raw features
+`[B, 256]` (not L2-normalized) → EmbeddingHead → L2-normalized embedding
+`[B, D]` with `D ∈ {128, 256}`.
+
+It is **not** a trained-model evaluation. Do not read this as Top-1 /
+Recall@K / MRR. Neither 128-D nor 256-D is accepted as the retrieval
+default from these checks.
+
+### Status
+
+- Status: `ACCEPTED` as the S2.4 forward-pass validation
+- Date: 2026-08-29
+- Hardware: NVIDIA GeForce GTX 1650, 4095.7 MiB VRAM (detected at runtime)
+- PyTorch: 2.6.0+cu124
+- Report: `reports/benchmark/forward_pass/s2.4_forward_pass_report.json`
+
+### What was validated
+
+- Input shape `[B, 3, 224, 224]` from the existing preprocessor (not ad-hoc resize)
+- Encoder output `[B, 256]`, float32, finite (no NaN / Inf); no unit-L2 requirement
+- Embedding 128 → `[B, 128]`; embedding 256 → `[B, 256]`; both L2 ≈ 1
+  (`abs(norm - 1) < 1e-5`; observed `max_l2_error` ≤ ~1.2e-7)
+- Batch sizes 1 / 8 / 32 required; optional 64 succeeded on CPU and CUDA
+- Finite edge inputs: all-zero, constant, very small values — still finite embeddings
+- Dataset 1 `train` / `valid` / `test` via
+  `dataset1_manifest.csv` → UnifiedDataset → PreprocessedDataset → DataLoader
+- CPU and CUDA (GTX 1650). Device placement is in the harness only.
+
+64 runs, 0 failures, overall **PASS**. No architecture change. No training.
+Dataset 2 unused. Manifest and source images were not modified.
+
+### Decision
+
+ACCEPT the validated forward path for later training work. Keep both
+embedding widths configurable. Do **not** pick 128 vs 256 from this
+untrained forward-pass evidence.
+
+---
+
 Dataset Version: Dataset 1 cleaned baseline (4969 images / 2135 groups)
-Model Version: custom-cnn-v1 + s2.3-embedding-head-v1 (architecture only; untrained)
+Model Version: custom-cnn-v1 + s2.3-embedding-head-v1 (architecture only; untrained; S2.4 forward path validated)
 Evaluation Protocol Version: not applicable (no retrieval evaluation)
  

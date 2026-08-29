@@ -700,6 +700,49 @@ Neither 128-D nor 256-D is declared the retrieval winner from
 engineering metrics alone. Final width selection waits for a trained
 model evaluated under the Evaluation Protocol.
 
+# 9.4 S2.4 Forward Pass Validation
+
+S2.4 does not change the encoder or embedding-head architecture.
+It verifies that the existing modules compose correctly:
+
+```
+Preprocessed Tensor [B, 3, 224, 224]
+        ↓
+CustomCNNEncoder
+        ↓
+Raw Features [B, 256]          (not L2-normalized)
+        ↓
+EmbeddingHead
+        ↓
+L2-normalized Embedding [B, D]
+```
+
+`D ∈ {128, 256}`. Both widths are exercised. S2.4 does not pick a winner.
+
+Validated properties:
+
+- input tensors come from `ImagePreprocessor` / `PreprocessedDataset`, not an
+  ad-hoc resize/normalize path
+- encoder output is `[B, 256]`, float32, finite (no NaN / Inf)
+- raw encoder features are **not** required to have unit L2 norm
+- `EmbeddingHead` output is `[B, D]`, float32, finite
+- `||embedding_i||₂ ≈ 1` within a numerical tolerance (`abs(norm - 1) < 1e-5`)
+- batch sizes 1, 8, and 32 (optional 64 when hardware allows)
+- Dataset 1 `train` / `valid` / `test` through
+  `dataset1_manifest.csv` → `UnifiedDataset` → `PreprocessedDataset` →
+  `DataLoader` → `batch["image"]`
+- valid and test remain augmentation-free; train smoke uses `role='train'`
+  without enabling `AugmentationConfig` so checks stay deterministic
+- CPU always; CUDA when available (lack of CUDA is not a model failure)
+- device placement is external (`model.to(device)`, `images.to(device)`);
+  neither Encoder nor EmbeddingHead calls `.cuda()`
+
+Reports: `reports/benchmark/forward_pass/s2.4_forward_pass_report.json` and
+`.md`. Smoke: `scripts/smoke_forward_pass.py`.
+
+S2.4 is forward correctness only. It does not report retrieval metrics
+and does not imply trained retrieval quality.
+
 ---
 
 ## 10. Training Pipeline
@@ -1922,6 +1965,7 @@ must not require changing the encoder.
 | Feature Pooling             | Adaptive Global Average Pooling (in encoder)|
 | Embedding Head (S2.3)       | Linear(256 → D) + L2; `D ∈ {128, 256}`      |
 | S2.3 embedding dim          | Configurable 128 or 256; no winner yet      |
+| Forward pass validation (S2.4) | Shapes, finite values, L2; Dataset 1 smoke |
 | Normalization               | L2 inside `EmbeddingHead`                   |
 | Training Objective          | Metric Learning                             |
 | Initial Loss Candidate      | Supervised Contrastive Loss                 |
@@ -1947,7 +1991,7 @@ exact CNN architecture refinements (S2.2 Custom CNN v1 is the current backbone; 
 number of CNN stages / convs per stage
 channels per stage
 exact image resolution
-trained retrieval quality of 128-D vs 256-D embeddings (engineering comparison only in S2.3)
+trained retrieval quality of 128-D vs 256-D embeddings (engineering comparison in S2.3; forward-pass correctness in S2.4; no winner yet)
 richer embedding-head variants beyond Linear + L2 (MLP, residual, etc.)
 augmentation parameters
 optimizer
