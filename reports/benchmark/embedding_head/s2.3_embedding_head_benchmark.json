@@ -1,0 +1,320 @@
+{
+  "hardware": {
+    "python": "3.12.10",
+    "pytorch": "2.6.0+cu124",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "cuda_available": true,
+    "cuda_version": "12.4",
+    "gpu_name": "NVIDIA GeForce GTX 1650",
+    "vram_total_mib": 4095.6875
+  },
+  "warmup": 3,
+  "iters": 8,
+  "parameters": [
+    {
+      "module": "CustomCNNEncoder",
+      "embedding_dim": null,
+      "params": 1182496,
+      "bytes": 4729984
+    },
+    {
+      "module": "EmbeddingHead",
+      "embedding_dim": 128,
+      "params": 32896,
+      "bytes": 131584
+    },
+    {
+      "module": "EncoderWithEmbeddingHead",
+      "embedding_dim": 128,
+      "params": 1215392,
+      "bytes": 4861568
+    },
+    {
+      "module": "EmbeddingHead",
+      "embedding_dim": 256,
+      "params": 65792,
+      "bytes": 263168
+    },
+    {
+      "module": "EncoderWithEmbeddingHead",
+      "embedding_dim": 256,
+      "params": 1248288,
+      "bytes": 4993152
+    }
+  ],
+  "cpu": [
+    {
+      "batch_size": 1,
+      "embedding_dim": 128,
+      "encoder_ms": 84.19546250001986,
+      "head_ms": 0.10386250005467446,
+      "composed_ms": 84.18541250000544,
+      "feature_bytes": 1024,
+      "embedding_bytes": 512
+    },
+    {
+      "batch_size": 1,
+      "embedding_dim": 256,
+      "encoder_ms": 82.05271249994439,
+      "head_ms": 0.10277499995936523,
+      "composed_ms": 84.03405000001385,
+      "feature_bytes": 1024,
+      "embedding_bytes": 1024
+    },
+    {
+      "batch_size": 8,
+      "embedding_dim": 128,
+      "encoder_ms": 625.6088999999747,
+      "head_ms": 0.08969999998953426,
+      "composed_ms": 646.4710249999825,
+      "feature_bytes": 8192,
+      "embedding_bytes": 4096
+    },
+    {
+      "batch_size": 8,
+      "embedding_dim": 256,
+      "encoder_ms": 655.3395250000449,
+      "head_ms": 0.18633749994023674,
+      "composed_ms": 631.2342625000156,
+      "feature_bytes": 8192,
+      "embedding_bytes": 8192
+    },
+    {
+      "batch_size": 16,
+      "embedding_dim": 128,
+      "encoder_ms": 1404.6693250001,
+      "head_ms": 0.14402499994048412,
+      "composed_ms": 1524.755662499956,
+      "feature_bytes": 16384,
+      "embedding_bytes": 8192
+    },
+    {
+      "batch_size": 16,
+      "embedding_dim": 256,
+      "encoder_ms": 1415.7589624999218,
+      "head_ms": 0.14302499994300888,
+      "composed_ms": 1442.2885374999623,
+      "feature_bytes": 16384,
+      "embedding_bytes": 16384
+    },
+    {
+      "batch_size": 32,
+      "embedding_dim": 128,
+      "encoder_ms": 2839.8215875000687,
+      "head_ms": 0.11778750001667504,
+      "composed_ms": 2940.0527374999683,
+      "feature_bytes": 32768,
+      "embedding_bytes": 16384
+    },
+    {
+      "batch_size": 32,
+      "embedding_dim": 256,
+      "encoder_ms": 2918.6403999999584,
+      "head_ms": 0.20503749999534193,
+      "composed_ms": 2943.0245500000183,
+      "feature_bytes": 32768,
+      "embedding_bytes": 32768
+    }
+  ],
+  "cuda": [
+    {
+      "batch_size": 1,
+      "embedding_dim": 128,
+      "encoder_ms": 3.853887499985831,
+      "head_ms": 0.5008374999988519,
+      "composed_ms": 3.8509000000885862,
+      "peak_allocated_mib": 37.85498046875,
+      "peak_reserved_mib": 46.0
+    },
+    {
+      "batch_size": 1,
+      "embedding_dim": 256,
+      "encoder_ms": 3.8005375000693675,
+      "head_ms": 0.21776250002858433,
+      "composed_ms": 3.8239250000060565,
+      "peak_allocated_mib": 37.98095703125,
+      "peak_reserved_mib": 46.0
+    },
+    {
+      "batch_size": 8,
+      "embedding_dim": 128,
+      "encoder_ms": 28.900725000085004,
+      "head_ms": 0.2249749999236883,
+      "composed_ms": 28.90761249989282,
+      "peak_allocated_mib": 217.91357421875,
+      "peak_reserved_mib": 312.0
+    },
+    {
+      "batch_size": 8,
+      "embedding_dim": 256,
+      "encoder_ms": 28.966849999960687,
+      "head_ms": 0.5945999999994456,
+      "composed_ms": 28.999350000049162,
+      "peak_allocated_mib": 218.0419921875,
+      "peak_reserved_mib": 312.0
+    },
+    {
+      "batch_size": 16,
+      "embedding_dim": 128,
+      "encoder_ms": 55.74781250004435,
+      "head_ms": 0.2545375000408967,
+      "composed_ms": 55.88960000000043,
+      "peak_allocated_mib": 413.99072265625,
+      "peak_reserved_mib": 1092.0
+    },
+    {
+      "batch_size": 16,
+      "embedding_dim": 256,
+      "encoder_ms": 55.91952499992203,
+      "head_ms": 0.26785000000018044,
+      "composed_ms": 56.06528750001871,
+      "peak_allocated_mib": 414.1162109375,
+      "peak_reserved_mib": 1092.0
+    },
+    {
+      "batch_size": 32,
+      "embedding_dim": 128,
+      "encoder_ms": 111.10886250003205,
+      "head_ms": 0.27421250001680164,
+      "composed_ms": 148.7797125000725,
+      "peak_allocated_mib": 815.20166015625,
+      "peak_reserved_mib": 2454.0
+    },
+    {
+      "batch_size": 32,
+      "embedding_dim": 256,
+      "encoder_ms": 148.45854999998664,
+      "head_ms": 0.2894749999313717,
+      "composed_ms": 148.40800000001764,
+      "peak_allocated_mib": 815.3271484375,
+      "peak_reserved_mib": 2454.0
+    }
+  ],
+  "dataset1": [
+    {
+      "batch_size": 1,
+      "embedding_dim": 128,
+      "image_shape": [
+        1,
+        3,
+        224,
+        224
+      ],
+      "feature_shape": [
+        1,
+        256
+      ],
+      "embedding_shape": [
+        1,
+        128
+      ],
+      "finite": true,
+      "l2_unit": true
+    },
+    {
+      "batch_size": 1,
+      "embedding_dim": 256,
+      "image_shape": [
+        1,
+        3,
+        224,
+        224
+      ],
+      "feature_shape": [
+        1,
+        256
+      ],
+      "embedding_shape": [
+        1,
+        256
+      ],
+      "finite": true,
+      "l2_unit": true
+    },
+    {
+      "batch_size": 8,
+      "embedding_dim": 128,
+      "image_shape": [
+        8,
+        3,
+        224,
+        224
+      ],
+      "feature_shape": [
+        8,
+        256
+      ],
+      "embedding_shape": [
+        8,
+        128
+      ],
+      "finite": true,
+      "l2_unit": true
+    },
+    {
+      "batch_size": 8,
+      "embedding_dim": 256,
+      "image_shape": [
+        8,
+        3,
+        224,
+        224
+      ],
+      "feature_shape": [
+        8,
+        256
+      ],
+      "embedding_shape": [
+        8,
+        256
+      ],
+      "finite": true,
+      "l2_unit": true
+    },
+    {
+      "batch_size": 32,
+      "embedding_dim": 128,
+      "image_shape": [
+        32,
+        3,
+        224,
+        224
+      ],
+      "feature_shape": [
+        32,
+        256
+      ],
+      "embedding_shape": [
+        32,
+        128
+      ],
+      "finite": true,
+      "l2_unit": true
+    },
+    {
+      "batch_size": 32,
+      "embedding_dim": 256,
+      "image_shape": [
+        32,
+        3,
+        224,
+        224
+      ],
+      "feature_shape": [
+        32,
+        256
+      ],
+      "embedding_shape": [
+        32,
+        256
+      ],
+      "finite": true,
+      "l2_unit": true
+    }
+  ],
+  "notes": [
+    "No training, loss, similarity, or retrieval.",
+    "128 vs 256 is an engineering comparison only.",
+    "Dataset 1 files and manifest were not modified."
+  ]
+}

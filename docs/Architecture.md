@@ -348,13 +348,17 @@ preprocessing and before later embedding-head / similarity modules:
 Image
     → Preprocessing (data layer)
     → Custom CNN Encoder
-    → Embedding  Tensor[B, D]
+    → Raw features  Tensor[B, 256]
+    → EmbeddingHead (S2.3)
+    → L2-normalized embedding  Tensor[B, D]
 ```
 
 # 7.1 Responsibility
 
 The encoder extracts visual features from an already-preprocessed
-image tensor and projects them to a fixed-width embedding.
+image tensor. After S2.3, the encoder stops at a raw pooled vector
+(`[B, feature_dim]`, default 256). Projection to the retrieval width
+`D ∈ {128, 256}` and L2 normalization belong to `EmbeddingHead`.
 
 The encoder is a custom CNN implemented specifically for the
 project. It must not use a pretrained torchvision backbone
@@ -387,24 +391,25 @@ The encoder must **not**:
 - access metadata, `group_id`, `category_id`, or `image_id`
 - calculate similarity
 - perform ranking
-- L2-normalize embeddings (normalization is a later embedding /
-  retrieval concern)
+- L2-normalize embeddings (normalization is `EmbeddingHead`, S2.3)
 
 # 7.2 S2.1 Encoder Contract + Baseline
 
 S2.1 established the Encoder module contract in `src/models/`:
 
-- public API: `forward(x)` / `encode(x)`
+- public API: `forward(x)` / `encode(x)` / `encode_features(x)`
 - input: `Tensor[B, 3, H, W]` (MVP default `224 × 224`)
-- output: `Tensor[B, D]` unnormalized embeddings
+- output: `Tensor[B, C]` unnormalized **raw features** (`C = feature_dim`)
 - configuration: `EncoderConfig`
 - fail-loud input validation (`EncoderInputError`)
 - device placement is external (`model.to(device)`)
 
 The S2.1 baseline was a contract CNN: one `Conv → BN → ReLU → MaxPool`
 block per channel stage, then adaptive GAP and a linear projection.
-That baseline is superseded by Custom CNN v1 (S2.2) below. The
-tensor contract is unchanged.
+S2.2 replaced that with Custom CNN v1. S2.3 **moved** the linear
+projection and L2 normalization out of the CNN into `EmbeddingHead`.
+The image-tensor input contract is unchanged; encoder **output** is
+now the GAP feature vector rather than a projected embedding.
 
 # 7.2.1 S2.2 Custom CNN v1 (`CustomCNNEncoder`)
 
@@ -445,11 +450,11 @@ Flatten
 Optional projection dropout (default off)
     │
     ▼
-Linear projection  256 → D
-    │
-    ▼
-Embedding Tensor[B, D]   (unnormalized)
+Raw features Tensor[B, 256]   (unnormalized; no linear projection)
 ```
+
+After S2.3 the CNN stops here. Retrieval width `D ∈ {128, 256}` and
+L2 normalization are applied by `EmbeddingHead`, not by this module.
 
 Default spatial trace (batch omitted):
 
@@ -461,7 +466,7 @@ Default spatial trace (batch omitted):
     → [128, 28, 28]    stage 3
     → [256, 28, 28]    stage 4
     → [256, 1, 1]      GAP
-    → [D]              projection
+    → [256]            flatten / raw features
 ```
 
 Compared with the S2.1 four-pool baseline (224 → 14), v1 downsamples
@@ -471,8 +476,9 @@ rings, prongs, and small stones.
 
 Building blocks (`src/models/blocks.py`): `ConvBlock`, `CNNStage`,
 `Stem`. Stages after the last `block_channels` entry do not pool.
-Channel progression, `convs_per_stage`, activation, normalization,
-and embedding width are configured through `EncoderConfig`.
+Channel progression, `convs_per_stage`, activation, and normalization
+are configured through `EncoderConfig`. Retrieval embedding width is
+configured through `EmbeddingHeadConfig`.
 
 Defaults:
 
@@ -485,20 +491,26 @@ Defaults:
 | `activation` | `relu` | Stable default; leaky_relu / gelu allowed |
 | `normalization` | `batch` | Training stability; `none` allowed for ablation |
 | `downsample` | `max_pool` | Translation robustness after each stage except the last |
-| `embedding_dim` | `128` | See 7.3 |
+| `feature_dim` | last `block_channels` (256) | Raw GAP width; encoder output |
+| `embedding_dim` | `128` | Log-compat field on `EncoderConfig`; **not** used by the CNN after S2.3 |
 | `projection_dropout` | `0.0` | Regularization belongs to later training experiments |
-| L2 normalize | **not in encoder** | Embedding head / retrieval (S2.3+) |
+| L2 normalize | **not in encoder** | `EmbeddingHead` (S2.3) |
 | pretrained weights | none | From-scratch Custom CNN |
 
 `architecture_id`: `custom-cnn-v1`. Policy: `s2.2-custom-cnn-v1`.
 
-Measured parameter footprint (untrained, float32, programmatic count):
+Measured parameter footprint after S2.3 (untrained, float32, CNN only; no Linear head):
 
 | Quantity | Value |
 |---|---|
-| Total parameters | 1,215,392 |
-| Trainable parameters | 1,215,392 |
-| Parameter storage | 4,861,568 bytes (~4.64 MiB) |
+| Total parameters | 1,182,496 |
+| Trainable parameters | 1,182,496 |
+| Parameter storage | 4,729,984 bytes (~4.51 MiB) |
+
+S2.2 previously counted a `Linear(256 → 128)` inside the CNN
+(1,215,392 params). That layer now lives on `EmbeddingHead`. A composed
+`EncoderWithEmbeddingHead` at `D=128` has the same total parameter count
+as the old S2.2 encoder.
 
 Known limitations (S2.2):
 
@@ -508,9 +520,10 @@ Known limitations (S2.2):
 - GAP discards explicit spatial layout after stage 4; that is desired
   for viewpoint robustness and will be revisited only with evidence.
 
-Adaptive pooling is used so the projection layer does not depend on a
+Adaptive pooling is used so the feature width does not depend on a
 hard-coded flattened spatial size. There is no classification head,
-similarity head, or metric-learning loss in this module.
+similarity head, linear embedding projection, or metric-learning loss
+in this module.
 
 # 7.3 Encoder Output
 
@@ -520,18 +533,19 @@ Input:  `Tensor[B, 3, H, W]`
 - `3` = RGB channels (`EncoderConfig.input_channels`, default 3)
 - `H` / `W` = configured resolution (MVP default `224 × 224`)
 
-Output: `Tensor[B, D]`
+Output: `Tensor[B, C]` raw features
 
-- `D` = `EncoderConfig.embedding_dim` (S2.2 default **128**,
-  configurable; not hard-coded in downstream code)
+- `C` = `EncoderConfig.feature_dim` = last `block_channels` entry
+  (default **256**)
+- `encode_features(x)` and `forward(x)` return the same tensor
 - dtype under normal float32 input: `torch.float32`
 - batch dimension is preserved
-- embeddings are **not** L2-normalized in the encoder
+- features are **not** L2-normalized
+- there is **no** linear projection to retrieval `D` in the encoder
 
-Default `D = 128` is kept from S2.1 on purpose. Dataset 1 has 2135
-products / 4969 images; a 256-D encoder output would raise cosine
-cost and over-parameterize a still-untrained backbone. S2.3 can add
-a wider embedding head without changing this CNN.
+`EncoderConfig.embedding_dim` remains a validated positive integer for
+backward-compatible experiment logs. Retrieval width `D ∈ {128, 256}`
+is configured on `EmbeddingHeadConfig.embedding_dim`.
 
 Invalid ranks or spatial sizes raise `EncoderInputError`. Inputs are
 never silently reshaped.
@@ -570,7 +584,7 @@ Feature pooling converts the spatial representation into a
 compact feature vector.
 
 S2.2 keeps pooling **inside** `CustomCNNEncoder` as
-`AdaptiveAvgPool2d(1)` so the projection layer does not depend on a
+`AdaptiveAvgPool2d(1)` so the raw feature width does not depend on a
 fixed spatial map size. A later module may still replace pooling
 without changing Dataset or preprocessing.
 
@@ -596,64 +610,95 @@ The pooling strategy remains replaceable.
 
 ---
 
-## 9. Embedding Head
+## 9. Embedding Head (S2.3)
 
 # 9.1 Responsibility
 
-The embedding head converts encoder features into a fixed-size
-embedding suitable for similarity comparison.
+S2.3 implements a standalone `EmbeddingHead` in `src/models/embedding_head.py`.
 
-S2.2 does **not** implement a separate embedding-head module. Custom
-CNN v1 ends with a single linear projection to configurable `D`.
-L2 normalization and a richer projection head remain S2.3+ so
-Dataset and preprocessing contracts stay unchanged.
+The encoder extracts visual features. The embedding head projects those
+features to the retrieval width and L2-normalizes them.
 
-Encoder Features
-       │
-       ▼
-Embedding Head
-       │
-       ▼
-Embedding Vector
-       │
-       ▼
-L2 Normalization
+```
+CustomCNNEncoder
+        ↓
+raw features  Tensor[B, 256]
+        ↓
+EmbeddingHead
+        ↓
+Linear(256 → D)
+        ↓
+F.normalize(p=2, dim=1, eps=l2_eps)
+        ↓
+L2-normalized embedding  Tensor[B, D]
+```
 
-# 9.2 Initial Design
+`D ∈ {128, 256}` via `EmbeddingHead(embedding_dim=128)` or
+`EmbeddingHead(embedding_dim=256)` / `EmbeddingHeadConfig`.
 
-Initial embedding dimension: 256
+The head must **not**:
 
-Initial structure:
+- load images or run the CNN
+- apply preprocessing or augmentation
+- read `group_id`, `category_id`, or other metadata
+- compute similarity, rank products, or apply a training loss
+- call `.cuda()` internally
 
-Feature Vector
-      │
-      ▼
-Linear Projection
-      │
-      ▼
-Activation / Optional Regularization
-      │
-      ▼
-Linear Projection
-      │
-      ▼
-256-D Embedding
-      │
-      ▼
-L2 Normalization
+# 9.2 S2.3 Baseline Design
 
-The exact number of layers is configurable.
+S2.3 is a clean baseline. It uses a single linear projection plus
+explicit L2 normalization. It does **not** add MLP stacks, residual
+projection, attention, BatchNorm, LayerNorm, dropout, classification
+heads, temperature, or metric-learning loss.
 
-The embedding dimension must remain configurable for future
-experimentation.
+```
+Raw Feature [B, 256]
+       ↓
+Linear(256 → embedding_dim)
+       ↓
+L2 Normalize
+       ↓
+Embedding [B, embedding_dim]
+```
+
+Configuration (`EmbeddingHeadConfig`):
+
+| Setting | Default | Notes |
+|---|---|---|
+| `feature_dim` | 256 | Must match encoder GAP width |
+| `embedding_dim` | 128 | Allowed: 128 or 256 (`SUPPORTED_EMBEDDING_DIMS`) |
+| `l2_eps` | 1e-12 | Passed to `F.normalize` for numerical stability |
+
+Invalid `embedding_dim` values raise `EmbeddingHeadConfigError`.
+Invalid feature tensors (wrong rank, width, or non-float dtype) raise
+`EmbeddingHeadInputError`. Tensors are never silently reshaped, padded,
+or truncated.
+
+Composition (optional convenience, still no training):
+
+```
+features = encoder.encode_features(images)   # [B, 256]
+embeddings = embedding_head(features)        # [B, D], ||e||₂ ≈ 1
+
+# or
+model = EncoderWithEmbeddingHead(encoder, embedding_head)
+embeddings = model(images)
+```
 
 # 9.3 Output Contract
 
-Input:  [B, C]
+Input:  `Tensor[B, 256]` (float)
 
-Output: [B, 256]
+Output: `Tensor[B, D]` with `D ∈ {128, 256}`
 
-After normalization:    ||embedding||₂ = 1
+After normalization: `||embedding_i||₂ ≈ 1` for every sample.
+
+Zero input features must remain finite (no NaN / Inf); `F.normalize`
+with `eps` is used instead of a hand-rolled division.
+
+Neither 128-D nor 256-D is declared the retrieval winner from
+engineering metrics alone. Final width selection waits for a trained
+model evaluated under the Evaluation Protocol.
 
 ---
 
@@ -1468,14 +1513,14 @@ Implementation: `models.Encoder` (`nn.Module` ABC) and
 `models.CustomCNNEncoder`.
 
 ```
-forward(x) / encode(x)
+forward(x) / encode(x) / encode_features(x)
 ```
 
 Input:  `Tensor[B, 3, H, W]`  (MVP default H = W = 224)
 
-Output: `Tensor[B, D]`
+Output: `Tensor[B, C]` raw unnormalized features
 
-Where `D = encoder.embedding_dim` (configurable; S2.2 default 128).
+Where `C = encoder.feature_dim` (default 256; last `block_channels` entry).
 
 The encoder must not know anything about:
 
@@ -1488,13 +1533,26 @@ preprocessing or augmentation
 
 # 17.3 Embedding Interface
 
-generate_embedding(features)
+Implementation: `models.EmbeddingHead`.
 
-Input:  Feature Tensor[B, C]
+```
+forward(features)
+```
 
-Output: Embedding[B, D]
+Input:  `Tensor[B, 256]` raw encoder features
 
-Where:  D = configurable embedding dimension
+Output: `Tensor[B, D]` L2-normalized embeddings, `D ∈ {128, 256}`
+
+`EncoderWithEmbeddingHead` composes encoder + head as `model(images)`.
+
+The embedding head must not know anything about:
+
+images
+preprocessing
+product IDs
+similarity
+ranking
+loss / training
 
 # 17.4 Complete Model Interface
 
@@ -1856,16 +1914,15 @@ must not require changing the encoder.
 | Data visualization (S1.11)  | Read-only group-aware QA figures            |
 | DataLoader benchmark (S1.12)| Pipeline throughput / RAM / VRAM, no Encoder |
 | Encoder module (S2.1)       | Encoder interface + fail-loud tensor contract |
-| Custom CNN v1 (S2.2)        | Stem + 4 stages + GAP + linear projection   |
+| Custom CNN v1 (S2.2)        | Stem + 4 stages + GAP; raw features [B, 256] |
 | Categories                  | Bracelet, Earrings, Necklace, Pendant, Ring |
 | Encoder                     | Custom CNN v1 (`CustomCNNEncoder`, S2.2)    |
 | Encoder input               | `Tensor[B, 3, 224, 224]`                    |
-| Encoder output              | `Tensor[B, D]` (unnormalized)               |
+| Encoder output              | `Tensor[B, 256]` raw features (unnormalized) |
 | Feature Pooling             | Adaptive Global Average Pooling (in encoder)|
-| Embedding Head              | Deferred (S2.3); linear projection in CNN   |
-| S2.2 Encoder embedding dim  | 128 (configurable via `EncoderConfig`)      |
-| Later embedding-head dim    | Experimental (Architecture candidate 256)   |
-| Normalization               | L2 (not inside the encoder)                 |
+| Embedding Head (S2.3)       | Linear(256 → D) + L2; `D ∈ {128, 256}`      |
+| S2.3 embedding dim          | Configurable 128 or 256; no winner yet      |
+| Normalization               | L2 inside `EmbeddingHead`                   |
 | Training Objective          | Metric Learning                             |
 | Initial Loss Candidate      | Supervised Contrastive Loss                 |
 | Similarity                  | Cosine Similarity                           |
@@ -1890,9 +1947,8 @@ exact CNN architecture refinements (S2.2 Custom CNN v1 is the current backbone; 
 number of CNN stages / convs per stage
 channels per stage
 exact image resolution
-encoder `embedding_dim` final value (S2.2 default 128)
-exact Embedding Head architecture (separate from encoder)
-whether L2 lives on an embedding head vs retrieval layer
+trained retrieval quality of 128-D vs 256-D embeddings (engineering comparison only in S2.3)
+richer embedding-head variants beyond Linear + L2 (MLP, residual, etc.)
 augmentation parameters
 optimizer
 learning rate

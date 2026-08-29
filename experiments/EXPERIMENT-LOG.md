@@ -320,7 +320,85 @@ retrieval experiment justifies a change.
 
 ---
 
+## S2.3 — Embedding Head (engineering comparison, not a training experiment)
+
+This entry records Linear projection + L2 normalization as a separate
+module. It is **not** a trained-model evaluation. Do not read the
+checks below as Top-1 / Recall@K / MRR. Neither 128-D nor 256-D is
+accepted as the retrieval default from these numbers.
+
+### Status
+
+- Status: `ACCEPTED` as the S2.3 architecture definition
+- Date: 2026-08-29
+- Policy: `s2.3-embedding-head-v1`
+- Hardware: NVIDIA GeForce GTX 1650, 4095.7 MiB VRAM (detected at runtime)
+- PyTorch: 2.6.0+cu124
+
+### Configuration
+
+```
+encoder: CustomCNNEncoder (feature_dim=256, no linear projection, no L2)
+EmbeddingHead:
+  feature_dim: 256
+  embedding_dim: 128 | 256
+  projection: Linear(256 → D)
+  l2: F.normalize(p=2, dim=1, eps=1e-12)
+  no MLP / BN / LN / dropout / loss / retrieval
+```
+
+### Parameter counts (float32, untrained)
+
+| Module | D | params | bytes |
+|---|---:|---:|---:|
+| CustomCNNEncoder | — | 1,182,496 | 4,729,984 |
+| EmbeddingHead | 128 | 32,896 | 131,584 |
+| EncoderWithEmbeddingHead | 128 | 1,215,392 | 4,861,568 |
+| EmbeddingHead | 256 | 65,792 | 263,168 |
+| EncoderWithEmbeddingHead | 256 | 1,248,288 | 4,993,152 |
+
+Embedding storage (float32): 512 bytes/sample at 128-D, 1024 bytes/sample at 256-D.
+
+### CPU forward (ms / iter, warmup=3, iters=8, synthetic tensors)
+
+| batch | D=128 composed | D=256 composed |
+|---:|---:|---:|
+| 1 | 84.2 | 84.0 |
+| 8 | 646.5 | 631.2 |
+| 16 | 1524.8 | 1442.3 |
+| 32 | 2940.1 | 2943.0 |
+
+Head-only time is ~0.1–0.2 ms; encoder dominates CPU time.
+
+### CUDA forward (ms / iter, same conditions; peak allocated / reserved MiB)
+
+| batch | D=128 composed | D=256 composed | peak alloc | peak reserved |
+|---:|---:|---:|---:|---:|
+| 1 | 3.85 | 3.82 | 37.9 | 46 |
+| 8 | 28.91 | 29.00 | 218 | 312 |
+| 16 | 55.89 | 56.07 | 414 | 1092 |
+| 32 | 148.8 | 148.4 | 815 | 2454 |
+
+GPU utilization was not measured. These VRAM numbers are **forward-only**
+and are not a training batch-size decision.
+
+### Dataset 1 integration
+
+`dataset1_manifest.csv` → UnifiedDataset (valid) → PreprocessedDataset →
+DataLoader → `batch["image"]` → encoder features `[B, 256]` → head →
+`[B, D]`, finite, L2 unit. Batches 1 / 8 / 32 for both D. Manifest and
+source images were not modified. No training. Dataset 2 unused.
+
+### Decision
+
+ACCEPT the EmbeddingHead module boundary (encoder = features,
+head = projection + L2). Keep both 128 and 256 configurable. Do **not**
+pick a winner until a trained retrieval experiment under the Evaluation
+Protocol.
+
+---
+
 Dataset Version: Dataset 1 cleaned baseline (4969 images / 2135 groups)
-Model Version: custom-cnn-v1 (architecture only; untrained)
+Model Version: custom-cnn-v1 + s2.3-embedding-head-v1 (architecture only; untrained)
 Evaluation Protocol Version: not applicable (no retrieval evaluation)
  
