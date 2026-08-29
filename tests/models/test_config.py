@@ -4,13 +4,22 @@ from __future__ import annotations
 
 import pytest
 
-from models import EncoderConfig, EncoderConfigError
+from models import (
+    ARCHITECTURE_ID,
+    ARCHITECTURE_POLICY,
+    EncoderConfig,
+    EncoderConfigError,
+)
 from models.config import (
+    DEFAULT_ACTIVATION,
     DEFAULT_BLOCK_CHANNELS,
+    DEFAULT_CONVS_PER_STAGE,
     DEFAULT_EMBEDDING_DIM,
     DEFAULT_INPUT_CHANNELS,
     DEFAULT_INPUT_HEIGHT,
     DEFAULT_INPUT_WIDTH,
+    DEFAULT_KERNEL_SIZE,
+    DEFAULT_NORMALIZATION,
 )
 
 
@@ -21,13 +30,28 @@ def test_default_config() -> None:
     assert config.input_height == DEFAULT_INPUT_HEIGHT
     assert config.input_width == DEFAULT_INPUT_WIDTH
     assert config.block_channels == DEFAULT_BLOCK_CHANNELS
+    assert config.convs_per_stage == DEFAULT_CONVS_PER_STAGE
+    assert config.kernel_size == DEFAULT_KERNEL_SIZE
+    assert config.activation == DEFAULT_ACTIVATION
+    assert config.normalization == DEFAULT_NORMALIZATION
+    assert config.downsample == "max_pool"
+    assert config.projection_dropout == 0.0
     assert config.input_shape == (3, 224, 224)
+    assert config.number_of_stages == 4
+    assert DEFAULT_EMBEDDING_DIM == 128
 
 
 @pytest.mark.parametrize("embedding_dim", [64, 128, 256])
 def test_configurable_embedding_dim(embedding_dim: int) -> None:
     config = EncoderConfig(embedding_dim=embedding_dim)
     assert config.embedding_dim == embedding_dim
+
+
+@pytest.mark.parametrize("channels", [(32,), (16, 32, 64), (32, 64, 128, 256, 256)])
+def test_channel_configuration(channels: tuple[int, ...]) -> None:
+    config = EncoderConfig(block_channels=channels)
+    assert config.block_channels == channels
+    assert config.number_of_stages == len(channels)
 
 
 @pytest.mark.parametrize(
@@ -40,6 +64,14 @@ def test_configurable_embedding_dim(embedding_dim: int) -> None:
         {"input_width": -8},
         {"block_channels": ()},
         {"block_channels": (32, 0, 64)},
+        {"convs_per_stage": 0},
+        {"kernel_size": 2},
+        {"kernel_size": 4},
+        {"activation": "swish"},
+        {"normalization": "layer"},
+        {"downsample": "stride"},
+        {"projection_dropout": 1.0},
+        {"projection_dropout": -0.1},
     ],
 )
 def test_invalid_positive_fields(kwargs: dict) -> None:
@@ -54,6 +86,8 @@ def test_invalid_positive_fields(kwargs: dict) -> None:
         {"embedding_dim": True},
         {"input_channels": "3"},
         {"block_channels": "32,64"},
+        {"activation": ""},
+        {"normalization": 1},
     ],
 )
 def test_invalid_types(kwargs: dict) -> None:
@@ -64,5 +98,11 @@ def test_invalid_types(kwargs: dict) -> None:
 def test_as_loggable_dict() -> None:
     payload = EncoderConfig(embedding_dim=64).as_loggable_dict()
     assert payload["embedding_dim"] == 64
-    assert payload["policy"] == "s2.1-custom-cnn-encoder"
+    assert payload["policy"] == ARCHITECTURE_POLICY
+    assert payload["architecture_id"] == ARCHITECTURE_ID
+    assert payload["architecture_id"] == "custom-cnn-v1"
+    assert payload["policy"] == "s2.2-custom-cnn-v1"
     assert payload["block_channels"] == [32, 64, 128, 256]
+    assert payload["number_of_stages"] == 4
+    assert payload["activation"] == "relu"
+    assert payload["normalization"] == "batch"

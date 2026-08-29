@@ -14,6 +14,9 @@ from models import (
     EncoderInputError,
     count_parameters,
     estimate_parameter_bytes,
+    format_encoder_summary,
+    summarize_encoder,
+    trace_encoder_shapes,
 )
 
 BATCH_SIZES = (1, 2, 8, 32)
@@ -165,3 +168,71 @@ def test_no_hardcoded_cuda_in_construction() -> None:
     encoder = CustomCNNEncoder()
     for parameter in encoder.parameters():
         assert parameter.device.type == "cpu"
+
+
+def test_default_spatial_shape_trace() -> None:
+    encoder = CustomCNNEncoder()
+    trace = dict(trace_encoder_shapes(encoder, batch_size=2))
+    assert trace["input"] == (2, 3, 224, 224)
+    assert trace["stem"] == (2, 32, 224, 224)
+    assert trace["stage_1"] == (2, 32, 112, 112)
+    assert trace["stage_2"] == (2, 64, 56, 56)
+    assert trace["stage_3"] == (2, 128, 28, 28)
+    assert trace["stage_4"] == (2, 256, 28, 28)
+    assert trace["global_average_pool"] == (2, 256, 1, 1)
+    assert trace["flatten"] == (2, 256)
+    assert trace["projection"] == (2, 128)
+
+
+def test_programmatic_summary_includes_gap_and_projection() -> None:
+    encoder = CustomCNNEncoder()
+    names = [name for name, _role, _params in summarize_encoder(encoder)]
+    assert names[0] == "stem"
+    assert "stage_1" in names
+    assert "stage_4" in names
+    assert "global_average_pool" in names
+    assert "projection" in names
+    text = format_encoder_summary(encoder)
+    assert "Input Shape" in text
+    assert "Output Shape" in text
+    assert "Channels" in text
+    assert "[1, 32, 224, 224]" in text or "[2, 32, 224, 224]" in text
+    assert str(count_parameters(encoder, trainable_only=False)) in text
+
+
+def test_no_classification_head() -> None:
+    encoder = CustomCNNEncoder()
+    forbidden = (torch.nn.Softmax, torch.nn.LogSoftmax, torch.nn.CrossEntropyLoss)
+    assert not any(isinstance(module, forbidden) for module in encoder.modules())
+    linear_layers = [module for module in encoder.modules() if isinstance(module, torch.nn.Linear)]
+    assert len(linear_layers) == 1
+    assert linear_layers[0].out_features == encoder.embedding_dim
+
+
+def test_embeddings_are_unnormalized() -> None:
+    encoder = CustomCNNEncoder()
+    encoder.eval()
+    embeddings = encoder(_random_batch(8))
+    norms = torch.linalg.vector_norm(embeddings, ord=2, dim=1)
+    assert not torch.allclose(norms, torch.ones_like(norms), atol=1e-3)
+
+
+@pytest.mark.parametrize("activation", ["relu", "leaky_relu", "gelu"])
+def test_configurable_activation_forward(activation: str) -> None:
+    encoder = CustomCNNEncoder(EncoderConfig(activation=activation))
+    embeddings = encoder(_random_batch(2, encoder.config))
+    assert embeddings.shape == (2, encoder.embedding_dim)
+    assert torch.isfinite(embeddings).all()
+
+
+def test_stage_count_follows_block_channels() -> None:
+    encoder = CustomCNNEncoder(EncoderConfig(block_channels=(16, 32, 64)))
+    assert len(encoder.stages) == 3
+    embeddings = encoder(_random_batch(2, encoder.config))
+    assert embeddings.shape == (2, 128)
+
+
+def test_global_average_pooling_present() -> None:
+    encoder = CustomCNNEncoder()
+    assert isinstance(encoder.pool, torch.nn.AdaptiveAvgPool2d)
+    assert encoder.pool.output_size == 1 or encoder.pool.output_size == (1, 1)
