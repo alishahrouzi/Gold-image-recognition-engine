@@ -213,5 +213,5 @@ class TrainingConfig:
         """Return a JSON/log-friendly representation of the configuration."""
         payload = asdict(self)
         payload["supported_embedding_dims"] = list(SUPPORTED_EMBEDDING_DIMS)
-        payload["policy"] = "s2.5-training-infrastructure-v2"
+        payload["policy"] = "s2.5-training-infrastructure-v1"
         return payload
