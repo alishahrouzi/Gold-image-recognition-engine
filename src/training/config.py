@@ -1,6 +1,7 @@
-"""Training configuration for S2.5.
+"""Configuration for the S2.5 training infrastructure.
 
-This module owns training-time concerns only. Model architecture settings live
+Training configuration owns optimization, scheduling, checkpointing,
+reproducibility, and early-stopping concerns. Model architecture settings live
 under ``src.models.config`` and dataset/pair-generation settings remain under
 ``src.data``.
 """
@@ -29,12 +30,18 @@ DEFAULT_PIN_MEMORY: bool = True
 DEFAULT_DEVICE: str = "auto"
 DEFAULT_CHECKPOINT_DIR: str = "checkpoints"
 DEFAULT_SAVE_BEST: bool = True
+DEFAULT_EARLY_STOPPING_ENABLED: bool = True
+DEFAULT_EARLY_STOPPING_PATIENCE: int = 3
+DEFAULT_EARLY_STOPPING_MIN_DELTA: float = 0.0
+DEFAULT_MONITOR: str = "val_loss"
+DEFAULT_DETERMINISTIC: bool = True
 
 SUPPORTED_EMBEDDING_DIMS: Tuple[int, ...] = (128, 256)
 ALLOWED_LOSSES: Tuple[str, ...] = ("contrastive",)
 ALLOWED_OPTIMIZERS: Tuple[str, ...] = ("adamw",)
 ALLOWED_SCHEDULERS: Tuple[str, ...] = ("cosine", "none")
 ALLOWED_DEVICES: Tuple[str, ...] = ("auto", "cpu", "cuda")
+ALLOWED_MONITORS: Tuple[str, ...] = ("val_loss",)
 
 
 def _require_positive_int(value: Any, field_name: str) -> int:
@@ -53,7 +60,13 @@ def _require_non_negative_int(value: Any, field_name: str) -> int:
     return value
 
 
-def _require_finite_float(value: Any, field_name: str, *, minimum: float = 0.0, strict: bool = False) -> float:
+def _require_finite_float(
+    value: Any,
+    field_name: str,
+    *,
+    minimum: float = 0.0,
+    strict: bool = False,
+) -> float:
     if isinstance(value, bool):
         raise TrainingConfigError(f"{field_name} must be a finite number.")
     try:
@@ -106,12 +119,7 @@ def _require_optional_path(value: Any, field_name: str) -> Optional[str]:
 
 @dataclass(frozen=True)
 class TrainingConfig:
-    """S2.5 training-time configuration.
-
-    This object deliberately excludes model architecture, preprocessing, and
-    pair-generation settings. Those concerns have their own configuration
-    contracts elsewhere in the project.
-    """
+    """Validated S2.5 training-time configuration."""
 
     seed: int = DEFAULT_SEED
     embedding_dim: int = DEFAULT_EMBEDDING_DIM
@@ -129,6 +137,11 @@ class TrainingConfig:
     checkpoint_dir: str = DEFAULT_CHECKPOINT_DIR
     save_best: bool = DEFAULT_SAVE_BEST
     resume_from: Optional[str] = None
+    early_stopping_enabled: bool = DEFAULT_EARLY_STOPPING_ENABLED
+    early_stopping_patience: int = DEFAULT_EARLY_STOPPING_PATIENCE
+    early_stopping_min_delta: float = DEFAULT_EARLY_STOPPING_MIN_DELTA
+    monitor: str = DEFAULT_MONITOR
+    deterministic: bool = DEFAULT_DETERMINISTIC
 
     def __post_init__(self) -> None:
         if not isinstance(self.seed, int) or isinstance(self.seed, bool):
@@ -175,10 +188,30 @@ class TrainingConfig:
         object.__setattr__(self, "checkpoint_dir", _require_checkpoint_path(self.checkpoint_dir))
         object.__setattr__(self, "save_best", _require_bool(self.save_best, "save_best"))
         object.__setattr__(self, "resume_from", _require_optional_path(self.resume_from, "resume_from"))
+        object.__setattr__(
+            self,
+            "early_stopping_enabled",
+            _require_bool(self.early_stopping_enabled, "early_stopping_enabled"),
+        )
+        object.__setattr__(
+            self,
+            "early_stopping_patience",
+            _require_positive_int(self.early_stopping_patience, "early_stopping_patience"),
+        )
+        object.__setattr__(
+            self,
+            "early_stopping_min_delta",
+            _require_finite_float(
+                self.early_stopping_min_delta,
+                "early_stopping_min_delta",
+            ),
+        )
+        object.__setattr__(self, "monitor", _require_choice(self.monitor, "monitor", ALLOWED_MONITORS))
+        object.__setattr__(self, "deterministic", _require_bool(self.deterministic, "deterministic"))
 
     def as_loggable_dict(self) -> Mapping[str, Any]:
         """Return a JSON/log-friendly representation of the configuration."""
         payload = asdict(self)
         payload["supported_embedding_dims"] = list(SUPPORTED_EMBEDDING_DIMS)
-        payload["policy"] = "s2.5-training-infrastructure-v1"
+        payload["policy"] = "s2.5-training-infrastructure-v2"
         return payload
