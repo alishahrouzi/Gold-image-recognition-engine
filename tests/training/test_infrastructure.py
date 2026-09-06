@@ -15,7 +15,13 @@ from src.training.errors import TrainingConfigError, TrainingError
 from src.training.loop import run_training_epoch
 from src.training.optimizer import build_optimizer
 from src.training.scheduler import build_scheduler
-from src.training.seed import capture_rng_state, restore_rng_state, set_seed
+from src.training.seed import (
+    capture_rng_state,
+    make_dataloader_generator,
+    restore_rng_state,
+    seed_worker,
+    set_seed,
+)
 from src.training.trainer import Trainer, resolve_device
 from src.training.validation import run_validation_epoch
 
@@ -61,6 +67,17 @@ def test_rng_state_can_be_restored() -> None:
     restore_rng_state(state)
     actual = torch.rand(4)
     assert torch.equal(expected, actual)
+
+
+def test_dataloader_generator_is_seeded() -> None:
+    first = make_dataloader_generator(42)
+    second = make_dataloader_generator(42)
+    assert torch.equal(torch.rand(4, generator=first), torch.rand(4, generator=second))
+
+
+def test_seed_worker_runs_without_error() -> None:
+    seed_worker(0)
+    assert isinstance(np.random.rand(), float)
 
 
 def test_optimizer_uses_trainable_parameters_only() -> None:
