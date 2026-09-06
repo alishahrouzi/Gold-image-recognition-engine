@@ -5,7 +5,15 @@ retrieval semantics remain in their dedicated Sprint 3 modules.
 """
 
 from .checkpoint import CheckpointManager
-from .config import TrainingConfig
+from .config import (
+    ALLOWED_DEVICES,
+    ALLOWED_LOSSES,
+    ALLOWED_MONITORS,
+    ALLOWED_OPTIMIZERS,
+    ALLOWED_SCHEDULERS,
+    SUPPORTED_EMBEDDING_DIMS,
+    TrainingConfig,
+)
 from .early_stopping import EarlyStopping
 from .errors import TrainingConfigError, TrainingError
 from .optimizer import build_optimizer
@@ -22,6 +30,12 @@ from .validation import EpochResult, run_validation_epoch
 from .loop import run_training_epoch
 
 __all__ = [
+    "ALLOWED_DEVICES",
+    "ALLOWED_LOSSES",
+    "ALLOWED_MONITORS",
+    "ALLOWED_OPTIMIZERS",
+    "ALLOWED_SCHEDULERS",
+    "SUPPORTED_EMBEDDING_DIMS",
     "CheckpointManager",
     "EarlyStopping",
     "EpochResult",
