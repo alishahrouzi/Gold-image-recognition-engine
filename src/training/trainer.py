@@ -139,6 +139,11 @@ class Trainer:
             if improved:
                 self.best_metric = val_loss
 
+            should_stop = (
+                self.config.early_stopping_enabled
+                and self.early_stopping.step(val_loss)
+            )
+
             if self.scheduler is not None:
                 self.scheduler.step()
 
@@ -187,7 +192,7 @@ class Trainer:
                 )
 
             completed_epoch = epoch
-            if self.config.early_stopping_enabled and self.early_stopping.step(val_loss):
+            if should_stop:
                 stopped_early = True
                 self.logger.log("early_stopping", epoch=epoch, best_metric=self.best_metric)
                 break
