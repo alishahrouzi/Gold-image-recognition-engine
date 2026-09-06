@@ -2,8 +2,14 @@
 
 from __future__ import annotations
 
+import os
 import random
 from typing import Mapping, Optional
+
+# PyTorch requires this CUDA setting before cuBLAS-backed operations are used
+# when deterministic algorithms are enabled on CUDA >= 10.2. Setting it at
+# module import time ensures it is available before the first training kernel.
+os.environ.setdefault("CUBLAS_WORKSPACE_CONFIG", ":4096:8")
 
 import numpy as np
 import torch
