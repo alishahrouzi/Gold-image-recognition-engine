@@ -10,7 +10,13 @@ from .early_stopping import EarlyStopping
 from .errors import TrainingConfigError, TrainingError
 from .optimizer import build_optimizer
 from .scheduler import build_scheduler
-from .seed import capture_rng_state, restore_rng_state, set_seed
+from .seed import (
+    capture_rng_state,
+    make_dataloader_generator,
+    restore_rng_state,
+    seed_worker,
+    set_seed,
+)
 from .trainer import Trainer, resolve_device
 from .validation import EpochResult, run_validation_epoch
 from .loop import run_training_epoch
@@ -26,9 +32,11 @@ __all__ = [
     "build_optimizer",
     "build_scheduler",
     "capture_rng_state",
+    "make_dataloader_generator",
     "restore_rng_state",
     "resolve_device",
     "run_training_epoch",
     "run_validation_epoch",
+    "seed_worker",
     "set_seed",
 ]
