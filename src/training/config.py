@@ -88,7 +88,7 @@ def _require_choice(value: Any, field_name: str, allowed: Tuple[str, ...]) -> st
 
 def _require_checkpoint_path(value: Any) -> str:
     if isinstance(value, Path):
-        value = str(value)
+        value = value.as_posix()
     if not isinstance(value, str) or not value.strip():
         raise TrainingConfigError("checkpoint_dir must be a non-empty path string.")
     return value.strip()
@@ -98,7 +98,7 @@ def _require_optional_path(value: Any, field_name: str) -> Optional[str]:
     if value is None:
         return None
     if isinstance(value, Path):
-        value = str(value)
+        value = value.as_posix()
     if not isinstance(value, str) or not value.strip():
         raise TrainingConfigError(f"{field_name} must be a non-empty path string or None.")
     return value.strip()
