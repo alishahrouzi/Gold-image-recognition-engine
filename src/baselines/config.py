@@ -5,7 +5,7 @@ from __future__ import annotations
 from dataclasses import asdict, dataclass
 from typing import Any, Mapping
 
-from training.config import TrainingConfig
+from src.training.config import TrainingConfig
 
 
 @dataclass(frozen=True)

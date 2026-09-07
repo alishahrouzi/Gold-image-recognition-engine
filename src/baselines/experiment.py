@@ -11,13 +11,14 @@ from typing import Any, Mapping, Optional
 import torch
 from torch.utils.data import DataLoader
 
-from data.collate import collate_preprocessed_samples
-from data.datasets import UnifiedDataset
-from data.preprocessing import AugmentationConfig, ImagePreprocessor, build_preprocessed_dataset
-from data.constants import CATEGORY_TO_ID
-from models import EmbeddingHead, EmbeddingHeadConfig, EncoderConfig, CustomCNNEncoder, EncoderWithEmbeddingHead
-from training.seed import make_dataloader_generator
-from training.trainer import Trainer
+from src.data.collate import collate_preprocessed_samples
+from src.data.datasets import UnifiedDataset
+from src.data.preprocessing import AugmentationConfig, ImagePreprocessor, build_preprocessed_dataset
+from src.data.constants import CATEGORY_TO_ID
+from src.models.embedding_head import EmbeddingHead, EmbeddingHeadConfig, CustomCNNEncoder, EncoderWithEmbeddingHead
+from src.models.config import EncoderConfig
+from src.training.seed import make_dataloader_generator
+from src.training.trainer import Trainer
 
 from .classifier import BaselineClassifier
 from .config import BaselineConfig
@@ -33,7 +34,7 @@ def _make_loader(dataset: Any, *, batch_size: int, shuffle: bool, seed: int, wor
         num_workers=workers,
         pin_memory=pin_memory,
         persistent_workers=workers > 0,
-        worker_init_fn=__import__("training.seed", fromlist=["seed_worker"]).seed_worker,
+        worker_init_fn=__import__("src.training.seed", fromlist=["seed_worker"]).seed_worker,
         generator=make_dataloader_generator(seed),
         collate_fn=collate_preprocessed_samples,
     )

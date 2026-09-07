@@ -5,7 +5,8 @@ from __future__ import annotations
 import argparse
 import json
 
-from baselines import BaselineConfig, run_baseline
+from src.baselines.config import BaselineConfig
+from src.baselines.experiment import run_baseline
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -40,7 +41,7 @@ def main() -> None:
         checkpoint_dir=args.checkpoint_dir,
         early_stopping_enabled=not args.no_early_stopping,
     )
-    from data.preprocessing import AugmentationConfig
+    from src.data.preprocessing import AugmentationConfig
     augmentation = AugmentationConfig.disabled() if args.no_augmentation else AugmentationConfig(seed=args.seed)
     report = run_baseline(
         args.manifest,
