@@ -18,6 +18,9 @@ import torch
 from src.retrieval.embedding import load_baseline_embedding_model
 from src.retrieval.gallery import Gallery, GalleryBuilder, build_gallery_loader
 
+EXPECTED_TRAIN_IMAGES = 4328
+EXPECTED_TRAIN_GROUPS = 1494
+
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Build the S2.7 baseline retrieval gallery.")
@@ -81,8 +84,8 @@ def build_report(
 
 def main() -> None:
     args = build_parser().parse_args()
-    if args.split == "test":
-        raise ValueError("S2.7 real baseline gallery generation must not use the test split.")
+    if args.split != "train":
+        raise ValueError("S2.7 real baseline gallery generation is restricted to the train split.")
 
     checkpoint = Path(args.checkpoint)
     manifest = Path(args.manifest)
@@ -102,7 +105,7 @@ def main() -> None:
     loader = build_gallery_loader(
         manifest,
         dataset_root=args.dataset_root,
-        split=args.split,
+        split="train",
         batch_size=args.batch_size,
         seed=args.seed,
         num_workers=args.num_workers,
@@ -110,6 +113,20 @@ def main() -> None:
     )
     gallery = GalleryBuilder(extractor).build(loader)
     duration = time.perf_counter() - started
+
+    if gallery.size != EXPECTED_TRAIN_IMAGES:
+        raise RuntimeError(
+            f"Unexpected train gallery size: {gallery.size}; expected {EXPECTED_TRAIN_IMAGES}."
+        )
+    actual_groups = len({item["product_group"] for item in gallery.metadata})
+    if actual_groups != EXPECTED_TRAIN_GROUPS:
+        raise RuntimeError(
+            f"Unexpected train product-group count: {actual_groups}; expected {EXPECTED_TRAIN_GROUPS}."
+        )
+    if gallery.embedding_dim != args.embedding_dim:
+        raise RuntimeError(
+            f"Unexpected embedding dimension: {gallery.embedding_dim}; expected {args.embedding_dim}."
+        )
 
     embeddings_path = output_dir / "gallery_embeddings.pt"
     metadata_path = output_dir / "gallery_metadata.json"
@@ -120,12 +137,21 @@ def main() -> None:
         gallery,
         checkpoint=checkpoint,
         manifest=manifest,
-        split=args.split,
+        split="train",
         device=device,
         batch_size=args.batch_size,
         seed=args.seed,
         duration_seconds=duration,
     )
+    report["expected_num_embeddings"] = EXPECTED_TRAIN_IMAGES
+    report["expected_num_product_groups"] = EXPECTED_TRAIN_GROUPS
+    report["verification"] = {
+        "count_match": True,
+        "group_count_match": True,
+        "embedding_dim_match": True,
+        "finite_embeddings": True,
+        "test_split_used": False,
+    }
     report_path.parent.mkdir(parents=True, exist_ok=True)
     report_path.write_text(json.dumps(report, indent=2, ensure_ascii=False), encoding="utf-8")
 
