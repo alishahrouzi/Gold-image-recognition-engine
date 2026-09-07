@@ -1,0 +1,186 @@
+{
+  "experiment": "S2.6-baseline",
+  "policy": "s2.6-category-baseline-v1",
+  "status": "completed",
+  "objective": "category_cross_entropy",
+  "dataset": {
+    "source": "dataset1",
+    "train_samples": 4328,
+    "train_groups": 1494,
+    "valid_samples": 429,
+    "valid_groups": 429,
+    "test_used": false
+  },
+  "model": {
+    "architecture": "custom-cnn-v1 + embedding-head-v1 + baseline-category-classifier",
+    "embedding_dim": 128,
+    "num_classes": 5,
+    "category_to_id": {
+      "Bracelet": 0,
+      "Earrings": 1,
+      "Necklace": 2,
+      "Pendant": 3,
+      "Ring": 4
+    }
+  },
+  "config": {
+    "embedding_dim": 128,
+    "num_classes": 5,
+    "batch_size": 16,
+    "epochs": 10,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "seed": 42,
+    "device": "auto",
+    "num_workers": 0,
+    "pin_memory": true,
+    "deterministic": true,
+    "early_stopping_enabled": true,
+    "early_stopping_patience": 3,
+    "early_stopping_min_delta": 0.0,
+    "save_best": true,
+    "checkpoint_dir": "experiments/baseline/checkpoints",
+    "objective": "category_cross_entropy",
+    "policy": "s2.6-category-baseline-v1"
+  },
+  "hardware": {
+    "python": "3.12.10",
+    "pytorch": "2.6.0+cu124",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "device": "cuda",
+    "cuda_available": true,
+    "cuda_version": "12.4",
+    "gpu_name": "NVIDIA GeForce GTX 1650",
+    "gpu_total_memory_mb": 4095.69,
+    "gpu_index": 0
+  },
+  "training": {
+    "completed_epoch": 10,
+    "best_val_loss": 0.9572873226690404,
+    "stopped_early": false,
+    "duration_seconds": 11103.93958919996,
+    "wall_clock_seconds": 11103.941091999994,
+    "history": [
+      {
+        "epoch": 1,
+        "train_loss": 1.311999188112904,
+        "val_loss": 1.1502817532955072,
+        "learning_rate": 0.0009755282581475768,
+        "train_batches": 271,
+        "train_samples": 4328,
+        "valid_batches": 27,
+        "valid_samples": 429,
+        "duration_seconds": 1153.5530422000447
+      },
+      {
+        "epoch": 2,
+        "train_loss": 1.2604536318294222,
+        "val_loss": 1.1017688696201031,
+        "learning_rate": 0.0009045084971874736,
+        "train_batches": 271,
+        "train_samples": 4328,
+        "valid_batches": 27,
+        "valid_samples": 429,
+        "duration_seconds": 1113.2062195999897
+      },
+      {
+        "epoch": 3,
+        "train_loss": 1.2341312604117967,
+        "val_loss": 1.057851407911394,
+        "learning_rate": 0.0007938926261462366,
+        "train_batches": 271,
+        "train_samples": 4328,
+        "valid_batches": 27,
+        "valid_samples": 429,
+        "duration_seconds": 1108.653226000024
+      },
+      {
+        "epoch": 4,
+        "train_loss": 1.2176003905629496,
+        "val_loss": 1.054682710509756,
+        "learning_rate": 0.0006545084971874737,
+        "train_batches": 271,
+        "train_samples": 4328,
+        "valid_batches": 27,
+        "valid_samples": 429,
+        "duration_seconds": 1112.2154542999924
+      },
+      {
+        "epoch": 5,
+        "train_loss": 1.204452998757142,
+        "val_loss": 1.0322125238694233,
+        "learning_rate": 0.0005,
+        "train_batches": 271,
+        "train_samples": 4328,
+        "valid_batches": 27,
+        "valid_samples": 429,
+        "duration_seconds": 1107.777588099998
+      },
+      {
+        "epoch": 6,
+        "train_loss": 1.1935922204897276,
+        "val_loss": 1.0371763911836354,
+        "learning_rate": 0.00034549150281252633,
+        "train_batches": 271,
+        "train_samples": 4328,
+        "valid_batches": 27,
+        "valid_samples": 429,
+        "duration_seconds": 1104.3731479999842
+      },
+      {
+        "epoch": 7,
+        "train_loss": 1.1736563957552812,
+        "val_loss": 1.015896875819404,
+        "learning_rate": 0.0002061073738537635,
+        "train_batches": 271,
+        "train_samples": 4328,
+        "valid_batches": 27,
+        "valid_samples": 429,
+        "duration_seconds": 1100.2025368000031
+      },
+      {
+        "epoch": 8,
+        "train_loss": 1.1655985138993608,
+        "val_loss": 0.9942273059925,
+        "learning_rate": 9.549150281252634e-05,
+        "train_batches": 271,
+        "train_samples": 4328,
+        "valid_batches": 27,
+        "valid_samples": 429,
+        "duration_seconds": 1098.7709081999492
+      },
+      {
+        "epoch": 9,
+        "train_loss": 1.103903009578613,
+        "val_loss": 0.9603428312670657,
+        "learning_rate": 2.4471741852423235e-05,
+        "train_batches": 271,
+        "train_samples": 4328,
+        "valid_batches": 27,
+        "valid_samples": 429,
+        "duration_seconds": 1102.7959267999977
+      },
+      {
+        "epoch": 10,
+        "train_loss": 1.0806270483020493,
+        "val_loss": 0.9572873226690404,
+        "learning_rate": 0.0,
+        "train_batches": 271,
+        "train_samples": 4328,
+        "valid_batches": 27,
+        "valid_samples": 429,
+        "duration_seconds": 1101.542844599986
+      }
+    ]
+  },
+  "validation_metrics": {
+    "accuracy": 0.668997668997669,
+    "correct": 287.0,
+    "samples": 429.0,
+    "embedding_norm_mean": 1.0,
+    "embedding_norm_std": 3.4412757088375656e-08
+  },
+  "checkpoint_last": "experiments\\baseline\\checkpoints\\last.pt",
+  "checkpoint_best": "experiments\\baseline\\checkpoints\\best.pt",
+  "manifest": "E:\\Programming Project\\Visual Recognition Engine\\Gold-image-recognition-engine\\reports\\dataset\\dataset1_manifest.csv"
+}
