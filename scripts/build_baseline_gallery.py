@@ -16,7 +16,7 @@ if str(PROJECT_ROOT) not in sys.path:
 import torch
 
 from src.retrieval.embedding import load_baseline_embedding_model
-from src.retrieval.gallery import Gallery, build_gallery_loader
+from src.retrieval.gallery import Gallery, GalleryBuilder, build_gallery_loader
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -136,6 +136,4 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    from src.retrieval.gallery import GalleryBuilder
-
     main()
