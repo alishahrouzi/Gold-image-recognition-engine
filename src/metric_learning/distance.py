@@ -77,11 +77,8 @@ class EuclideanDistance(DistanceFunction):
 
     def matrix(self, embeddings_a: Tensor, embeddings_b: Tensor) -> Tensor:
         _validate_matrix_inputs(embeddings_a, embeddings_b)
-        a = embeddings_a.float()
-        b = embeddings_b.float()
-        squared = (
-            (a * a).sum(dim=1, keepdim=True)
-            + (b * b).sum(dim=1).unsqueeze(0)
-            - 2.0 * (a @ b.transpose(0, 1))
-        )
-        return torch.sqrt(torch.clamp(squared, min=0.0))
+        # torch.cdist computes the L2 distance directly and avoids the
+        # cancellation error of the expanded ||a||^2 + ||b||^2 - 2a.b form.
+        # That cancellation can turn the theoretical zero distance of
+        # identical vectors into a small positive value before sqrt().
+        return torch.cdist(embeddings_a.float(), embeddings_b.float(), p=2)
