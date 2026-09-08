@@ -207,9 +207,21 @@ Additional observations:
 
 ## Current Baseline
 
-No baseline model has been established yet.
+S2.8 recorded the first product-retrieval numbers for the S2.6 category-trained
+embedding (`experiments/baseline/checkpoints/best.pt`, 128-D) using the S2.7
+train gallery and train leave-one-image-out queries.
 
-The first successfully trained and evaluated model will be recorded as the initial baseline.
+These numbers are the **initial retrieval baseline**, not a 128-D vs 256-D
+winner and not a reserved test-set final score.
+
+| Metric | Result |
+| ------ | -----: |
+| Top-1  | 0.014140 |
+| Top-5  | 0.043811 |
+| Top-10 | 0.065137 |
+| MRR    | 0.027050 |
+
+Experiment ID: `EXP-0002`. Report: `reports/evaluation/s2.8_baseline_evaluation.json`.
 
 ---
 
@@ -441,7 +453,138 @@ untrained forward-pass evidence.
 
 ---
 
+## EXP-0002 — S2.8 Baseline Evaluation
+
+### Status
+
+- Status: `ACCEPTED` as the initial retrieval **BASELINE**
+- Date: 2026-09-08
+- Task: `S2.8`
+- Policy: `s2.8-baseline-evaluation-v1`
+
+### 1. Configuration
+
+```
+checkpoint: experiments/baseline/checkpoints/best.pt
+checkpoint_version: s2.5-checkpoint-v1
+epoch: 10
+best_val_loss: 0.9572873226690404
+embedding_dim: 128
+seed: 42
+device: cuda
+batch_size: 16 (S2.7 gallery construction default; evaluation loaded the existing gallery)
+k: 10
+augmentation: disabled (query/gallery use role=valid preprocessing)
+```
+
+### 2. Dataset
+
+Dataset: Dataset 1
+Dataset Version: cleaned baseline (4969 images / 2135 groups)
+
+Train: 4328 images / 1494 groups (query and gallery)
+Validation: not used for S2.8 metrics (429 images / 429 groups; one image per group)
+Test: not used (212 images / 212 groups; reserved for final evaluation)
+
+Manifest: `reports/dataset/dataset1_manifest.csv`
+Manifest SHA-256: `dcad5f6c0ca336f65c86bc54402786ff855f209c247e2cb8913ce58affae4c73`
+
+Query/gallery protocol: **train leave-one-image-out** against the S2.7 train
+gallery. Self-image excluded via `exclude_image_id`. Same-product other views
+remain positives. Cross-split evaluation is rejected because Dataset 1 has
+zero shared groups across splits.
+
+### 3. Model
+
+Architecture: custom-cnn-v1 + s2.3-embedding-head-v1 + S2.6 BaselineClassifier wrapper (classifier ignored at retrieval)
+Encoder: CustomCNNEncoder
+Embedding Head: Linear 256→128 + L2
+Embedding Dimension: 128 (the trained S2.6 checkpoint; 256-D was not evaluated)
+Similarity Function: cosine (S2.7)
+
+### 4. Loss
+
+S2.6 baseline objective: category cross-entropy (not a retrieval loss).
+S2.8 does not train.
+
+### 5. Training
+
+No training in S2.8. Checkpoint is the existing S2.6 `best.pt`.
+
+### 6. Evaluation
+
+| Metric       | Result |
+| ------------ | -----: |
+| Top-1        | 0.014140 |
+| Top-5        | 0.043811 |
+| Top-10       | 0.065137 |
+| MRR          | 0.027050 |
+
+Queries: 4328 total / 4314 valid / 14 excluded (singleton train groups after self-exclusion)
+Gallery size: 4328
+Evaluated groups: 1480
+Self-match exclusions: 4328
+Mean / median first-positive rank (hits in top-10 only): 4.278 / 4
+Min / max first-positive rank: 1 / 10
+Queries with a gallery positive outside top-10: 4033
+
+# Per-Category Metrics (valid queries)
+
+| Category | Queries | Top-1 | Top-5 | Top-10 | MRR |
+| -------- | ------: | ----: | ----: | -----: | --: |
+| Bracelet | 752 | 0.018617 | 0.054521 | 0.074468 | 0.033932 |
+| Earrings | 767 | 0.024772 | 0.057366 | 0.083442 | 0.040242 |
+| Necklace | 2131 | 0.007977 | 0.028625 | 0.047865 | 0.017633 |
+| Pendant | 345 | 0.011594 | 0.046377 | 0.072464 | 0.026485 |
+| Ring | 319 | 0.021944 | 0.084639 | 0.106583 | 0.042623 |
+
+Runtime: gallery load 0.035 s; retrieval/evaluation 10.483 s; total 11.087 s
+Hardware: NVIDIA GeForce GTX 1650, PyTorch 2.6.0+cu124, CUDA 12.4
+Peak VRAM: 4.65 MiB (gallery loaded from S2.7 artifact; no full embedding rebuild in this run)
+
+Reports:
+- `reports/evaluation/s2.8_baseline_evaluation.json`
+- `reports/evaluation/s2.8_baseline_evaluation.md`
+- `reports/evaluation/s2.8_baseline_query_records.jsonl`
+
+### 7. Result
+
+Summary: The category-trained 128-D embedding is a weak product-identity
+retriever under train leave-one-image-out. Top-10 is 6.5% of valid queries.
+
+Strengths: End-to-end S2.7 path is evaluable; self-exclusion and group_id
+ground truth are enforced; Dataset 1 contract held.
+
+Weaknesses: Category supervision does not align embeddings for same-product
+views. Necklace is the weakest category by volume and score.
+
+Observed Issues: 14 singleton train groups cannot be scored (no other view).
+First-positive-rank statistics are defined only for queries whose positive
+product appears in the top-10.
+
+### 8. Decision
+
+Decision: BASELINE
+
+Reason: First real Dataset 1 product-retrieval measurement of the trained
+S2.6/S2.7 stack. Do not treat this as architecture superiority, as a 128 vs
+256 decision, or as a test-set result.
+
+### 9. Note
+
+S2.8 reused EmbeddingExtractor, Gallery, GalleryBuilder, TopKRetriever, and
+`metrics.py`. It did not retrain, did not use Dataset 2, and did not modify
+the manifest or source images.
+
+### 10. Experiment History
+
+| Experiment ID | Dataset | Model | Loss | Top-1 | Top-5 | Top-10 | MRR | Decision |
+| ------------- | ------- | ----- | ---- | ----: | ----: | -----: | --: | -------- |
+| EXP-0002 | Dataset 1 train LOO | custom-cnn-v1 + 128-D head (S2.6 best.pt) | category CE (train only) | 0.014140 | 0.043811 | 0.065137 | 0.027050 | BASELINE |
+
+---
+
 Dataset Version: Dataset 1 cleaned baseline (4969 images / 2135 groups)
-Model Version: custom-cnn-v1 + s2.3-embedding-head-v1 (architecture only; untrained; S2.4 forward path validated)
-Evaluation Protocol Version: not applicable (no retrieval evaluation)
+Model Version: custom-cnn-v1 + s2.3-embedding-head-v1 + S2.6 best.pt (128-D)
+Evaluation Protocol Version: S2.8 train leave-one-image-out over S2.7 train gallery (`s2.8-baseline-evaluation-v1`)
  

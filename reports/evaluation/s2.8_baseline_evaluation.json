@@ -1,0 +1,175 @@
+{
+  "experiment_id": "EXP-0002",
+  "task": "S2.8",
+  "policy": "s2.8-baseline-evaluation-v1",
+  "timestamp": "2026-09-08T08:11:42.191855+00:00",
+  "git_commit": "b086bb3186ff2369cca53d20181fb6577911f8d0",
+  "git_branch": "s2.7-baseline-retrieval",
+  "seed": 42,
+  "hardware": {
+    "python_version": "3.12.10",
+    "pytorch_version": "2.6.0+cu124",
+    "cuda_version": "12.4",
+    "gpu_name": "NVIDIA GeForce GTX 1650",
+    "device": "cuda",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "peak_vram_mb": 4.65478515625
+  },
+  "checkpoint": {
+    "checkpoint_path": "experiments\\baseline\\checkpoints\\best.pt",
+    "checkpoint_identifier": "best.pt",
+    "checkpoint_version": "s2.5-checkpoint-v1",
+    "epoch": 10,
+    "best_metric": 0.9572873226690404,
+    "config": {
+      "seed": 42,
+      "embedding_dim": 128,
+      "batch_size": 16,
+      "epochs": 10,
+      "learning_rate": 0.001,
+      "weight_decay": 0.0001,
+      "loss_name": "contrastive",
+      "margin": 1.0,
+      "optimizer_name": "adamw",
+      "scheduler_name": "cosine",
+      "num_workers": 0,
+      "pin_memory": true,
+      "device": "auto",
+      "checkpoint_dir": "experiments/baseline/checkpoints",
+      "save_best": true,
+      "resume_from": null,
+      "early_stopping_enabled": true,
+      "early_stopping_patience": 3,
+      "early_stopping_min_delta": 0.0,
+      "monitor": "val_loss",
+      "deterministic": true,
+      "supported_embedding_dims": [
+        128,
+        256
+      ],
+      "policy": "s2.5-training-infrastructure-v1"
+    }
+  },
+  "model": {
+    "encoder_architecture": "custom-cnn-v1",
+    "embedding_dimension": 128,
+    "embedding_dim": 128,
+    "checkpoint": "experiments\\baseline\\checkpoints\\best.pt"
+  },
+  "dataset": {
+    "dataset_source": "dataset1",
+    "manifest": "reports\\dataset\\dataset1_manifest.csv",
+    "manifest_sha256": "dcad5f6c0ca336f65c86bc54402786ff855f209c247e2cb8913ce58affae4c73",
+    "total_images": 4969,
+    "total_groups": 2135,
+    "query_split": "train",
+    "gallery_split": "train",
+    "query_count": 4328,
+    "valid_query_count": 4314,
+    "excluded_query_count": 14,
+    "gallery_count": 4328,
+    "group_count": 1494,
+    "evaluated_groups": 1480,
+    "contract": {
+      "dataset_source": "dataset1",
+      "split_order": [
+        "train",
+        "valid",
+        "test"
+      ],
+      "cross_split_groups": [],
+      "counts": {
+        "total_images": 4969,
+        "total_groups": 2135,
+        "train_images": 4328,
+        "train_groups": 1494,
+        "valid_images": 429,
+        "valid_groups": 429,
+        "test_images": 212,
+        "test_groups": 212
+      },
+      "file_validation": false
+    },
+    "augmentation": "disabled (gallery/query use PreprocessedDataset role=valid)"
+  },
+  "retrieval": {
+    "similarity_method": "cosine",
+    "k": 10,
+    "self_image_exclusion": "exclude_image_id (S2.7 TopKRetriever)",
+    "product_level_aggregation": "S2.7 ranked image candidates collapsed to first-seen product_group; positive iff candidate.product_group == query.group_id",
+    "gallery_source": "loaded_s2.7_artifact"
+  },
+  "metrics": {
+    "top1": 0.014140009272137228,
+    "top5": 0.04381084840055633,
+    "top10": 0.06513676402410756,
+    "mrr": 0.02704998859379944
+  },
+  "diagnostics": {
+    "number_of_queries": 4328,
+    "queries_with_at_least_one_positive": 4314,
+    "queries_with_zero_positives": 14,
+    "queries_with_positive_outside_topk": 4033,
+    "short_ranking_queries": 0,
+    "mean_first_positive_rank": 4.277580071174377,
+    "median_first_positive_rank": 4,
+    "min_first_positive_rank": 1,
+    "max_first_positive_rank": 10,
+    "self_match_exclusions": 4328,
+    "invalid_query_count": 0,
+    "invalid_candidate_count": 0,
+    "nan_inf_count": 0,
+    "hit_cutoffs": [
+      1,
+      5,
+      10
+    ],
+    "per_category": {
+      "Bracelet": {
+        "num_queries": 752,
+        "top1": 0.018617021276595744,
+        "top5": 0.05452127659574468,
+        "top10": 0.07446808510638298,
+        "mrr": 0.033931737588652484
+      },
+      "Earrings": {
+        "num_queries": 767,
+        "top1": 0.024771838331160364,
+        "top5": 0.05736636245110821,
+        "top10": 0.08344198174706649,
+        "mrr": 0.04024233769996482
+      },
+      "Necklace": {
+        "num_queries": 2131,
+        "top1": 0.007977475363679024,
+        "top5": 0.028625058657907085,
+        "top10": 0.04786485218207415,
+        "mrr": 0.01763349794790433
+      },
+      "Pendant": {
+        "num_queries": 345,
+        "top1": 0.011594202898550725,
+        "top5": 0.0463768115942029,
+        "top10": 0.07246376811594203,
+        "mrr": 0.02648493213710605
+      },
+      "Ring": {
+        "num_queries": 319,
+        "top1": 0.0219435736677116,
+        "top5": 0.08463949843260188,
+        "top10": 0.10658307210031348,
+        "mrr": 0.04262327710603572
+      }
+    },
+    "gallery_size": 4328,
+    "gallery_groups": 1494,
+    "evaluated_groups": 1480
+  },
+  "runtime": {
+    "embedding_or_gallery_seconds": 0.03484019999450538,
+    "gallery_source": "loaded_s2.7_artifact",
+    "retrieval_evaluation_seconds": 10.48268790000293,
+    "total_seconds": 11.086964300004183
+  },
+  "decision": "BASELINE. These metrics evaluate the S2.6 category-trained embedding with S2.7 cosine Top-K on Dataset 1 train leave-one-image-out. They are not a 128D vs 256D decision and not a test-set final score."
+}

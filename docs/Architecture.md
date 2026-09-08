@@ -1412,6 +1412,76 @@ Timestamp
 
 Evaluation must be reproducible from a saved configuration.
 
+# 15.11 S2.8 Baseline Evaluation
+
+S2.8 is an evaluation layer over the existing S2.7 retrieval pipeline. It
+does not implement a second similarity engine, gallery builder, or encoder
+path.
+
+Flow:
+
+```text
+S2.6 best.pt
+    ↓
+Existing EmbeddingExtractor
+    ↓
+Existing train Gallery (S2.7)
+    ↓
+Existing TopKRetriever (cosine, k=10, exclude_image_id)
+    ↓
+S2.8 scoring
+    ↓
+Top-1 / Top-5 / Top-10 / MRR
+```
+
+## Ground truth
+
+A retrieved candidate is positive when:
+
+`candidate.product_group == query.group_id`
+
+Image-id equality is not the success criterion. Category equality is not
+a positive match. Multiple images of the same product are one product
+identity: Hit@K is binary per query, and MRR uses the rank of the first
+positive product in the S2.7 ranking after collapsing duplicate
+`product_group` values in rank order.
+
+## Query / gallery split
+
+Dataset 1 has zero cross-split groups. Validation and test each have one
+image per group, so they cannot host same-product retrieval against a
+train-only gallery.
+
+S2.7 materializes the **train** gallery. S2.8 therefore evaluates **train
+queries against the train gallery** with leave-one-image-out. This is the
+baseline protocol; it is not the reserved test-set final evaluation.
+
+## Self-image exclusion
+
+When the query image is present in the gallery, S2.7 `exclude_image_id`
+must remove it. Other images of the same `group_id` remain valid
+positives. Evaluation fails if the query image appears in the ranked
+candidates.
+
+## Leakage protection
+
+Evaluation is read-only on the manifest, source images, and checkpoint.
+It verifies Dataset 1 counts, zero cross-split groups, aligned gallery
+metadata, finite scores, and ordered rankings. Training augmentation is
+not used (`role=valid` preprocessing).
+
+## Metric definitions
+
+- Top-1 / Top-5 / Top-10: mean Hit@K over queries that have at least one
+  same-product gallery image after self-exclusion.
+- MRR: mean of `1 / rank_of_first_positive_product`, or 0 if the positive
+  product is absent from the top-10 ranking.
+- All four metrics are derived from one retrieval with `k=10`.
+
+CLI: `python scripts/evaluate_baseline.py`
+
+Reports: `reports/evaluation/s2.8_baseline_evaluation.json` and `.md`
+
 ---
 
 ## 16. API Design
