@@ -127,20 +127,20 @@ def test_custom_encoder_and_head_are_reused() -> None:
         EncoderConfig(block_channels=(16, 32, 64, 128))
     )
     head = EmbeddingHead(
-        config=EmbeddingHeadConfig(feature_dim=128, embedding_dim=64)
+        config=EmbeddingHeadConfig(feature_dim=128, embedding_dim=128)
     )
     model = SiameseNetwork(encoder=encoder, head=head)
 
     assert model.backbone.encoder is encoder
     assert model.backbone.head is head
     assert model.feature_dim == 128
-    assert model.embedding_dim == 64
+    assert model.embedding_dim == 128
 
     model.eval()
     with torch.no_grad():
         output_a, output_b = model(_images(2), _images(2))
-    assert output_a.shape == (2, 64)
-    assert output_b.shape == (2, 64)
+    assert output_a.shape == (2, 128)
+    assert output_b.shape == (2, 128)
 
 
 def test_invalid_pair_input_is_rejected_by_shared_backbone() -> None:
