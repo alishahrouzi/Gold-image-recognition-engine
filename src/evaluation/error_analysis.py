@@ -145,10 +145,10 @@ def category_summary(records: Sequence[ErrorAnalysisRecord]) -> dict[str, dict[s
     for category in sorted(grouped):
         rows = grouped[category]
         ranks = [r.first_positive_rank for r in rows if r.first_positive_rank is not None]
-        margins = [
+        wrong_margins = [
             r.top1_to_positive_similarity_margin
             for r in rows
-            if r.top1_to_positive_similarity_margin is not None
+            if not r.top1_correct and r.top1_to_positive_similarity_margin is not None
         ]
         output[category] = {
             "num_queries": len(rows),
@@ -161,7 +161,8 @@ def category_summary(records: Sequence[ErrorAnalysisRecord]) -> dict[str, dict[s
             "mean_first_positive_rank": mean(ranks) if ranks else None,
             "median_first_positive_rank": median(ranks) if ranks else None,
             "no_positive_in_top10_count": sum(r.first_positive_rank is None for r in rows),
-            "mean_top1_to_positive_similarity_margin": mean(margins) if margins else None,
+            "mean_wrong_top1_to_positive_similarity_margin": mean(wrong_margins) if wrong_margins else None,
+            "wrong_queries_with_observed_positive_margin": len(wrong_margins),
         }
     return output
 
@@ -291,10 +292,10 @@ def build_summary(records: Sequence[ErrorAnalysisRecord]) -> dict[str, Any]:
     """Summarize S2.9 evidence without making visual-cause claims."""
     valid = _valid(records)
     ranks = [r.first_positive_rank for r in valid if r.first_positive_rank is not None]
-    margins = [
+    wrong_margins = [
         r.top1_to_positive_similarity_margin
         for r in valid
-        if r.top1_to_positive_similarity_margin is not None
+        if not r.top1_correct and r.top1_to_positive_similarity_margin is not None
     ]
     return {
         "number_of_queries": len(records),
@@ -306,5 +307,6 @@ def build_summary(records: Sequence[ErrorAnalysisRecord]) -> dict[str, Any]:
         "positive_outside_top10": sum(r.first_positive_rank is None for r in valid),
         "mean_first_positive_rank": mean(ranks) if ranks else None,
         "median_first_positive_rank": median(ranks) if ranks else None,
-        "mean_top1_to_positive_similarity_margin": mean(margins) if margins else None,
+        "mean_wrong_top1_to_positive_similarity_margin": mean(wrong_margins) if wrong_margins else None,
+        "wrong_queries_with_observed_positive_margin": len(wrong_margins),
     }
