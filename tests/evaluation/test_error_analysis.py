@@ -99,7 +99,8 @@ def test_category_summary_and_confusion():
     assert summary["Ring"]["num_queries"] == 2
     assert summary["Ring"]["top1_correct_count"] == 1
     assert summary["Necklace"]["top1_correct_count"] == 0
-    assert summary["Ring"]["mean_top1_to_positive_similarity_margin"] == 0.0
+    assert summary["Ring"]["mean_wrong_top1_to_positive_similarity_margin"] == 0.1
+    assert summary["Ring"]["wrong_queries_with_observed_positive_margin"] == 1
 
     confusion = category_confusion(records)
     assert confusion["Ring"]["Ring"] == 1
@@ -137,4 +138,5 @@ def test_summary_counts_excluded_queries_and_margin():
     assert summary["number_of_queries"] == 2
     assert summary["valid_queries"] == 1
     assert summary["excluded_queries"] == 1
-    assert summary["mean_top1_to_positive_similarity_margin"] == 0.0
+    assert summary["mean_wrong_top1_to_positive_similarity_margin"] is None
+    assert summary["wrong_queries_with_observed_positive_margin"] == 0
