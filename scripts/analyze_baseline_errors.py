@@ -35,6 +35,7 @@ from src.retrieval.topk import TopKRetriever
 
 DEFAULT_MANIFEST = PROJECT_ROOT / "reports" / "dataset" / "dataset1_manifest.csv"
 DEFAULT_GALLERY_DIR = PROJECT_ROOT / "experiments" / "retrieval" / "baseline"
+DEFAULT_SOURCE_REPORT = PROJECT_ROOT / "reports" / "evaluation" / "s2.8_baseline_evaluation.json"
 DEFAULT_OUTPUT = PROJECT_ROOT / "reports" / "evaluation" / "s2.9_baseline_error_analysis.json"
 
 
@@ -43,6 +44,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--manifest", default=str(DEFAULT_MANIFEST))
     parser.add_argument("--dataset-root", default=None)
     parser.add_argument("--gallery-dir", default=str(DEFAULT_GALLERY_DIR))
+    parser.add_argument("--source-report", default=str(DEFAULT_SOURCE_REPORT))
     parser.add_argument("--output", default=str(DEFAULT_OUTPUT))
     parser.add_argument("--per-group", type=int, default=10)
     parser.add_argument("--seed", type=int, default=42)
@@ -61,6 +63,15 @@ def _group_indices(metadata: tuple[dict[str, Any], ...]) -> dict[str, list[int]]
     return groups
 
 
+def _load_source_report(path: Path) -> dict[str, Any]:
+    if not path.is_file():
+        raise FileNotFoundError(f"S2.8 source report not found: {path}")
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    if payload.get("experiment_id") != "EXP-0002" or payload.get("task") != "S2.8":
+        raise EvaluationError("The supplied source report is not EXP-0002 / S2.8.")
+    return payload
+
+
 def main() -> None:
     args = build_parser().parse_args()
     if args.k != EVALUATION_K:
@@ -70,6 +81,7 @@ def main() -> None:
 
     manifest = Path(args.manifest)
     gallery_dir = Path(args.gallery_dir)
+    source_report_path = Path(args.source_report)
     output = Path(args.output)
     embeddings_path = gallery_dir / "gallery_embeddings.pt"
     metadata_path = gallery_dir / "gallery_metadata.json"
@@ -81,9 +93,15 @@ def main() -> None:
             "S2.7 gallery artifact not found. Expected gallery_embeddings.pt and gallery_metadata.json."
         )
 
+    source_report = _load_source_report(source_report_path)
     samples = load_manifest(manifest, dataset_root=args.dataset_root, validate_files=False)
     contract = verify_dataset1_contract(samples, validate_files=False)
     manifest_hash = manifest_sha256(manifest)
+    recorded_hash = source_report["dataset"]["manifest_sha256"]
+    if manifest_hash != recorded_hash:
+        raise EvaluationError(
+            "Current Dataset 1 manifest hash does not match EXP-0002; S2.9 must analyze the same dataset version."
+        )
     path_by_id = _sample_path_map(samples)
 
     gallery = Gallery.load(embeddings_path, metadata_path)
@@ -91,8 +109,16 @@ def main() -> None:
         raise EvaluationError(
             f"Expected {DATASET1_EXPECTED['train_images']} train gallery images, got {gallery.size}."
         )
+    if gallery.embedding_dim != int(source_report["model"]["embedding_dim"]):
+        raise EvaluationError("S2.7 gallery embedding dimension does not match EXP-0002.")
 
-    unexpected_splits = sorted({str(item.get("split", "")) for item in gallery.metadata if item.get("split") not in (None, "train", "")})
+    unexpected_splits = sorted(
+        {
+            str(item.get("split", ""))
+            for item in gallery.metadata
+            if item.get("split") not in (None, "train", "")
+        }
+    )
     if unexpected_splits:
         raise EvaluationError(f"S2.9 requires the train gallery; found splits: {unexpected_splits}.")
 
@@ -137,6 +163,14 @@ def main() -> None:
         )
 
     summary = build_summary(records)
+    expected_queries = int(source_report["diagnostics"]["number_of_queries"])
+    if summary["number_of_queries"] != expected_queries:
+        raise EvaluationError(
+            f"S2.9 analyzed {summary['number_of_queries']} queries, expected EXP-0002 count {expected_queries}."
+        )
+    if summary["valid_queries"] != int(source_report["diagnostics"]["queries_with_at_least_one_positive"]):
+        raise EvaluationError("S2.9 valid-query count does not match EXP-0002.")
+
     report = {
         "experiment_id": "EXP-0003",
         "task": "S2.9",
@@ -156,21 +190,16 @@ def main() -> None:
             "contract": contract,
         },
         "model": {
-            "checkpoint": "experiments/baseline/checkpoints/best.pt",
+            "checkpoint": source_report["checkpoint"]["checkpoint_path"],
             "embedding_dimension": gallery.embedding_dim,
         },
         "retrieval": {
-            "similarity": "cosine",
+            "similarity": source_report["retrieval"]["similarity_method"],
             "k": args.k,
             "self_image_exclusion": "exclude_image_id (S2.7 TopKRetriever)",
             "product_positive_definition": "candidate.product_group == query.product_group",
         },
-        "baseline_metrics": {
-            "top1": 0.014140009272137228,
-            "top5": 0.04381084840055633,
-            "top10": 0.06513676402410756,
-            "mrr": 0.02704998859379944,
-        },
+        "baseline_metrics": source_report["metrics"],
         "summary": summary,
         "per_category": category_summary(records),
         "category_confusion": category_confusion(records),
