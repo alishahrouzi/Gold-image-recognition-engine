@@ -1,7 +1,7 @@
 """Run S2.9 error analysis over the existing S2.7 gallery.
 
 This is analysis-only: it loads the persisted S2.7 gallery, reuses the existing
-TopKRetriever and S2.8 scoring contract, and writes a compact evidence report.
+TopKRetriever and S2.8 scoring contract, and writes an evidence report.
 It does not train, rebuild embeddings, modify the manifest, or touch test data.
 """
 
@@ -47,6 +47,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--source-report", default=str(DEFAULT_SOURCE_REPORT))
     parser.add_argument("--output", default=str(DEFAULT_OUTPUT))
     parser.add_argument("--per-group", type=int, default=10)
+    parser.add_argument("--per-category", type=int, default=3)
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--k", type=int, default=EVALUATION_K)
     return parser
@@ -78,6 +79,8 @@ def main() -> None:
         raise EvaluationError(f"S2.9 uses the S2.8 single ranking with k={EVALUATION_K}.")
     if args.per_group < 1:
         raise EvaluationError("--per-group must be positive.")
+    if args.per_category < 1:
+        raise EvaluationError("--per-category must be positive.")
 
     manifest = Path(args.manifest)
     gallery_dir = Path(args.gallery_dir)
@@ -174,7 +177,7 @@ def main() -> None:
     report = {
         "experiment_id": "EXP-0003",
         "task": "S2.9",
-        "policy": "s2.9-baseline-error-analysis-v1",
+        "policy": "s2.9-baseline-error-analysis-v2",
         "status": "COMPLETED",
         "source_experiment": "EXP-0002",
         "dataset": {
@@ -206,6 +209,7 @@ def main() -> None:
         "representative_examples": select_representative_examples(
             records,
             per_group=args.per_group,
+            per_category=args.per_category,
             seed=args.seed,
         ),
         "manual_visual_review": {
@@ -220,6 +224,9 @@ def main() -> None:
         },
         "findings": [
             "Automated analysis identifies retrieval and category failure patterns only.",
+            "Category-stratified error samples are included to prevent dominant categories from being underrepresented during review.",
+            "Top-10 image candidates are additionally collapsed into product evidence without claiming a true Top-10 product retrieval.",
+            "Observed similarity margins are included only when a positive product is present in the retrieved image candidates.",
             "Visual causes such as viewpoint or background require inspection of representative image pairs.",
         ],
         "hypotheses_for_s3": [],
@@ -228,6 +235,7 @@ def main() -> None:
             "Model was not retrained.",
             "S2.7 retrieval behavior was not modified.",
             "S2.8 aggregate baseline metrics were not changed.",
+            "top10_product_evidence describes products represented in the S2.7 Top-10 image results; it is not a separate Top-10 product retrieval run.",
         ],
     }
 
