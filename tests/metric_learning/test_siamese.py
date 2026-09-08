@@ -5,7 +5,13 @@ from __future__ import annotations
 import pytest
 import torch
 
-from models import CustomCNNEncoder, EmbeddingHead, EmbeddingHeadConfig, EncoderConfig
+from models import (
+    CustomCNNEncoder,
+    EmbeddingHead,
+    EmbeddingHeadConfig,
+    EncoderConfig,
+    EncoderInputError,
+)
 from metric_learning import SiameseNetwork
 
 BATCH_SIZES = (1, 4, 16)
@@ -57,8 +63,8 @@ def test_forward_shapes_finite_and_unit_norm(batch_size: int) -> None:
 def test_single_shared_backbone_instance() -> None:
     model = SiameseNetwork()
 
-    assert model.backbone is model.backbone
-    assert model.backbone.encoder is not model.backbone.head
+    assert model.backbone.encoder is model.backbone.encoder
+    assert model.backbone.head is model.backbone.head
     parameter_ids = [id(parameter) for parameter in model.parameters()]
     assert len(parameter_ids) == len(set(parameter_ids))
 
@@ -113,10 +119,11 @@ def test_encode_matches_first_siamese_path() -> None:
     model = SiameseNetwork()
     model.eval()
     image = _images(2)
+    other = _images(2)
 
     with torch.no_grad():
         encoded = model.encode(image)
-        embedding_a, _ = model(image, _images(2))
+        embedding_a, _ = model(image, other)
 
     assert torch.equal(encoded, embedding_a)
 
@@ -147,7 +154,7 @@ def test_invalid_pair_input_is_rejected_by_shared_backbone() -> None:
     valid = _images(2)
     invalid = torch.randn(2, 3, 128, 128, dtype=torch.float32)
 
-    with pytest.raises(Exception):
+    with pytest.raises(EncoderInputError):
         model(valid, invalid)
 
 
