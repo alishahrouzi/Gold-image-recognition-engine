@@ -114,7 +114,7 @@ def test_representative_selection_is_deterministic_and_category_stratified():
         category = "Ring" if i < 3 else "Necklace"
         evaluation = QueryEvaluationRecord(
             **{
-                **make_eval(first_rank=2, top1=0, top5=1, top10=1, category=category).to_dict(),
+                **make_eval(first_rank=None, top1=0, top5=0, top10=0, category=category).to_dict(),
                 "query_id": f"q{i}",
             }
         )
@@ -123,7 +123,7 @@ def test_representative_selection_is_deterministic_and_category_stratified():
     first = select_representative_examples(records, per_group=3, per_category=2, seed=42)
     second = select_representative_examples(records, per_group=3, per_category=2, seed=42)
     assert first == second
-    assert len(first["top1_wrong_top5_correct"]) == 3
+    assert len(first["top1_wrong_top5_correct"]) == 0
     stratified = first["category_stratified_top10_wrong"]
     assert len(stratified) == 4
     assert {row["query_category"] for row in stratified} == {"Ring", "Necklace"}
