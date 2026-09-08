@@ -104,7 +104,7 @@ def build_error_record(
     ]
     best_positive = max(positive_similarities) if positive_similarities else None
     margin = (
-        top1_similarity - best_positive
+        round(top1_similarity - best_positive, 10)
         if top1_similarity is not None and best_positive is not None
         else None
     )
