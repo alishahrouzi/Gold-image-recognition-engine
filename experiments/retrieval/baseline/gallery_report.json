@@ -1,0 +1,34 @@
+{
+  "policy": "s2.7-baseline-gallery-v1",
+  "split": "train",
+  "num_embeddings": 4328,
+  "embedding_dim": 128,
+  "num_product_groups": 1494,
+  "category_counts": {
+    "Bracelet": 755,
+    "Earrings": 770,
+    "Necklace": 2139,
+    "Pendant": 345,
+    "Ring": 319
+  },
+  "embedding_norm_mean": 1.0,
+  "embedding_norm_std": 4.00188966409587e-08,
+  "embedding_norm_min": 0.9999998807907104,
+  "embedding_norm_max": 1.0000001192092896,
+  "checkpoint": "experiments\\baseline\\checkpoints\\best.pt",
+  "manifest": "E:\\Programming Project\\Visual Recognition Engine\\Gold-image-recognition-engine\\reports\\dataset\\dataset1_manifest.csv",
+  "device": "cuda",
+  "batch_size": 16,
+  "seed": 42,
+  "duration_seconds": 234.66840690000026,
+  "test_split_used": false,
+  "expected_num_embeddings": 4328,
+  "expected_num_product_groups": 1494,
+  "verification": {
+    "count_match": true,
+    "group_count_match": true,
+    "embedding_dim_match": true,
+    "finite_embeddings": true,
+    "test_split_used": false
+  }
+}

@@ -1,12 +1,24 @@
 """Product-level image retrieval evaluation module.
 
 Public API:
-    EmbeddingModel   -- abstract interface the evaluator depends on
+    EmbeddingModel   -- abstract interface the S0.5 evaluator depends on
     ManifestRecord   -- one row of the dataset manifest
-    RetrievalEvaluator -- runs the evaluation protocol
-    EvaluationReport, AggregateMetrics, QueryResult -- result containers
+    RetrievalEvaluator -- runs the S0.5 evaluation protocol
+    EvaluationReport, AggregateMetrics, QueryResult -- S0.5 result containers
+    evaluate_retrieval / score_retrieval_result -- S2.8 S2.7-backed metrics
+    RetrievalMetricResult, QueryEvaluationRecord -- S2.8 result containers
+    ErrorAnalysisRecord -- S2.9 per-query error evidence
 """
 
+from .errors import EvaluationError
+from .error_analysis import (
+    ErrorAnalysisRecord,
+    build_error_record,
+    build_summary,
+    category_confusion,
+    category_summary,
+    select_representative_examples,
+)
 from .evaluator import (
     AggregateMetrics,
     EmbeddingModel,
@@ -15,12 +27,26 @@ from .evaluator import (
     QueryResult,
     RetrievalEvaluator,
 )
+from .result import QueryEvaluationRecord, RetrievalMetricResult
+from .retrieval_evaluator import evaluate_leave_one_out_gallery, evaluate_retrieval, score_retrieval_result
 
 __all__ = [
     "AggregateMetrics",
     "EmbeddingModel",
+    "ErrorAnalysisRecord",
+    "EvaluationError",
     "EvaluationReport",
     "ManifestRecord",
+    "QueryEvaluationRecord",
     "QueryResult",
     "RetrievalEvaluator",
+    "RetrievalMetricResult",
+    "build_error_record",
+    "build_summary",
+    "category_confusion",
+    "category_summary",
+    "evaluate_leave_one_out_gallery",
+    "evaluate_retrieval",
+    "score_retrieval_result",
+    "select_representative_examples",
 ]

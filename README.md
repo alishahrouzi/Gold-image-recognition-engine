@@ -44,9 +44,14 @@ function.
 
 ## Evaluation
 
-Evaluation follows the project retrieval protocol and uses product-level
-ranking metrics. Test-set results are reserved for final evaluation and model
-comparison.
+S2.8 scores the existing S2.7 retrieval pipeline with product-level Top-1,
+Top-5, Top-10, and MRR. The baseline protocol is Dataset 1 **train**
+leave-one-image-out against the S2.7 train gallery (`exclude_image_id`).
+Test-set results remain reserved for final evaluation.
+
+```bash
+python scripts/evaluate_baseline.py --manifest reports/dataset/dataset1_manifest.csv
+```
 
 ## Development
 
