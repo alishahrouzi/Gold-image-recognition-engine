@@ -8,6 +8,7 @@ their ownership boundaries.
 from __future__ import annotations
 
 from pathlib import Path
+from random import Random
 from typing import Callable, Mapping, Optional, Sequence, Tuple
 
 import torch
@@ -29,6 +30,51 @@ from training.trainer import Trainer
 
 Batch = Mapping[str, object]
 StepFunction = Callable[[nn.Module, Batch], Tensor]
+DEFAULT_PAIR_VALIDATION_FRACTION = 0.2
+
+
+def _split_train_pairs_for_validation(
+    train_pairs: Sequence[Pair],
+    *,
+    validation_fraction: float,
+    seed: int,
+) -> Tuple[Tuple[Pair, ...], Tuple[Pair, ...]]:
+    """Create a deterministic pair-level holdout from the train pair pool.
+
+    Dataset 1 valid/test splits contain one image per product group, so S1.10
+    correctly generates no positive pairs for those splits. Contrastive
+    validation therefore uses a deterministic holdout of the existing train
+    pair pool rather than inventing positives or changing the dataset split.
+    The split is stratified by the S1.10 pair label to preserve the 1:1
+    positive/negative balance.
+    """
+    if not 0.0 < validation_fraction < 1.0:
+        raise ValueError("validation_fraction must be between 0 and 1.")
+    if not train_pairs:
+        raise ValueError("Cannot split an empty train pair pool.")
+
+    rng = Random(seed)
+    by_label = {0: [], 1: []}
+    for pair in train_pairs:
+        if pair.label not in by_label:
+            raise ValueError(f"Unexpected S1.10 pair label: {pair.label!r}")
+        by_label[pair.label].append(pair)
+
+    train_selected = []
+    valid_selected = []
+    for label in (0, 1):
+        candidates = list(by_label[label])
+        rng.shuffle(candidates)
+        n_valid = max(1, int(round(len(candidates) * validation_fraction)))
+        if n_valid >= len(candidates):
+            n_valid = len(candidates) - 1
+        valid_selected.extend(candidates[:n_valid])
+        train_selected.extend(candidates[n_valid:])
+
+    if not train_selected or not valid_selected:
+        raise ValueError("Pair validation split produced an empty partition.")
+
+    return tuple(train_selected), tuple(valid_selected)
 
 
 def build_pair_dataloaders(
@@ -41,18 +87,23 @@ def build_pair_dataloaders(
     pin_memory: bool = True,
     preprocessor: Optional[ImagePreprocessor] = None,
     train_augmentation: Optional[AugmentationConfig] = None,
+    validation_fraction: float = DEFAULT_PAIR_VALIDATION_FRACTION,
+    split_seed: int = 42,
 ) -> Tuple[DataLoader, DataLoader, Mapping[str, int]]:
-    """Build train/valid DataLoaders from the existing manifest and pair CSV.
+    """Build train/validation DataLoaders from the existing pair CSV.
 
     Relative image_path values in the manifest are resolved against
-    ``dataset_root``. Pair records are loaded as-is; no pair generation occurs
-    here. Test pairs are intentionally ignored because S3.4 trains on train
-    and validates on valid only. Test evaluation belongs to a later task.
+    ``dataset_root``. Dataset 1's valid/test image splits are not used for
+    contrastive validation because each group has only one image there.
+    Instead, a deterministic, label-stratified holdout is taken from the
+    existing train pair pool. Test pairs remain excluded from training.
     """
     if batch_size < 1:
         raise ValueError("batch_size must be >= 1.")
     if num_workers < 0:
         raise ValueError("num_workers must be >= 0.")
+    if not isinstance(split_seed, int) or isinstance(split_seed, bool):
+        raise ValueError("split_seed must be an integer.")
 
     samples = load_manifest(
         manifest_path,
@@ -60,12 +111,15 @@ def build_pair_dataloaders(
         validate_files=True,
     )
     pairs = load_pairs_csv(pairs_path)
-    train_pairs = tuple(pair for pair in pairs if pair.split == "train")
-    valid_pairs = tuple(pair for pair in pairs if pair.split == "valid")
-    if not train_pairs:
+    source_train_pairs = tuple(pair for pair in pairs if pair.split == "train")
+    if not source_train_pairs:
         raise ValueError("Pair CSV contains no train pairs.")
-    if not valid_pairs:
-        raise ValueError("Pair CSV contains no valid pairs.")
+
+    train_pairs, valid_pairs = _split_train_pairs_for_validation(
+        source_train_pairs,
+        validation_fraction=validation_fraction,
+        seed=split_seed,
+    )
 
     processor = preprocessor or ImagePreprocessor()
     train_dataset = PairDataset(
@@ -96,6 +150,7 @@ def build_pair_dataloaders(
         pin_memory=pin_memory,
     )
     counts = {
+        "source_train_pairs": len(source_train_pairs),
         "train_pairs": len(train_pairs),
         "valid_pairs": len(valid_pairs),
         "test_pairs": sum(pair.split == "test" for pair in pairs),
@@ -126,9 +181,6 @@ def contrastive_step(
 
     embedding_a, embedding_b = model(image_a, image_b)
     distances = distance.pairwise(embedding_a, embedding_b)
-    # ContrastiveLoss consumes distances semantically but also owns its
-    # numerical formula. Keep the distance calculation explicit here so the
-    # S3.2 abstraction remains part of the training pipeline.
     positive = labels == 0
     negative = labels == 1
     if not torch.all(positive | negative):
@@ -212,6 +264,8 @@ def train_siamese(
         num_workers=selected_config.num_workers,
         pin_memory=selected_config.pin_memory,
         train_augmentation=train_augmentation,
+        validation_fraction=DEFAULT_PAIR_VALIDATION_FRACTION,
+        split_seed=selected_config.seed,
     )
     trainer = build_siamese_trainer(
         train_loader,
@@ -223,6 +277,8 @@ def train_siamese(
     summary["manifest"] = str(Path(manifest_path))
     summary["dataset_root"] = str(Path(dataset_root)) if dataset_root is not None else None
     summary["pairs_csv"] = str(Path(pairs_path))
+    summary["pair_validation_fraction"] = DEFAULT_PAIR_VALIDATION_FRACTION
+    summary["pair_validation_seed"] = selected_config.seed
     summary["distance"] = "euclidean"
     summary["loss"] = "contrastive"
     return summary
