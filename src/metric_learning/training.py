@@ -35,6 +35,7 @@ def build_pair_dataloaders(
     manifest_path: str | Path,
     pairs_path: str | Path,
     *,
+    dataset_root: Optional[str | Path] = None,
     batch_size: int,
     num_workers: int = 0,
     pin_memory: bool = True,
@@ -43,16 +44,21 @@ def build_pair_dataloaders(
 ) -> Tuple[DataLoader, DataLoader, Mapping[str, int]]:
     """Build train/valid DataLoaders from the existing manifest and pair CSV.
 
-    Pair records are loaded as-is; no pair generation occurs here. Test pairs
-    are intentionally ignored because S3.4 trains on train and validates on
-    valid only. Test evaluation belongs to a later evaluation task.
+    Relative image_path values in the manifest are resolved against
+    ``dataset_root``. Pair records are loaded as-is; no pair generation occurs
+    here. Test pairs are intentionally ignored because S3.4 trains on train
+    and validates on valid only. Test evaluation belongs to a later task.
     """
     if batch_size < 1:
         raise ValueError("batch_size must be >= 1.")
     if num_workers < 0:
         raise ValueError("num_workers must be >= 0.")
 
-    samples = load_manifest(manifest_path, validate_files=True)
+    samples = load_manifest(
+        manifest_path,
+        dataset_root=dataset_root,
+        validate_files=True,
+    )
     pairs = load_pairs_csv(pairs_path)
     train_pairs = tuple(pair for pair in pairs if pair.split == "train")
     valid_pairs = tuple(pair for pair in pairs if pair.split == "valid")
@@ -192,6 +198,7 @@ def train_siamese(
     manifest_path: str | Path,
     pairs_path: str | Path,
     *,
+    dataset_root: Optional[str | Path] = None,
     config: Optional[TrainingConfig] = None,
     train_augmentation: Optional[AugmentationConfig] = None,
 ) -> Mapping[str, object]:
@@ -200,6 +207,7 @@ def train_siamese(
     train_loader, valid_loader, counts = build_pair_dataloaders(
         manifest_path,
         pairs_path,
+        dataset_root=dataset_root,
         batch_size=selected_config.batch_size,
         num_workers=selected_config.num_workers,
         pin_memory=selected_config.pin_memory,
@@ -213,6 +221,7 @@ def train_siamese(
     summary = dict(trainer.fit())
     summary["pair_counts"] = dict(counts)
     summary["manifest"] = str(Path(manifest_path))
+    summary["dataset_root"] = str(Path(dataset_root)) if dataset_root is not None else None
     summary["pairs_csv"] = str(Path(pairs_path))
     summary["distance"] = "euclidean"
     summary["loss"] = "contrastive"
