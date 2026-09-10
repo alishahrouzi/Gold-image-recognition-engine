@@ -1,0 +1,37 @@
+{
+  "dataset": "dataset1",
+  "manifest": "reports\\dataset\\dataset1_manifest.csv",
+  "strategy": "random",
+  "seed": 2026,
+  "positive_negative_ratio": 1.0,
+  "total_pairs": 8376,
+  "positive_pairs": 4188,
+  "negative_pairs": 4188,
+  "negative_counts": {
+    "random": 4188,
+    "same_category": 0,
+    "cross_category": 0
+  },
+  "split_counts": {
+    "train": 8376,
+    "valid": 0,
+    "test": 0
+  },
+  "validation_results": {
+    "passed": true,
+    "checks": {
+      "no_self_pairs": true,
+      "no_duplicate_unordered_pairs": true,
+      "no_duplicate_pair_ids": true,
+      "positive_correctness": true,
+      "negative_correctness": true,
+      "split_isolation": true,
+      "valid_image_ids": true,
+      "valid_groups": true,
+      "category_consistency": true,
+      "no_cross_split_group_leakage": true,
+      "canonical_pair_ids": true
+    }
+  },
+  "policy": "s3.5-controlled-negative-strategy-v1"
+}
