@@ -2,6 +2,7 @@ from random import Random
 
 import pytest
 
+from data.constants import SOURCE_DATASET1
 from data.errors import PairGenerationError
 from data.pairs.strategies import (
     CROSS_CATEGORY_NEGATIVE,
@@ -14,11 +15,51 @@ from data.types import Sample
 
 def _samples() -> list[Sample]:
     return [
-        Sample("a1", "a1.jpg", "g1", 0, "Bracelet", "train"),
-        Sample("a2", "a2.jpg", "g1", 0, "Bracelet", "train"),
-        Sample("b1", "b1.jpg", "g2", 0, "Bracelet", "train"),
-        Sample("c1", "c1.jpg", "g3", 1, "Earrings", "train"),
-        Sample("d1", "d1.jpg", "g4", 2, "Necklace", "train"),
+        Sample(
+            image_id="a1",
+            image_path="a1.jpg",
+            group_id="g1",
+            category="Bracelet",
+            category_id=0,
+            split="train",
+            source=SOURCE_DATASET1,
+        ),
+        Sample(
+            image_id="a2",
+            image_path="a2.jpg",
+            group_id="g1",
+            category="Bracelet",
+            category_id=0,
+            split="train",
+            source=SOURCE_DATASET1,
+        ),
+        Sample(
+            image_id="b1",
+            image_path="b1.jpg",
+            group_id="g2",
+            category="Bracelet",
+            category_id=0,
+            split="train",
+            source=SOURCE_DATASET1,
+        ),
+        Sample(
+            image_id="c1",
+            image_path="c1.jpg",
+            group_id="g3",
+            category="Earrings",
+            category_id=1,
+            split="train",
+            source=SOURCE_DATASET1,
+        ),
+        Sample(
+            image_id="d1",
+            image_path="d1.jpg",
+            group_id="g4",
+            category="Necklace",
+            category_id=2,
+            split="train",
+            source=SOURCE_DATASET1,
+        ),
     ]
 
 
