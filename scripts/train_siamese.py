@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import json
 import logging
+import os
 import sys
 from pathlib import Path
 from typing import List, Optional
@@ -22,11 +23,30 @@ DEFAULT_MANIFEST = PROJECT_ROOT / "reports" / "dataset" / "dataset1_manifest.csv
 DEFAULT_PAIRS = PROJECT_ROOT / "reports" / "dataset" / "dataset1_pairs.csv"
 DEFAULT_CHECKPOINT_DIR = PROJECT_ROOT / "experiments" / "siamese" / "checkpoints"
 DEFAULT_SUMMARY = PROJECT_ROOT / "experiments" / "siamese" / "training_summary.json"
+_LOCAL_DATASET_ROOT = PROJECT_ROOT.parent / "dataset" / "ai-tool-pool-jewelry-vision"
+_LEGACY_DATASET_ROOT = Path(
+    r"e:\Privat File\Projects\Zargar Interview\dataset\ai-tool-pool-jewelry-vision"
+)
+
+
+def resolve_dataset_root(explicit: str | None) -> Path | None:
+    """Resolve Dataset 1 root using CLI, environment, or known local locations."""
+    if explicit:
+        return Path(explicit).expanduser().resolve()
+    env = os.environ.get("ZARGAR_DATASET1_ROOT")
+    if env:
+        return Path(env).expanduser().resolve()
+    if _LEGACY_DATASET_ROOT.is_dir():
+        return _LEGACY_DATASET_ROOT
+    if _LOCAL_DATASET_ROOT.is_dir():
+        return _LOCAL_DATASET_ROOT
+    return None
 
 
 def parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Train Dataset 1 Siamese model (S3.4).")
     parser.add_argument("--manifest", default=str(DEFAULT_MANIFEST))
+    parser.add_argument("--dataset-root", default=None)
     parser.add_argument("--pairs", default=str(DEFAULT_PAIRS))
     parser.add_argument("--checkpoint-dir", default=str(DEFAULT_CHECKPOINT_DIR))
     parser.add_argument("--summary", default=str(DEFAULT_SUMMARY))
@@ -47,6 +67,14 @@ def parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
 def main(argv: Optional[List[str]] = None) -> int:
     logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
     args = parse_args(argv)
+    dataset_root = resolve_dataset_root(args.dataset_root)
+    if dataset_root is None:
+        raise FileNotFoundError(
+            "Dataset 1 root could not be resolved. Provide --dataset-root or "
+            "set ZARGAR_DATASET1_ROOT to the directory containing train/valid/test."
+        )
+    if not dataset_root.is_dir():
+        raise FileNotFoundError(f"Dataset 1 root does not exist or is not a directory: {dataset_root}")
 
     config = TrainingConfig(
         seed=args.seed,
@@ -74,6 +102,7 @@ def main(argv: Optional[List[str]] = None) -> int:
     summary = train_siamese(
         Path(args.manifest),
         Path(args.pairs),
+        dataset_root=dataset_root,
         config=config,
     )
 
@@ -93,6 +122,7 @@ def main(argv: Optional[List[str]] = None) -> int:
     print(f"stopped_early: {summary['stopped_early']}")
     print(f"pair_counts: {summary['pair_counts']}")
     print(f"checkpoint_best: {summary['checkpoint_best']}")
+    print(f"dataset_root: {summary['dataset_root']}")
     print(f"summary: {summary_path}")
     print("=" * 60)
     return 0
