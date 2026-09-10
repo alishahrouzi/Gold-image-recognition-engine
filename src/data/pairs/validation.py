@@ -13,6 +13,7 @@ from ..errors import PairGenerationError
 from ..types import Sample
 from .types import (
     NEGATIVE_TYPE_CROSS_CATEGORY,
+    NEGATIVE_TYPE_RANDOM,
     NEGATIVE_TYPE_SAME_CATEGORY,
     PAIR_TYPE_NEGATIVE,
     PAIR_TYPE_POSITIVE,
@@ -211,6 +212,8 @@ def _check_labels(pair: Pair) -> None:
             raise PairGenerationError(
                 f"Negative pair {pair.pair_id} must have different group_ids."
             )
+        if pair.negative_type == NEGATIVE_TYPE_RANDOM:
+            return
         if pair.negative_type == NEGATIVE_TYPE_SAME_CATEGORY:
             if pair.category_1 != pair.category_2:
                 raise PairGenerationError(
