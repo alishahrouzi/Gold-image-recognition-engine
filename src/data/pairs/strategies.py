@@ -11,7 +11,7 @@ from typing import List, Optional, Set, Tuple
 
 from ..errors import PairGenerationError
 from ..types import Sample
-from .generator import SplitIndex
+from .sampler import SplitIndex, _sample_typed_negatives
 from .types import (
     NEGATIVE_TYPE_CROSS_CATEGORY,
     NEGATIVE_TYPE_SAME_CATEGORY,
@@ -95,12 +95,13 @@ def sample_negatives_by_strategy(
     """Dispatch one explicit S3.5 negative sampling strategy."""
     if strategy == RANDOM_NEGATIVE:
         return sample_random_negatives(
-            samples, rng, count=count, occupied=occupied,
+            samples,
+            rng,
+            count=count,
+            occupied=occupied,
             max_attempts_per_pair=max_attempts_per_pair,
         )
     if strategy in (SAME_CATEGORY_NEGATIVE, CROSS_CATEGORY_NEGATIVE):
-        from .sampler import _sample_typed_negatives
-
         index = SplitIndex(samples)
         return _sample_typed_negatives(
             index,
