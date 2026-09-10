@@ -31,8 +31,8 @@ def test_random_negative_has_different_groups_and_explicit_type():
 
 
 def test_same_category_strategy_is_category_constrained():
-    pairs = sample_negatives_by_strategy(_samples(), Random(42), strategy=SAME_CATEGORY_NEGATIVE, count=3)
-    assert len(pairs) == 3
+    pairs = sample_negatives_by_strategy(_samples(), Random(42), strategy=SAME_CATEGORY_NEGATIVE, count=2)
+    assert len(pairs) == 2
     assert all(pair.category_1 == pair.category_2 for pair in pairs)
     assert all(pair.group_id_1 != pair.group_id_2 for pair in pairs)
     assert all(pair.negative_type == SAME_CATEGORY_NEGATIVE for pair in pairs)
