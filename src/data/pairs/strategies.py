@@ -14,6 +14,7 @@ from ..types import Sample
 from .sampler import SplitIndex, _sample_typed_negatives
 from .types import (
     NEGATIVE_TYPE_CROSS_CATEGORY,
+    NEGATIVE_TYPE_RANDOM,
     NEGATIVE_TYPE_SAME_CATEGORY,
     PAIR_TYPE_NEGATIVE,
     Pair,
@@ -22,7 +23,7 @@ from .types import (
 
 UnorderedKey = Tuple[str, str]
 
-RANDOM_NEGATIVE = "random"
+RANDOM_NEGATIVE = NEGATIVE_TYPE_RANDOM
 SAME_CATEGORY_NEGATIVE = NEGATIVE_TYPE_SAME_CATEGORY
 CROSS_CATEGORY_NEGATIVE = NEGATIVE_TYPE_CROSS_CATEGORY
 
