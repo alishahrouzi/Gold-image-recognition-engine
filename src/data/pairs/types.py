@@ -14,6 +14,7 @@ from ..types import Sample
 
 PAIR_TYPE_POSITIVE = "positive"
 PAIR_TYPE_NEGATIVE = "negative"
+NEGATIVE_TYPE_RANDOM = "random"
 NEGATIVE_TYPE_SAME_CATEGORY = "same_category"
 NEGATIVE_TYPE_CROSS_CATEGORY = "cross_category"
 
