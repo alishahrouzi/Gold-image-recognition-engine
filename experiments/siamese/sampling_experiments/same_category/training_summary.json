@@ -1,0 +1,135 @@
+{
+  "status": "completed",
+  "completed_epoch": 10,
+  "best_val_loss": 0.1321382315602678,
+  "stopped_early": false,
+  "duration_seconds": 6811.514094300044,
+  "checkpoint_last": "experiments\\siamese\\sampling_experiments\\same_category\\checkpoints\\last.pt",
+  "checkpoint_best": "experiments\\siamese\\sampling_experiments\\same_category\\checkpoints\\best.pt",
+  "device": "cuda",
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.26318161231368337,
+      "val_loss": 0.25416340655813924,
+      "learning_rate": 0.0009755282581475768,
+      "train_batches": 419,
+      "train_samples": 6700,
+      "valid_batches": 105,
+      "valid_samples": 1676,
+      "duration_seconds": 680.5016520000063
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.2446677894378776,
+      "val_loss": 0.2100845653572629,
+      "learning_rate": 0.0009045084971874736,
+      "train_batches": 419,
+      "train_samples": 6700,
+      "valid_batches": 105,
+      "valid_samples": 1676,
+      "duration_seconds": 696.8737041000277
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.21272096952395653,
+      "val_loss": 0.224799057606581,
+      "learning_rate": 0.0007938926261462366,
+      "train_batches": 419,
+      "train_samples": 6700,
+      "valid_batches": 105,
+      "valid_samples": 1676,
+      "duration_seconds": 704.0216196999536
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.20497172046063553,
+      "val_loss": 0.1918856825919595,
+      "learning_rate": 0.0006545084971874737,
+      "train_batches": 419,
+      "train_samples": 6700,
+      "valid_batches": 105,
+      "valid_samples": 1676,
+      "duration_seconds": 687.7177501000115
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.1935993252672366,
+      "val_loss": 0.18808463326075198,
+      "learning_rate": 0.0005,
+      "train_batches": 419,
+      "train_samples": 6700,
+      "valid_batches": 105,
+      "valid_samples": 1676,
+      "duration_seconds": 679.789780799998
+    },
+    {
+      "epoch": 6,
+      "train_loss": 0.17913458130252896,
+      "val_loss": 0.1827998518730405,
+      "learning_rate": 0.00034549150281252633,
+      "train_batches": 419,
+      "train_samples": 6700,
+      "valid_batches": 105,
+      "valid_samples": 1676,
+      "duration_seconds": 681.4371804000111
+    },
+    {
+      "epoch": 7,
+      "train_loss": 0.17096865852377308,
+      "val_loss": 0.1703864271999259,
+      "learning_rate": 0.0002061073738537635,
+      "train_batches": 419,
+      "train_samples": 6700,
+      "valid_batches": 105,
+      "valid_samples": 1676,
+      "duration_seconds": 671.7839705999941
+    },
+    {
+      "epoch": 8,
+      "train_loss": 0.15619751440055335,
+      "val_loss": 0.14117993748700136,
+      "learning_rate": 9.549150281252634e-05,
+      "train_batches": 419,
+      "train_samples": 6700,
+      "valid_batches": 105,
+      "valid_samples": 1676,
+      "duration_seconds": 671.4123940999852
+    },
+    {
+      "epoch": 9,
+      "train_loss": 0.1455656973016796,
+      "val_loss": 0.13407234730185644,
+      "learning_rate": 2.4471741852423235e-05,
+      "train_batches": 419,
+      "train_samples": 6700,
+      "valid_batches": 105,
+      "valid_samples": 1676,
+      "duration_seconds": 669.8448853999726
+    },
+    {
+      "epoch": 10,
+      "train_loss": 0.14217145467204834,
+      "val_loss": 0.1321382315602678,
+      "learning_rate": 0.0,
+      "train_batches": 419,
+      "train_samples": 6700,
+      "valid_batches": 105,
+      "valid_samples": 1676,
+      "duration_seconds": 666.9945087000378
+    }
+  ],
+  "pair_counts": {
+    "source_train_pairs": 8376,
+    "train_pairs": 6700,
+    "valid_pairs": 1676,
+    "test_pairs": 0
+  },
+  "manifest": "E:\\Programming Project\\Visual Recognition Engine\\Gold-image-recognition-engine\\reports\\dataset\\dataset1_manifest.csv",
+  "dataset_root": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision",
+  "pairs_csv": "experiments\\sampling\\same_category_pairs.csv",
+  "pair_validation_fraction": 0.2,
+  "pair_validation_seed": 42,
+  "distance": "euclidean",
+  "loss": "contrastive"
+}
