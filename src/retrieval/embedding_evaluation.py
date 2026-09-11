@@ -230,7 +230,7 @@ def evaluate_pair_geometry(
     cosine_distances: list[float] = []
     euclidean_distances: list[float] = []
     labels: list[int] = []
-    negative_types: dict[str, int] = {"same_category": 0, "cross_category": 0}
+    negative_types: list[str | None] = []
 
     for pair in pairs:
         try:
@@ -241,8 +241,7 @@ def evaluate_pair_geometry(
         cosine_distances.append(float(cosine.pairwise(a, b)[0]))
         euclidean_distances.append(float(euclidean.pairwise(a, b)[0]))
         labels.append(pair.label)
-        if pair.negative_type is not None:
-            negative_types[pair.negative_type] += 1
+        negative_types.append(pair.negative_type)
 
     y_true = np.asarray(labels, dtype=np.int64)
     distances = np.asarray(cosine_distances, dtype=np.float64)
@@ -251,19 +250,36 @@ def evaluate_pair_geometry(
     positive_distances = distances[positive_mask]
     negative_distances = distances[negative_mask]
 
+    subtype_metrics: dict[str, object] = {}
+    for subtype in ("same_category", "cross_category"):
+        mask = np.asarray([item == subtype for item in negative_types], dtype=bool)
+        subtype_distances = distances[mask]
+        if subtype_distances.size:
+            subtype_metrics[subtype] = {
+                "count": int(subtype_distances.size),
+                "distance": _distance_stats(subtype_distances),
+                "separation_from_same_product_mean": float(
+                    subtype_distances.mean() - positive_distances.mean()
+                ),
+            }
+        else:
+            subtype_metrics[subtype] = {"count": 0}
+
+    eer, eer_threshold = _eer(y_true, distances)
     result = {
         "pair_counts": {
             "total": int(len(pairs)),
             "same_product": int(positive_mask.sum()),
             "different_product": int(negative_mask.sum()),
-            "different_product_same_category": int(negative_types["same_category"]),
-            "different_product_cross_category": int(negative_types["cross_category"]),
+            "different_product_same_category": int(sum(item == "same_category" for item in negative_types)),
+            "different_product_cross_category": int(sum(item == "cross_category" for item in negative_types)),
         },
         "cosine_distance": {
             "same_product": _distance_stats(positive_distances),
             "different_product": _distance_stats(negative_distances),
             "separation_mean": float(negative_distances.mean() - positive_distances.mean()),
             "separation_median": float(np.median(negative_distances) - np.median(positive_distances)),
+            "negative_subtypes": subtype_metrics,
         },
         "euclidean_distance": {
             "same_product": _distance_stats(np.asarray(euclidean_distances)[positive_mask]),
@@ -273,8 +289,8 @@ def evaluate_pair_geometry(
             "roc_auc": float(roc_auc_score(y_true, -distances)),
             "pr_auc": float(average_precision_score(y_true, -distances)),
             "best_threshold": _best_threshold(y_true, distances),
-            "eer": _eer(y_true, distances)[0],
-            "eer_threshold": _eer(y_true, distances)[1],
+            "eer": eer,
+            "eer_threshold": eer_threshold,
         },
     }
     return result
@@ -311,11 +327,14 @@ def evaluate_model(
     batch_size: int = 32,
 ) -> Mapping[str, object]:
     """Load one Siamese checkpoint and evaluate it under the S3.6 protocol."""
+    if batch_size < 1:
+        raise ValueError("batch_size must be >= 1.")
     extractor = load_siamese_embedding_model(checkpoint_path, device=device)
     embeddings: dict[str, Tensor] = {}
+    processor = ImagePreprocessor()
     for start in range(0, len(samples), batch_size):
         batch_samples = samples[start : start + batch_size]
-        batch = torch.stack([_load_batch(sample, ImagePreprocessor()) for sample in batch_samples])
+        batch = torch.stack([_load_batch(sample, processor) for sample in batch_samples])
         batch_embeddings = extractor.extract(batch)
         for sample, embedding in zip(batch_samples, batch_embeddings):
             embeddings[sample.image_id] = embedding
