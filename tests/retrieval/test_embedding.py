@@ -1,7 +1,8 @@
 import torch
 from torch import nn
 
-from src.retrieval.embedding import EmbeddingExtractor
+from src.metric_learning.siamese import SiameseNetwork
+from src.retrieval.embedding import EmbeddingExtractor, load_siamese_embedding_model
 
 
 class DummyEmbeddingModel(nn.Module):
@@ -31,3 +32,27 @@ def test_embedding_extractor_rejects_non_batched_input() -> None:
         assert "[B, C, H, W]" in str(exc)
     else:
         raise AssertionError("Expected ValueError")
+
+
+def test_load_siamese_embedding_model(tmp_path) -> None:
+    model = SiameseNetwork()
+    checkpoint = tmp_path / "best.pt"
+    torch.save(
+        {
+            "checkpoint_version": "s2.5-checkpoint-v1",
+            "epoch": 10,
+            "model_state_dict": model.state_dict(),
+        },
+        checkpoint,
+    )
+
+    extractor = load_siamese_embedding_model(checkpoint, device="cpu")
+    images = torch.randn(2, 3, 224, 224)
+    embeddings = extractor.extract(images)
+
+    assert embeddings.shape == (2, 128)
+    assert torch.allclose(
+        torch.linalg.vector_norm(embeddings, dim=1),
+        torch.ones(2),
+        atol=1e-5,
+    )
