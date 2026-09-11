@@ -10,7 +10,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from pathlib import Path
 from random import Random
-from typing import Iterable, Mapping, Sequence
+from typing import Mapping, Sequence
 
 import numpy as np
 import torch
@@ -23,6 +23,7 @@ from data.preprocessing.pipeline import ImagePreprocessor
 from data.types import Sample
 from metric_learning.distance import CosineDistance, EuclideanDistance
 from metric_learning.siamese import SiameseNetwork
+from retrieval.embedding import load_siamese_embedding_model
 
 
 @dataclass(frozen=True)
@@ -91,10 +92,10 @@ def build_evaluation_pairs(
                     )
                 )
 
-    target_negatives = max(1, int(round(len(positives) * negative_ratio)))
     if not positives:
         raise ValueError("Evaluation split contains no same-product positive pairs.")
 
+    target_negatives = max(1, int(round(len(positives) * negative_ratio)))
     rng = Random(seed)
     group_ids = sorted(by_group)
     if len(group_ids) < 2:
@@ -112,9 +113,7 @@ def build_evaluation_pairs(
         if key in occupied:
             continue
         occupied.add(key)
-        negative_type = (
-            "same_category" if sample_a.category == sample_b.category else "cross_category"
-        )
+        negative_type = "same_category" if sample_a.category == sample_b.category else "cross_category"
         negatives.append(
             EvaluationPair(
                 sample_a.image_id,
@@ -187,22 +186,27 @@ def _distance_stats(values: Sequence[float]) -> dict[str, float]:
 def _best_threshold(y_true: np.ndarray, distances: np.ndarray) -> dict[str, float]:
     """Find the accuracy-maximizing distance threshold, lower=positive."""
     thresholds = np.unique(distances)
-    best = (-1.0, float("nan"), 0.0, 0.0, 0.0, 0.0)
+    best_accuracy = -1.0
+    best_threshold = float("inf")
+    best_precision = best_recall = best_f1 = 0.0
     for threshold in thresholds:
         predicted = (distances <= threshold).astype(np.int64)
         accuracy = float(accuracy_score(y_true, predicted))
         precision, recall, f1, _ = precision_recall_fscore_support(
             y_true, predicted, average="binary", zero_division=0
         )
-        candidate = (accuracy, float(threshold), float(precision), float(recall), float(f1), 0.0)
-        if candidate[0] > best[0] or (candidate[0] == best[0] and candidate[1] < best[1]):
-            best = candidate
+        if accuracy > best_accuracy or (accuracy == best_accuracy and threshold < best_threshold):
+            best_accuracy = accuracy
+            best_threshold = float(threshold)
+            best_precision = float(precision)
+            best_recall = float(recall)
+            best_f1 = float(f1)
     return {
-        "threshold": best[1],
-        "accuracy": best[0],
-        "precision": best[2],
-        "recall": best[3],
-        "f1": best[4],
+        "threshold": best_threshold,
+        "accuracy": best_accuracy,
+        "precision": best_precision,
+        "recall": best_recall,
+        "f1": best_f1,
     }
 
 
@@ -246,12 +250,6 @@ def evaluate_pair_geometry(
     negative_mask = y_true == 0
     positive_distances = distances[positive_mask]
     negative_distances = distances[negative_mask]
-    scores = -distances
-
-    roc_auc = float(roc_auc_score(y_true, scores))
-    pr_auc = float(average_precision_score(y_true, scores))
-    threshold = _best_threshold(y_true, distances)
-    eer, eer_threshold = _eer(y_true, distances)
 
     result = {
         "pair_counts": {
@@ -272,11 +270,11 @@ def evaluate_pair_geometry(
             "different_product": _distance_stats(np.asarray(euclidean_distances)[negative_mask]),
         },
         "classification": {
-            "roc_auc": roc_auc,
-            "pr_auc": pr_auc,
-            "best_threshold": threshold,
-            "eer": eer,
-            "eer_threshold": eer_threshold,
+            "roc_auc": float(roc_auc_score(y_true, -distances)),
+            "pr_auc": float(average_precision_score(y_true, -distances)),
+            "best_threshold": _best_threshold(y_true, distances),
+            "eer": _eer(y_true, distances)[0],
+            "eer_threshold": _eer(y_true, distances)[1],
         },
     }
     return result
@@ -313,19 +311,17 @@ def evaluate_model(
     batch_size: int = 32,
 ) -> Mapping[str, object]:
     """Load one Siamese checkpoint and evaluate it under the S3.6 protocol."""
-    path = Path(checkpoint_path)
-    if not path.is_file():
-        raise FileNotFoundError(f"Checkpoint does not exist: {path}")
-    payload = torch.load(path, map_location="cpu", weights_only=False)
-    if not isinstance(payload, Mapping) or "model_state_dict" not in payload:
-        raise ValueError(f"Invalid Siamese checkpoint: {path}")
-    model = SiameseNetwork()
-    model.load_state_dict(payload["model_state_dict"], strict=True)
-    embeddings = extract_embeddings(model, samples, device=device, batch_size=batch_size)
+    extractor = load_siamese_embedding_model(checkpoint_path, device=device)
+    embeddings: dict[str, Tensor] = {}
+    for start in range(0, len(samples), batch_size):
+        batch_samples = samples[start : start + batch_size]
+        batch = torch.stack([_load_batch(sample, ImagePreprocessor()) for sample in batch_samples])
+        batch_embeddings = extractor.extract(batch)
+        for sample, embedding in zip(batch_samples, batch_embeddings):
+            embeddings[sample.image_id] = embedding
     result = dict(evaluate_pair_geometry(pairs, embeddings))
     result["nearest_neighbor"] = dict(nearest_neighbor_accuracy(samples, embeddings))
-    result["checkpoint"] = str(path)
-    result["checkpoint_epoch"] = int(payload.get("epoch", 0))
+    result["checkpoint"] = str(Path(checkpoint_path))
     return result
 
 
