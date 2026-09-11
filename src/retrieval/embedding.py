@@ -1,4 +1,4 @@
-"""Embedding extraction for the S2.7 baseline retrieval pipeline."""
+"""Embedding extraction for baseline and Siamese retrieval models."""
 
 from __future__ import annotations
 
@@ -11,10 +11,11 @@ from torch import Tensor, nn
 from src.baselines.classifier import BaselineClassifier
 from src.models.config import EncoderConfig
 from src.models.embedding_head import EmbeddingHead, EmbeddingHeadConfig, CustomCNNEncoder, EncoderWithEmbeddingHead
+from src.metric_learning.siamese import SiameseNetwork
 
 
 class EmbeddingExtractor:
-    """Extract normalized embeddings without exposing the baseline classifier."""
+    """Extract normalized embeddings without exposing training-specific heads."""
 
     def __init__(self, model: EncoderWithEmbeddingHead, device: torch.device | str = "cpu") -> None:
         self.device = torch.device(device)
@@ -55,12 +56,7 @@ def load_baseline_embedding_model(
     num_classes: int = 5,
     device: torch.device | str = "cpu",
 ) -> EmbeddingExtractor:
-    """Load the S2.6 best checkpoint and expose only its retrieval path.
-
-    The checkpoint contains the temporary S2.6 ``BaselineClassifier`` wrapper.
-    Its classifier head is intentionally ignored; only the trained encoder and
-    embedding head are restored for retrieval.
-    """
+    """Load the S2.6 best checkpoint and expose only its retrieval path."""
     path = Path(checkpoint_path)
     if not path.is_file():
         raise FileNotFoundError(f"Checkpoint does not exist: {path}")
@@ -72,3 +68,30 @@ def load_baseline_embedding_model(
         raise ValueError("Invalid S2.6 checkpoint: missing model_state_dict.")
     wrapper.load_state_dict(payload["model_state_dict"])
     return EmbeddingExtractor(wrapper.retrieval_model, device=device)
+
+
+def load_siamese_embedding_model(
+    checkpoint_path: str | Path,
+    *,
+    device: torch.device | str = "cpu",
+) -> EmbeddingExtractor:
+    """Load a complete S3.4/S3.5 Siamese checkpoint for embedding extraction.
+
+    The checkpoint is produced by the shared S2.5 CheckpointManager and stores
+    the SiameseNetwork ``model_state_dict``. No optimizer, scheduler, RNG state,
+    or training-only object is restored for evaluation.
+    """
+    path = Path(checkpoint_path)
+    if not path.is_file():
+        raise FileNotFoundError(f"Checkpoint does not exist: {path}")
+    payload: Any = torch.load(path, map_location="cpu", weights_only=False)
+    if not isinstance(payload, dict) or "model_state_dict" not in payload:
+        raise ValueError(f"Invalid Siamese checkpoint: missing model_state_dict: {path}")
+    model = SiameseNetwork()
+    try:
+        model.load_state_dict(payload["model_state_dict"], strict=True)
+    except RuntimeError as exc:
+        raise ValueError(
+            f"Siamese checkpoint architecture does not match the current model: {path}"
+        ) from exc
+    return EmbeddingExtractor(model.backbone, device=device)
