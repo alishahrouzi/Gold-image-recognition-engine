@@ -1,0 +1,35 @@
+{
+  "task": "S3.7-Gallery-Builder",
+  "policy": "s3.7-image-level-gallery-v1",
+  "model": "s3.5_cross_category",
+  "split": "train",
+  "num_embeddings": 4328,
+  "embedding_dim": 128,
+  "num_product_groups": 1494,
+  "category_counts": {
+    "Bracelet": 755,
+    "Earrings": 770,
+    "Necklace": 2139,
+    "Pendant": 345,
+    "Ring": 319
+  },
+  "embedding_norm_mean": 1.0,
+  "embedding_norm_std": 3.780383650564545e-08,
+  "embedding_norm_min": 0.9999998211860657,
+  "embedding_norm_max": 1.0000001192092896,
+  "checkpoint": "experiments\\siamese\\sampling_experiments\\cross_category\\checkpoints\\best.pt",
+  "manifest": "reports\\dataset\\dataset1_manifest.csv",
+  "device": "cuda",
+  "batch_size": 32,
+  "seed": 42,
+  "duration_seconds": 164.01050650002435,
+  "expected_num_embeddings": 4328,
+  "expected_num_product_groups": 1494,
+  "verification": {
+    "count_match": true,
+    "product_count_match": true,
+    "embedding_dim_match": true,
+    "finite_embeddings": true,
+    "metadata_alignment_match": true
+  }
+}
