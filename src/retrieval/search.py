@@ -15,16 +15,16 @@ from .similarity import cosine_similarity_matrix
 
 
 class SimilaritySearchEngine:
-    """Search a gallery and return unique product candidates.
+    """Search a gallery and return a bounded set of unique product candidates.
 
     The gallery remains image-level. S3.8 computes image-to-query cosine
     similarities, excludes an optional query image, groups matching images by
     product, and uses the strongest image match as the product's raw search
-    similarity. The resulting product set is capped at ``k`` unique products.
+    similarity. The product set is capped at ``k`` unique products.
 
-    S3.9 owns the explicit ranking stage; S3.10 owns display-score conversion.
-    This class therefore exposes raw similarity evidence and does not convert
-    similarity to a probability or display score.
+    S3.9 owns the explicit reusable ranking stage; S3.10 owns display-score
+    conversion. This class therefore exposes raw similarity evidence and does
+    not convert similarity to a probability or display score.
     """
 
     def __init__(self, gallery_embeddings: Tensor, metadata: Sequence[dict[str, Any]]) -> None:
@@ -60,6 +60,22 @@ class SimilaritySearchEngine:
         if image_id is None or not str(image_id).strip():
             raise ValueError("Gallery metadata must contain a non-empty image_id.")
         return str(image_id)
+
+    @staticmethod
+    def _select_top_product_indices(
+        candidates: Sequence[ProductSearchCandidate], k: int
+    ) -> set[int]:
+        """Select the strongest ``k`` products without defining output order.
+
+        S3.8 needs bounded Top-K candidate membership, but S3.9 owns the
+        explicit ordering of those candidates. Ties are resolved by product ID
+        so candidate membership is deterministic across runs.
+        """
+        ordered_indices = sorted(
+            range(len(candidates)),
+            key=lambda index: (-candidates[index].similarity, candidates[index].product_id),
+        )
+        return set(ordered_indices[: min(k, len(candidates))])
 
     def search(
         self,
@@ -104,7 +120,11 @@ class SimilaritySearchEngine:
         for product_id, matches in grouped.items():
             matches.sort(key=lambda pair: (-pair[1], self._image_id(self.metadata[pair[0]])))
             best_score = matches[0][1]
-            best_score_matches = [pair for pair in matches if math.isclose(pair[1], best_score, rel_tol=0.0, abs_tol=1e-12)]
+            best_score_matches = [
+                pair
+                for pair in matches
+                if math.isclose(pair[1], best_score, rel_tol=0.0, abs_tol=1e-12)
+            ]
             representative_index = best_score_matches[0][0]
             category = self._category(self.metadata[representative_index])
             product_candidates.append(
@@ -112,7 +132,9 @@ class SimilaritySearchEngine:
                     product_id=product_id,
                     category=category,
                     similarity=best_score,
-                    matched_image_ids=tuple(self._image_id(self.metadata[index]) for index, _ in matches),
+                    matched_image_ids=tuple(
+                        self._image_id(self.metadata[index]) for index, _ in matches
+                    ),
                     matched_image_paths=tuple(
                         self.metadata[index].get("image_path", self.metadata[index].get("image"))
                         for index, _ in matches
@@ -120,13 +142,13 @@ class SimilaritySearchEngine:
                 )
             )
 
-        # S3.8 must return a bounded product set. This selection uses the raw
-        # search similarity; S3.9 will own the explicit reusable ranking stage.
-        product_candidates.sort(key=lambda candidate: (-candidate.similarity, candidate.product_id))
-        return ProductSearchResult(
-            query_id=query_id,
-            candidates=tuple(product_candidates[: min(k, len(product_candidates))]),
+        selected = self._select_top_product_indices(product_candidates, k)
+        # Preserve product discovery order. No rank field is assigned here;
+        # S3.9 is responsible for the explicit Similarity-descending ordering.
+        selected_candidates = tuple(
+            candidate for index, candidate in enumerate(product_candidates) if index in selected
         )
+        return ProductSearchResult(query_id=query_id, candidates=selected_candidates)
 
     def search_from_retrieval_candidates(
         self,
@@ -164,5 +186,8 @@ class SimilaritySearchEngine:
                 )
             )
 
-        products.sort(key=lambda candidate: (-candidate.similarity, candidate.product_id))
-        return ProductSearchResult(query_id=query_id, candidates=tuple(products[:k]))
+        selected = self._select_top_product_indices(products, k)
+        selected_products = tuple(
+            product for index, product in enumerate(products) if index in selected
+        )
+        return ProductSearchResult(query_id=query_id, candidates=selected_products)
