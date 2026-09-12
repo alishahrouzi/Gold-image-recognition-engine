@@ -1,11 +1,16 @@
-"""Gallery construction and persistence for S2.7."""
+"""Gallery construction and persistence for retrieval models.
+
+The gallery is image-level: each row represents one catalog image and stores
+its product identity, category, image path, and normalized embedding. Product-
+level aggregation remains a downstream retrieval concern.
+"""
 
 from __future__ import annotations
 
 import json
-from dataclasses import asdict, dataclass
+from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, Iterable
+from typing import Any
 
 import torch
 from torch import Tensor
@@ -21,6 +26,8 @@ from .embedding import EmbeddingExtractor
 
 @dataclass(frozen=True)
 class Gallery:
+    """Persistable image-level retrieval gallery."""
+
     embeddings: Tensor
     metadata: tuple[dict[str, Any], ...]
 
@@ -31,6 +38,11 @@ class Gallery:
             raise ValueError("Gallery embeddings and metadata must have the same number of rows.")
         if self.embeddings.numel() and not torch.isfinite(self.embeddings).all():
             raise ValueError("Gallery embeddings contain non-finite values.")
+        required = {"product_id", "category", "image"}
+        for index, item in enumerate(self.metadata):
+            if not required.issubset(item):
+                missing = sorted(required - set(item))
+                raise ValueError(f"Gallery metadata row {index} is missing fields: {missing}.")
 
     @property
     def size(self) -> int:
@@ -46,7 +58,10 @@ class Gallery:
         embedding_path.parent.mkdir(parents=True, exist_ok=True)
         metadata_path.parent.mkdir(parents=True, exist_ok=True)
         torch.save(self.embeddings.cpu(), embedding_path)
-        metadata_path.write_text(json.dumps(list(self.metadata), indent=2, ensure_ascii=False), encoding="utf-8")
+        metadata_path.write_text(
+            json.dumps(list(self.metadata), indent=2, ensure_ascii=False),
+            encoding="utf-8",
+        )
 
     @classmethod
     def load(cls, embedding_path: str | Path, metadata_path: str | Path) -> "Gallery":
@@ -58,7 +73,7 @@ class Gallery:
 
 
 class GalleryBuilder:
-    """Build a deterministic embedding gallery from an existing dataset split."""
+    """Build a deterministic image-level gallery from an existing dataset split."""
 
     def __init__(self, extractor: EmbeddingExtractor) -> None:
         self.extractor = extractor
@@ -70,10 +85,15 @@ class GalleryBuilder:
             batch_embeddings = self.extractor.extract(batch["image"])
             embeddings.append(batch_embeddings)
             for i, image_id in enumerate(batch["image_id"]):
+                product_id = batch["group_id"][i]
+                image_path = batch["image_path"][i]
                 metadata.append({
-                    "image_id": image_id,
-                    "product_group": batch["group_id"][i],
+                    "product_id": product_id,
                     "category": batch["category"][i],
+                    "image": image_path,
+                    "image_id": image_id,
+                    "product_group": product_id,
+                    "image_path": image_path,
                     "category_id": int(batch["category_id"][i]),
                     "split": batch["split"][i],
                     "source": batch["source"][i],
