@@ -1,6 +1,6 @@
 import torch
 
-from src.data.constants import SOURCE_DATASET1
+from src.data.constants import CATEGORY_TO_ID, SOURCE_DATASET1
 from src.data.types import Sample
 from src.retrieval.embedding_evaluation import (
     EvaluationPair,
@@ -16,7 +16,7 @@ def _sample(image_id: str, group_id: str, category: str) -> Sample:
         image_path=f"{image_id}.jpg",
         group_id=group_id,
         category=category,
-        category_id=0,
+        category_id=CATEGORY_TO_ID[category],
         split="train",
         source=SOURCE_DATASET1,
         metadata={},
