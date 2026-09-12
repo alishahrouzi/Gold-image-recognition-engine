@@ -28,9 +28,9 @@ from .embedding import EmbeddingExtractor
 class Gallery:
     """Persistable image-level retrieval gallery.
 
-    S3.7 metadata exposes ``product_id``, ``category``, and ``image``.
-    Legacy S2.7 metadata using ``product_group``/``image_path`` remains
-    loadable through deterministic field normalization.
+    S3.7 metadata uses ``product_id``, ``category``, and ``image`` as its
+    canonical fields. Legacy S2.7 metadata using ``product_group`` and
+    ``image_path`` remains accepted for compatibility.
     """
 
     embeddings: Tensor
@@ -43,17 +43,40 @@ class Gallery:
             raise ValueError("Gallery embeddings and metadata must have the same number of rows.")
         if self.embeddings.numel() and not torch.isfinite(self.embeddings).all():
             raise ValueError("Gallery embeddings contain non-finite values.")
+
         for index, item in enumerate(self.metadata):
-            missing = {"product_id", "category", "image"} - set(item)
-            if missing:
-                raise ValueError(f"Gallery metadata row {index} is missing fields: {sorted(missing)}.")
+            # S3.7 canonical contract.
+            canonical_missing = {"product_id", "category", "image"} - set(item)
+            if not canonical_missing:
+                continue
+
+            # S2.7 compatibility contract. Do not mutate metadata here: the
+            # Gallery object should preserve exactly what its caller supplied.
+            legacy_missing = {"product_group", "category"} - set(item)
+            if not legacy_missing and ("image_path" in item or "image_id" in item):
+                continue
+
+            raise ValueError(
+                f"Gallery metadata row {index} is missing fields: "
+                f"{sorted(canonical_missing)}."
+            )
 
     @staticmethod
     def normalize_metadata(metadata: list[dict[str, Any]]) -> tuple[dict[str, Any], ...]:
-        """Normalize legacy S2.7 metadata to the S3.7 gallery contract."""
+        """Normalize legacy S2.7 metadata to the S3.7 gallery contract.
+
+        Canonical S3.7 rows are returned unchanged so save/load is lossless.
+        Only rows that actually use the legacy ``product_group``/``image_path``
+        shape receive compatibility-field normalization.
+        """
         normalized: list[dict[str, Any]] = []
         for item in metadata:
             row = dict(item)
+            is_canonical = {"product_id", "category", "image"}.issubset(row)
+            if is_canonical:
+                normalized.append(row)
+                continue
+
             if "product_id" not in row and "product_group" in row:
                 row["product_id"] = row["product_group"]
             if "image" not in row:
@@ -108,20 +131,22 @@ class GalleryBuilder:
             for i, image_id in enumerate(batch["image_id"]):
                 product_id = batch["group_id"][i]
                 image_path = batch["image_path"][i]
-                metadata.append({
-                    "product_id": product_id,
-                    "category": batch["category"][i],
-                    "image": image_path,
-                    "image_id": image_id,
-                    "product_group": product_id,
-                    "image_path": image_path,
-                    "category_id": int(batch["category_id"][i]),
-                    "split": batch["split"][i],
-                    "source": batch["source"][i],
-                })
+                metadata.append(
+                    {
+                        "product_id": product_id,
+                        "category": batch["category"][i],
+                        "image": image_path,
+                        "image_id": image_id,
+                        "product_group": product_id,
+                        "image_path": image_path,
+                        "category_id": int(batch["category_id"][i]),
+                        "split": batch["split"][i],
+                        "source": batch["source"][i],
+                    }
+                )
         if not embeddings:
             raise ValueError("Cannot build a gallery from an empty DataLoader.")
-        return Gallery(torch.cat(embeddings, dim=0), Gallery.normalize_metadata(metadata))
+        return Gallery(torch.cat(embeddings, dim=0), tuple(metadata))
 
 
 def build_gallery_loader(
@@ -142,8 +167,8 @@ def build_gallery_loader(
         batch_size=batch_size,
         shuffle=False,
         num_workers=num_workers,
-        pin_memory=pin_memory,
         persistent_workers=num_workers > 0,
+        pin_memory=pin_memory,
         worker_init_fn=seed_worker,
         generator=make_dataloader_generator(seed),
         collate_fn=collate_preprocessed_samples,
