@@ -5,7 +5,7 @@ from __future__ import annotations
 import torch
 from torch import Tensor, nn
 
-from src.models.embedding_head import EncoderWithEmbeddingHead
+from models.embedding_head import EncoderWithEmbeddingHead
 
 
 class BaselineClassifier(nn.Module):
