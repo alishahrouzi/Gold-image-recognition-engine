@@ -6,12 +6,12 @@ from pathlib import Path
 from typing import Any
 
 import torch
-from torch import Tensor, nn
+from torch import Tensor
 
-from src.baselines.classifier import BaselineClassifier
-from src.models.config import EncoderConfig
-from src.models.embedding_head import EmbeddingHead, EmbeddingHeadConfig, CustomCNNEncoder, EncoderWithEmbeddingHead
-from src.metric_learning.siamese import SiameseNetwork
+from baselines.classifier import BaselineClassifier
+from models.config import EncoderConfig
+from models.embedding_head import EmbeddingHead, EmbeddingHeadConfig, CustomCNNEncoder, EncoderWithEmbeddingHead
+from metric_learning.siamese import SiameseNetwork
 
 
 class EmbeddingExtractor:
