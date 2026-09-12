@@ -1,0 +1,486 @@
+{
+  "task": "S3.6-Embedding-Evaluation",
+  "policy": "s3.6-independent-embedding-geometry-v1",
+  "dataset": "dataset1",
+  "manifest": "E:\\Programming Project\\Visual Recognition Engine\\Gold-image-recognition-engine\\reports\\dataset\\dataset1_manifest.csv",
+  "dataset_root": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision",
+  "split": "train",
+  "seed": 2026,
+  "negative_ratio": 1.0,
+  "pair_counts": {
+    "total": 8376,
+    "same_product": 4188,
+    "different_product": 4188
+  },
+  "device": "cuda",
+  "models": {
+    "s3.4_hybrid": {
+      "pair_counts": {
+        "total": 8376,
+        "same_product": 4188,
+        "different_product": 4188,
+        "different_product_same_category": 1321,
+        "different_product_cross_category": 2867
+      },
+      "cosine_distance": {
+        "same_product": {
+          "count": 4188,
+          "mean": 0.04354984035009186,
+          "std": 0.0700599934036587,
+          "min": 7.748603820800781e-06,
+          "p25": 0.006301626563072205,
+          "median": 0.019116967916488647,
+          "p75": 0.05027259886264801,
+          "p90": 0.10913773179054262,
+          "p95": 0.16493102610111235,
+          "max": 0.9022990465164185
+        },
+        "different_product": {
+          "count": 4188,
+          "mean": 0.4057288361284544,
+          "std": 0.2778705255989268,
+          "min": 0.0011620521545410156,
+          "p25": 0.18005530536174774,
+          "median": 0.35841819643974304,
+          "p75": 0.5886540561914444,
+          "p90": 0.7926989138126375,
+          "p95": 0.9302525222301483,
+          "max": 1.449768304824829
+        },
+        "separation_mean": 0.36217899577836254,
+        "separation_median": 0.3393012285232544,
+        "negative_subtypes": {
+          "same_category": {
+            "count": 1321,
+            "distance": {
+              "count": 1321,
+              "mean": 0.3101337817832433,
+              "std": 0.2518264676876735,
+              "min": 0.0017606019973754883,
+              "p25": 0.11437332630157471,
+              "median": 0.2486467957496643,
+              "p75": 0.4498355984687805,
+              "p90": 0.6639087200164795,
+              "p95": 0.7806311249732971,
+              "max": 1.3535289764404297
+            },
+            "separation_from_same_product_mean": 0.26658394143315145
+          },
+          "cross_category": {
+            "count": 2867,
+            "distance": {
+              "count": 2867,
+              "mean": 0.4497752493792475,
+              "std": 0.2782404071503803,
+              "min": 0.0011620521545410156,
+              "p25": 0.22847828269004822,
+              "median": 0.41700267791748047,
+              "p75": 0.6378882527351379,
+              "p90": 0.8297743916511535,
+              "p95": 0.9500980019569394,
+              "max": 1.449768304824829
+            },
+            "separation_from_same_product_mean": 0.40622540902915566
+          }
+        }
+      },
+      "euclidean_distance": {
+        "same_product": {
+          "count": 4188,
+          "mean": 0.23897560040073768,
+          "std": 0.17317748186897086,
+          "min": 0.0039742873050272465,
+          "p25": 0.11226479895412922,
+          "median": 0.1955353021621704,
+          "p75": 0.31708861142396927,
+          "p90": 0.46719970703125,
+          "p95": 0.5743362605571747,
+          "max": 1.343353271484375
+        },
+        "different_product": {
+          "count": 4188,
+          "mean": 0.8400035421457408,
+          "std": 0.3253487089588859,
+          "min": 0.048208896070718765,
+          "p25": 0.6000923216342926,
+          "median": 0.8466620147228241,
+          "p75": 1.0850383043289185,
+          "p90": 1.2591257333755494,
+          "p95": 1.3640031933784484,
+          "max": 1.7028025388717651
+        }
+      },
+      "classification": {
+        "roc_auc": 0.9459342949200381,
+        "pr_auc": 0.9418891007448711,
+        "best_threshold": {
+          "threshold": 0.1102873682975769,
+          "accuracy": 0.879297994269341,
+          "precision": 0.8627540534368577,
+          "recall": 0.9021012416427889,
+          "f1": 0.8819890276642932
+        },
+        "eer": 0.12488061127029607,
+        "eer_threshold": 0.09460663795471191
+      },
+      "nearest_neighbor": {
+        "queries": 4328,
+        "correct_same_product": 794,
+        "accuracy": 0.18345656192236598,
+        "self_exclusions": 4328
+      },
+      "checkpoint": "E:\\Programming Project\\Visual Recognition Engine\\Gold-image-recognition-engine\\experiments\\siamese\\checkpoints\\best.pt"
+    },
+    "s3.5_random": {
+      "pair_counts": {
+        "total": 8376,
+        "same_product": 4188,
+        "different_product": 4188,
+        "different_product_same_category": 1321,
+        "different_product_cross_category": 2867
+      },
+      "cosine_distance": {
+        "same_product": {
+          "count": 4188,
+          "mean": 0.04662062231995656,
+          "std": 0.07821065083515255,
+          "min": 8.344650268554688e-07,
+          "p25": 0.004998430609703064,
+          "median": 0.017423301935195923,
+          "p75": 0.056539297103881836,
+          "p90": 0.12645154595375063,
+          "p95": 0.18451945185661295,
+          "max": 1.1536788940429688
+        },
+        "different_product": {
+          "count": 4188,
+          "mean": 0.3745601152736114,
+          "std": 0.23631555543039137,
+          "min": 2.8252601623535156e-05,
+          "p25": 0.18338318169116974,
+          "median": 0.34616246819496155,
+          "p75": 0.5309450179338455,
+          "p90": 0.7042094826698304,
+          "p95": 0.8032833814620971,
+          "max": 1.2531439065933228
+        },
+        "separation_mean": 0.3279394929536548,
+        "separation_median": 0.3287391662597656,
+        "negative_subtypes": {
+          "same_category": {
+            "count": 1321,
+            "distance": {
+              "count": 1321,
+              "mean": 0.3212863594451517,
+              "std": 0.2313140373175728,
+              "min": 0.0009005069732666016,
+              "p25": 0.13478302955627441,
+              "median": 0.2762835621833801,
+              "p75": 0.4629549980163574,
+              "p90": 0.6507030725479126,
+              "p95": 0.7770264148712158,
+              "max": 1.1906847953796387
+            },
+            "separation_from_same_product_mean": 0.27466573712519515
+          },
+          "cross_category": {
+            "count": 2867,
+            "distance": {
+              "count": 2867,
+              "mean": 0.3991065510773767,
+              "std": 0.23454740765409038,
+              "min": 2.8252601623535156e-05,
+              "p25": 0.2160901427268982,
+              "median": 0.37755370140075684,
+              "p75": 0.5593958497047424,
+              "p90": 0.720173442363739,
+              "p95": 0.8191037297248834,
+              "max": 1.2531439065933228
+            },
+            "separation_from_same_product_mean": 0.35248592875742013
+          }
+        }
+      },
+      "euclidean_distance": {
+        "same_product": {
+          "count": 4188,
+          "mean": 0.24116220339094094,
+          "std": 0.18730227423944643,
+          "min": 0.001296306843869388,
+          "p25": 0.09998482652008533,
+          "median": 0.186672605574131,
+          "p75": 0.336271695792675,
+          "p90": 0.5028949320316315,
+          "p95": 0.6074856191873547,
+          "max": 1.5189989805221558
+        },
+        "different_product": {
+          "count": 4188,
+          "mean": 0.8144936324509728,
+          "std": 0.2927805029898872,
+          "min": 0.007516137789934874,
+          "p25": 0.605612501502037,
+          "median": 0.8320606350898743,
+          "p75": 1.0304805040359497,
+          "p90": 1.1867683410644532,
+          "p95": 1.2675041079521179,
+          "max": 1.5831258296966553
+        }
+      },
+      "classification": {
+        "roc_auc": 0.9434485406067639,
+        "pr_auc": 0.9395581764261085,
+        "best_threshold": {
+          "threshold": 0.10020160675048828,
+          "accuracy": 0.8704632282712512,
+          "precision": 0.875756841850327,
+          "recall": 0.8634192932187201,
+          "f1": 0.8695443068414092
+        },
+        "eer": 0.1304918815663801,
+        "eer_threshold": 0.10407781600952148
+      },
+      "nearest_neighbor": {
+        "queries": 4328,
+        "correct_same_product": 839,
+        "accuracy": 0.19385397412199631,
+        "self_exclusions": 4328
+      },
+      "checkpoint": "E:\\Programming Project\\Visual Recognition Engine\\Gold-image-recognition-engine\\experiments\\siamese\\sampling_experiments\\random\\checkpoints\\best.pt"
+    },
+    "s3.5_same_category": {
+      "pair_counts": {
+        "total": 8376,
+        "same_product": 4188,
+        "different_product": 4188,
+        "different_product_same_category": 1321,
+        "different_product_cross_category": 2867
+      },
+      "cosine_distance": {
+        "same_product": {
+          "count": 4188,
+          "mean": 0.05364207857943993,
+          "std": 0.08133345543819004,
+          "min": 4.172325134277344e-06,
+          "p25": 0.007541224360466003,
+          "median": 0.02370530366897583,
+          "p75": 0.06616130471229553,
+          "p90": 0.14018161296844486,
+          "p95": 0.20167692303657514,
+          "max": 1.2183046340942383
+        },
+        "different_product": {
+          "count": 4188,
+          "mean": 0.3527152921289291,
+          "std": 0.23942858300105324,
+          "min": 0.00014573335647583008,
+          "p25": 0.15629681944847107,
+          "median": 0.31514859199523926,
+          "p75": 0.5057030320167542,
+          "p90": 0.6906275272369387,
+          "p95": 0.8065873324871061,
+          "max": 1.1918535232543945
+        },
+        "separation_mean": 0.2990732135494892,
+        "separation_median": 0.2914432883262634,
+        "negative_subtypes": {
+          "same_category": {
+            "count": 1321,
+            "distance": {
+              "count": 1321,
+              "mean": 0.3062094011422272,
+              "std": 0.22746279906519257,
+              "min": 0.00014573335647583008,
+              "p25": 0.12442880868911743,
+              "median": 0.2598894238471985,
+              "p75": 0.4366735816001892,
+              "p90": 0.6219758987426758,
+              "p95": 0.7396539449691772,
+              "max": 1.1858912706375122
+            },
+            "separation_from_same_product_mean": 0.2525673225627873
+          },
+          "cross_category": {
+            "count": 2867,
+            "distance": {
+              "count": 2867,
+              "mean": 0.3741433639787488,
+              "std": 0.2417529573297069,
+              "min": 0.001048266887664795,
+              "p25": 0.17790254950523376,
+              "median": 0.3346785306930542,
+              "p75": 0.5320855975151062,
+              "p90": 0.7169816970825196,
+              "p95": 0.8182348549365996,
+              "max": 1.1918535232543945
+            },
+            "separation_from_same_product_mean": 0.3205012853993089
+          }
+        }
+      },
+      "euclidean_distance": {
+        "same_product": {
+          "count": 4188,
+          "mean": 0.2664978795396004,
+          "std": 0.19042884026885715,
+          "min": 0.0029281689785420895,
+          "p25": 0.12281092442572117,
+          "median": 0.21773957461118698,
+          "p75": 0.3637620061635971,
+          "p90": 0.5294934749603273,
+          "p95": 0.6351012676954266,
+          "max": 1.5609641075134277
+        },
+        "different_product": {
+          "count": 4188,
+          "mean": 0.784305849656509,
+          "std": 0.3004912485290318,
+          "min": 0.01707773655653,
+          "p25": 0.5591007173061371,
+          "median": 0.7939126491546631,
+          "p75": 1.0056869387626648,
+          "p90": 1.1752681016921998,
+          "p95": 1.270108103752136,
+          "max": 1.5439257621765137
+        }
+      },
+      "classification": {
+        "roc_auc": 0.9229823247665363,
+        "pr_auc": 0.9157772751303301,
+        "best_threshold": {
+          "threshold": 0.10892194509506226,
+          "accuracy": 0.8468242597898759,
+          "precision": 0.8407224958949097,
+          "recall": 0.8557784145176696,
+          "f1": 0.8481836469056916
+        },
+        "eer": 0.15520534861509072,
+        "eer_threshold": 0.1032412052154541
+      },
+      "nearest_neighbor": {
+        "queries": 4328,
+        "correct_same_product": 557,
+        "accuracy": 0.12869685767097966,
+        "self_exclusions": 4328
+      },
+      "checkpoint": "E:\\Programming Project\\Visual Recognition Engine\\Gold-image-recognition-engine\\experiments\\siamese\\sampling_experiments\\same_category\\checkpoints\\best.pt"
+    },
+    "s3.5_cross_category": {
+      "pair_counts": {
+        "total": 8376,
+        "same_product": 4188,
+        "different_product": 4188,
+        "different_product_same_category": 1321,
+        "different_product_cross_category": 2867
+      },
+      "cosine_distance": {
+        "same_product": {
+          "count": 4188,
+          "mean": 0.04139458156816142,
+          "std": 0.06990083418384764,
+          "min": 3.933906555175781e-06,
+          "p25": 0.005036830902099609,
+          "median": 0.01650872826576233,
+          "p75": 0.04885132610797882,
+          "p90": 0.10565019845962526,
+          "p95": 0.16683402359485613,
+          "max": 0.7877753376960754
+        },
+        "different_product": {
+          "count": 4188,
+          "mean": 0.3839074583313185,
+          "std": 0.2750123853800797,
+          "min": 0.00038504600524902344,
+          "p25": 0.15525075793266296,
+          "median": 0.33205702900886536,
+          "p75": 0.5722121149301529,
+          "p90": 0.771510922908783,
+          "p95": 0.9109883934259408,
+          "max": 1.382091760635376
+        },
+        "separation_mean": 0.3425128767631571,
+        "separation_median": 0.315548300743103,
+        "negative_subtypes": {
+          "same_category": {
+            "count": 1321,
+            "distance": {
+              "count": 1321,
+              "mean": 0.2730633737371331,
+              "std": 0.24109904691247497,
+              "min": 0.001783132553100586,
+              "p25": 0.08852946758270264,
+              "median": 0.20008355379104614,
+              "p75": 0.3840852975845337,
+              "p90": 0.6092974543571472,
+              "p95": 0.7682440876960754,
+              "max": 1.382091760635376
+            },
+            "separation_from_same_product_mean": 0.23166879216897165
+          },
+          "cross_category": {
+            "count": 2867,
+            "distance": {
+              "count": 2867,
+              "mean": 0.4349800205039446,
+              "std": 0.2746398212231984,
+              "min": 0.00038504600524902344,
+              "p25": 0.21015504002571106,
+              "median": 0.4020262360572815,
+              "p75": 0.6251161396503448,
+              "p90": 0.8118148803710938,
+              "p95": 0.9385539770126342,
+              "max": 1.3504676818847656
+            },
+            "separation_from_same_product_mean": 0.3935854389357831
+          }
+        }
+      },
+      "euclidean_distance": {
+        "same_product": {
+          "count": 4188,
+          "mean": 0.22863582724742254,
+          "std": 0.17468520599292037,
+          "min": 0.0028120707720518112,
+          "p25": 0.10036917589604855,
+          "median": 0.18170741200447083,
+          "p75": 0.3125743195414543,
+          "p90": 0.45967442989349366,
+          "p95": 0.5776401847600935,
+          "max": 1.2552093267440796
+        },
+        "different_product": {
+          "count": 4188,
+          "mean": 0.8116211925478476,
+          "std": 0.3302817314384656,
+          "min": 0.027749909088015556,
+          "p25": 0.5572267025709152,
+          "median": 0.8149319589138031,
+          "p75": 1.069777637720108,
+          "p90": 1.242184340953827,
+          "p95": 1.3498061239719386,
+          "max": 1.6625834703445435
+        }
+      },
+      "classification": {
+        "roc_auc": 0.9406927647921155,
+        "pr_auc": 0.9380617952604555,
+        "best_threshold": {
+          "threshold": 0.09640353918075562,
+          "accuracy": 0.8680754536771729,
+          "precision": 0.8536361550814408,
+          "recall": 0.8884909264565425,
+          "f1": 0.8707148707148707
+        },
+        "eer": 0.13299904489016234,
+        "eer_threshold": 0.08389407396316528
+      },
+      "nearest_neighbor": {
+        "queries": 4328,
+        "correct_same_product": 765,
+        "accuracy": 0.17675600739371533,
+        "self_exclusions": 4328
+      },
+      "checkpoint": "E:\\Programming Project\\Visual Recognition Engine\\Gold-image-recognition-engine\\experiments\\siamese\\sampling_experiments\\cross_category\\checkpoints\\best.pt"
+    }
+  }
+}
