@@ -8,6 +8,7 @@ Public API:
     evaluate_retrieval / score_retrieval_result -- S2.8 S2.7-backed metrics
     RetrievalMetricResult, QueryEvaluationRecord -- S2.8 result containers
     ErrorAnalysisRecord -- S2.9 per-query error evidence
+    evaluate_gallery -- S3.11 metric-learning product retrieval evaluation
 """
 
 from .errors import EvaluationError
@@ -27,6 +28,12 @@ from .evaluator import (
     QueryResult,
     RetrievalEvaluator,
 )
+from .metric_learning_retrieval import (
+    MetricLearningRetrievalResult,
+    RetrievalQueryRecord,
+    evaluate_gallery,
+    result_to_dict,
+)
 from .result import QueryEvaluationRecord, RetrievalMetricResult
 from .retrieval_evaluator import evaluate_leave_one_out_gallery, evaluate_retrieval, score_retrieval_result
 
@@ -37,16 +44,20 @@ __all__ = [
     "EvaluationError",
     "EvaluationReport",
     "ManifestRecord",
+    "MetricLearningRetrievalResult",
     "QueryEvaluationRecord",
     "QueryResult",
     "RetrievalEvaluator",
     "RetrievalMetricResult",
+    "RetrievalQueryRecord",
     "build_error_record",
     "build_summary",
     "category_confusion",
     "category_summary",
+    "evaluate_gallery",
     "evaluate_leave_one_out_gallery",
     "evaluate_retrieval",
+    "result_to_dict",
     "score_retrieval_result",
     "select_representative_examples",
 ]
