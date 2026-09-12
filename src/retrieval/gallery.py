@@ -26,7 +26,12 @@ from .embedding import EmbeddingExtractor
 
 @dataclass(frozen=True)
 class Gallery:
-    """Persistable image-level retrieval gallery."""
+    """Persistable image-level retrieval gallery.
+
+    S3.7 metadata exposes ``product_id``, ``category``, and ``image``.
+    Legacy S2.7 metadata using ``product_group``/``image_path`` remains
+    loadable through deterministic field normalization.
+    """
 
     embeddings: Tensor
     metadata: tuple[dict[str, Any], ...]
@@ -38,11 +43,27 @@ class Gallery:
             raise ValueError("Gallery embeddings and metadata must have the same number of rows.")
         if self.embeddings.numel() and not torch.isfinite(self.embeddings).all():
             raise ValueError("Gallery embeddings contain non-finite values.")
-        required = {"product_id", "category", "image"}
         for index, item in enumerate(self.metadata):
-            if not required.issubset(item):
-                missing = sorted(required - set(item))
-                raise ValueError(f"Gallery metadata row {index} is missing fields: {missing}.")
+            missing = {"product_id", "category", "image"} - set(item)
+            if missing:
+                raise ValueError(f"Gallery metadata row {index} is missing fields: {sorted(missing)}.")
+
+    @staticmethod
+    def normalize_metadata(metadata: list[dict[str, Any]]) -> tuple[dict[str, Any], ...]:
+        """Normalize legacy S2.7 metadata to the S3.7 gallery contract."""
+        normalized: list[dict[str, Any]] = []
+        for item in metadata:
+            row = dict(item)
+            if "product_id" not in row and "product_group" in row:
+                row["product_id"] = row["product_group"]
+            if "image" not in row:
+                row["image"] = row.get("image_path", row.get("image_id", ""))
+            if "product_group" not in row and "product_id" in row:
+                row["product_group"] = row["product_id"]
+            if "image_path" not in row and "image" in row:
+                row["image_path"] = row["image"]
+            normalized.append(row)
+        return tuple(normalized)
 
     @property
     def size(self) -> int:
@@ -69,7 +90,7 @@ class Gallery:
         metadata = json.loads(Path(metadata_path).read_text(encoding="utf-8"))
         if not isinstance(metadata, list):
             raise ValueError("Gallery metadata must be a JSON list.")
-        return cls(embeddings=embeddings.float(), metadata=tuple(metadata))
+        return cls(embeddings=embeddings.float(), metadata=cls.normalize_metadata(metadata))
 
 
 class GalleryBuilder:
@@ -100,7 +121,7 @@ class GalleryBuilder:
                 })
         if not embeddings:
             raise ValueError("Cannot build a gallery from an empty DataLoader.")
-        return Gallery(torch.cat(embeddings, dim=0), tuple(metadata))
+        return Gallery(torch.cat(embeddings, dim=0), Gallery.normalize_metadata(metadata))
 
 
 def build_gallery_loader(
