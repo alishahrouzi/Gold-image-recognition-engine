@@ -3,6 +3,7 @@
 from .embedding import EmbeddingExtractor, load_baseline_embedding_model
 from .gallery import Gallery, GalleryBuilder
 from .pipeline import BaselineRetrievalPipeline, build_baseline_gallery
+from .ranking import ProductRanker, RankedProductCandidate, RankedProductSearchResult
 from .result import RetrievalCandidate, RetrievalResult
 from .search import SimilaritySearchEngine
 from .search_result import ProductSearchCandidate, ProductSearchResult
@@ -14,8 +15,11 @@ __all__ = [
     "EmbeddingExtractor",
     "Gallery",
     "GalleryBuilder",
+    "ProductRanker",
     "ProductSearchCandidate",
     "ProductSearchResult",
+    "RankedProductCandidate",
+    "RankedProductSearchResult",
     "RetrievalCandidate",
     "RetrievalResult",
     "SimilaritySearchEngine",
