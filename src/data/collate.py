@@ -16,20 +16,11 @@ from .types import DatasetItem
 
 
 class CollatedBatch(TypedDict):
-    """One DataLoader batch of unprocessed RGB images.
-
-    Keys:
-        image: list of RGB PIL images (possibly different sizes)
-        image_id: list of image ids
-        group_id: list of product group ids
-        category: list of category names
-        category_id: list of canonical category ids
-        split: list of split labels
-        source: list of dataset source labels
-    """
+    """One DataLoader batch of unprocessed RGB images."""
 
     image: List[PILImage]
     image_id: List[str]
+    image_path: List[str]
     group_id: List[str]
     category: List[str]
     category_id: List[int]
@@ -38,16 +29,11 @@ class CollatedBatch(TypedDict):
 
 
 class PreprocessedBatch(TypedDict):
-    """One DataLoader batch after S1.8 preprocessing.
-
-    Keys:
-        image: stacked tensor ``[B, 3, H, W]`` (float32)
-        image_id / group_id / category / category_id / split / source:
-            lists aligned with batch dimension 0
-    """
+    """One DataLoader batch after S1.8 preprocessing."""
 
     image: Any
     image_id: List[str]
+    image_path: List[str]
     group_id: List[str]
     category: List[str]
     category_id: List[int]
@@ -58,6 +44,7 @@ class PreprocessedBatch(TypedDict):
 def _metadata_lists(items: Sequence[DatasetItem]) -> dict:
     return {
         "image_id": [item.sample.image_id for item in items],
+        "image_path": [str(item.sample.image_path) for item in items],
         "group_id": [item.sample.group_id for item in items],
         "category": [item.sample.category for item in items],
         "category_id": [item.sample.category_id for item in items],
@@ -78,10 +65,7 @@ def collate_samples(items: Sequence[DatasetItem]) -> CollatedBatch:
 
 
 def collate_preprocessed_samples(items: Sequence[DatasetItem]) -> PreprocessedBatch:
-    """Stack preprocessed tensors and keep metadata aligned.
-
-    Each ``item.image`` must already be a CHW tensor (use PreprocessedDataset).
-    """
+    """Stack preprocessed tensors and keep metadata aligned."""
     import torch
 
     if not items:
