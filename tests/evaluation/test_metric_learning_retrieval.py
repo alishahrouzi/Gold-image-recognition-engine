@@ -5,22 +5,9 @@ from __future__ import annotations
 import pytest
 import torch
 
-from src.data.types import Sample
 from src.evaluation.errors import EvaluationError
 from src.evaluation.metric_learning_retrieval import evaluate_gallery
 from src.retrieval.gallery import Gallery
-
-
-def _sample(image_id: str, product_id: str, category: str = "Ring") -> Sample:
-    return Sample(
-        image_id=image_id,
-        group_id=product_id,
-        category=category,
-        category_id=4,
-        split="train",
-        image_path=f"{image_id}.jpg",
-        source="dataset1",
-    )
 
 
 def _gallery() -> Gallery:
@@ -86,13 +73,11 @@ def test_k_must_be_ten_for_shared_evaluation_ranking() -> None:
 
 
 def test_invalid_gallery_embedding_is_rejected() -> None:
-    gallery = Gallery(
-        embeddings=torch.tensor([[1.0, float("nan")], [0.0, 1.0]]),
-        metadata=(
-            {"product_id": "p1", "category": "Ring", "image": "a", "image_id": "a"},
-            {"product_id": "p1", "category": "Ring", "image": "b", "image_id": "b"},
-        ),
-    )
-    # Gallery itself validates non-finite tensors; construction is therefore
-    # expected to fail before the evaluator runs.
-    assert gallery is not None
+    with pytest.raises(ValueError, match="non-finite"):
+        Gallery(
+            embeddings=torch.tensor([[1.0, float("nan")], [0.0, 1.0]]),
+            metadata=(
+                {"product_id": "p1", "category": "Ring", "image": "a", "image_id": "a"},
+                {"product_id": "p1", "category": "Ring", "image": "b", "image_id": "b"},
+            ),
+        )
