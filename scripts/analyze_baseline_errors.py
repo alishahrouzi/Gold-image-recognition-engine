@@ -15,8 +15,10 @@ from pathlib import Path
 from typing import Any
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-if str(PROJECT_ROOT) not in sys.path:
-    sys.path.insert(0, str(PROJECT_ROOT))
+SRC_ROOT = PROJECT_ROOT / "src"
+for _path in (PROJECT_ROOT, SRC_ROOT):
+    if str(_path) not in sys.path:
+        sys.path.insert(0, str(_path))
 
 from src.data.loaders.manifest import load_manifest
 from src.evaluation.error_analysis import (

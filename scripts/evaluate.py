@@ -26,7 +26,10 @@ from pathlib import Path
 from typing import List
 
 # Make `src/` importable without requiring the package to be installed.
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
+_PROJECT_ROOT = Path(__file__).resolve().parent.parent
+for _path in (_PROJECT_ROOT, _PROJECT_ROOT / "src"):
+    if str(_path) not in sys.path:
+        sys.path.insert(0, str(_path))
 
 from src.evaluation.evaluator import (  # noqa: E402
     EvaluationReport,
