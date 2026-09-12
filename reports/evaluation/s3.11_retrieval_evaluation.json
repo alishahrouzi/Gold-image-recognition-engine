@@ -1,0 +1,434 @@
+{
+  "experiment_id": "EXP-0004",
+  "task": "S3.11",
+  "policy": "s3.11-product-retrieval-evaluation-v1",
+  "timestamp": "2026-09-12T17:10:57.832506+00:00",
+  "git": {
+    "commit": "97894ef48df3d20fc2233d34fabf02cc5773d212",
+    "branch": "main"
+  },
+  "k": 10,
+  "models": {
+    "s3.4_hybrid": {
+      "metrics": {
+        "top1": 0.18405192396847472,
+        "top5": 0.37876680574872507,
+        "top10": 0.4721835883171071,
+        "precision_at_1": 0.18405192396847472,
+        "precision_at_5": 0.07575336114974501,
+        "precision_at_10": 0.047218358831710716,
+        "recall_at_1": 0.18405192396847472,
+        "recall_at_5": 0.37876680574872507,
+        "recall_at_10": 0.4721835883171071,
+        "mrr": 0.2669109801237757
+      },
+      "query_counts": {
+        "total": 4328,
+        "valid": 4314,
+        "excluded": 14
+      },
+      "diagnostics": {
+        "queries_with_at_least_one_positive": 4314,
+        "queries_with_zero_positives": 14,
+        "positive_outside_top10": 2277,
+        "mean_first_positive_rank": 3.1973490427098676,
+        "median_first_positive_rank": 2,
+        "min_first_positive_rank": 1,
+        "max_first_positive_rank": 10,
+        "self_match_exclusions": 4328,
+        "short_rankings": 0,
+        "nan_inf_count": 0,
+        "per_category": {
+          "Bracelet": {
+            "num_queries": 752,
+            "top1": 0.19414893617021275,
+            "top5": 0.4029255319148936,
+            "top10": 0.4946808510638298,
+            "precision_at_1": 0.19414893617021275,
+            "precision_at_5": 0.08058510638297872,
+            "precision_at_10": 0.04946808510638298,
+            "recall_at_1": 0.19414893617021275,
+            "recall_at_5": 0.4029255319148936,
+            "recall_at_10": 0.4946808510638298,
+            "mrr": 0.2808320668693009
+          },
+          "Earrings": {
+            "num_queries": 767,
+            "top1": 0.23076923076923078,
+            "top5": 0.42242503259452413,
+            "top10": 0.5215123859191656,
+            "precision_at_1": 0.23076923076923078,
+            "precision_at_5": 0.08448500651890482,
+            "precision_at_10": 0.05215123859191656,
+            "recall_at_1": 0.23076923076923078,
+            "recall_at_5": 0.42242503259452413,
+            "recall_at_10": 0.5215123859191656,
+            "mrr": 0.3125820036836986
+          },
+          "Necklace": {
+            "num_queries": 2131,
+            "top1": 0.15016424213984045,
+            "top5": 0.334115438761145,
+            "top10": 0.4274988268418583,
+            "precision_at_1": 0.15016424213984045,
+            "precision_at_5": 0.066823087752229,
+            "precision_at_10": 0.04274988268418583,
+            "recall_at_1": 0.15016424213984045,
+            "recall_at_5": 0.334115438761145,
+            "recall_at_10": 0.4274988268418583,
+            "mrr": 0.230132287546647
+          },
+          "Pendant": {
+            "num_queries": 345,
+            "top1": 0.2463768115942029,
+            "top5": 0.43768115942028984,
+            "top10": 0.5246376811594203,
+            "precision_at_1": 0.2463768115942029,
+            "precision_at_5": 0.08753623188405799,
+            "precision_at_10": 0.052463768115942035,
+            "recall_at_1": 0.2463768115942029,
+            "recall_at_5": 0.43768115942028984,
+            "recall_at_10": 0.5246376811594203,
+            "mrr": 0.3258902691511387
+          },
+          "Ring": {
+            "num_queries": 319,
+            "top1": 0.20689655172413793,
+            "top5": 0.45141065830721006,
+            "top10": 0.542319749216301,
+            "precision_at_1": 0.20689655172413793,
+            "precision_at_5": 0.09028213166144201,
+            "precision_at_10": 0.054231974921630094,
+            "recall_at_1": 0.20689655172413793,
+            "recall_at_5": 0.45141065830721006,
+            "recall_at_10": 0.542319749216301,
+            "mrr": 0.3061874906702493
+          }
+        }
+      },
+      "gallery": {
+        "directory": "E:\\Programming Project\\Visual Recognition Engine\\Gold-image-recognition-engine\\experiments\\retrieval\\siamese\\s3.4_hybrid",
+        "size": 4328,
+        "embedding_dim": 128,
+        "product_count": 1494
+      }
+    },
+    "s3.5_random": {
+      "metrics": {
+        "top1": 0.19448307834955958,
+        "top5": 0.3891979601298099,
+        "top10": 0.4860917941585535,
+        "precision_at_1": 0.19448307834955958,
+        "precision_at_5": 0.07783959202596198,
+        "precision_at_10": 0.04860917941585536,
+        "recall_at_1": 0.19448307834955958,
+        "recall_at_5": 0.3891979601298099,
+        "recall_at_10": 0.4860917941585535,
+        "mrr": 0.27952770970851637
+      },
+      "query_counts": {
+        "total": 4328,
+        "valid": 4314,
+        "excluded": 14
+      },
+      "diagnostics": {
+        "queries_with_at_least_one_positive": 4314,
+        "queries_with_zero_positives": 14,
+        "positive_outside_top10": 2217,
+        "mean_first_positive_rank": 3.139246542680019,
+        "median_first_positive_rank": 2,
+        "min_first_positive_rank": 1,
+        "max_first_positive_rank": 10,
+        "self_match_exclusions": 4328,
+        "short_rankings": 0,
+        "nan_inf_count": 0,
+        "per_category": {
+          "Bracelet": {
+            "num_queries": 752,
+            "top1": 0.16888297872340424,
+            "top5": 0.4242021276595745,
+            "top10": 0.5372340425531915,
+            "precision_at_1": 0.16888297872340424,
+            "precision_at_5": 0.0848404255319149,
+            "precision_at_10": 0.05372340425531916,
+            "recall_at_1": 0.16888297872340424,
+            "recall_at_5": 0.4242021276595745,
+            "recall_at_10": 0.5372340425531915,
+            "mrr": 0.27851443768996964
+          },
+          "Earrings": {
+            "num_queries": 767,
+            "top1": 0.22685788787483702,
+            "top5": 0.4367666232073012,
+            "top10": 0.5580182529335072,
+            "precision_at_1": 0.22685788787483702,
+            "precision_at_5": 0.08735332464146023,
+            "precision_at_10": 0.055801825293350725,
+            "recall_at_1": 0.22685788787483702,
+            "recall_at_5": 0.4367666232073012,
+            "recall_at_10": 0.5580182529335072,
+            "mrr": 0.3210876223588088
+          },
+          "Necklace": {
+            "num_queries": 2131,
+            "top1": 0.1708118254340685,
+            "top5": 0.33552322853120603,
+            "top10": 0.4265603003284843,
+            "precision_at_1": 0.1708118254340685,
+            "precision_at_5": 0.0671046457062412,
+            "precision_at_10": 0.04265603003284843,
+            "recall_at_1": 0.1708118254340685,
+            "recall_at_5": 0.33552322853120603,
+            "recall_at_10": 0.4265603003284843,
+            "mrr": 0.2430100258467222
+          },
+          "Pendant": {
+            "num_queries": 345,
+            "top1": 0.2579710144927536,
+            "top5": 0.45217391304347826,
+            "top10": 0.4985507246376812,
+            "precision_at_1": 0.2579710144927536,
+            "precision_at_5": 0.09043478260869565,
+            "precision_at_10": 0.049855072463768114,
+            "recall_at_1": 0.2579710144927536,
+            "recall_at_5": 0.45217391304347826,
+            "recall_at_10": 0.4985507246376812,
+            "mrr": 0.34216356107660456
+          },
+          "Ring": {
+            "num_queries": 319,
+            "top1": 0.2664576802507837,
+            "top5": 0.4827586206896552,
+            "top10": 0.5768025078369906,
+            "precision_at_1": 0.2664576802507837,
+            "precision_at_5": 0.09655172413793103,
+            "precision_at_10": 0.057680250783699066,
+            "recall_at_1": 0.2664576802507837,
+            "recall_at_5": 0.4827586206896552,
+            "recall_at_10": 0.5768025078369906,
+            "mrr": 0.35819649698960043
+          }
+        }
+      },
+      "gallery": {
+        "directory": "E:\\Programming Project\\Visual Recognition Engine\\Gold-image-recognition-engine\\experiments\\retrieval\\siamese\\s3.5_random",
+        "size": 4328,
+        "embedding_dim": 128,
+        "product_count": 1494
+      }
+    },
+    "s3.5_same_category": {
+      "metrics": {
+        "top1": 0.12911451089476125,
+        "top5": 0.2941585535465925,
+        "top10": 0.38363467779323135,
+        "precision_at_1": 0.12911451089476125,
+        "precision_at_5": 0.0588317107093185,
+        "precision_at_10": 0.03836346777932313,
+        "recall_at_1": 0.12911451089476125,
+        "recall_at_5": 0.2941585535465925,
+        "recall_at_10": 0.38363467779323135,
+        "mrr": 0.2003064956472467
+      },
+      "query_counts": {
+        "total": 4328,
+        "valid": 4314,
+        "excluded": 14
+      },
+      "diagnostics": {
+        "queries_with_at_least_one_positive": 4314,
+        "queries_with_zero_positives": 14,
+        "positive_outside_top10": 2659,
+        "mean_first_positive_rank": 3.4900302114803625,
+        "median_first_positive_rank": 2,
+        "min_first_positive_rank": 1,
+        "max_first_positive_rank": 10,
+        "self_match_exclusions": 4328,
+        "short_rankings": 0,
+        "nan_inf_count": 0,
+        "per_category": {
+          "Bracelet": {
+            "num_queries": 752,
+            "top1": 0.1077127659574468,
+            "top5": 0.27925531914893614,
+            "top10": 0.38430851063829785,
+            "precision_at_1": 0.1077127659574468,
+            "precision_at_5": 0.05585106382978723,
+            "precision_at_10": 0.03843085106382979,
+            "recall_at_1": 0.1077127659574468,
+            "recall_at_5": 0.27925531914893614,
+            "recall_at_10": 0.38430851063829785,
+            "mrr": 0.17933025160418775
+          },
+          "Earrings": {
+            "num_queries": 767,
+            "top1": 0.15514993481095177,
+            "top5": 0.3624511082138201,
+            "top10": 0.4589308996088657,
+            "precision_at_1": 0.15514993481095177,
+            "precision_at_5": 0.07249022164276402,
+            "precision_at_10": 0.04589308996088658,
+            "recall_at_1": 0.15514993481095177,
+            "recall_at_5": 0.3624511082138201,
+            "recall_at_10": 0.4589308996088657,
+            "mrr": 0.24510668239481798
+          },
+          "Necklace": {
+            "num_queries": 2131,
+            "top1": 0.11872360394181136,
+            "top5": 0.2585640544345378,
+            "top10": 0.340215861098076,
+            "precision_at_1": 0.11872360394181136,
+            "precision_at_5": 0.05171281088690756,
+            "precision_at_10": 0.0340215861098076,
+            "recall_at_1": 0.11872360394181136,
+            "recall_at_5": 0.2585640544345378,
+            "recall_at_10": 0.340215861098076,
+            "mrr": 0.18013657050494217
+          },
+          "Pendant": {
+            "num_queries": 345,
+            "top1": 0.19130434782608696,
+            "top5": 0.3855072463768116,
+            "top10": 0.46956521739130436,
+            "precision_at_1": 0.19130434782608696,
+            "precision_at_5": 0.07710144927536232,
+            "precision_at_10": 0.04695652173913043,
+            "recall_at_1": 0.19130434782608696,
+            "recall_at_5": 0.3855072463768116,
+            "recall_at_10": 0.46956521739130436,
+            "mrr": 0.2775419829767656
+          },
+          "Ring": {
+            "num_queries": 319,
+            "top1": 0.11912225705329153,
+            "top5": 0.30407523510971785,
+            "top10": 0.3981191222570533,
+            "precision_at_1": 0.11912225705329153,
+            "precision_at_5": 0.06081504702194358,
+            "precision_at_10": 0.039811912225705334,
+            "recall_at_1": 0.11912225705329153,
+            "recall_at_5": 0.30407523510971785,
+            "recall_at_10": 0.3981191222570533,
+            "mrr": 0.1932477484201622
+          }
+        }
+      },
+      "gallery": {
+        "directory": "E:\\Programming Project\\Visual Recognition Engine\\Gold-image-recognition-engine\\experiments\\retrieval\\siamese\\s3.5_same_category",
+        "size": 4328,
+        "embedding_dim": 128,
+        "product_count": 1494
+      }
+    },
+    "s3.5_cross_category": {
+      "metrics": {
+        "top1": 0.17732962447844228,
+        "top5": 0.3822438572090867,
+        "top10": 0.4800649049605934,
+        "precision_at_1": 0.17732962447844228,
+        "precision_at_5": 0.07644877144181735,
+        "precision_at_10": 0.048006490496059345,
+        "recall_at_1": 0.17732962447844228,
+        "recall_at_5": 0.3822438572090867,
+        "recall_at_10": 0.4800649049605934,
+        "mrr": 0.264773513330537
+      },
+      "query_counts": {
+        "total": 4328,
+        "valid": 4314,
+        "excluded": 14
+      },
+      "diagnostics": {
+        "queries_with_at_least_one_positive": 4314,
+        "queries_with_zero_positives": 14,
+        "positive_outside_top10": 2243,
+        "mean_first_positive_rank": 3.263157894736842,
+        "median_first_positive_rank": 2,
+        "min_first_positive_rank": 1,
+        "max_first_positive_rank": 10,
+        "self_match_exclusions": 4328,
+        "short_rankings": 0,
+        "nan_inf_count": 0,
+        "per_category": {
+          "Bracelet": {
+            "num_queries": 752,
+            "top1": 0.19547872340425532,
+            "top5": 0.44148936170212766,
+            "top10": 0.5771276595744681,
+            "precision_at_1": 0.19547872340425532,
+            "precision_at_5": 0.08829787234042553,
+            "precision_at_10": 0.057712765957446815,
+            "recall_at_1": 0.19547872340425532,
+            "recall_at_5": 0.44148936170212766,
+            "recall_at_10": 0.5771276595744681,
+            "mrr": 0.3036526933468423
+          },
+          "Earrings": {
+            "num_queries": 767,
+            "top1": 0.20860495436766624,
+            "top5": 0.4654498044328553,
+            "top10": 0.5801825293350718,
+            "precision_at_1": 0.20860495436766624,
+            "precision_at_5": 0.09308996088657107,
+            "precision_at_10": 0.058018252933507174,
+            "recall_at_1": 0.20860495436766624,
+            "recall_at_5": 0.4654498044328553,
+            "recall_at_10": 0.5801825293350718,
+            "mrr": 0.3154084145609569
+          },
+          "Necklace": {
+            "num_queries": 2131,
+            "top1": 0.14875645236977944,
+            "top5": 0.31252932895354296,
+            "top10": 0.3951196621304552,
+            "precision_at_1": 0.14875645236977944,
+            "precision_at_5": 0.06250586579070859,
+            "precision_at_10": 0.03951196621304552,
+            "recall_at_1": 0.14875645236977944,
+            "recall_at_5": 0.31252932895354296,
+            "recall_at_10": 0.3951196621304552,
+            "mrr": 0.21895972529477925
+          },
+          "Pendant": {
+            "num_queries": 345,
+            "top1": 0.19710144927536233,
+            "top5": 0.3826086956521739,
+            "top10": 0.43768115942028984,
+            "precision_at_1": 0.19710144927536233,
+            "precision_at_5": 0.0765217391304348,
+            "precision_at_10": 0.04376811594202899,
+            "recall_at_1": 0.19710144927536233,
+            "recall_at_5": 0.3826086956521739,
+            "recall_at_10": 0.43768115942028984,
+            "mrr": 0.2724258109040718
+          },
+          "Ring": {
+            "num_queries": 319,
+            "top1": 0.22884012539184953,
+            "top5": 0.5078369905956113,
+            "top10": 0.6238244514106583,
+            "precision_at_1": 0.22884012539184953,
+            "precision_at_5": 0.10156739811912226,
+            "precision_at_10": 0.062382445141065834,
+            "recall_at_1": 0.22884012539184953,
+            "recall_at_5": 0.5078369905956113,
+            "recall_at_10": 0.6238244514106583,
+            "mrr": 0.34914663880181124
+          }
+        }
+      },
+      "gallery": {
+        "directory": "E:\\Programming Project\\Visual Recognition Engine\\Gold-image-recognition-engine\\experiments\\retrieval\\siamese\\s3.5_cross_category",
+        "size": 4328,
+        "embedding_dim": 128,
+        "product_count": 1494
+      }
+    }
+  },
+  "cross_model_consistency": {
+    "all_gallery_sizes_match": true,
+    "all_embedding_dims_match": true,
+    "all_product_counts_match": true
+  }
+}
