@@ -81,7 +81,7 @@ def test_unsupported_metric_is_rejected() -> None:
 
 
 @pytest.mark.parametrize(
-    (metric, value),
+    "metric, value",
     [
         (COSINE_SIMILARITY, float("nan")),
         (COSINE_SIMILARITY, float("inf")),
