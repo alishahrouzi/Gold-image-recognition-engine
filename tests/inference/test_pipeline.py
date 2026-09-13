@@ -99,18 +99,17 @@ def test_custom_ranker_and_score_converter_are_preserved() -> None:
 
 
 def test_empty_search_result_flows_to_empty_scored_result() -> None:
-    # k remains valid; a gallery with candidates always produces results. This
-    # test uses an engine whose query is finite but points away from the gallery
-    # to verify that the orchestration does not invent a result or score.
     metadata = [
         {"image_id": "a", "product_id": "p1", "category": "Ring", "image": "a.jpg"},
     ]
     engine = SimilaritySearchEngine(torch.tensor([[1.0, 0.0]]), metadata)
-    pipeline = InferencePipeline(FakeEmbedder(torch.tensor([0.0, 1.0])), engine)
+    pipeline = InferencePipeline(FakeEmbedder(torch.tensor([1.0, 0.0])), engine)
 
-    result = pipeline.run(torch.zeros(3, 224, 224), k=1)
+    result = pipeline.run(
+        torch.zeros(3, 224, 224),
+        k=1,
+        exclude_image_id="a",
+    )
 
-    assert result.top_k == 1
-    assert result.candidates[0].product_id == "p1"
-    assert result.candidates[0].similarity == 0.0
-    assert result.candidates[0].similarity_score == 50.0
+    assert result.top_k == 0
+    assert result.candidates == ()
