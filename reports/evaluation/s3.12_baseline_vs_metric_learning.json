@@ -1,6 +1,5 @@
 {
   "policy": "s3.12-baseline-vs-metric-learning-v1",
-  "task": "S3.12",
   "comparison": {
     "baseline": {
       "top1": 0.014140009272137228,
@@ -37,21 +36,25 @@
       "relative_change": 9.33374593631405
     }
   ],
-  "selection": {
-    "model": "s3.5_random",
-    "basis": "S3.11 retrieval performance",
-    "priority": ["top1", "top5", "mrr"]
-  },
   "diagnostics": {
     "all_compared_metrics_improved": true,
-    "improved_metrics": ["top1", "top5", "mrr"],
+    "improved_metrics": [
+      "top1",
+      "top5",
+      "mrr"
+    ],
     "unchanged_metrics": [],
-    "regressed_metrics": []
-  },
-  "sources": {
-    "baseline_report": "reports/evaluation/s2.8_baseline_evaluation.json",
-    "siamese_report": "reports/evaluation/s3.11_retrieval_evaluation.json"
+    "regressed_metrics": [],
+    "selection_basis": "S3.11 retrieval performance",
+    "selection_priority": [
+      "top1",
+      "top5",
+      "mrr"
+    ]
   },
   "decision": "Metric learning is better than baseline on all compared metrics.",
-  "interpretation": "This is a controlled comparison under the existing train leave-one-image-out retrieval protocol. It is not a final test-set generalization score or a production-readiness claim."
+  "sources": {
+    "baseline_report": "E:\\Programming Project\\Visual Recognition Engine\\Gold-image-recognition-engine\\reports\\evaluation\\s2.8_baseline_evaluation.json",
+    "siamese_report": "E:\\Programming Project\\Visual Recognition Engine\\Gold-image-recognition-engine\\reports\\evaluation\\s3.11_retrieval_evaluation.json"
+  }
 }
