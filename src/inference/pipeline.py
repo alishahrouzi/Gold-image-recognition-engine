@@ -21,9 +21,9 @@ from typing import Protocol
 
 from torch import Tensor
 
-from src.retrieval.ranking import ProductRanker
-from src.retrieval.scoring import ScoredProductSearchResult, SimilarityScoreConverter
-from src.retrieval.search import SimilaritySearchEngine
+from retrieval.ranking import ProductRanker
+from retrieval.scoring import ScoredProductSearchResult, SimilarityScoreConverter
+from retrieval.search import SimilaritySearchEngine
 
 
 class QueryEmbedder(Protocol):
