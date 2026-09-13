@@ -1,0 +1,57 @@
+{
+  "policy": "s3.12-baseline-vs-metric-learning-v1",
+  "task": "S3.12",
+  "comparison": {
+    "baseline": {
+      "top1": 0.014140009272137228,
+      "top5": 0.04381084840055633,
+      "mrr": 0.02704998859379944
+    },
+    "siamese": {
+      "model": "s3.5_random",
+      "top1": 0.19448307834955958,
+      "top5": 0.3891979601298099,
+      "mrr": 0.27952770970851637
+    }
+  },
+  "improvements": [
+    {
+      "metric": "top1",
+      "baseline": 0.014140009272137228,
+      "metric_learning": 0.19448307834955958,
+      "absolute_change": 0.18034306907742234,
+      "relative_change": 12.754098360655737
+    },
+    {
+      "metric": "top5",
+      "baseline": 0.04381084840055633,
+      "metric_learning": 0.3891979601298099,
+      "absolute_change": 0.34538711172925357,
+      "relative_change": 7.883597883597883
+    },
+    {
+      "metric": "mrr",
+      "baseline": 0.02704998859379944,
+      "metric_learning": 0.27952770970851637,
+      "absolute_change": 0.25247772111471695,
+      "relative_change": 9.33374593631405
+    }
+  ],
+  "selection": {
+    "model": "s3.5_random",
+    "basis": "S3.11 retrieval performance",
+    "priority": ["top1", "top5", "mrr"]
+  },
+  "diagnostics": {
+    "all_compared_metrics_improved": true,
+    "improved_metrics": ["top1", "top5", "mrr"],
+    "unchanged_metrics": [],
+    "regressed_metrics": []
+  },
+  "sources": {
+    "baseline_report": "reports/evaluation/s2.8_baseline_evaluation.json",
+    "siamese_report": "reports/evaluation/s3.11_retrieval_evaluation.json"
+  },
+  "decision": "Metric learning is better than baseline on all compared metrics.",
+  "interpretation": "This is a controlled comparison under the existing train leave-one-image-out retrieval protocol. It is not a final test-set generalization score or a production-readiness claim."
+}
