@@ -13,10 +13,10 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from src.baselines.classifier import BaselineClassifier
-from src.models.config import EncoderConfig
-from src.models.embedding_head import EmbeddingHead, EmbeddingHeadConfig, CustomCNNEncoder, EncoderWithEmbeddingHead
-from src.metric_learning.siamese import SiameseNetwork
+from baselines.classifier import BaselineClassifier
+from models.config import EncoderConfig
+from models.embedding_head import EmbeddingHead, EmbeddingHeadConfig, CustomCNNEncoder, EncoderWithEmbeddingHead
+from metric_learning.siamese import SiameseNetwork
 
 
 class EmbeddingExtractor:

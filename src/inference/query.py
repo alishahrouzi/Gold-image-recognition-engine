@@ -6,14 +6,19 @@ from dataclasses import dataclass
 from io import BytesIO
 from pathlib import Path
 from typing import Union
-
+import sys
 import torch
 from PIL import Image, UnidentifiedImageError
 
-from src.data.errors import PreprocessingError
-from src.data.loaders.image_loader import load_rgb_image, to_rgb_image
-from src.data.preprocessing.config import ImagePreprocessingConfig
-from src.data.preprocessing.pipeline import ImagePreprocessor
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+SRC_ROOT = PROJECT_ROOT / "src"
+if str(SRC_ROOT) not in sys.path:
+    sys.path.insert(0, str(SRC_ROOT))
+
+from data.errors import PreprocessingError
+from data.loaders.image_loader import load_rgb_image, to_rgb_image
+from data.preprocessing.config import ImagePreprocessingConfig
+from data.preprocessing.pipeline import ImagePreprocessor
 
 
 QuerySource = Union[bytes, bytearray, memoryview, Image.Image, str, Path]

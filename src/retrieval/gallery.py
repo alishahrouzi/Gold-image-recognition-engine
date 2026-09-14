@@ -15,11 +15,17 @@ from typing import Any
 import torch
 from torch import Tensor
 from torch.utils.data import DataLoader
+import sys
 
-from src.data.collate import collate_preprocessed_samples
-from src.data.datasets import UnifiedDataset
-from src.data.preprocessing import ImagePreprocessor, build_preprocessed_dataset
-from src.training.seed import make_dataloader_generator, seed_worker
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+SRC_ROOT = PROJECT_ROOT / "src"
+if str(SRC_ROOT) not in sys.path:
+    sys.path.insert(0, str(SRC_ROOT))
+
+from data.collate import collate_preprocessed_samples
+from data.datasets import UnifiedDataset
+from data.preprocessing import ImagePreprocessor, build_preprocessed_dataset
+from training.seed import make_dataloader_generator, seed_worker
 
 from .embedding import EmbeddingExtractor
 

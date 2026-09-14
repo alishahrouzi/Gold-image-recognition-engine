@@ -7,18 +7,24 @@ import platform
 import time
 from pathlib import Path
 from typing import Any, Mapping, Optional
+import sys
 
 import torch
 from torch.utils.data import DataLoader
 
-from src.data.collate import collate_preprocessed_samples
-from src.data.datasets import UnifiedDataset
-from src.data.preprocessing import AugmentationConfig, ImagePreprocessor, build_preprocessed_dataset
-from src.data.constants import CATEGORY_TO_ID
-from src.models.embedding_head import EmbeddingHead, EmbeddingHeadConfig, CustomCNNEncoder, EncoderWithEmbeddingHead
-from src.models.config import EncoderConfig
-from src.training.seed import make_dataloader_generator
-from src.training.trainer import Trainer
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+SRC_ROOT = PROJECT_ROOT / "src"
+if str(SRC_ROOT) not in sys.path:
+    sys.path.insert(0, str(SRC_ROOT))
+
+from data.collate import collate_preprocessed_samples
+from data.datasets import UnifiedDataset
+from data.preprocessing import AugmentationConfig, ImagePreprocessor, build_preprocessed_dataset
+from data.constants import CATEGORY_TO_ID
+from models.embedding_head import EmbeddingHead, EmbeddingHeadConfig, CustomCNNEncoder, EncoderWithEmbeddingHead
+from models.config import EncoderConfig
+from training.seed import make_dataloader_generator
+from training.trainer import Trainer
 
 from .classifier import BaselineClassifier
 from .config import BaselineConfig
