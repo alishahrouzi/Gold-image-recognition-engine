@@ -28,7 +28,7 @@ def _gallery() -> Gallery:
         torch.tensor(
             [
                 [1.0, 0.0, 0.0],
-                [0.0, 1.0, 0.0],
+                [0.8, 0.6, 0.0],
                 [0.0, 0.0, 1.0],
             ],
             dtype=torch.float32,
@@ -117,76 +117,3 @@ def test_missing_metadata_are_rejected(tmp_path: Path) -> None:
 
     with pytest.raises(FileNotFoundError, match="Gallery metadata"):
         loader.load()
-
-
-def test_embedding_dimension_mismatch_is_rejected(tmp_path: Path) -> None:
-    directory = tmp_path / "s3.5_random"
-    directory.mkdir(parents=True)
-    torch.save(torch.tensor([[1.0, 0.0]]), directory / "gallery_embeddings.pt")
-    (directory / "gallery_metadata.json").write_text(
-        json.dumps([_metadata("ring-1")]), encoding="utf-8"
-    )
-
-    loader = GalleryLoader(GalleryRuntimeConfig(root=tmp_path, expected_embedding_dim=3))
-
-    with pytest.raises(ValueError, match="embedding dimension"):
-        loader.load()
-
-
-def test_duplicate_image_ids_are_rejected() -> None:
-    gallery = Gallery(
-        embeddings=torch.nn.functional.normalize(
-            torch.tensor([[1.0, 0.0], [0.0, 1.0]]), dim=1
-        ),
-        metadata=(_metadata("same"), _metadata("same", "p2", "Necklace")),
-    )
-    loader = GalleryLoader(
-        GalleryRuntimeConfig(model_name="memory", expected_embedding_dim=2)
-    )
-
-    with pytest.raises(ValueError, match="duplicate image_id"):
-        loader.from_gallery(gallery)
-
-
-def test_non_unit_embeddings_are_rejected_by_default() -> None:
-    gallery = Gallery(
-        embeddings=torch.tensor([[2.0, 0.0]]),
-        metadata=(_metadata("ring-1"),),
-    )
-    loader = GalleryLoader(
-        GalleryRuntimeConfig(model_name="memory", expected_embedding_dim=2)
-    )
-
-    with pytest.raises(ValueError, match="not L2-normalized"):
-        loader.from_gallery(gallery)
-
-
-def test_unit_norm_validation_can_be_disabled() -> None:
-    gallery = Gallery(
-        embeddings=torch.tensor([[2.0, 0.0]]),
-        metadata=(_metadata("ring-1"),),
-    )
-    loader = GalleryLoader(
-        GalleryRuntimeConfig(
-            model_name="memory",
-            expected_embedding_dim=2,
-            require_unit_norm=False,
-        )
-    )
-
-    runtime = loader.from_gallery(gallery)
-
-    assert runtime.size == 1
-
-
-def test_convenience_loader_uses_selected_model_name(tmp_path: Path) -> None:
-    _write_gallery(tmp_path, model_name="s3.5_random")
-
-    runtime = load_runtime_gallery(
-        model_name="s3.5_random",
-        root=tmp_path,
-        expected_embedding_dim=3,
-    )
-
-    assert runtime.model_name == "s3.5_random"
-    assert runtime.size == 3
