@@ -54,27 +54,27 @@ def test_grayscale_query_is_converted_to_rgb() -> None:
 
 
 def test_empty_upload_is_rejected() -> None:
-    with pytest.raises(PreprocessingError, match="empty"):
+    with pytest.raises(PreprocessingError, match="(?i)empty"):
         QueryProcessor().process(b"")
 
 
 def test_oversized_upload_is_rejected_before_decode() -> None:
-    with pytest.raises(PreprocessingError, match="maximum size"):
+    with pytest.raises(PreprocessingError, match="(?i)maximum size"):
         QueryProcessor(max_bytes=10).process(b"0" * 11)
 
 
 def test_tiny_image_is_rejected() -> None:
-    with pytest.raises(PreprocessingError, match="minimum"):
+    with pytest.raises(PreprocessingError, match="(?i)minimum"):
         QueryProcessor().process(_image_bytes(size=(16, 16)))
 
 
 def test_invalid_image_bytes_are_rejected() -> None:
-    with pytest.raises(PreprocessingError, match="not a supported image"):
+    with pytest.raises(PreprocessingError, match="(?i)not a supported image"):
         QueryProcessor().process(b"not-an-image")
 
 
 def test_unsupported_source_type_is_rejected() -> None:
-    with pytest.raises(PreprocessingError, match="Unsupported query source type"):
+    with pytest.raises(PreprocessingError, match="(?i)unsupported query source type"):
         QueryProcessor().process(123)  # type: ignore[arg-type]
 
 
