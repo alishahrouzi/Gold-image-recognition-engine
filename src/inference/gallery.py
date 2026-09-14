@@ -10,10 +10,8 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, Sequence
 
 import torch
-from torch import Tensor
 
 from retrieval.gallery import Gallery
 from retrieval.search import SimilaritySearchEngine
@@ -111,7 +109,6 @@ class GalleryLoader:
             )
 
         gallery = Gallery.load(embedding_path, metadata_path)
-        self._validate_gallery(gallery)
         return self.from_gallery(
             gallery,
             model_name=self.config.model_name,
