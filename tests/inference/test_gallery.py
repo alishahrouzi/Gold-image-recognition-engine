@@ -94,7 +94,7 @@ def test_from_gallery_supports_in_memory_runtime(tmp_path: Path) -> None:
     assert runtime.embedding_path is None
     assert runtime.metadata_path is None
     assert runtime.gallery is gallery
-    assert runtime.search_engine.gallery_embeddings.data_ptr() != gallery.embeddings.data_ptr()
+    assert torch.equal(runtime.search_engine.gallery_embeddings, gallery.embeddings)
 
 
 def test_missing_embeddings_are_rejected(tmp_path: Path) -> None:
@@ -135,7 +135,9 @@ def test_embedding_dimension_mismatch_is_rejected(tmp_path: Path) -> None:
 
 def test_duplicate_image_ids_are_rejected() -> None:
     gallery = Gallery(
-        embeddings=torch.tensor([[1.0, 0.0], [0.0, 1.0]]),
+        embeddings=torch.nn.functional.normalize(
+            torch.tensor([[1.0, 0.0], [0.0, 1.0]]), dim=1
+        ),
         metadata=(_metadata("same"), _metadata("same", "p2", "Necklace")),
     )
     loader = GalleryLoader(
