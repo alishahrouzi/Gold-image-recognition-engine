@@ -64,10 +64,9 @@ class QueryProcessor:
 
     def process(self, source: QuerySource) -> ProcessedQuery:
         """Validate, decode, RGB-convert, resize, normalize, and return one query."""
-        image, source_bytes = self._load_source(source)
+        image, source_bytes, image_format = self._load_source(source)
         original_size = image.size
         original_mode = image.mode
-        image_format = image.format
 
         self._validate_dimensions(original_size)
         rgb = to_rgb_image(image)
@@ -96,14 +95,17 @@ class QueryProcessor:
         """Convenience method returning only the tensor needed by S4.1."""
         return self.process(source).tensor
 
-    def _load_source(self, source: QuerySource) -> tuple[Image.Image, int | None]:
+    def _load_source(
+        self, source: QuerySource
+    ) -> tuple[Image.Image, int | None, str | None]:
         if isinstance(source, Image.Image):
             try:
+                image_format = source.format
                 image = source.copy()
                 image.load()
             except Exception as exc:
                 raise PreprocessingError("Unable to load the provided PIL image.") from exc
-            return image, None
+            return image, None, image_format
 
         if isinstance(source, (bytes, bytearray, memoryview)):
             payload = bytes(source)
@@ -113,7 +115,8 @@ class QueryProcessor:
             try:
                 with Image.open(BytesIO(payload)) as image:
                     image.load()
-                    return image.copy(), len(payload)
+                    image_format = image.format
+                    return image.copy(), len(payload), image_format
             except UnidentifiedImageError as exc:
                 raise PreprocessingError("Uploaded content is not a supported image.") from exc
             except OSError as exc:
@@ -121,7 +124,7 @@ class QueryProcessor:
 
         if isinstance(source, (str, Path)):
             image = load_rgb_image(source)
-            return image, None
+            return image, None, image.format
 
         raise PreprocessingError(
             f"Unsupported query source type {type(source)!r}. "
