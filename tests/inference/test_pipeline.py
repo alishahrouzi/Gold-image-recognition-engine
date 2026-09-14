@@ -5,9 +5,9 @@ from __future__ import annotations
 import torch
 
 from src.inference.pipeline import InferencePipeline
-from src.retrieval.ranking import ProductRanker
-from src.retrieval.scoring import SimilarityScoreConverter
-from src.retrieval.search import SimilaritySearchEngine
+from retrieval.ranking import ProductRanker
+from retrieval.scoring import SimilarityScoreConverter
+from retrieval.search import SimilaritySearchEngine
 
 
 class FakeEmbedder:
