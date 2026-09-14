@@ -10,10 +10,10 @@ from typing import Union
 import torch
 from PIL import Image, UnidentifiedImageError
 
-from src.data.errors import PreprocessingError
-from src.data.loaders.image_loader import load_rgb_image, to_rgb_image
-from src.data.preprocessing.config import ImagePreprocessingConfig
-from src.data.preprocessing.pipeline import ImagePreprocessor
+from data.errors import PreprocessingError
+from data.loaders.image_loader import load_rgb_image, to_rgb_image
+from data.preprocessing.config import ImagePreprocessingConfig
+from data.preprocessing.pipeline import ImagePreprocessor
 
 
 QuerySource = Union[bytes, bytearray, memoryview, Image.Image, str, Path]
