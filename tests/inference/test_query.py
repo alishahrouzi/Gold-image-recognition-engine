@@ -8,8 +8,8 @@ import pytest
 import torch
 from PIL import Image
 
-from src.data.errors import PreprocessingError
-from src.inference.query import QueryProcessor
+from data.errors import PreprocessingError
+from inference.query import QueryProcessor
 
 
 def _image_bytes(mode: str = "RGB", size: tuple[int, int] = (128, 96), fmt: str = "PNG") -> bytes:
@@ -54,32 +54,32 @@ def test_grayscale_query_is_converted_to_rgb() -> None:
 
 
 def test_empty_upload_is_rejected() -> None:
-    with pytest.raises(PreprocessingError, match="(?i)empty"):
+    with pytest.raises(PreprocessingError, match="Uploaded image is empty"):
         QueryProcessor().process(b"")
 
 
 def test_oversized_upload_is_rejected_before_decode() -> None:
-    with pytest.raises(PreprocessingError, match="(?i)maximum size"):
+    with pytest.raises(PreprocessingError, match="maximum size"):
         QueryProcessor(max_bytes=10).process(b"0" * 11)
 
 
 def test_tiny_image_is_rejected() -> None:
-    with pytest.raises(PreprocessingError, match="(?i)minimum"):
+    with pytest.raises(PreprocessingError, match="below the minimum"):
         QueryProcessor().process(_image_bytes(size=(16, 16)))
 
 
 def test_invalid_image_bytes_are_rejected() -> None:
-    with pytest.raises(PreprocessingError, match="(?i)not a supported image"):
+    with pytest.raises(PreprocessingError, match="not a supported image"):
         QueryProcessor().process(b"not-an-image")
 
 
 def test_unsupported_source_type_is_rejected() -> None:
-    with pytest.raises(PreprocessingError, match="(?i)unsupported query source type"):
+    with pytest.raises(PreprocessingError, match="Unsupported query source type"):
         QueryProcessor().process(123)  # type: ignore[arg-type]
 
 
 def test_custom_preprocessing_config_is_used() -> None:
-    from src.data.preprocessing.config import ImagePreprocessingConfig
+    from data.preprocessing.config import ImagePreprocessingConfig
 
     processor = QueryProcessor(config=ImagePreprocessingConfig(image_size=128))
     result = processor.process(_image_bytes())

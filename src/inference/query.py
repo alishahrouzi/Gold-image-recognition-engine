@@ -10,11 +10,14 @@ import sys
 import torch
 from PIL import Image, UnidentifiedImageError
 
+<<<<<<< HEAD
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 SRC_ROOT = PROJECT_ROOT / "src"
 if str(SRC_ROOT) not in sys.path:
     sys.path.insert(0, str(SRC_ROOT))
 
+=======
+>>>>>>> 808d42c4040238a2233de45b911820f3c369c86b
 from data.errors import PreprocessingError
 from data.loaders.image_loader import load_rgb_image, to_rgb_image
 from data.preprocessing.config import ImagePreprocessingConfig
