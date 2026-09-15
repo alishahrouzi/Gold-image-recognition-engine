@@ -7,3 +7,7 @@ torchvision
 scikit-learn
 matplotlib
 psutil
+fastapi
+uvicorn
+python-multipart
+httpx
