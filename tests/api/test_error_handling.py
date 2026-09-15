@@ -97,7 +97,7 @@ def test_very_large_upload_returns_file_too_large() -> None:
 def test_empty_request_returns_missing_file() -> None:
     response = _client().post("/search")
     assert response.status_code == 400
-    assert response.json()["error"]["code"] == "API_ERROR"
+    assert response.json()["error"]["code"] == "MISSING_FILE"
     assert response.json()["error"]["message"] == "An image file is required."
 
 
