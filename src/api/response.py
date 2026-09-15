@@ -48,3 +48,20 @@ class SearchResponse(BaseModel):
                 for candidate in result.candidates
             ],
         )
+
+
+class ErrorDetail(BaseModel):
+    """Stable public error payload."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    code: str = Field(min_length=1)
+    message: str = Field(min_length=1)
+
+
+class ErrorResponse(BaseModel):
+    """Stable public error response contract."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    error: ErrorDetail
