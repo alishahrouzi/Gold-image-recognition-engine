@@ -25,6 +25,7 @@ from .errors import (
     GalleryUnavailableError,
     InternalAPIError,
     InvalidImageError,
+    MissingFileError,
     ModelUnavailableError,
     NoResultsError,
 )
@@ -81,7 +82,7 @@ def create_app(service: SearchService) -> FastAPI:
             for error in errors
         )
         if missing_file:
-            return _error_response(APIError("An image file is required."))
+            return _error_response(MissingFileError())
         return JSONResponse(status_code=422, content={"detail": errors})
 
     @app.exception_handler(NoResultsError)
