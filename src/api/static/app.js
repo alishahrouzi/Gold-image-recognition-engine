@@ -54,8 +54,13 @@ form.addEventListener('submit', async event => {
     const body = await response.json().catch(() => null);
     if (!response.ok) {
       const error = body?.error;
-      if (error) showStatus(error.message, error.code);
-      else showStatus(`Request failed with status ${response.status}.`, 'HTTP_ERROR');
+      if (error) {
+        showStatus(error.message, error.code);
+      } else if (Array.isArray(body?.detail)) {
+        showStatus(body.detail.map(item => item.msg || 'Invalid request.').join('; '), `HTTP_${response.status}`);
+      } else {
+        showStatus(`Request failed with status ${response.status}.`, 'HTTP_ERROR');
+      }
       return;
     }
     if (!body || !Array.isArray(body.results)) {
