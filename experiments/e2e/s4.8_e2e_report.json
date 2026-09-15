@@ -1,0 +1,174 @@
+{
+  "experiment": "EXP-S4.8",
+  "policy": "s4.8-real-scenarios-v1",
+  "base_url": "http://127.0.0.1:8000",
+  "k": 5,
+  "status": "failed",
+  "scenario_count": 5,
+  "passed_count": 4,
+  "failed_count": 1,
+  "scenarios": [
+    {
+      "name": "Test 1 — ring to similar rings",
+      "status": "passed",
+      "query_image": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\test\\Ring\\ring_161_jpg.rf.ad1f0fa2a46757f02686ee9abd024646.jpg",
+      "expected_category": "ring",
+      "category": "ring",
+      "results": [
+        {
+          "product_id": "ring_092",
+          "similarity": 99.97600317001343
+        },
+        {
+          "product_id": "ring_128",
+          "similarity": 99.93461072444916
+        },
+        {
+          "product_id": "ring_105",
+          "similarity": 99.85454976558685
+        },
+        {
+          "product_id": "ring_072",
+          "similarity": 99.81054663658142
+        },
+        {
+          "product_id": "ring_080",
+          "similarity": 99.74697530269623
+        }
+      ],
+      "latency_ms": 94.68,
+      "out_of_gallery_query": false
+    },
+    {
+      "name": "Test 2 — necklace to similar necklaces",
+      "status": "passed",
+      "query_image": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\test\\Necklace\\IMG_0188_9844386e_JPG.rf.ec5591ccf6fe873bc277a2cf0dde0b68.jpg",
+      "expected_category": "necklace",
+      "category": "necklace",
+      "results": [
+        {
+          "product_id": "IMG_2837_77d385b2",
+          "similarity": 99.96131360530853
+        },
+        {
+          "product_id": "IMG_2903_e498d50e",
+          "similarity": 99.87553358078003
+        },
+        {
+          "product_id": "IMG_2523_6a3a03ba",
+          "similarity": 99.84269440174103
+        },
+        {
+          "product_id": "IMG_3062_7d067bf8",
+          "similarity": 99.83660578727722
+        },
+        {
+          "product_id": "IMG_0434_5a344889",
+          "similarity": 99.80060160160065
+        }
+      ],
+      "latency_ms": 188.82,
+      "out_of_gallery_query": false
+    },
+    {
+      "name": "Test 3 — different angle",
+      "status": "failed",
+      "query_image": "C:\\Users\\TooskaCo\\AppData\\Local\\Temp\\gold-s4.8-m0hlmcmm\\ring_angle.jpg",
+      "expected_category": "ring",
+      "category": "pendant",
+      "results": [
+        {
+          "product_id": "IMG_0801_a255ab13",
+          "similarity": 99.71820712089539
+        },
+        {
+          "product_id": "IMG_2378_41e1c740",
+          "similarity": 99.38659071922302
+        },
+        {
+          "product_id": "bracelet_277",
+          "similarity": 99.26479458808899
+        },
+        {
+          "product_id": "ring_105",
+          "similarity": 99.22614097595215
+        },
+        {
+          "product_id": "bracelet_285",
+          "similarity": 99.20843839645386
+        }
+      ],
+      "latency_ms": 135.7,
+      "out_of_gallery_query": false,
+      "error": "expected category 'ring', got 'pendant'."
+    },
+    {
+      "name": "Test 4 — different lighting",
+      "status": "passed",
+      "query_image": "C:\\Users\\TooskaCo\\AppData\\Local\\Temp\\gold-s4.8-m0hlmcmm\\ring_light.jpg",
+      "expected_category": "ring",
+      "category": "ring",
+      "results": [
+        {
+          "product_id": "ring_078",
+          "similarity": 99.9151885509491
+        },
+        {
+          "product_id": "ring_122",
+          "similarity": 99.83946979045868
+        },
+        {
+          "product_id": "ring_142",
+          "similarity": 99.7886598110199
+        },
+        {
+          "product_id": "ring_084",
+          "similarity": 99.75883960723877
+        },
+        {
+          "product_id": "ring_170",
+          "similarity": 99.74610209465027
+        }
+      ],
+      "latency_ms": 377.54,
+      "out_of_gallery_query": false
+    },
+    {
+      "name": "Test 5 — product absent from gallery",
+      "status": "passed",
+      "query_image": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\jewelry-design-dataset\\dataset\\bracelet\\$_3.jpeg",
+      "expected_category": null,
+      "category": "bracelet",
+      "results": [
+        {
+          "product_id": "bracelet_035",
+          "similarity": 99.79509115219116
+        },
+        {
+          "product_id": "earring_76",
+          "similarity": 99.77973699569702
+        },
+        {
+          "product_id": "bracelet_165",
+          "similarity": 99.77102875709534
+        },
+        {
+          "product_id": "bracelet_037",
+          "similarity": 99.7141420841217
+        },
+        {
+          "product_id": "earring_274",
+          "similarity": 99.70125555992126
+        }
+      ],
+      "latency_ms": 130.38,
+      "out_of_gallery_query": true
+    }
+  ],
+  "notes": [
+    "Tests 1 and 2 use Dataset 1 test images, which are outside the train runtime gallery.",
+    "Tests 3 and 4 use explicit real images when supplied; otherwise controlled angle/lighting transforms are derived from the ring test image.",
+    "Test 5 verifies graceful retrieval for a query image absent from the runtime gallery. The MVP has no OOD detector, so nearest gallery products are expected rather than NO_RESULTS.",
+    "All scenarios are executed independently. A failed scenario is recorded and does not prevent later scenarios from running."
+  ]
+}
