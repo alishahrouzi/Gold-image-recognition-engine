@@ -1,45 +1,118 @@
-"""S4.4 HTTP search API for the functional MVP."""
+"""S4.4 HTTP search API and S4.6 public error boundary."""
 
 from __future__ import annotations
 
 from dataclasses import dataclass
 
-from fastapi import FastAPI, File, UploadFile
+from fastapi import FastAPI, File, Request, UploadFile
+from fastapi.exceptions import RequestValidationError
+from fastapi.responses import JSONResponse
 from fastapi.params import Query
 
 from inference.pipeline import InferencePipeline
 from inference.query import QueryProcessor
 from retrieval.scoring import ScoredProductSearchResult
 
-from .response import SearchResponse
+from .errors import (
+    APIError,
+    GalleryUnavailableError,
+    InternalAPIError,
+    ModelUnavailableError,
+    NoResultsError,
+)
+from .response import ErrorResponse, SearchResponse
+from data.errors import FileTooLargeError, ImageTooSmallError, InvalidImageError, PreprocessingError
 
 
 @dataclass(frozen=True)
 class SearchService:
-    """Runtime dependencies required by the S4.4 search endpoint."""
+    """Runtime dependencies required by the search endpoint."""
 
     query_processor: QueryProcessor
     inference_pipeline: InferencePipeline
 
     def search(self, image_bytes: bytes, *, k: int) -> ScoredProductSearchResult:
         """Process one upload and execute the complete S4.1 inference path."""
-        query = self.query_processor.process(image_bytes)
-        return self.inference_pipeline.run(query.tensor, query_id="api-query", k=k)
+        try:
+            query = self.query_processor.process(image_bytes)
+        except FileTooLargeError as exc:
+            raise APIError("The uploaded file is too large.") from exc
+        except (InvalidImageError, ImageTooSmallError, PreprocessingError) as exc:
+            raise APIError("The uploaded file is not a supported image.") from exc
+
+        try:
+            return self.inference_pipeline.run(query.tensor, query_id="api-query", k=k)
+        except ModelUnavailableError:
+            raise
+        except GalleryUnavailableError:
+            raise
+
+
+def _error_response(error: APIError) -> JSONResponse:
+    """Build the single public error envelope used by S4.6."""
+    body = ErrorResponse(
+        error={"code": error.code, "message": error.message}
+    ).model_dump()
+    return JSONResponse(status_code=error.status_code, content=body)
 
 
 def create_app(service: SearchService) -> FastAPI:
-    """Create the FastAPI application around explicit runtime dependencies.
-
-    Dependencies are injected instead of loaded at module import time. This
-    keeps API tests independent of local model/gallery artifacts and prevents
-    S4.4 from owning checkpoint or gallery lifecycle decisions.
-    """
+    """Create the FastAPI application around explicit runtime dependencies."""
     app = FastAPI(
         title="Gold Visual Search API",
         version="0.1.0",
         description="Functional MVP image-based gold product retrieval API.",
     )
     app.state.search_service = service
+
+    @app.exception_handler(APIError)
+    async def api_error_handler(_request: Request, exc: APIError) -> JSONResponse:
+        return _error_response(exc)
+
+    @app.exception_handler(RequestValidationError)
+    async def request_validation_handler(
+        _request: Request, exc: RequestValidationError
+    ) -> JSONResponse:
+        """Translate only missing-file validation; keep query validation as 422."""
+        errors = exc.errors()
+        if any(error.get("loc", ())[-1:] == ("file",) for error in errors):
+            return _error_response(
+                APIError("An image file is required.")
+            )
+        return JSONResponse(status_code=422, content={"detail": errors})
+
+    @app.exception_handler(InvalidImageError)
+    async def invalid_image_handler(_request: Request, exc: InvalidImageError) -> JSONResponse:
+        return _error_response(APIError("The uploaded file is not a supported image."))
+
+    @app.exception_handler(FileTooLargeError)
+    async def file_too_large_handler(_request: Request, exc: FileTooLargeError) -> JSONResponse:
+        return _error_response(APIError("The uploaded file is too large."))
+
+    @app.exception_handler(ImageTooSmallError)
+    async def image_too_small_handler(_request: Request, exc: ImageTooSmallError) -> JSONResponse:
+        return _error_response(APIError("The uploaded file is not a supported image."))
+
+    @app.exception_handler(NoResultsError)
+    async def no_results_handler(_request: Request, exc: NoResultsError) -> JSONResponse:
+        return _error_response(exc)
+
+    @app.exception_handler(ModelUnavailableError)
+    async def model_unavailable_handler(
+        _request: Request, exc: ModelUnavailableError
+    ) -> JSONResponse:
+        return _error_response(exc)
+
+    @app.exception_handler(GalleryUnavailableError)
+    async def gallery_unavailable_handler(
+        _request: Request, exc: GalleryUnavailableError
+    ) -> JSONResponse:
+        return _error_response(exc)
+
+    @app.exception_handler(Exception)
+    async def unexpected_error_handler(_request: Request, _exc: Exception) -> JSONResponse:
+        """Never expose internal exception details to the API client."""
+        return _error_response(InternalAPIError())
 
     @app.get("/health")
     def health() -> dict[str, str]:
@@ -51,14 +124,12 @@ def create_app(service: SearchService) -> FastAPI:
         file: UploadFile = File(..., description="Query jewelry image"),
         k: int = Query(5, ge=1, le=50, description="Number of products to return"),
     ) -> SearchResponse:
-        """Search the configured gallery and return the stable public schema.
-
-        S4.2 owns validation/preprocessing and S4.1/S3.8-S3.10 own inference.
-        S4.5 converts the internal scored result into the public ``category`` +
-        ``results`` contract. User-facing exception translation remains S4.6.
-        """
+        """Search the configured gallery and return the stable public schema."""
         image_bytes = await file.read()
         result = app.state.search_service.search(image_bytes, k=k)
-        return SearchResponse.from_result(result)
+        try:
+            return SearchResponse.from_result(result)
+        except ValueError as exc:
+            raise NoResultsError() from exc
 
     return app
