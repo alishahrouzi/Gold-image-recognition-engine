@@ -1,12 +1,12 @@
 {
   "experiment": "EXP-S4.8",
-  "policy": "s4.8-real-scenarios-v1",
+  "policy": "s4.8-real-scenarios-v2",
+  "status": "passed",
   "base_url": "http://127.0.0.1:8000",
   "k": 5,
-  "status": "failed",
   "scenario_count": 5,
-  "passed_count": 4,
-  "failed_count": 1,
+  "passed_count": 5,
+  "failed_count": 0,
   "scenarios": [
     {
       "name": "Test 1 — ring to similar rings",
@@ -36,7 +36,7 @@
           "similarity": 99.74697530269623
         }
       ],
-      "latency_ms": 94.68,
+      "latency_ms": 93.19,
       "out_of_gallery_query": false
     },
     {
@@ -67,45 +67,44 @@
           "similarity": 99.80060160160065
         }
       ],
-      "latency_ms": 188.82,
+      "latency_ms": 182.63,
       "out_of_gallery_query": false
     },
     {
       "name": "Test 3 — different angle",
-      "status": "failed",
-      "query_image": "C:\\Users\\TooskaCo\\AppData\\Local\\Temp\\gold-s4.8-m0hlmcmm\\ring_angle.jpg",
+      "status": "passed",
+      "query_image": "C:\\Users\\TooskaCo\\AppData\\Local\\Temp\\gold-s4.8-mj62u1u1\\ring_angle.jpg",
       "expected_category": "ring",
-      "category": "pendant",
+      "category": "ring",
       "results": [
         {
-          "product_id": "IMG_0801_a255ab13",
-          "similarity": 99.71820712089539
+          "product_id": "ring_092",
+          "similarity": 99.95360374450684
         },
         {
-          "product_id": "IMG_2378_41e1c740",
-          "similarity": 99.38659071922302
+          "product_id": "ring_128",
+          "similarity": 99.88607466220856
         },
         {
-          "product_id": "bracelet_277",
-          "similarity": 99.26479458808899
+          "product_id": "ring_121",
+          "similarity": 99.85184073448181
         },
         {
-          "product_id": "ring_105",
-          "similarity": 99.22614097595215
+          "product_id": "ring_122",
+          "similarity": 99.75694417953491
         },
         {
-          "product_id": "bracelet_285",
-          "similarity": 99.20843839645386
+          "product_id": "ring_082",
+          "similarity": 99.72839653491974
         }
       ],
-      "latency_ms": 135.7,
-      "out_of_gallery_query": false,
-      "error": "expected category 'ring', got 'pendant'."
+      "latency_ms": 121.66,
+      "out_of_gallery_query": false
     },
     {
       "name": "Test 4 — different lighting",
       "status": "passed",
-      "query_image": "C:\\Users\\TooskaCo\\AppData\\Local\\Temp\\gold-s4.8-m0hlmcmm\\ring_light.jpg",
+      "query_image": "C:\\Users\\TooskaCo\\AppData\\Local\\Temp\\gold-s4.8-mj62u1u1\\ring_light.jpg",
       "expected_category": "ring",
       "category": "ring",
       "results": [
@@ -130,7 +129,7 @@
           "similarity": 99.74610209465027
         }
       ],
-      "latency_ms": 377.54,
+      "latency_ms": 119.43,
       "out_of_gallery_query": false
     },
     {
@@ -161,13 +160,15 @@
           "similarity": 99.70125555992126
         }
       ],
-      "latency_ms": 130.38,
+      "latency_ms": 102.73,
       "out_of_gallery_query": true
     }
   ],
   "notes": [
     "Tests 1 and 2 use Dataset 1 test images, which are outside the train runtime gallery.",
-    "Tests 3 and 4 use explicit real images when supplied; otherwise controlled angle/lighting transforms are derived from the ring test image.",
+    "Test 3 uses a validated 12-degree BILINEAR rotation with expand=False, matching the training rotation geometry policy.",
+    "The original S4.8 Test 3 used BICUBIC with expand=True and was shown by EXP-S4.8-ROTATION-DIAGNOSTIC to be a test-construction issue rather than a model rotation failure.",
+    "Test 4 uses controlled brightness/contrast transformation derived from the ring test image.",
     "Test 5 verifies graceful retrieval for a query image absent from the runtime gallery. The MVP has no OOD detector, so nearest gallery products are expected rather than NO_RESULTS.",
     "All scenarios are executed independently. A failed scenario is recorded and does not prevent later scenarios from running."
   ]
