@@ -1,24 +1,17 @@
-"""S4.4 HTTP search API for the functional MVP.
-
-The API layer is intentionally thin. It accepts an uploaded image, delegates
-validation/preprocessing to S4.2, delegates retrieval orchestration to S4.1,
-and returns the existing scored-result contract. S4.5 will own the stable
-public response schema and S4.6 will translate domain exceptions to API errors.
-"""
+"""S4.4 HTTP search API for the functional MVP."""
 
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Any
 
 from fastapi import FastAPI, File, UploadFile
-from fastapi.encoders import jsonable_encoder
 from fastapi.params import Query
-from fastapi.responses import JSONResponse
 
 from inference.pipeline import InferencePipeline
 from inference.query import QueryProcessor
 from retrieval.scoring import ScoredProductSearchResult
+
+from .response import SearchResponse
 
 
 @dataclass(frozen=True)
@@ -53,20 +46,19 @@ def create_app(service: SearchService) -> FastAPI:
         """Return a minimal liveness response for local/API smoke tests."""
         return {"status": "ok"}
 
-    @app.post("/search")
+    @app.post("/search", response_model=SearchResponse)
     async def search(
         file: UploadFile = File(..., description="Query jewelry image"),
         k: int = Query(5, ge=1, le=50, description="Number of products to return"),
-    ) -> Any:
-        """Search the configured gallery for products similar to one image.
+    ) -> SearchResponse:
+        """Search the configured gallery and return the stable public schema.
 
-        S4.4 deliberately exposes only transport concerns. Validation and
-        preprocessing remain in S4.2; embedding/search/ranking/scoring remain
-        in S4.1/S3.8-S3.10. User-facing exception translation is deferred to
-        S4.6 and the response shape is formalized in S4.5.
+        S4.2 owns validation/preprocessing and S4.1/S3.8-S3.10 own inference.
+        S4.5 converts the internal scored result into the public ``category`` +
+        ``results`` contract. User-facing exception translation remains S4.6.
         """
         image_bytes = await file.read()
         result = app.state.search_service.search(image_bytes, k=k)
-        return JSONResponse(content=jsonable_encoder(result))
+        return SearchResponse.from_result(result)
 
     return app
