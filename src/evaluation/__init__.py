@@ -9,6 +9,7 @@ Public API:
     RetrievalMetricResult, QueryEvaluationRecord -- S2.8 result containers
     ErrorAnalysisRecord -- S2.9 per-query error evidence
     evaluate_gallery -- S3.11 metric-learning product retrieval evaluation
+    build_group_holdout / evaluate_unseen_groups -- S3.13 generalization gate
 """
 
 from .errors import EvaluationError
@@ -28,6 +29,13 @@ from .evaluator import (
     QueryResult,
     RetrievalEvaluator,
 )
+from .generalization import (
+    GroupHoldoutSplit,
+    build_gate_pairs,
+    build_group_holdout,
+    evaluate_unseen_groups,
+    select_model,
+)
 from .metric_learning_retrieval import (
     MetricLearningRetrievalResult,
     RetrievalQueryRecord,
@@ -43,6 +51,7 @@ __all__ = [
     "ErrorAnalysisRecord",
     "EvaluationError",
     "EvaluationReport",
+    "GroupHoldoutSplit",
     "ManifestRecord",
     "MetricLearningRetrievalResult",
     "QueryEvaluationRecord",
@@ -51,13 +60,17 @@ __all__ = [
     "RetrievalMetricResult",
     "RetrievalQueryRecord",
     "build_error_record",
+    "build_gate_pairs",
+    "build_group_holdout",
     "build_summary",
     "category_confusion",
     "category_summary",
     "evaluate_gallery",
     "evaluate_leave_one_out_gallery",
     "evaluate_retrieval",
+    "evaluate_unseen_groups",
     "result_to_dict",
     "score_retrieval_result",
+    "select_model",
     "select_representative_examples",
 ]
