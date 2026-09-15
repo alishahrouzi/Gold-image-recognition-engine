@@ -11,6 +11,18 @@ class PreprocessingError(ValueError):
     """Raised when image preprocessing input or configuration is invalid."""
 
 
+class InvalidImageError(PreprocessingError):
+    """Raised when input bytes cannot be decoded as a supported image."""
+
+
+class FileTooLargeError(PreprocessingError):
+    """Raised when uploaded image bytes exceed the configured limit."""
+
+
+class ImageTooSmallError(PreprocessingError):
+    """Raised when an image is below the minimum supported dimensions."""
+
+
 class AugmentationError(PreprocessingError):
     """Raised when training-augmentation input or configuration is invalid."""
 
