@@ -1,4 +1,4 @@
-"""Run the S4.4 local FastAPI application with an explicit model checkpoint."""
+"""Run the S4.4 local FastAPI application with S4.6 startup error handling."""
 
 from __future__ import annotations
 
@@ -15,6 +15,7 @@ import torch
 import uvicorn
 
 from api.app import SearchService, create_app
+from api.errors import GalleryUnavailableError, ModelUnavailableError
 from inference.gallery import GalleryLoader, GalleryRuntimeConfig
 from inference.pipeline import InferencePipeline
 from inference.query import QueryProcessor
@@ -51,21 +52,40 @@ def parse_args() -> argparse.Namespace:
 
 
 def build_service(args: argparse.Namespace) -> SearchService:
-    embedder = load_siamese_embedding_model(args.checkpoint, device=args.device)
-    gallery = GalleryLoader(
-        GalleryRuntimeConfig(
-            model_name=args.model,
-            root=args.gallery_root,
-            expected_embedding_dim=128,
-        )
-    ).load()
+    """Load the model and gallery with explicit S4.6 startup failure types."""
+    try:
+        embedder = load_siamese_embedding_model(args.checkpoint, device=args.device)
+    except (FileNotFoundError, OSError, RuntimeError, ValueError) as exc:
+        raise ModelUnavailableError(
+            "The search model could not be loaded. Check the checkpoint path and compatibility."
+        ) from exc
+
+    try:
+        gallery = GalleryLoader(
+            GalleryRuntimeConfig(
+                model_name=args.model,
+                root=args.gallery_root,
+                expected_embedding_dim=128,
+            )
+        ).load()
+    except (FileNotFoundError, OSError, RuntimeError, ValueError) as exc:
+        raise GalleryUnavailableError(
+            "The search gallery could not be loaded. Build or restore the configured gallery."
+        ) from exc
+
     pipeline = InferencePipeline(embedder, gallery.search_engine)
     return SearchService(QueryProcessor(), pipeline)
 
 
 def main() -> None:
     args = parse_args()
-    service = build_service(args)
+    try:
+        service = build_service(args)
+    except ModelUnavailableError as exc:
+        raise SystemExit(f"MODEL_UNAVAILABLE: {exc.message}") from exc
+    except GalleryUnavailableError as exc:
+        raise SystemExit(f"GALLERY_UNAVAILABLE: {exc.message}") from exc
+
     app = create_app(service)
     uvicorn.run(app, host=args.host, port=args.port)
 
