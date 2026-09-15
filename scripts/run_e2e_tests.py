@@ -69,7 +69,14 @@ def _write_transform(source: Path, destination: Path, kind: str) -> None:
     with Image.open(source) as image:
         image = image.convert("RGB")
         if kind == "angle":
-            transformed = image.rotate(12.0, resample=Image.Resampling.BICUBIC, expand=True)
+            # Validated by EXP-S4.8-ROTATION-DIAGNOSTIC: keep the same
+            # geometry/resampling policy as training augmentation.
+            transformed = image.rotate(
+                12.0,
+                resample=Image.Resampling.BILINEAR,
+                expand=False,
+                fillcolor=(255, 255, 255),
+            )
             transformed.save(destination, format="JPEG", quality=95)
         elif kind == "light":
             transformed = ImageEnhance.Brightness(image).enhance(0.55)
@@ -204,17 +211,19 @@ def main() -> int:
 
     report: dict[str, Any] = {
         "experiment": "EXP-S4.8",
-        "policy": "s4.8-real-scenarios-v1",
+        "policy": "s4.8-real-scenarios-v2",
+        "status": "failed",
         "base_url": base_url,
         "k": args.k,
-        "status": "failed",
         "scenario_count": 5,
         "passed_count": 0,
         "failed_count": 0,
         "scenarios": [],
         "notes": [
             "Tests 1 and 2 use Dataset 1 test images, which are outside the train runtime gallery.",
-            "Tests 3 and 4 use explicit real images when supplied; otherwise controlled angle/lighting transforms are derived from the ring test image.",
+            "Test 3 uses a validated 12-degree BILINEAR rotation with expand=False, matching the training rotation geometry policy.",
+            "The original S4.8 Test 3 used BICUBIC with expand=True and was shown by EXP-S4.8-ROTATION-DIAGNOSTIC to be a test-construction issue rather than a model rotation failure.",
+            "Test 4 uses controlled brightness/contrast transformation derived from the ring test image.",
             "Test 5 verifies graceful retrieval for a query image absent from the runtime gallery. The MVP has no OOD detector, so nearest gallery products are expected rather than NO_RESULTS.",
             "All scenarios are executed independently. A failed scenario is recorded and does not prevent later scenarios from running.",
         ],
