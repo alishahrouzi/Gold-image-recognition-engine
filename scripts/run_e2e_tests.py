@@ -123,22 +123,43 @@ def _run_scenario(
     out_of_gallery: bool = False,
 ) -> dict[str, Any]:
     started = time.perf_counter()
-    body = _search(client, base_url, image_path, k)
-    elapsed_ms = (time.perf_counter() - started) * 1000.0
-    category = str(body["category"])
-    if expected_category is not None and category != expected_category:
-        raise AssertionError(
-            f"{name}: expected category '{expected_category}', got '{category}'."
-        )
-    return {
-        "name": name,
-        "status": "passed",
-        "query_image": str(image_path),
-        "category": category,
-        "results": body["results"],
-        "latency_ms": round(elapsed_ms, 2),
-        "out_of_gallery_query": out_of_gallery,
-    }
+    try:
+        body = _search(client, base_url, image_path, k)
+        elapsed_ms = (time.perf_counter() - started) * 1000.0
+        category = str(body["category"])
+        if expected_category is not None and category != expected_category:
+            return {
+                "name": name,
+                "status": "failed",
+                "query_image": str(image_path),
+                "expected_category": expected_category,
+                "category": category,
+                "results": body["results"],
+                "latency_ms": round(elapsed_ms, 2),
+                "out_of_gallery_query": out_of_gallery,
+                "error": f"expected category '{expected_category}', got '{category}'.",
+            }
+        return {
+            "name": name,
+            "status": "passed",
+            "query_image": str(image_path),
+            "expected_category": expected_category,
+            "category": category,
+            "results": body["results"],
+            "latency_ms": round(elapsed_ms, 2),
+            "out_of_gallery_query": out_of_gallery,
+        }
+    except (AssertionError, OSError, httpx.HTTPError, ValueError) as exc:
+        elapsed_ms = (time.perf_counter() - started) * 1000.0
+        return {
+            "name": name,
+            "status": "failed",
+            "query_image": str(image_path),
+            "expected_category": expected_category,
+            "latency_ms": round(elapsed_ms, 2),
+            "out_of_gallery_query": out_of_gallery,
+            "error": str(exc),
+        }
 
 
 def _health(client: httpx.Client, base_url: str) -> None:
@@ -186,16 +207,30 @@ def main() -> int:
         "policy": "s4.8-real-scenarios-v1",
         "base_url": base_url,
         "k": args.k,
+        "status": "failed",
+        "scenario_count": 5,
+        "passed_count": 0,
+        "failed_count": 0,
         "scenarios": [],
         "notes": [
             "Tests 1 and 2 use Dataset 1 test images, which are outside the train runtime gallery.",
             "Tests 3 and 4 use explicit real images when supplied; otherwise controlled angle/lighting transforms are derived from the ring test image.",
             "Test 5 verifies graceful retrieval for a query image absent from the runtime gallery. The MVP has no OOD detector, so nearest gallery products are expected rather than NO_RESULTS.",
+            "All scenarios are executed independently. A failed scenario is recorded and does not prevent later scenarios from running.",
         ],
     }
 
     with tempfile.TemporaryDirectory(prefix="gold-s4.8-") as temp_dir, httpx.Client(timeout=30.0) as client:
-        _health(client, base_url)
+        try:
+            _health(client, base_url)
+        except (AssertionError, httpx.HTTPError, OSError) as exc:
+            report["setup_error"] = str(exc)
+            args.output.parent.mkdir(parents=True, exist_ok=True)
+            args.output.write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+            print(json.dumps(report, indent=2, ensure_ascii=False))
+            print(f"S4.8 E2E: FAIL — API health check failed; report written to {args.output}")
+            return 1
+
         temp_root = Path(temp_dir)
         angle = args.angle_image
         light = args.light_image
@@ -214,25 +249,32 @@ def main() -> int:
             ("Test 5 — product absent from gallery", out_of_gallery, None, True),
         ]
         for name, image_path, expected_category, is_ood in scenarios:
-            report["scenarios"].append(
-                _run_scenario(
-                    client,
-                    base_url,
-                    name,
-                    image_path,
-                    args.k,
-                    expected_category=expected_category,
-                    out_of_gallery=is_ood,
-                )
+            result = _run_scenario(
+                client,
+                base_url,
+                name,
+                image_path,
+                args.k,
+                expected_category=expected_category,
+                out_of_gallery=is_ood,
             )
+            report["scenarios"].append(result)
+            print(f"{name}: {result['status'].upper()}")
+            if result["status"] == "failed":
+                print(f"  error: {result['error']}")
 
-    report["status"] = "passed"
-    report["scenario_count"] = len(report["scenarios"])
+    report["passed_count"] = sum(1 for item in report["scenarios"] if item["status"] == "passed")
+    report["failed_count"] = len(report["scenarios"]) - report["passed_count"]
+    report["status"] = "passed" if report["failed_count"] == 0 else "failed"
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(json.dumps(report, indent=2, ensure_ascii=False))
-    print(f"S4.8 E2E: PASS — report written to {args.output}")
-    return 0
+    print(
+        f"S4.8 E2E: {'PASS' if report['status'] == 'passed' else 'FAIL'} — "
+        f"{report['passed_count']}/{report['scenario_count']} scenarios passed; "
+        f"report written to {args.output}"
+    )
+    return 0 if report["status"] == "passed" else 1
 
 
 if __name__ == "__main__":
