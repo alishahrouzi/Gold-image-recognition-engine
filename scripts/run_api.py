@@ -3,16 +3,22 @@
 from __future__ import annotations
 
 import argparse
+import sys
 from pathlib import Path
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+SRC_ROOT = PROJECT_ROOT / "src"
+if str(SRC_ROOT) not in sys.path:
+    sys.path.insert(0, str(SRC_ROOT))
 
 import torch
 import uvicorn
 
-from inference.gallery import GalleryRuntimeConfig, GalleryLoader
+from api.app import SearchService, create_app
+from inference.gallery import GalleryLoader, GalleryRuntimeConfig
 from inference.pipeline import InferencePipeline
 from inference.query import QueryProcessor
 from retrieval.embedding import load_siamese_embedding_model
-from api.app import SearchService, create_app
 
 
 def parse_args() -> argparse.Namespace:
