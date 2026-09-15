@@ -9,11 +9,8 @@ from fastapi.testclient import TestClient
 from PIL import Image
 
 from api.app import SearchService, create_app
-from inference.pipeline import InferencePipeline
 from inference.query import QueryProcessor
-from retrieval.ranking import ProductRanker
-from retrieval.scoring import ScoredProductCandidate, ScoredProductSearchResult, SimilarityScoreConverter
-from retrieval.search import SimilaritySearchEngine
+from retrieval.scoring import ScoredProductCandidate, ScoredProductSearchResult
 
 
 class FakePipeline:
@@ -69,7 +66,7 @@ def test_search_accepts_image_upload_and_forwards_processed_tensor() -> None:
     assert response.status_code == 200
     body = response.json()
     assert body["query_id"] == "api-query"
-    assert body["top_k"] == 1
+    assert len(body["candidates"]) == 1
     assert body["candidates"][0]["product_id"] == "p-ring"
     assert body["candidates"][0]["similarity_score"] == 95.0
     assert len(pipeline.calls) == 1
