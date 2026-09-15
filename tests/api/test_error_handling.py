@@ -49,7 +49,7 @@ def _client(
     processor: QueryProcessor | None = None,
 ) -> TestClient:
     service = SearchService(processor or QueryProcessor(), pipeline or FakePipeline())  # type: ignore[arg-type]
-    return TestClient(create_app(service))
+    return TestClient(create_app(service), raise_server_exceptions=False)
 
 
 def test_non_image_file_returns_invalid_image() -> None:
