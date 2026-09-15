@@ -1,0 +1,241 @@
+{
+  "experiment": "EXP-S4.8-ROTATION-DIAGNOSTIC",
+  "policy": "s4.8-rotation-diagnostic-v1",
+  "base_url": "http://127.0.0.1:8000",
+  "k": 5,
+  "source_image": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\test\\Ring\\ring_161_jpg.rf.ad1f0fa2a46757f02686ee9abd024646.jpg",
+  "target_category": "ring",
+  "transforms": [
+    "Training-like rotations use BILINEAR and expand=False, matching the S1.9 training augmentation implementation.",
+    "The original S4.8 angle test uses BICUBIC and expand=True and is included explicitly for comparison.",
+    "This diagnostic does not retrain or modify the model, encoder, embedding, gallery, search, ranking, or API."
+  ],
+  "status": "failed",
+  "passed_count": 5,
+  "failed_count": 1,
+  "results": [
+    {
+      "name": "baseline_0deg",
+      "degrees": 0.0,
+      "resample": "bilinear",
+      "expand": false,
+      "status": "passed",
+      "category": "ring",
+      "expected_category": "ring",
+      "first_ring_rank_in_top_k": 1,
+      "top_result": {
+        "product_id": "ring_092",
+        "similarity": 99.9837189912796
+      },
+      "results": [
+        {
+          "product_id": "ring_092",
+          "similarity": 99.9837189912796
+        },
+        {
+          "product_id": "ring_128",
+          "similarity": 99.93456900119781
+        },
+        {
+          "product_id": "ring_105",
+          "similarity": 99.81763362884521
+        },
+        {
+          "product_id": "ring_072",
+          "similarity": 99.80705380439758
+        },
+        {
+          "product_id": "ring_122",
+          "similarity": 99.77309703826904
+        }
+      ],
+      "latency_ms": 114.52
+    },
+    {
+      "name": "train_like_plus5deg",
+      "degrees": 5.0,
+      "resample": "bilinear",
+      "expand": false,
+      "status": "passed",
+      "category": "ring",
+      "expected_category": "ring",
+      "first_ring_rank_in_top_k": 1,
+      "top_result": {
+        "product_id": "ring_092",
+        "similarity": 99.95652139186859
+      },
+      "results": [
+        {
+          "product_id": "ring_092",
+          "similarity": 99.95652139186859
+        },
+        {
+          "product_id": "ring_128",
+          "similarity": 99.89183843135834
+        },
+        {
+          "product_id": "ring_121",
+          "similarity": 99.85341429710388
+        },
+        {
+          "product_id": "ring_122",
+          "similarity": 99.76486563682556
+        },
+        {
+          "product_id": "ring_082",
+          "similarity": 99.72950220108032
+        }
+      ],
+      "latency_ms": 112.83
+    },
+    {
+      "name": "train_like_plus10deg",
+      "degrees": 10.0,
+      "resample": "bilinear",
+      "expand": false,
+      "status": "passed",
+      "category": "ring",
+      "expected_category": "ring",
+      "first_ring_rank_in_top_k": 1,
+      "top_result": {
+        "product_id": "ring_092",
+        "similarity": 99.95322823524475
+      },
+      "results": [
+        {
+          "product_id": "ring_092",
+          "similarity": 99.95322823524475
+        },
+        {
+          "product_id": "ring_128",
+          "similarity": 99.89156126976013
+        },
+        {
+          "product_id": "ring_121",
+          "similarity": 99.84070658683777
+        },
+        {
+          "product_id": "ring_122",
+          "similarity": 99.76767599582672
+        },
+        {
+          "product_id": "ring_072",
+          "similarity": 99.72016215324402
+        }
+      ],
+      "latency_ms": 108.34
+    },
+    {
+      "name": "controlled_plus12deg",
+      "degrees": 12.0,
+      "resample": "bilinear",
+      "expand": false,
+      "status": "passed",
+      "category": "ring",
+      "expected_category": "ring",
+      "first_ring_rank_in_top_k": 1,
+      "top_result": {
+        "product_id": "ring_092",
+        "similarity": 99.95360374450684
+      },
+      "results": [
+        {
+          "product_id": "ring_092",
+          "similarity": 99.95360374450684
+        },
+        {
+          "product_id": "ring_128",
+          "similarity": 99.88607466220856
+        },
+        {
+          "product_id": "ring_121",
+          "similarity": 99.85184073448181
+        },
+        {
+          "product_id": "ring_122",
+          "similarity": 99.75694417953491
+        },
+        {
+          "product_id": "ring_082",
+          "similarity": 99.72839653491974
+        }
+      ],
+      "latency_ms": 110.95
+    },
+    {
+      "name": "controlled_minus12deg",
+      "degrees": -12.0,
+      "resample": "bilinear",
+      "expand": false,
+      "status": "passed",
+      "category": "ring",
+      "expected_category": "ring",
+      "first_ring_rank_in_top_k": 1,
+      "top_result": {
+        "product_id": "ring_092",
+        "similarity": 99.96237754821777
+      },
+      "results": [
+        {
+          "product_id": "ring_092",
+          "similarity": 99.96237754821777
+        },
+        {
+          "product_id": "ring_128",
+          "similarity": 99.90824460983276
+        },
+        {
+          "product_id": "ring_121",
+          "similarity": 99.79239404201508
+        },
+        {
+          "product_id": "ring_122",
+          "similarity": 99.77709352970123
+        },
+        {
+          "product_id": "ring_072",
+          "similarity": 99.76023733615875
+        }
+      ],
+      "latency_ms": 117.11
+    },
+    {
+      "name": "s48_original_plus12deg",
+      "degrees": 12.0,
+      "resample": "bicubic",
+      "expand": true,
+      "status": "failed",
+      "category": "bracelet",
+      "expected_category": "ring",
+      "first_ring_rank_in_top_k": 4,
+      "top_result": {
+        "product_id": "bracelet_277",
+        "similarity": 99.87153112888336
+      },
+      "results": [
+        {
+          "product_id": "bracelet_277",
+          "similarity": 99.87153112888336
+        },
+        {
+          "product_id": "bracelet_285",
+          "similarity": 99.8268574476242
+        },
+        {
+          "product_id": "IMG_0801_a255ab13",
+          "similarity": 99.53959286212921
+        },
+        {
+          "product_id": "ring_105",
+          "similarity": 99.46219027042389
+        },
+        {
+          "product_id": "ring_155",
+          "similarity": 99.44619536399841
+        }
+      ],
+      "latency_ms": 110.97
+    }
+  ],
+  "diagnostic_interpretation": "strong_evidence_test_construction_issue"
+}
