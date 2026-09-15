@@ -9,19 +9,26 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 from fastapi.params import Query
 
+from data.errors import (
+    FileTooLargeError as DataFileTooLargeError,
+    ImageTooSmallError as DataImageTooSmallError,
+    InvalidImageError as DataInvalidImageError,
+    PreprocessingError,
+)
 from inference.pipeline import InferencePipeline
 from inference.query import QueryProcessor
 from retrieval.scoring import ScoredProductSearchResult
 
 from .errors import (
     APIError,
+    FileTooLargeError,
     GalleryUnavailableError,
     InternalAPIError,
+    InvalidImageError,
     ModelUnavailableError,
     NoResultsError,
 )
 from .response import ErrorResponse, SearchResponse
-from data.errors import FileTooLargeError, ImageTooSmallError, InvalidImageError, PreprocessingError
 
 
 @dataclass(frozen=True)
@@ -35,24 +42,17 @@ class SearchService:
         """Process one upload and execute the complete S4.1 inference path."""
         try:
             query = self.query_processor.process(image_bytes)
-        except FileTooLargeError as exc:
-            raise APIError("The uploaded file is too large.") from exc
-        except (InvalidImageError, ImageTooSmallError, PreprocessingError) as exc:
-            raise APIError("The uploaded file is not a supported image.") from exc
+        except DataFileTooLargeError as exc:
+            raise FileTooLargeError() from exc
+        except (DataInvalidImageError, DataImageTooSmallError, PreprocessingError) as exc:
+            raise InvalidImageError() from exc
 
-        try:
-            return self.inference_pipeline.run(query.tensor, query_id="api-query", k=k)
-        except ModelUnavailableError:
-            raise
-        except GalleryUnavailableError:
-            raise
+        return self.inference_pipeline.run(query.tensor, query_id="api-query", k=k)
 
 
 def _error_response(error: APIError) -> JSONResponse:
     """Build the single public error envelope used by S4.6."""
-    body = ErrorResponse(
-        error={"code": error.code, "message": error.message}
-    ).model_dump()
+    body = ErrorResponse(error={"code": error.code, "message": error.message}).model_dump()
     return JSONResponse(status_code=error.status_code, content=body)
 
 
@@ -73,25 +73,16 @@ def create_app(service: SearchService) -> FastAPI:
     async def request_validation_handler(
         _request: Request, exc: RequestValidationError
     ) -> JSONResponse:
-        """Translate only missing-file validation; keep query validation as 422."""
+        """Translate a missing upload while preserving normal query validation."""
         errors = exc.errors()
-        if any(error.get("loc", ())[-1:] == ("file",) for error in errors):
-            return _error_response(
-                APIError("An image file is required.")
-            )
+        missing_file = any(
+            error.get("loc", ())[-1:] == ("file",)
+            and error.get("type") in {"missing", "value_error.missing"}
+            for error in errors
+        )
+        if missing_file:
+            return _error_response(APIError("An image file is required."))
         return JSONResponse(status_code=422, content={"detail": errors})
-
-    @app.exception_handler(InvalidImageError)
-    async def invalid_image_handler(_request: Request, exc: InvalidImageError) -> JSONResponse:
-        return _error_response(APIError("The uploaded file is not a supported image."))
-
-    @app.exception_handler(FileTooLargeError)
-    async def file_too_large_handler(_request: Request, exc: FileTooLargeError) -> JSONResponse:
-        return _error_response(APIError("The uploaded file is too large."))
-
-    @app.exception_handler(ImageTooSmallError)
-    async def image_too_small_handler(_request: Request, exc: ImageTooSmallError) -> JSONResponse:
-        return _error_response(APIError("The uploaded file is not a supported image."))
 
     @app.exception_handler(NoResultsError)
     async def no_results_handler(_request: Request, exc: NoResultsError) -> JSONResponse:
