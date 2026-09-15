@@ -15,6 +15,14 @@ class APIError(Exception):
         self.message = message or self.default_message
 
 
+class MissingFileError(APIError):
+    """Raised when the multipart image field is missing."""
+
+    code = "MISSING_FILE"
+    status_code = 400
+    default_message = "An image file is required."
+
+
 class InvalidImageError(APIError):
     """Raised when uploaded content is not a valid supported image."""
 
