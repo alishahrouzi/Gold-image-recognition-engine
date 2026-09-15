@@ -54,7 +54,10 @@ def test_grayscale_query_is_converted_to_rgb() -> None:
 
 
 def test_empty_upload_is_rejected() -> None:
-    with pytest.raises(PreprocessingError, match="Uploaded image is empty"):
+    with pytest.raises(
+        PreprocessingError,
+        match="The uploaded file is empty or contains no image data",
+    ):
         QueryProcessor().process(b"")
 
 
