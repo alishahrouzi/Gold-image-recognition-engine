@@ -15,7 +15,7 @@ SRC_ROOT = PROJECT_ROOT / "src"
 if str(SRC_ROOT) not in sys.path:
     sys.path.insert(0, str(SRC_ROOT))
 
-from data.errors import PreprocessingError
+from data.errors import FileTooLargeError, ImageTooSmallError, InvalidImageError, PreprocessingError
 from data.loaders.image_loader import load_rgb_image, to_rgb_image
 from data.preprocessing.config import ImagePreprocessingConfig
 from data.preprocessing.pipeline import ImagePreprocessor
@@ -38,8 +38,8 @@ class ProcessedQuery:
 class QueryProcessor:
     """Validate an uploaded image and apply the project's deterministic pipeline.
 
-    This component is transport-agnostic: S4.4 can pass ``UploadFile.file``
-    bytes or decoded image data without making S4.2 depend on FastAPI.
+    This component is transport-agnostic: S4.4 can pass ``UploadFile`` bytes
+    without making S4.2 depend on FastAPI.
     """
 
     DEFAULT_MAX_BYTES = 10 * 1024 * 1024
@@ -109,43 +109,46 @@ class QueryProcessor:
                 image = source.copy()
                 image.load()
             except Exception as exc:
-                raise PreprocessingError("Unable to load the provided PIL image.") from exc
+                raise InvalidImageError("Unable to load the provided PIL image.") from exc
             return image, None, image_format
 
         if isinstance(source, (bytes, bytearray, memoryview)):
             payload = bytes(source)
             self._validate_byte_size(len(payload))
             if not payload:
-                raise PreprocessingError("Uploaded image is empty.")
+                raise InvalidImageError("The uploaded file is empty or contains no image data.")
             try:
                 with Image.open(BytesIO(payload)) as image:
                     image.load()
                     image_format = image.format
                     return image.copy(), len(payload), image_format
             except UnidentifiedImageError as exc:
-                raise PreprocessingError("Uploaded content is not a supported image.") from exc
+                raise InvalidImageError("Uploaded content is not a supported image.") from exc
             except OSError as exc:
-                raise PreprocessingError("Uploaded image could not be decoded.") from exc
+                raise InvalidImageError("Uploaded image could not be decoded.") from exc
 
         if isinstance(source, (str, Path)):
-            image = load_rgb_image(source)
+            try:
+                image = load_rgb_image(source)
+            except Exception as exc:
+                raise InvalidImageError("The provided image file could not be loaded.") from exc
             return image, None, image.format
 
-        raise PreprocessingError(
+        raise InvalidImageError(
             f"Unsupported query source type {type(source)!r}. "
             "Expected image bytes, PIL.Image.Image, or filesystem path."
         )
 
     def _validate_byte_size(self, size: int) -> None:
         if size > self.max_bytes:
-            raise PreprocessingError(
+            raise FileTooLargeError(
                 f"Uploaded image exceeds the maximum size of {self.max_bytes} bytes."
             )
 
     def _validate_dimensions(self, size: tuple[int, int]) -> None:
         width, height = size
         if width < self.min_width or height < self.min_height:
-            raise PreprocessingError(
+            raise ImageTooSmallError(
                 f"Image dimensions {(width, height)} are below the minimum "
                 f"{self.min_width}x{self.min_height}."
             )
