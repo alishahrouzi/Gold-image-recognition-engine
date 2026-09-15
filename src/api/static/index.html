@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gold Visual Search</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1>Gold Visual Search</h1>
+      <p>Upload a jewelry image and search the trained product gallery.</p>
+    </header>
+
+    <section class="panel">
+      <form id="search-form">
+        <label class="upload" for="image-input">
+          <span>Select query image</span>
+          <input id="image-input" name="file" type="file" accept="image/*" required>
+        </label>
+        <img id="query-preview" class="query-preview hidden" alt="Query preview">
+        <div class="controls">
+          <label for="k-input">Results</label>
+          <input id="k-input" type="number" min="1" max="50" value="5">
+          <button id="search-button" type="submit">Search</button>
+        </div>
+      </form>
+      <div id="status" class="status hidden"></div>
+    </section>
+
+    <section id="results-section" class="panel hidden">
+      <div class="results-heading">
+        <h2>Results</h2>
+        <div id="category"></div>
+      </div>
+      <div id="results" class="results-grid"></div>
+    </section>
+  </main>
+  <script src="/static/app.js" defer></script>
+</body>
+</html>

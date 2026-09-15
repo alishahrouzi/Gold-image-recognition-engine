@@ -12,19 +12,11 @@ from .errors import (
     NoResultsError,
 )
 from .response import ErrorResponse, SearchResponse, SearchResultItem
+from .ui import ProductImageResolver
 
 __all__ = [
-    "APIError",
-    "ErrorResponse",
-    "FileTooLargeError",
-    "GalleryUnavailableError",
-    "InternalAPIError",
-    "InvalidImageError",
-    "MissingFileError",
-    "ModelUnavailableError",
-    "NoResultsError",
-    "SearchResponse",
-    "SearchResultItem",
-    "SearchService",
-    "create_app",
+    "APIError", "ErrorResponse", "FileTooLargeError", "GalleryUnavailableError",
+    "InternalAPIError", "InvalidImageError", "MissingFileError", "ModelUnavailableError",
+    "NoResultsError", "ProductImageResolver", "SearchResponse", "SearchResultItem",
+    "SearchService", "create_app",
 ]
