@@ -41,15 +41,7 @@ from retrieval.gallery import GalleryBuilder, build_gallery_loader
 from training.config import TrainingConfig
 
 DEFAULT_MANIFEST = PROJECT_ROOT / "reports" / "dataset" / "dataset1_manifest.csv"
-DEFAULT_DATASET_ROOT = PROJECT_ROOT.parent / "dataset" / "ai-tool-pool-pool-jewelry-vision"
 DEFAULT_OUTPUT_ROOT = PROJECT_ROOT / "experiments" / "generalization" / "s3.13"
-
-MODEL_CHECKPOINT_PATHS = {
-    "s3.4_hybrid": "checkpoints/best.pt",
-    "s3.5_random": "checkpoints/best.pt",
-    "s3.5_same_category": "checkpoints/best.pt",
-    "s3.5_cross_category": "checkpoints/best.pt",
-}
 
 
 def resolve_dataset_root(explicit: str | None) -> Path:
