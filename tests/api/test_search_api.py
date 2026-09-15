@@ -1,4 +1,4 @@
-"""Tests for the S4.4 HTTP search API boundary."""
+"""Tests for the S4.4/S4.5 HTTP search API boundary."""
 
 from __future__ import annotations
 
@@ -21,16 +21,22 @@ class FakePipeline:
 
     def run(self, image: torch.Tensor, *, query_id: str, k: int):
         self.calls.append((image, query_id, k))
-        candidate = ScoredProductCandidate(
-            rank=1,
-            product_id="p-ring",
-            category="Ring",
-            similarity=0.9,
-            similarity_score=95.0,
-            matched_image_ids=("ring-1",),
-            matched_image_paths=("ring-1.jpg",),
+        candidates = tuple(
+            ScoredProductCandidate(
+                rank=rank,
+                product_id=product_id,
+                category=category,
+                similarity=raw_similarity,
+                similarity_score=display_score,
+                matched_image_ids=(f"{product_id}-1",),
+                matched_image_paths=(f"{product_id}-1.jpg",),
+            )
+            for rank, product_id, category, raw_similarity, display_score in (
+                (1, "p-ring", "Ring", 0.9, 95.0),
+                (2, "p-necklace", "Necklace", 0.7, 85.0),
+            )
         )
-        return ScoredProductSearchResult(query_id=query_id, candidates=(candidate,))
+        return ScoredProductSearchResult(query_id=query_id, candidates=candidates)
 
 
 def _image_bytes() -> bytes:
@@ -55,7 +61,7 @@ def test_health_endpoint_is_available() -> None:
     assert response.json() == {"status": "ok"}
 
 
-def test_search_accepts_image_upload_and_forwards_processed_tensor() -> None:
+def test_search_returns_stable_public_response_schema() -> None:
     client, pipeline = _client()
 
     response = client.post(
@@ -65,10 +71,12 @@ def test_search_accepts_image_upload_and_forwards_processed_tensor() -> None:
 
     assert response.status_code == 200
     body = response.json()
-    assert body["query_id"] == "api-query"
-    assert len(body["candidates"]) == 1
-    assert body["candidates"][0]["product_id"] == "p-ring"
-    assert body["candidates"][0]["similarity_score"] == 95.0
+    assert set(body) == {"category", "results"}
+    assert body["category"] == "ring"
+    assert body["results"] == [
+        {"product_id": "p-ring", "similarity": 95.0},
+        {"product_id": "p-necklace", "similarity": 85.0},
+    ]
     assert len(pipeline.calls) == 1
     image_tensor, query_id, k = pipeline.calls[0]
     assert image_tensor.shape == (3, 224, 224)
