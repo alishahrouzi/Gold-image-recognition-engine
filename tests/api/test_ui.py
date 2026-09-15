@@ -7,6 +7,7 @@ from fastapi.testclient import TestClient
 
 from api.app import SearchService, create_app
 from api.ui import ProductImageResolver
+from inference.query import QueryProcessor
 from retrieval.scoring import ScoredProductCandidate, ScoredProductSearchResult
 
 
@@ -34,7 +35,7 @@ class _Pipeline:
         return ScoredProductSearchResult(query_id=query_id, candidates=candidates[:k])
 
 
-def _client(tmp_path: Path) -> TestClient:
+def _client(tmp_path: Path, *, processor=None) -> TestClient:
     image_path = tmp_path / "P001.jpg"
     image_path.write_bytes(b"fake-image")
     from types import SimpleNamespace
@@ -46,7 +47,11 @@ def _client(tmp_path: Path) -> TestClient:
             )
         )
     )
-    service = SearchService(_QueryProcessor(), _Pipeline(), ProductImageResolver(gallery))
+    service = SearchService(
+        processor or _QueryProcessor(),
+        _Pipeline(),
+        ProductImageResolver(gallery),
+    )
     return TestClient(create_app(service), raise_server_exceptions=False)
 
 
@@ -74,9 +79,17 @@ def test_search_api_contract_is_renderable_by_ui(tmp_path: Path) -> None:
 
 
 def test_ui_receives_public_error_envelope(tmp_path: Path) -> None:
-    response = _client(tmp_path).post("/search", files={"file": ("bad.txt", b"not-image", "text/plain")})
+    response = _client(tmp_path, processor=QueryProcessor()).post(
+        "/search",
+        files={"file": ("bad.txt", b"not-image", "text/plain")},
+    )
     assert response.status_code == 400
-    assert set(response.json()["error"]) == {"code", "message"}
+    assert response.json() == {
+        "error": {
+            "code": "INVALID_IMAGE",
+            "message": "The uploaded file is not a supported image.",
+        }
+    }
 
 
 def test_result_image_endpoint_serves_gallery_image(tmp_path: Path) -> None:
