@@ -15,11 +15,12 @@ import httpx
 from PIL import Image, ImageEnhance
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
+DATASET_ROOT = PROJECT_ROOT.parent / "dataset"
 
 IMAGE_EXTENSIONS = {".jpg", ".jpeg", ".png", ".webp", ".gif"}
 DEFAULT_GALLERY_METADATA = PROJECT_ROOT / "experiments/retrieval/siamese/s3.5_random/gallery_metadata.json"
-DEFAULT_DATASET1 = PROJECT_ROOT / "dataset/ai-tool-pool-jewelry-vision"
-DEFAULT_DATASET2 = PROJECT_ROOT / "dataset/jewelry-design-dataset"
+DEFAULT_DATASET1 = DATASET_ROOT / "ai-tool-pool-jewelry-vision"
+DEFAULT_DATASET2 = DATASET_ROOT / "jewelry-design-dataset"
 
 
 def _images(root: Path) -> list[Path]:
