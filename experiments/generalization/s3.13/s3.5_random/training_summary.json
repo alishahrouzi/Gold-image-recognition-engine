@@ -1,0 +1,135 @@
+{
+  "status": "completed",
+  "completed_epoch": 10,
+  "best_val_loss": 0.1271756137499497,
+  "stopped_early": false,
+  "duration_seconds": 5796.7865982,
+  "checkpoint_last": "E:\\Programming Project\\Visual Recognition Engine\\Gold-image-recognition-engine\\experiments\\generalization\\s3.13\\s3.5_random\\checkpoints\\last.pt",
+  "checkpoint_best": "E:\\Programming Project\\Visual Recognition Engine\\Gold-image-recognition-engine\\experiments\\generalization\\s3.13\\s3.5_random\\checkpoints\\best.pt",
+  "device": "cuda",
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.2808428617658225,
+      "val_loss": 0.26859569052855176,
+      "learning_rate": 0.0009755282581475768,
+      "train_batches": 337,
+      "train_samples": 5380,
+      "valid_batches": 84,
+      "valid_samples": 1344,
+      "duration_seconds": 580.9862141999984
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.2700885510909956,
+      "val_loss": 0.2990208335575603,
+      "learning_rate": 0.0009045084971874736,
+      "train_batches": 337,
+      "train_samples": 5380,
+      "valid_batches": 84,
+      "valid_samples": 1344,
+      "duration_seconds": 574.9377204000048
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.2704330143099824,
+      "val_loss": 0.25718423662086326,
+      "learning_rate": 0.0007938926261462366,
+      "train_batches": 337,
+      "train_samples": 5380,
+      "valid_batches": 84,
+      "valid_samples": 1344,
+      "duration_seconds": 577.1745621000009
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.24683645434095958,
+      "val_loss": 0.2145125518242518,
+      "learning_rate": 0.0006545084971874737,
+      "train_batches": 337,
+      "train_samples": 5380,
+      "valid_batches": 84,
+      "valid_samples": 1344,
+      "duration_seconds": 583.8740799000079
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.22110686022996015,
+      "val_loss": 0.22359723349412283,
+      "learning_rate": 0.0005,
+      "train_batches": 337,
+      "train_samples": 5380,
+      "valid_batches": 84,
+      "valid_samples": 1344,
+      "duration_seconds": 590.9845194999943
+    },
+    {
+      "epoch": 6,
+      "train_loss": 0.19782061752998253,
+      "val_loss": 0.17539263485620418,
+      "learning_rate": 0.00034549150281252633,
+      "train_batches": 337,
+      "train_samples": 5380,
+      "valid_batches": 84,
+      "valid_samples": 1344,
+      "duration_seconds": 590.1130819999962
+    },
+    {
+      "epoch": 7,
+      "train_loss": 0.1779135818485877,
+      "val_loss": 0.16308643642280782,
+      "learning_rate": 0.0002061073738537635,
+      "train_batches": 337,
+      "train_samples": 5380,
+      "valid_batches": 84,
+      "valid_samples": 1344,
+      "duration_seconds": 575.338723199995
+    },
+    {
+      "epoch": 8,
+      "train_loss": 0.1639241407850418,
+      "val_loss": 0.1386538413131521,
+      "learning_rate": 9.549150281252634e-05,
+      "train_batches": 337,
+      "train_samples": 5380,
+      "valid_batches": 84,
+      "valid_samples": 1344,
+      "duration_seconds": 572.9515519999986
+    },
+    {
+      "epoch": 9,
+      "train_loss": 0.15597406191453614,
+      "val_loss": 0.1363043257345756,
+      "learning_rate": 2.4471741852423235e-05,
+      "train_batches": 337,
+      "train_samples": 5380,
+      "valid_batches": 84,
+      "valid_samples": 1344,
+      "duration_seconds": 572.3324717999931
+    },
+    {
+      "epoch": 10,
+      "train_loss": 0.1532822318236624,
+      "val_loss": 0.1271756137499497,
+      "learning_rate": 0.0,
+      "train_batches": 337,
+      "train_samples": 5380,
+      "valid_batches": 84,
+      "valid_samples": 1344,
+      "duration_seconds": 577.0963341000024
+    }
+  ],
+  "pair_counts": {
+    "source_train_pairs": 6724,
+    "train_pairs": 5380,
+    "valid_pairs": 1344,
+    "test_pairs": 0
+  },
+  "manifest": "E:\\Programming Project\\Visual Recognition Engine\\Gold-image-recognition-engine\\reports\\dataset\\dataset1_manifest.csv",
+  "dataset_root": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision",
+  "pairs_csv": "E:\\Programming Project\\Visual Recognition Engine\\Gold-image-recognition-engine\\experiments\\generalization\\s3.13\\s3.5_random\\pairs.csv",
+  "pair_validation_fraction": 0.2,
+  "pair_validation_seed": 42,
+  "distance": "euclidean",
+  "loss": "contrastive"
+}
