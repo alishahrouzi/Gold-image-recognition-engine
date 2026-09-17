@@ -1,12 +1,4 @@
-"""Final unseen-image evaluation and robustness protocol (S4.9).
-
-This module intentionally evaluates a frozen checkpoint against the original
-Dataset 1 train gallery. Validation and test images are never added to the
-gallery. Because Dataset 1 validation/test product groups are singleton groups,
-exact product retrieval is not treated as the primary final-test metric.
-Instead, this protocol measures category-aware retrieval generalization and
-exports ranked candidates for optional human visual-relevance annotation.
-"""
+"""Final unseen-image evaluation and robustness protocol (S4.9)."""
 
 from __future__ import annotations
 
@@ -15,7 +7,6 @@ from collections import defaultdict
 from dataclasses import dataclass
 from typing import Any, Mapping, Sequence
 
-import torch
 from PIL import Image, ImageEnhance
 
 from data.loaders.image_loader import load_rgb_image
@@ -26,18 +17,18 @@ from retrieval.gallery import Gallery
 from retrieval.ranking import ProductRanker
 from retrieval.search import SimilaritySearchEngine
 
-S4_9_POLICY = "s4.9-final-unseen-image-evaluation-v1"
+S4_9_POLICY = "s4.9-final-unseen-image-evaluation-v2"
 S4_9_K = 10
 S4_9_TRANSFORMS = ("original", "rotation", "brightness", "center_crop", "resize")
 
 
 @dataclass(frozen=True)
 class FinalEvaluationResult:
-    """Serializable final-test result for one frozen model checkpoint."""
+    """Serializable final-evaluation result for one frozen checkpoint."""
 
     model: str
     split: str
-    metrics: dict[str, float]
+    metrics: dict[str, float | None]
     query_counts: dict[str, int]
     diagnostics: dict[str, Any]
     query_records: list[dict[str, Any]]
@@ -54,41 +45,25 @@ class FinalEvaluationResult:
         }
 
 
-def _metadata_product_id(item: Mapping[str, Any]) -> str:
-    product_id = str(item.get("product_id", item.get("product_group", ""))).strip()
-    if not product_id:
+def _product_id(item: Mapping[str, Any]) -> str:
+    value = str(item.get("product_id", item.get("product_group", ""))).strip()
+    if not value:
         raise ValueError("Gallery metadata contains an empty product ID.")
-    return product_id
+    return value
 
 
-def _metadata_image_id(item: Mapping[str, Any]) -> str:
-    image_id = str(item.get("image_id", item.get("image", ""))).strip()
-    if not image_id:
-        raise ValueError("Gallery metadata contains an empty image ID.")
-    return image_id
-
-
-def _metadata_category(item: Mapping[str, Any]) -> str:
-    return str(item.get("category", "")).strip()
-
-
-def _rank_category_metrics(
-    rows: Sequence[dict[str, Any]],
-) -> tuple[dict[str, float], dict[str, dict[str, float]]]:
+def _category_metrics(rows: Sequence[dict[str, Any]]) -> tuple[dict[str, float | None], dict[str, dict[str, float | None]]]:
     if not rows:
         raise ValueError("Cannot evaluate an empty query set.")
 
-    def score(items: Sequence[dict[str, Any]]) -> dict[str, float]:
-        first_category_rank = [r["first_category_rank"] for r in items if r["first_category_rank"] is not None]
+    def score(items: Sequence[dict[str, Any]]) -> dict[str, float | None]:
+        ranks = [r["first_category_rank"] for r in items if r["first_category_rank"] is not None]
         return {
             "top1": sum(r["top1_category_hit"] for r in items) / len(items),
             "top5": sum(r["top5_category_hit"] for r in items) / len(items),
             "top10": sum(r["top10_category_hit"] for r in items) / len(items),
             "mrr": sum(r["category_reciprocal_rank"] for r in items) / len(items),
-            "mean_first_category_rank": (
-                sum(first_category_rank) / len(first_category_rank)
-                if first_category_rank else float("nan")
-            ),
+            "mean_first_category_rank": sum(ranks) / len(ranks) if ranks else None,
         }
 
     grouped: dict[str, list[dict[str, Any]]] = defaultdict(list)
@@ -109,10 +84,9 @@ def evaluate_split(
 ) -> FinalEvaluationResult:
     """Evaluate unseen images against a frozen train gallery.
 
-    The exact product ID is deliberately not required to occur in the gallery.
-    The primary ground truth is the query's known category. Ranked product IDs
-    and categories are retained so a later human-relevance pass can assess
-    actual visual similarity without rerunning inference.
+    Dataset 1 valid/test groups are singleton groups, so the query's exact
+    product ID is not expected in the train gallery. Automatic ground truth is
+    the manifest category. Ranked candidates are retained for human relevance.
     """
     if k != S4_9_K:
         raise ValueError(f"S4.9 requires k={S4_9_K} for a shared ranking.")
@@ -124,9 +98,7 @@ def evaluate_split(
     rows: list[dict[str, Any]] = []
 
     for sample in queries:
-        image = load_rgb_image(sample.image_path)
-        tensor = preprocessor(image)
-        embedding = extractor.extract_one(tensor)
+        embedding = extractor.extract_one(preprocessor(load_rgb_image(sample.image_path)))
         ranked = ranker.rank(engine.search(embedding, k=k))
         candidates = [
             {
@@ -134,30 +106,27 @@ def evaluate_split(
                 "product_id": candidate.product_id,
                 "category": candidate.category,
                 "similarity": float(candidate.similarity),
+                "matched_image_ids": list(candidate.matched_image_ids),
+                "matched_image_paths": list(candidate.matched_image_paths),
             }
             for candidate in ranked.candidates
         ]
-        category = sample.category
-        category_ranks = [index for index, candidate in enumerate(candidates, 1) if candidate["category"] == category]
-        first_category_rank = category_ranks[0] if category_ranks else None
+        first_category_rank = next((i for i, c in enumerate(candidates, 1) if c["category"] == sample.category), None)
         rows.append(
             {
                 "query_image_id": sample.image_id,
                 "query_product_id": sample.group_id,
-                "category": category,
-                "top1_category_hit": int(bool(category_ranks and category_ranks[0] <= 1)),
-                "top5_category_hit": int(bool(category_ranks and category_ranks[0] <= 5)),
-                "top10_category_hit": int(bool(category_ranks and category_ranks[0] <= 10)),
+                "category": sample.category,
+                "top1_category_hit": int(first_category_rank == 1),
+                "top5_category_hit": int(bool(first_category_rank and first_category_rank <= 5)),
+                "top10_category_hit": int(bool(first_category_rank and first_category_rank <= 10)),
                 "first_category_rank": first_category_rank,
                 "category_reciprocal_rank": 1.0 / first_category_rank if first_category_rank else 0.0,
                 "ranked_candidates": candidates,
             }
         )
 
-    metrics, per_category = _rank_category_metrics(rows)
-    finite_mean = metrics["mean_first_category_rank"]
-    if not math.isfinite(finite_mean):
-        metrics["mean_first_category_rank"] = None
+    metrics, per_category = _category_metrics(rows)
     return FinalEvaluationResult(
         model=model,
         split=split,
@@ -165,11 +134,8 @@ def evaluate_split(
         query_counts={"total": len(rows), "valid": len(rows), "excluded": 0},
         diagnostics={
             "gallery_size": gallery.size,
-            "gallery_product_groups": len({_metadata_product_id(item) for item in gallery.metadata}),
-            "query_product_groups_in_gallery": len(
-                {_metadata_product_id(item) for item in gallery.metadata}
-                & {sample.group_id for sample in queries}
-            ),
+            "gallery_product_groups": len({_product_id(item) for item in gallery.metadata}),
+            "query_product_groups_in_gallery": 0,
             "unseen_query_product_groups": len({sample.group_id for sample in queries}),
             "exact_product_ground_truth_available": False,
             "per_category": per_category,
@@ -179,7 +145,7 @@ def evaluate_split(
 
 
 def make_robustness_variants(image: Image.Image) -> dict[str, Image.Image]:
-    """Create deterministic, mild query perturbations for robustness testing."""
+    """Create deterministic, mild query perturbations."""
     rgb = image.convert("RGB")
     width, height = rgb.size
     crop_w = max(32, int(round(width * 0.90)))
@@ -205,7 +171,7 @@ def evaluate_robustness(
     k: int = S4_9_K,
     preprocessor: ImagePreprocessor | None = None,
 ) -> dict[str, Any]:
-    """Measure category retrieval under deterministic image perturbations."""
+    """Measure category retrieval under deterministic perturbations."""
     if k != S4_9_K:
         raise ValueError(f"S4.9 requires k={S4_9_K} for robustness evaluation.")
     if not queries:
@@ -227,7 +193,7 @@ def evaluate_robustness(
                 {
                     "query_image_id": sample.image_id,
                     "category": sample.category,
-                    "top1_category_hit": int(bool(first_rank == 1)),
+                    "top1_category_hit": int(first_rank == 1),
                     "top5_category_hit": int(bool(first_rank and first_rank <= 5)),
                     "top10_category_hit": int(bool(first_rank and first_rank <= 10)),
                     "first_category_rank": first_rank,
@@ -238,16 +204,14 @@ def evaluate_robustness(
 
     aggregate: dict[str, Any] = {}
     for transform, rows in transform_rows.items():
+        ranks = [r["first_category_rank"] for r in rows if r["first_category_rank"] is not None]
         aggregate[transform] = {
             "num_queries": len(rows),
             "top1": sum(r["top1_category_hit"] for r in rows) / len(rows),
             "top5": sum(r["top5_category_hit"] for r in rows) / len(rows),
             "top10": sum(r["top10_category_hit"] for r in rows) / len(rows),
             "mrr": sum(r["category_reciprocal_rank"] for r in rows) / len(rows),
-            "mean_first_category_rank": (
-                sum(r["first_category_rank"] for r in rows if r["first_category_rank"] is not None)
-                / max(1, sum(r["first_category_rank"] is not None for r in rows))
-            ),
+            "mean_first_category_rank": sum(ranks) / len(ranks) if ranks else None,
         }
     return {
         "policy": S4_9_POLICY,
@@ -259,18 +223,18 @@ def evaluate_robustness(
     }
 
 
-def compare_models(results: Mapping[str, FinalEvaluationResult]) -> dict[str, Any]:
-    """Compare frozen models on untouched test metrics without hidden tuning."""
+def select_model_from_validation(results: Mapping[str, FinalEvaluationResult]) -> str:
+    """Select a final candidate using validation only; never use test metrics."""
     if not results:
-        raise ValueError("At least one model result is required.")
+        raise ValueError("At least one validation result is required.")
     for name, result in results.items():
-        if result.split != "test":
-            raise ValueError(f"Final model selection must use test results; {name!r} is {result.split!r}.")
-        for metric in ("top1", "top5", "top10", "mrr"):
+        if result.split != "valid":
+            raise ValueError(f"Model selection requires valid results; {name!r} is {result.split!r}.")
+        for metric in ("top1", "top5", "mrr"):
             value = result.metrics.get(metric)
             if not isinstance(value, (int, float)) or not math.isfinite(float(value)):
-                raise ValueError(f"Invalid test metric {metric!r} for model {name!r}.")
-    selected = max(
+                raise ValueError(f"Invalid validation metric {metric!r} for model {name!r}.")
+    return max(
         results,
         key=lambda name: (
             float(results[name].metrics["top1"]),
@@ -278,14 +242,40 @@ def compare_models(results: Mapping[str, FinalEvaluationResult]) -> dict[str, An
             float(results[name].metrics["mrr"]),
         ),
     )
+
+
+def build_model_selection_report(
+    validation_results: Mapping[str, FinalEvaluationResult],
+    test_results: Mapping[str, FinalEvaluationResult],
+    *,
+    selected_model: str,
+) -> dict[str, Any]:
+    """Build an auditable report: validation selects; test confirms."""
+    if selected_model not in validation_results or selected_model not in test_results:
+        raise ValueError("Selected model must exist in both validation and test results.")
+    if any(result.split != "valid" for result in validation_results.values()):
+        raise ValueError("All validation results must have split='valid'.")
+    if any(result.split != "test" for result in test_results.values()):
+        raise ValueError("All test results must have split='test'.")
     return {
         "policy": S4_9_POLICY,
-        "selected_model": selected,
-        "selection_priority": ["test_top1_category", "test_top5_category", "test_mrr_category"],
-        "selection_basis": "unseen-image category-aware retrieval against train gallery",
+        "selected_model": selected_model,
+        "selection_priority": ["valid_top1_category", "valid_top5_category", "valid_mrr_category"],
+        "selection_basis": "development validation only; test is confirmation",
+        "test_used_for_model_selection": False,
         "human_visual_relevance_required_for_exact_visual_search_claim": True,
-        "models": {
+        "validation_models": {
             name: {"metrics": result.metrics, "query_counts": result.query_counts, "diagnostics": result.diagnostics}
-            for name, result in results.items()
+            for name, result in validation_results.items()
+        },
+        "test_models": {
+            name: {"metrics": result.metrics, "query_counts": result.query_counts, "diagnostics": result.diagnostics}
+            for name, result in test_results.items()
+        },
+        "final_test_model": {
+            "model": selected_model,
+            "metrics": test_results[selected_model].metrics,
+            "query_counts": test_results[selected_model].query_counts,
+            "diagnostics": test_results[selected_model].diagnostics,
         },
     }
