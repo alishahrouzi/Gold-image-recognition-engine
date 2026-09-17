@@ -17,7 +17,12 @@ from retrieval.gallery import Gallery
 from retrieval.search import SimilaritySearchEngine
 
 
-DEFAULT_SIAMESE_MODEL = "s3.5_random"
+# S4.9 selected this candidate using validation-only model selection.
+# Keep the runtime default aligned with the frozen MVP selection. The test
+# split was used only as an untouched confirmation set and must not change this
+# choice.
+SELECTED_MVP_MODEL = "s3.5_cross_category"
+DEFAULT_SIAMESE_MODEL = SELECTED_MVP_MODEL
 DEFAULT_GALLERY_ROOT = Path("experiments/retrieval/siamese")
 DEFAULT_EMBEDDING_FILENAME = "gallery_embeddings.pt"
 DEFAULT_METADATA_FILENAME = "gallery_metadata.json"
