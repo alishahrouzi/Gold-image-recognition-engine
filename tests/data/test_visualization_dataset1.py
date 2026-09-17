@@ -25,7 +25,7 @@ DEFAULT_PAIRS = PROJECT_ROOT / "reports" / "dataset" / "dataset1_pairs.csv"
 DEFAULT_DATASET_ROOT = Path(
     os.environ.get(
         "ZARGAR_DATASET1_ROOT",
-        r"e:\Privat File\Projects\Zargar Interview\dataset\ai-tool-pool-jewelry-vision",
+        r"E:\Programming Project\Visual Recognition Engine\dataset\ai-tool-pool-jewelry-vision",
     )
 )
 
