@@ -17,7 +17,7 @@ import uvicorn
 from api.app import SearchService, create_app
 from api.errors import GalleryUnavailableError, ModelUnavailableError
 from api.ui import ProductImageResolver
-from inference.gallery import GalleryLoader, GalleryRuntimeConfig
+from inference.gallery import DEFAULT_SIAMESE_MODEL, GalleryLoader, GalleryRuntimeConfig
 from inference.pipeline import InferencePipeline
 from inference.query import QueryProcessor
 from retrieval.embedding import load_siamese_embedding_model
@@ -25,10 +25,28 @@ from retrieval.embedding import load_siamese_embedding_model
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Run the Gold visual search API.")
-    parser.add_argument("--checkpoint", type=Path, required=True, help="Path to trained S3.5 random Siamese checkpoint (.pt).")
-    parser.add_argument("--gallery-root", type=Path, default=Path("experiments/retrieval/siamese"), help="Root containing the selected S3.7 gallery directory.")
-    parser.add_argument("--model", default="s3.5_random", help="Model/gallery experiment name.")
-    parser.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu", help="Inference device, e.g. cuda or cpu.")
+    parser.add_argument(
+        "--checkpoint",
+        type=Path,
+        required=True,
+        help=f"Path to the selected MVP Siamese checkpoint ({DEFAULT_SIAMESE_MODEL}, .pt).",
+    )
+    parser.add_argument(
+        "--gallery-root",
+        type=Path,
+        default=Path("experiments/retrieval/siamese"),
+        help="Root containing the selected S3.7 gallery directory.",
+    )
+    parser.add_argument(
+        "--model",
+        default=DEFAULT_SIAMESE_MODEL,
+        help="Model/gallery experiment name. Defaults to the S4.9 selected MVP model.",
+    )
+    parser.add_argument(
+        "--device",
+        default="cuda" if torch.cuda.is_available() else "cpu",
+        help="Inference device, e.g. cuda or cpu.",
+    )
     parser.add_argument("--host", default="127.0.0.1")
     parser.add_argument("--port", type=int, default=8000)
     return parser.parse_args()
