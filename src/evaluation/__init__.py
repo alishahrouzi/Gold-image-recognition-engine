@@ -10,6 +10,7 @@ Public API:
     ErrorAnalysisRecord -- S2.9 per-query error evidence
     evaluate_gallery -- S3.11 metric-learning product retrieval evaluation
     build_group_holdout / evaluate_unseen_groups -- S3.13 generalization gate
+    evaluate_split / evaluate_robustness -- S4.9 final unseen-image evaluation
 """
 
 from .errors import EvaluationError
@@ -28,6 +29,13 @@ from .evaluator import (
     ManifestRecord,
     QueryResult,
     RetrievalEvaluator,
+)
+from .final_test import (
+    FinalEvaluationResult,
+    compare_models,
+    evaluate_robustness,
+    evaluate_split,
+    make_robustness_variants,
 )
 from .generalization import (
     GroupHoldoutSplit,
@@ -51,6 +59,7 @@ __all__ = [
     "ErrorAnalysisRecord",
     "EvaluationError",
     "EvaluationReport",
+    "FinalEvaluationResult",
     "GroupHoldoutSplit",
     "ManifestRecord",
     "MetricLearningRetrievalResult",
@@ -65,10 +74,14 @@ __all__ = [
     "build_summary",
     "category_confusion",
     "category_summary",
+    "compare_models",
     "evaluate_gallery",
     "evaluate_leave_one_out_gallery",
     "evaluate_retrieval",
+    "evaluate_robustness",
+    "evaluate_split",
     "evaluate_unseen_groups",
+    "make_robustness_variants",
     "result_to_dict",
     "score_retrieval_result",
     "select_model",
