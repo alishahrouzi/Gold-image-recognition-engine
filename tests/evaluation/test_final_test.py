@@ -8,10 +8,11 @@ from PIL import Image
 from data.constants import SOURCE_DATASET1
 from data.types import Sample
 from evaluation.final_test import (
-    compare_models,
+    build_model_selection_report,
     evaluate_robustness,
     evaluate_split,
     make_robustness_variants,
+    select_model_from_validation,
 )
 from retrieval.gallery import Gallery
 
@@ -52,13 +53,7 @@ def gallery() -> Gallery:
 
 def test_final_evaluation_uses_query_category_and_keeps_ranked_candidates(tmp_path: Path) -> None:
     query = sample(tmp_path, "Q1", "UNSEEN", "Ring", "test")
-    result = evaluate_split(
-        FakeExtractor(torch.tensor([1.0, 0.0])),
-        gallery(),
-        [query],
-        model="test-model",
-        split="test",
-    )
+    result = evaluate_split(FakeExtractor(torch.tensor([1.0, 0.0])), gallery(), [query], model="test-model", split="test")
     assert result.metrics["top1"] == 1.0
     assert result.metrics["top5"] == 1.0
     assert result.metrics["mrr"] == 1.0
@@ -77,41 +72,32 @@ def test_robustness_variants_are_deterministic_and_keep_size_constraints(tmp_pat
     assert variants["brightness"].size == image.size
 
 
-def test_compare_models_requires_test_and_selects_by_final_metric_priority(tmp_path: Path) -> None:
-    query = sample(tmp_path, "Q1", "UNSEEN", "Ring", "test")
-    extractor = FakeExtractor(torch.tensor([1.0, 0.0]))
-    result_a = evaluate_split(extractor, gallery(), [query], model="a", split="test")
-    result_b = evaluate_split(FakeExtractor(torch.tensor([0.0, 1.0])), gallery(), [query], model="b", split="test")
-    comparison = compare_models({"a": result_a, "b": result_b})
-    assert comparison["selected_model"] == "a"
-    assert comparison["selection_priority"] == ["test_top1_category", "test_top5_category", "test_mrr_category"]
-
-
-def test_compare_models_rejects_validation_results(tmp_path: Path) -> None:
+def test_validation_selects_model_and_test_is_confirmation(tmp_path: Path) -> None:
     query = sample(tmp_path, "Q1", "UNSEEN", "Ring", "valid")
-    result = evaluate_split(
-        FakeExtractor(torch.tensor([1.0, 0.0])),
-        gallery(),
-        [query],
-        model="model",
-        split="valid",
-    )
+    result_a = evaluate_split(FakeExtractor(torch.tensor([1.0, 0.0])), gallery(), [query], model="a", split="valid")
+    result_b = evaluate_split(FakeExtractor(torch.tensor([0.0, 1.0])), gallery(), [query], model="b", split="valid")
+    selected = select_model_from_validation({"a": result_a, "b": result_b})
+    assert selected == "a"
+    test_a = evaluate_split(FakeExtractor(torch.tensor([1.0, 0.0])), gallery(), [sample(tmp_path, "T1", "TEST", "Ring", "test")], model="a", split="test")
+    test_b = evaluate_split(FakeExtractor(torch.tensor([0.0, 1.0])), gallery(), [sample(tmp_path, "T2", "TEST2", "Ring", "test")], model="b", split="test")
+    report = build_model_selection_report({"a": result_a, "b": result_b}, {"a": test_a, "b": test_b}, selected_model=selected)
+    assert report["selected_model"] == "a"
+    assert report["test_used_for_model_selection"] is False
+
+
+def test_selection_rejects_test_results(tmp_path: Path) -> None:
+    query = sample(tmp_path, "Q1", "UNSEEN", "Ring", "test")
+    result = evaluate_split(FakeExtractor(torch.tensor([1.0, 0.0])), gallery(), [query], model="model", split="test")
     try:
-        compare_models({"model": result})
+        select_model_from_validation({"model": result})
     except ValueError as exc:
-        assert "test" in str(exc)
+        assert "valid" in str(exc)
     else:
-        raise AssertionError("Validation results must not be accepted for final model selection.")
+        raise AssertionError("Test results must not be used for model selection.")
 
 
 def test_robustness_evaluation_reports_all_transforms(tmp_path: Path) -> None:
-    queries = [sample(tmp_path, "Q1", "UNSEEN", "Ring", "test")]
-    result = evaluate_robustness(
-        FakeExtractor(torch.tensor([1.0, 0.0])),
-        gallery(),
-        queries,
-        model="model",
-        max_queries=1,
-    )
+    queries = [sample(tmp_path, "Q1", "UNSEEN", "Ring", "valid")]
+    result = evaluate_robustness(FakeExtractor(torch.tensor([1.0, 0.0])), gallery(), queries, model="model", max_queries=1)
     assert result["transforms"] == ["original", "rotation", "brightness", "center_crop", "resize"]
     assert set(result["results"]) == set(result["transforms"])
