@@ -1,0 +1,5066 @@
+{
+  "policy": "s4.9-final-unseen-image-evaluation-v2",
+  "model": "s3.5_random",
+  "num_queries": 100,
+  "transforms": [
+    "original",
+    "rotation",
+    "brightness",
+    "center_crop",
+    "resize"
+  ],
+  "results": {
+    "original": {
+      "num_queries": 100,
+      "top1": 0.41,
+      "top5": 0.75,
+      "top10": 0.86,
+      "mrr": 0.5515476190476191,
+      "mean_first_category_rank": 2.63953488372093
+    },
+    "rotation": {
+      "num_queries": 100,
+      "top1": 0.36,
+      "top5": 0.74,
+      "top10": 0.85,
+      "mrr": 0.5131507936507936,
+      "mean_first_category_rank": 2.776470588235294
+    },
+    "brightness": {
+      "num_queries": 100,
+      "top1": 0.31,
+      "top5": 0.74,
+      "top10": 0.86,
+      "mrr": 0.4815079365079365,
+      "mean_first_category_rank": 2.9767441860465116
+    },
+    "center_crop": {
+      "num_queries": 100,
+      "top1": 0.42,
+      "top5": 0.73,
+      "top10": 0.87,
+      "mrr": 0.5411904761904762,
+      "mean_first_category_rank": 3.0
+    },
+    "resize": {
+      "num_queries": 100,
+      "top1": 0.38,
+      "top5": 0.74,
+      "top10": 0.85,
+      "mrr": 0.535702380952381,
+      "mean_first_category_rank": 2.588235294117647
+    }
+  },
+  "query_records": {
+    "original": [
+      {
+        "query_image_id": "DS1_IMG_004329",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 3,
+        "category_reciprocal_rank": 0.3333333333333333,
+        "top1_product_id": "IMG_3578_a65f2d66"
+      },
+      {
+        "query_image_id": "DS1_IMG_004330",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "necklace_20241125_122545_40014043"
+      },
+      {
+        "query_image_id": "DS1_IMG_004331",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "IMG_0835_6fd40262"
+      },
+      {
+        "query_image_id": "DS1_IMG_004332",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 1,
+        "first_category_rank": 6,
+        "category_reciprocal_rank": 0.16666666666666666,
+        "top1_product_id": "earring_129"
+      },
+      {
+        "query_image_id": "DS1_IMG_004333",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 1,
+        "first_category_rank": 9,
+        "category_reciprocal_rank": 0.1111111111111111,
+        "top1_product_id": "IMG_2422_c277bf70"
+      },
+      {
+        "query_image_id": "DS1_IMG_004334",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "IMG_0828_1a7ccf98"
+      },
+      {
+        "query_image_id": "DS1_IMG_004335",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 4,
+        "category_reciprocal_rank": 0.25,
+        "top1_product_id": "IMG_1862_cff5a31d"
+      },
+      {
+        "query_image_id": "DS1_IMG_004336",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 1,
+        "first_category_rank": 8,
+        "category_reciprocal_rank": 0.125,
+        "top1_product_id": "IMG_3521_16d62444"
+      },
+      {
+        "query_image_id": "DS1_IMG_004337",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "IMG_2180_8bf8633d"
+      },
+      {
+        "query_image_id": "DS1_IMG_004338",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 4,
+        "category_reciprocal_rank": 0.25,
+        "top1_product_id": "IMG_2295_29a9f18d"
+      },
+      {
+        "query_image_id": "DS1_IMG_004339",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 1,
+        "first_category_rank": 7,
+        "category_reciprocal_rank": 0.14285714285714285,
+        "top1_product_id": "IMG_3107_49466a60"
+      },
+      {
+        "query_image_id": "DS1_IMG_004340",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 1,
+        "first_category_rank": 7,
+        "category_reciprocal_rank": 0.14285714285714285,
+        "top1_product_id": "IMG_3054_8e0538e4"
+      },
+      {
+        "query_image_id": "DS1_IMG_004341",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "IMG_2196_45f1b723"
+      },
+      {
+        "query_image_id": "DS1_IMG_004342",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "IMG_0438_35a93e41"
+      },
+      {
+        "query_image_id": "DS1_IMG_004343",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "IMG_0387_0c33e2d2"
+      },
+      {
+        "query_image_id": "DS1_IMG_004344",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "IMG_2305_f7da93de"
+      },
+      {
+        "query_image_id": "DS1_IMG_004345",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 1,
+        "first_category_rank": 9,
+        "category_reciprocal_rank": 0.1111111111111111,
+        "top1_product_id": "IMG_1573_3b6aa91a"
+      },
+      {
+        "query_image_id": "DS1_IMG_004346",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "IMG_1456_e4316976"
+      },
+      {
+        "query_image_id": "DS1_IMG_004347",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "IMG_2212_90baac46"
+      },
+      {
+        "query_image_id": "DS1_IMG_004348",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "IMG_2521_2f7dd27c"
+      },
+      {
+        "query_image_id": "DS1_IMG_004349",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 3,
+        "category_reciprocal_rank": 0.3333333333333333,
+        "top1_product_id": "IMG_2236_87c45f0e"
+      },
+      {
+        "query_image_id": "DS1_IMG_004350",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 1,
+        "first_category_rank": 9,
+        "category_reciprocal_rank": 0.1111111111111111,
+        "top1_product_id": "IMG_0702_fc96bc4c"
+      },
+      {
+        "query_image_id": "DS1_IMG_004351",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "IMG_3530_ca9ed101"
+      },
+      {
+        "query_image_id": "DS1_IMG_004352",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 5,
+        "category_reciprocal_rank": 0.2,
+        "top1_product_id": "IMG_3603_0f066e15"
+      },
+      {
+        "query_image_id": "DS1_IMG_004353",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "IMG_2212_90baac46"
+      },
+      {
+        "query_image_id": "DS1_IMG_004354",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 1,
+        "first_category_rank": 8,
+        "category_reciprocal_rank": 0.125,
+        "top1_product_id": "IMG_1301_a537f31e"
+      },
+      {
+        "query_image_id": "DS1_IMG_004355",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "IMG_2939_24d96ddc"
+      },
+      {
+        "query_image_id": "DS1_IMG_004356",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_108"
+      },
+      {
+        "query_image_id": "DS1_IMG_004357",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_173"
+      },
+      {
+        "query_image_id": "DS1_IMG_004358",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_067"
+      },
+      {
+        "query_image_id": "DS1_IMG_004359",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_012"
+      },
+      {
+        "query_image_id": "DS1_IMG_004360",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 4,
+        "category_reciprocal_rank": 0.25,
+        "top1_product_id": "necklace_147"
+      },
+      {
+        "query_image_id": "DS1_IMG_004361",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_158"
+      },
+      {
+        "query_image_id": "DS1_IMG_004362",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_067"
+      },
+      {
+        "query_image_id": "DS1_IMG_004363",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_103"
+      },
+      {
+        "query_image_id": "DS1_IMG_004364",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "ring_062"
+      },
+      {
+        "query_image_id": "DS1_IMG_004365",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "sd_hol17_b429g_philippa_hero"
+      },
+      {
+        "query_image_id": "DS1_IMG_004366",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 1,
+        "first_category_rank": 6,
+        "category_reciprocal_rank": 0.16666666666666666,
+        "top1_product_id": "earring_52"
+      },
+      {
+        "query_image_id": "DS1_IMG_004367",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_057"
+      },
+      {
+        "query_image_id": "DS1_IMG_004368",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 3,
+        "category_reciprocal_rank": 0.3333333333333333,
+        "top1_product_id": "IMG_0526-1-_9b0c913e"
+      },
+      {
+        "query_image_id": "DS1_IMG_004369",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "ring_071"
+      },
+      {
+        "query_image_id": "DS1_IMG_004370",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_257"
+      },
+      {
+        "query_image_id": "DS1_IMG_004371",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_051"
+      },
+      {
+        "query_image_id": "DS1_IMG_004372",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_063"
+      },
+      {
+        "query_image_id": "DS1_IMG_004373",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_183"
+      },
+      {
+        "query_image_id": "DS1_IMG_004374",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_046"
+      },
+      {
+        "query_image_id": "DS1_IMG_004375",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_238"
+      },
+      {
+        "query_image_id": "DS1_IMG_004376",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_189"
+      },
+      {
+        "query_image_id": "DS1_IMG_004377",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "IMG_2919_e957f2e2"
+      },
+      {
+        "query_image_id": "DS1_IMG_004378",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_067"
+      },
+      {
+        "query_image_id": "DS1_IMG_004379",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_111"
+      },
+      {
+        "query_image_id": "DS1_IMG_004380",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_110"
+      },
+      {
+        "query_image_id": "DS1_IMG_004381",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_111"
+      },
+      {
+        "query_image_id": "DS1_IMG_004382",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_124"
+      },
+      {
+        "query_image_id": "DS1_IMG_004383",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_141"
+      },
+      {
+        "query_image_id": "DS1_IMG_004384",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 4,
+        "category_reciprocal_rank": 0.25,
+        "top1_product_id": "necklace_139"
+      },
+      {
+        "query_image_id": "DS1_IMG_004385",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_061"
+      },
+      {
+        "query_image_id": "DS1_IMG_004386",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "necklace_78"
+      },
+      {
+        "query_image_id": "DS1_IMG_004387",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_107"
+      },
+      {
+        "query_image_id": "DS1_IMG_004388",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_258"
+      },
+      {
+        "query_image_id": "DS1_IMG_004389",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_002"
+      },
+      {
+        "query_image_id": "DS1_IMG_004390",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 1,
+        "first_category_rank": 7,
+        "category_reciprocal_rank": 0.14285714285714285,
+        "top1_product_id": "earring_88"
+      },
+      {
+        "query_image_id": "DS1_IMG_004391",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_231"
+      },
+      {
+        "query_image_id": "DS1_IMG_004392",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "other_20241125_122356_ffffffdb"
+      },
+      {
+        "query_image_id": "DS1_IMG_004393",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "earring_145"
+      },
+      {
+        "query_image_id": "DS1_IMG_004394",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_051"
+      },
+      {
+        "query_image_id": "DS1_IMG_004395",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "IMG_1298_c573ac13"
+      },
+      {
+        "query_image_id": "DS1_IMG_004396",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 3,
+        "category_reciprocal_rank": 0.3333333333333333,
+        "top1_product_id": "necklace_153"
+      },
+      {
+        "query_image_id": "DS1_IMG_004397",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "earring_40"
+      },
+      {
+        "query_image_id": "DS1_IMG_004398",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 1,
+        "first_category_rank": 7,
+        "category_reciprocal_rank": 0.14285714285714285,
+        "top1_product_id": "ring_164"
+      },
+      {
+        "query_image_id": "DS1_IMG_004399",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 5,
+        "category_reciprocal_rank": 0.2,
+        "top1_product_id": "earring_272"
+      },
+      {
+        "query_image_id": "DS1_IMG_004400",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "UE00012-YG0000_1_lar"
+      },
+      {
+        "query_image_id": "DS1_IMG_004401",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "earring_320"
+      },
+      {
+        "query_image_id": "DS1_IMG_004402",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "ring_128"
+      },
+      {
+        "query_image_id": "DS1_IMG_004403",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "IMG_3110_e8631d85"
+      },
+      {
+        "query_image_id": "DS1_IMG_004404",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 3,
+        "category_reciprocal_rank": 0.3333333333333333,
+        "top1_product_id": "bracelet_062"
+      },
+      {
+        "query_image_id": "DS1_IMG_004405",
+        "category": "Earrings",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "earring_320"
+      },
+      {
+        "query_image_id": "DS1_IMG_004406",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "bracelet_169"
+      },
+      {
+        "query_image_id": "DS1_IMG_004407",
+        "category": "Earrings",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "pirouette_by_harry_winston_earrings__diamond__EADPRFPRSPIR_trans-1h"
+      },
+      {
+        "query_image_id": "DS1_IMG_004408",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "IMG_1864_f6bd77dc"
+      },
+      {
+        "query_image_id": "DS1_IMG_004409",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "IMG_0430-1-_e8eb3b89"
+      },
+      {
+        "query_image_id": "DS1_IMG_004410",
+        "category": "Earrings",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "ramleela-earrings-black"
+      },
+      {
+        "query_image_id": "DS1_IMG_004411",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "IMG_0616_6ca1e5d7"
+      },
+      {
+        "query_image_id": "DS1_IMG_004412",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 3,
+        "category_reciprocal_rank": 0.3333333333333333,
+        "top1_product_id": "IMG_2539_a7eb0c18"
+      },
+      {
+        "query_image_id": "DS1_IMG_004413",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "IMG_3474_e19ef664"
+      },
+      {
+        "query_image_id": "DS1_IMG_004414",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 4,
+        "category_reciprocal_rank": 0.25,
+        "top1_product_id": "IMG_3474_e19ef664"
+      },
+      {
+        "query_image_id": "DS1_IMG_004415",
+        "category": "Earrings",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "images-80-"
+      },
+      {
+        "query_image_id": "DS1_IMG_004416",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 4,
+        "category_reciprocal_rank": 0.25,
+        "top1_product_id": "IMG_2506_cab336a0"
+      },
+      {
+        "query_image_id": "DS1_IMG_004417",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 5,
+        "category_reciprocal_rank": 0.2,
+        "top1_product_id": "IMG_3476_fd33a4ca"
+      },
+      {
+        "query_image_id": "DS1_IMG_004418",
+        "category": "Earrings",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "earring_67"
+      },
+      {
+        "query_image_id": "DS1_IMG_004419",
+        "category": "Earrings",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "Sublime-Gold-Drop-Earrings-2"
+      },
+      {
+        "query_image_id": "DS1_IMG_004420",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "ring_111"
+      },
+      {
+        "query_image_id": "DS1_IMG_004421",
+        "category": "Earrings",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "earring_145"
+      },
+      {
+        "query_image_id": "DS1_IMG_004422",
+        "category": "Earrings",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "earring_340"
+      },
+      {
+        "query_image_id": "DS1_IMG_004423",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 5,
+        "category_reciprocal_rank": 0.2,
+        "top1_product_id": "bracelet_161"
+      },
+      {
+        "query_image_id": "DS1_IMG_004424",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 5,
+        "category_reciprocal_rank": 0.2,
+        "top1_product_id": "ring_170"
+      },
+      {
+        "query_image_id": "DS1_IMG_004425",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "IMG_1422_cf8efbc5"
+      },
+      {
+        "query_image_id": "DS1_IMG_004426",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 3,
+        "category_reciprocal_rank": 0.3333333333333333,
+        "top1_product_id": "ring_162"
+      },
+      {
+        "query_image_id": "DS1_IMG_004427",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 3,
+        "category_reciprocal_rank": 0.3333333333333333,
+        "top1_product_id": "ring_078"
+      },
+      {
+        "query_image_id": "DS1_IMG_004428",
+        "category": "Earrings",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "earring_58"
+      }
+    ],
+    "rotation": [
+      {
+        "query_image_id": "DS1_IMG_004329",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 3,
+        "category_reciprocal_rank": 0.3333333333333333,
+        "top1_product_id": "IMG_3578_a65f2d66"
+      },
+      {
+        "query_image_id": "DS1_IMG_004330",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "IMG_0371_d1d4878f"
+      },
+      {
+        "query_image_id": "DS1_IMG_004331",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 5,
+        "category_reciprocal_rank": 0.2,
+        "top1_product_id": "necklace_20241125_122545_40014043"
+      },
+      {
+        "query_image_id": "DS1_IMG_004332",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "IMG_1387_df6d03a0"
+      },
+      {
+        "query_image_id": "DS1_IMG_004333",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "IMG_2185_5d50bf33"
+      },
+      {
+        "query_image_id": "DS1_IMG_004334",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "IMG_0447_50c25d6a"
+      },
+      {
+        "query_image_id": "DS1_IMG_004335",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 3,
+        "category_reciprocal_rank": 0.3333333333333333,
+        "top1_product_id": "IMG_1862_cff5a31d"
+      },
+      {
+        "query_image_id": "DS1_IMG_004336",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 5,
+        "category_reciprocal_rank": 0.2,
+        "top1_product_id": "IMG_1607_3f933a99"
+      },
+      {
+        "query_image_id": "DS1_IMG_004337",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "necklace_20241125_122545_808181f9"
+      },
+      {
+        "query_image_id": "DS1_IMG_004338",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 5,
+        "category_reciprocal_rank": 0.2,
+        "top1_product_id": "necklace_20241125_122545_81819999"
+      },
+      {
+        "query_image_id": "DS1_IMG_004339",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 1,
+        "first_category_rank": 9,
+        "category_reciprocal_rank": 0.1111111111111111,
+        "top1_product_id": "IMG_3107_49466a60"
+      },
+      {
+        "query_image_id": "DS1_IMG_004340",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 5,
+        "category_reciprocal_rank": 0.2,
+        "top1_product_id": "IMG_3598_a9e38dee"
+      },
+      {
+        "query_image_id": "DS1_IMG_004341",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "IMG_1503_7c88ee1e"
+      },
+      {
+        "query_image_id": "DS1_IMG_004342",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "IMG_0187_fa1879f6"
+      },
+      {
+        "query_image_id": "DS1_IMG_004343",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "IMG_2534_0107c272"
+      },
+      {
+        "query_image_id": "DS1_IMG_004344",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "IMG_2137_46d22b6f"
+      },
+      {
+        "query_image_id": "DS1_IMG_004345",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "necklace_20241125_122545_0060089f"
+      },
+      {
+        "query_image_id": "DS1_IMG_004346",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 3,
+        "category_reciprocal_rank": 0.3333333333333333,
+        "top1_product_id": "IMG_0457_cb73a0c4"
+      },
+      {
+        "query_image_id": "DS1_IMG_004347",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 4,
+        "category_reciprocal_rank": 0.25,
+        "top1_product_id": "IMG_1456_e4316976"
+      },
+      {
+        "query_image_id": "DS1_IMG_004348",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "IMG_2215_581a6b79"
+      },
+      {
+        "query_image_id": "DS1_IMG_004349",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 1,
+        "first_category_rank": 7,
+        "category_reciprocal_rank": 0.14285714285714285,
+        "top1_product_id": "IMG_3553_3e30796c"
+      },
+      {
+        "query_image_id": "DS1_IMG_004350",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 1,
+        "first_category_rank": 8,
+        "category_reciprocal_rank": 0.125,
+        "top1_product_id": "IMG_0578-1-_02688771"
+      },
+      {
+        "query_image_id": "DS1_IMG_004351",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "IMG_3538_292c082b"
+      },
+      {
+        "query_image_id": "DS1_IMG_004352",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 1,
+        "first_category_rank": 6,
+        "category_reciprocal_rank": 0.16666666666666666,
+        "top1_product_id": "IMG_3051_9b6f682d"
+      },
+      {
+        "query_image_id": "DS1_IMG_004353",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "IMG_1299_18b800ce"
+      },
+      {
+        "query_image_id": "DS1_IMG_004354",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 3,
+        "category_reciprocal_rank": 0.3333333333333333,
+        "top1_product_id": "IMG_3484_3f353f2e"
+      },
+      {
+        "query_image_id": "DS1_IMG_004355",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 5,
+        "category_reciprocal_rank": 0.2,
+        "top1_product_id": "IMG_2457_895e154f"
+      },
+      {
+        "query_image_id": "DS1_IMG_004356",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_109"
+      },
+      {
+        "query_image_id": "DS1_IMG_004357",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "images-38-"
+      },
+      {
+        "query_image_id": "DS1_IMG_004358",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "necklace_101"
+      },
+      {
+        "query_image_id": "DS1_IMG_004359",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_144"
+      },
+      {
+        "query_image_id": "DS1_IMG_004360",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "necklace_97"
+      },
+      {
+        "query_image_id": "DS1_IMG_004361",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "earring_382"
+      },
+      {
+        "query_image_id": "DS1_IMG_004362",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 4,
+        "category_reciprocal_rank": 0.25,
+        "top1_product_id": "ring_046"
+      },
+      {
+        "query_image_id": "DS1_IMG_004363",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "IMG_0437_87aa8202"
+      },
+      {
+        "query_image_id": "DS1_IMG_004364",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_186"
+      },
+      {
+        "query_image_id": "DS1_IMG_004365",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_186"
+      },
+      {
+        "query_image_id": "DS1_IMG_004366",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_033"
+      },
+      {
+        "query_image_id": "DS1_IMG_004367",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 4,
+        "category_reciprocal_rank": 0.25,
+        "top1_product_id": "other_20241125_122356_fffffbdb"
+      },
+      {
+        "query_image_id": "DS1_IMG_004368",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 5,
+        "category_reciprocal_rank": 0.2,
+        "top1_product_id": "ER10422PL-1_large"
+      },
+      {
+        "query_image_id": "DS1_IMG_004369",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "necklace_174"
+      },
+      {
+        "query_image_id": "DS1_IMG_004370",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_064"
+      },
+      {
+        "query_image_id": "DS1_IMG_004371",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_032"
+      },
+      {
+        "query_image_id": "DS1_IMG_004372",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_054"
+      },
+      {
+        "query_image_id": "DS1_IMG_004373",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 3,
+        "category_reciprocal_rank": 0.3333333333333333,
+        "top1_product_id": "earring_24"
+      },
+      {
+        "query_image_id": "DS1_IMG_004374",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_054"
+      },
+      {
+        "query_image_id": "DS1_IMG_004375",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_254"
+      },
+      {
+        "query_image_id": "DS1_IMG_004376",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 1,
+        "first_category_rank": 6,
+        "category_reciprocal_rank": 0.16666666666666666,
+        "top1_product_id": "ring_154"
+      },
+      {
+        "query_image_id": "DS1_IMG_004377",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "IMG_2380_34440aaf"
+      },
+      {
+        "query_image_id": "DS1_IMG_004378",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_167"
+      },
+      {
+        "query_image_id": "DS1_IMG_004379",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_117"
+      },
+      {
+        "query_image_id": "DS1_IMG_004380",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_117"
+      },
+      {
+        "query_image_id": "DS1_IMG_004381",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_117"
+      },
+      {
+        "query_image_id": "DS1_IMG_004382",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 1,
+        "first_category_rank": 6,
+        "category_reciprocal_rank": 0.16666666666666666,
+        "top1_product_id": "earring_256"
+      },
+      {
+        "query_image_id": "DS1_IMG_004383",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_131"
+      },
+      {
+        "query_image_id": "DS1_IMG_004384",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_191"
+      },
+      {
+        "query_image_id": "DS1_IMG_004385",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 3,
+        "category_reciprocal_rank": 0.3333333333333333,
+        "top1_product_id": "earring_52"
+      },
+      {
+        "query_image_id": "DS1_IMG_004386",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 5,
+        "category_reciprocal_rank": 0.2,
+        "top1_product_id": "IMG_1599_fd3daedc"
+      },
+      {
+        "query_image_id": "DS1_IMG_004387",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_109"
+      },
+      {
+        "query_image_id": "DS1_IMG_004388",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_165"
+      },
+      {
+        "query_image_id": "DS1_IMG_004389",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_077"
+      },
+      {
+        "query_image_id": "DS1_IMG_004390",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "ring_145"
+      },
+      {
+        "query_image_id": "DS1_IMG_004391",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 1,
+        "first_category_rank": 6,
+        "category_reciprocal_rank": 0.16666666666666666,
+        "top1_product_id": "ring_179"
+      },
+      {
+        "query_image_id": "DS1_IMG_004392",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_217"
+      },
+      {
+        "query_image_id": "DS1_IMG_004393",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 3,
+        "category_reciprocal_rank": 0.3333333333333333,
+        "top1_product_id": "earring_267"
+      },
+      {
+        "query_image_id": "DS1_IMG_004394",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "earring_152"
+      },
+      {
+        "query_image_id": "DS1_IMG_004395",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 1,
+        "first_category_rank": 6,
+        "category_reciprocal_rank": 0.16666666666666666,
+        "top1_product_id": "IMG_2878_718682ff"
+      },
+      {
+        "query_image_id": "DS1_IMG_004396",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 4,
+        "category_reciprocal_rank": 0.25,
+        "top1_product_id": "earring_156"
+      },
+      {
+        "query_image_id": "DS1_IMG_004397",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_039"
+      },
+      {
+        "query_image_id": "DS1_IMG_004398",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "ring_084"
+      },
+      {
+        "query_image_id": "DS1_IMG_004399",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 1,
+        "first_category_rank": 10,
+        "category_reciprocal_rank": 0.1,
+        "top1_product_id": "earring_375"
+      },
+      {
+        "query_image_id": "DS1_IMG_004400",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "earring_335"
+      },
+      {
+        "query_image_id": "DS1_IMG_004401",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "earring_320"
+      },
+      {
+        "query_image_id": "DS1_IMG_004402",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "earring_43"
+      },
+      {
+        "query_image_id": "DS1_IMG_004403",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "IMG_0226_7ea5156e"
+      },
+      {
+        "query_image_id": "DS1_IMG_004404",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 3,
+        "category_reciprocal_rank": 0.3333333333333333,
+        "top1_product_id": "bracelet_177"
+      },
+      {
+        "query_image_id": "DS1_IMG_004405",
+        "category": "Earrings",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "earring_99"
+      },
+      {
+        "query_image_id": "DS1_IMG_004406",
+        "category": "Earrings",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "earring_145"
+      },
+      {
+        "query_image_id": "DS1_IMG_004407",
+        "category": "Earrings",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "pirouette_by_harry_winston_earrings__diamond__EADPRFPRSPIR_trans-1h"
+      },
+      {
+        "query_image_id": "DS1_IMG_004408",
+        "category": "Earrings",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "necklace_20241125_122545_3ee281b9"
+      },
+      {
+        "query_image_id": "DS1_IMG_004409",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 3,
+        "category_reciprocal_rank": 0.3333333333333333,
+        "top1_product_id": "IMG_3050_44a1217c"
+      },
+      {
+        "query_image_id": "DS1_IMG_004410",
+        "category": "Earrings",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "ramleela-earrings-black"
+      },
+      {
+        "query_image_id": "DS1_IMG_004411",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "IMG_0616_6ca1e5d7"
+      },
+      {
+        "query_image_id": "DS1_IMG_004412",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 3,
+        "category_reciprocal_rank": 0.3333333333333333,
+        "top1_product_id": "IMG_2539_a7eb0c18"
+      },
+      {
+        "query_image_id": "DS1_IMG_004413",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 1,
+        "first_category_rank": 9,
+        "category_reciprocal_rank": 0.1111111111111111,
+        "top1_product_id": "Screenshot_20181116-202810_1542452183994"
+      },
+      {
+        "query_image_id": "DS1_IMG_004414",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "Screenshot_20181116-202810_1542452183994"
+      },
+      {
+        "query_image_id": "DS1_IMG_004415",
+        "category": "Earrings",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "images-80-"
+      },
+      {
+        "query_image_id": "DS1_IMG_004416",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "IMG_2506_cab336a0"
+      },
+      {
+        "query_image_id": "DS1_IMG_004417",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 5,
+        "category_reciprocal_rank": 0.2,
+        "top1_product_id": "IMG_2918_dbac9ef3"
+      },
+      {
+        "query_image_id": "DS1_IMG_004418",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 3,
+        "category_reciprocal_rank": 0.3333333333333333,
+        "top1_product_id": "bracelet_155"
+      },
+      {
+        "query_image_id": "DS1_IMG_004419",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 1,
+        "first_category_rank": 8,
+        "category_reciprocal_rank": 0.125,
+        "top1_product_id": "bracelet_191"
+      },
+      {
+        "query_image_id": "DS1_IMG_004420",
+        "category": "Earrings",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "images-80-"
+      },
+      {
+        "query_image_id": "DS1_IMG_004421",
+        "category": "Earrings",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "earring_267"
+      },
+      {
+        "query_image_id": "DS1_IMG_004422",
+        "category": "Earrings",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "earring_320"
+      },
+      {
+        "query_image_id": "DS1_IMG_004423",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "bracelet_239"
+      },
+      {
+        "query_image_id": "DS1_IMG_004424",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "ring_142"
+      },
+      {
+        "query_image_id": "DS1_IMG_004425",
+        "category": "Earrings",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "images-25-"
+      },
+      {
+        "query_image_id": "DS1_IMG_004426",
+        "category": "Earrings",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "images-30-"
+      },
+      {
+        "query_image_id": "DS1_IMG_004427",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "IMG_1665_b27c0450"
+      },
+      {
+        "query_image_id": "DS1_IMG_004428",
+        "category": "Earrings",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "earring_358"
+      }
+    ],
+    "brightness": [
+      {
+        "query_image_id": "DS1_IMG_004329",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "other_20241125_122401_fff39199"
+      },
+      {
+        "query_image_id": "DS1_IMG_004330",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 1,
+        "first_category_rank": 9,
+        "category_reciprocal_rank": 0.1111111111111111,
+        "top1_product_id": "IMG_1397_967fc1a8"
+      },
+      {
+        "query_image_id": "DS1_IMG_004331",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 4,
+        "category_reciprocal_rank": 0.25,
+        "top1_product_id": "IMG_2913_9f1d6820"
+      },
+      {
+        "query_image_id": "DS1_IMG_004332",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 3,
+        "category_reciprocal_rank": 0.3333333333333333,
+        "top1_product_id": "Screenshot_20181125-115518_1544080085955"
+      },
+      {
+        "query_image_id": "DS1_IMG_004333",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 5,
+        "category_reciprocal_rank": 0.2,
+        "top1_product_id": "IMG_2185_5d50bf33"
+      },
+      {
+        "query_image_id": "DS1_IMG_004334",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "IMG_3547_6e60f95c"
+      },
+      {
+        "query_image_id": "DS1_IMG_004335",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 1,
+        "first_category_rank": 10,
+        "category_reciprocal_rank": 0.1,
+        "top1_product_id": "Screenshot_20181116-203021_1542449934494"
+      },
+      {
+        "query_image_id": "DS1_IMG_004336",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "Silver_Turquoise_Arts_Crafts_Bracelet_6_1024x1024"
+      },
+      {
+        "query_image_id": "DS1_IMG_004337",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 4,
+        "category_reciprocal_rank": 0.25,
+        "top1_product_id": "necklace_20241125_122545_0202839b"
+      },
+      {
+        "query_image_id": "DS1_IMG_004338",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "IMG_1307_f75838a8"
+      },
+      {
+        "query_image_id": "DS1_IMG_004339",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 1,
+        "first_category_rank": 9,
+        "category_reciprocal_rank": 0.1111111111111111,
+        "top1_product_id": "images-37-"
+      },
+      {
+        "query_image_id": "DS1_IMG_004340",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "IMG_1581_5d961c06"
+      },
+      {
+        "query_image_id": "DS1_IMG_004341",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 1,
+        "first_category_rank": 7,
+        "category_reciprocal_rank": 0.14285714285714285,
+        "top1_product_id": "IMG_0253_868b6574"
+      },
+      {
+        "query_image_id": "DS1_IMG_004342",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "IMG_0421-1-_77c3f84b"
+      },
+      {
+        "query_image_id": "DS1_IMG_004343",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "necklace_20241125_122545_7c7ff7c7"
+      },
+      {
+        "query_image_id": "DS1_IMG_004344",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "IMG_0635-1-_006bcc5b"
+      },
+      {
+        "query_image_id": "DS1_IMG_004345",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "IMG_2279_7458756b"
+      },
+      {
+        "query_image_id": "DS1_IMG_004346",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 5,
+        "category_reciprocal_rank": 0.2,
+        "top1_product_id": "IMG_0457_cb73a0c4"
+      },
+      {
+        "query_image_id": "DS1_IMG_004347",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "IMG_0457_cb73a0c4"
+      },
+      {
+        "query_image_id": "DS1_IMG_004348",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 1,
+        "first_category_rank": 6,
+        "category_reciprocal_rank": 0.16666666666666666,
+        "top1_product_id": "IMG_0229_277b9ba2"
+      },
+      {
+        "query_image_id": "DS1_IMG_004349",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 1,
+        "first_category_rank": 10,
+        "category_reciprocal_rank": 0.1,
+        "top1_product_id": "IMG_3568_63f8bc12"
+      },
+      {
+        "query_image_id": "DS1_IMG_004350",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "IMG_0702_fc96bc4c"
+      },
+      {
+        "query_image_id": "DS1_IMG_004351",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "IMG_3080_7df3193f"
+      },
+      {
+        "query_image_id": "DS1_IMG_004352",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "IMG_2528_8617bac9"
+      },
+      {
+        "query_image_id": "DS1_IMG_004353",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 3,
+        "category_reciprocal_rank": 0.3333333333333333,
+        "top1_product_id": "necklace_20241125_122545_0000c0fc"
+      },
+      {
+        "query_image_id": "DS1_IMG_004354",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 3,
+        "category_reciprocal_rank": 0.3333333333333333,
+        "top1_product_id": "IMG_3484_3f353f2e"
+      },
+      {
+        "query_image_id": "DS1_IMG_004355",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "IMG_2523_6a3a03ba"
+      },
+      {
+        "query_image_id": "DS1_IMG_004356",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_109"
+      },
+      {
+        "query_image_id": "DS1_IMG_004357",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 3,
+        "category_reciprocal_rank": 0.3333333333333333,
+        "top1_product_id": "necklace_195"
+      },
+      {
+        "query_image_id": "DS1_IMG_004358",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 3,
+        "category_reciprocal_rank": 0.3333333333333333,
+        "top1_product_id": "necklace_79"
+      },
+      {
+        "query_image_id": "DS1_IMG_004359",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_144"
+      },
+      {
+        "query_image_id": "DS1_IMG_004360",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 4,
+        "category_reciprocal_rank": 0.25,
+        "top1_product_id": "necklace_97"
+      },
+      {
+        "query_image_id": "DS1_IMG_004361",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 1,
+        "first_category_rank": 7,
+        "category_reciprocal_rank": 0.14285714285714285,
+        "top1_product_id": "beautiful-fancy-peacock-earring-with-hanging-drops-11-250x250"
+      },
+      {
+        "query_image_id": "DS1_IMG_004362",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "images-85-"
+      },
+      {
+        "query_image_id": "DS1_IMG_004363",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "necklace_95"
+      },
+      {
+        "query_image_id": "DS1_IMG_004364",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "ring_062"
+      },
+      {
+        "query_image_id": "DS1_IMG_004365",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_162"
+      },
+      {
+        "query_image_id": "DS1_IMG_004366",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "earring_344"
+      },
+      {
+        "query_image_id": "DS1_IMG_004367",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_031"
+      },
+      {
+        "query_image_id": "DS1_IMG_004368",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_177"
+      },
+      {
+        "query_image_id": "DS1_IMG_004369",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "ring_065"
+      },
+      {
+        "query_image_id": "DS1_IMG_004370",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "necklace_124"
+      },
+      {
+        "query_image_id": "DS1_IMG_004371",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_262"
+      },
+      {
+        "query_image_id": "DS1_IMG_004372",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "earring_89"
+      },
+      {
+        "query_image_id": "DS1_IMG_004373",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "earring_24"
+      },
+      {
+        "query_image_id": "DS1_IMG_004374",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_218"
+      },
+      {
+        "query_image_id": "DS1_IMG_004375",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "earring_40"
+      },
+      {
+        "query_image_id": "DS1_IMG_004376",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 5,
+        "category_reciprocal_rank": 0.2,
+        "top1_product_id": "IMG_2190_2baea64b"
+      },
+      {
+        "query_image_id": "DS1_IMG_004377",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_167"
+      },
+      {
+        "query_image_id": "DS1_IMG_004378",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 4,
+        "category_reciprocal_rank": 0.25,
+        "top1_product_id": "ring_051"
+      },
+      {
+        "query_image_id": "DS1_IMG_004379",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_107"
+      },
+      {
+        "query_image_id": "DS1_IMG_004380",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_107"
+      },
+      {
+        "query_image_id": "DS1_IMG_004381",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_107"
+      },
+      {
+        "query_image_id": "DS1_IMG_004382",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 1,
+        "first_category_rank": 8,
+        "category_reciprocal_rank": 0.125,
+        "top1_product_id": "IMG_2281_bdfa2c15"
+      },
+      {
+        "query_image_id": "DS1_IMG_004383",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "necklace_133"
+      },
+      {
+        "query_image_id": "DS1_IMG_004384",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_086"
+      },
+      {
+        "query_image_id": "DS1_IMG_004385",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 3,
+        "category_reciprocal_rank": 0.3333333333333333,
+        "top1_product_id": "earring_24"
+      },
+      {
+        "query_image_id": "DS1_IMG_004386",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 1,
+        "first_category_rank": 7,
+        "category_reciprocal_rank": 0.14285714285714285,
+        "top1_product_id": "necklace_78"
+      },
+      {
+        "query_image_id": "DS1_IMG_004387",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_107"
+      },
+      {
+        "query_image_id": "DS1_IMG_004388",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 4,
+        "category_reciprocal_rank": 0.25,
+        "top1_product_id": "necklace_153"
+      },
+      {
+        "query_image_id": "DS1_IMG_004389",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "ring_062"
+      },
+      {
+        "query_image_id": "DS1_IMG_004390",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 4,
+        "category_reciprocal_rank": 0.25,
+        "top1_product_id": "images-40-"
+      },
+      {
+        "query_image_id": "DS1_IMG_004391",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_228"
+      },
+      {
+        "query_image_id": "DS1_IMG_004392",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_159"
+      },
+      {
+        "query_image_id": "DS1_IMG_004393",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 3,
+        "category_reciprocal_rank": 0.3333333333333333,
+        "top1_product_id": "earring_334"
+      },
+      {
+        "query_image_id": "DS1_IMG_004394",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_262"
+      },
+      {
+        "query_image_id": "DS1_IMG_004395",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 5,
+        "category_reciprocal_rank": 0.2,
+        "top1_product_id": "earring_18"
+      },
+      {
+        "query_image_id": "DS1_IMG_004396",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_170"
+      },
+      {
+        "query_image_id": "DS1_IMG_004397",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_077"
+      },
+      {
+        "query_image_id": "DS1_IMG_004398",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 4,
+        "category_reciprocal_rank": 0.25,
+        "top1_product_id": "ring_080"
+      },
+      {
+        "query_image_id": "DS1_IMG_004399",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 4,
+        "category_reciprocal_rank": 0.25,
+        "top1_product_id": "earring_395"
+      },
+      {
+        "query_image_id": "DS1_IMG_004400",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "earring_313"
+      },
+      {
+        "query_image_id": "DS1_IMG_004401",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 1,
+        "first_category_rank": 8,
+        "category_reciprocal_rank": 0.125,
+        "top1_product_id": "earring_106"
+      },
+      {
+        "query_image_id": "DS1_IMG_004402",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_285"
+      },
+      {
+        "query_image_id": "DS1_IMG_004403",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "IMG_3537_d190bcdd"
+      },
+      {
+        "query_image_id": "DS1_IMG_004404",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 4,
+        "category_reciprocal_rank": 0.25,
+        "top1_product_id": "bracelet_036"
+      },
+      {
+        "query_image_id": "DS1_IMG_004405",
+        "category": "Earrings",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "earring_106"
+      },
+      {
+        "query_image_id": "DS1_IMG_004406",
+        "category": "Earrings",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "earring_52"
+      },
+      {
+        "query_image_id": "DS1_IMG_004407",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 4,
+        "category_reciprocal_rank": 0.25,
+        "top1_product_id": "IMG_3543_1d658345"
+      },
+      {
+        "query_image_id": "DS1_IMG_004408",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "IMG_0830_8ad47e30"
+      },
+      {
+        "query_image_id": "DS1_IMG_004409",
+        "category": "Earrings",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "images-82-"
+      },
+      {
+        "query_image_id": "DS1_IMG_004410",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 3,
+        "category_reciprocal_rank": 0.3333333333333333,
+        "top1_product_id": "IMG_0593_9dbd2a91"
+      },
+      {
+        "query_image_id": "DS1_IMG_004411",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "IMG_0669_957b4e82"
+      },
+      {
+        "query_image_id": "DS1_IMG_004412",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 3,
+        "category_reciprocal_rank": 0.3333333333333333,
+        "top1_product_id": "IMG_2539_a7eb0c18"
+      },
+      {
+        "query_image_id": "DS1_IMG_004413",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 3,
+        "category_reciprocal_rank": 0.3333333333333333,
+        "top1_product_id": "IMG_0387_0c33e2d2"
+      },
+      {
+        "query_image_id": "DS1_IMG_004414",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 3,
+        "category_reciprocal_rank": 0.3333333333333333,
+        "top1_product_id": "IMG_0387_0c33e2d2"
+      },
+      {
+        "query_image_id": "DS1_IMG_004415",
+        "category": "Earrings",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "IMG_2157_340a75b2"
+      },
+      {
+        "query_image_id": "DS1_IMG_004416",
+        "category": "Earrings",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "IMG_2500_33317627"
+      },
+      {
+        "query_image_id": "DS1_IMG_004417",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 1,
+        "first_category_rank": 6,
+        "category_reciprocal_rank": 0.16666666666666666,
+        "top1_product_id": "IMG_0550_811f0770"
+      },
+      {
+        "query_image_id": "DS1_IMG_004418",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "necklace_174"
+      },
+      {
+        "query_image_id": "DS1_IMG_004419",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "bracelet_262"
+      },
+      {
+        "query_image_id": "DS1_IMG_004420",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "ring_111"
+      },
+      {
+        "query_image_id": "DS1_IMG_004421",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 4,
+        "category_reciprocal_rank": 0.25,
+        "top1_product_id": "bracelet_158"
+      },
+      {
+        "query_image_id": "DS1_IMG_004422",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "ring_155"
+      },
+      {
+        "query_image_id": "DS1_IMG_004423",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "necklace_153"
+      },
+      {
+        "query_image_id": "DS1_IMG_004424",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 1,
+        "first_category_rank": 6,
+        "category_reciprocal_rank": 0.16666666666666666,
+        "top1_product_id": "ring_135"
+      },
+      {
+        "query_image_id": "DS1_IMG_004425",
+        "category": "Earrings",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "earring_94"
+      },
+      {
+        "query_image_id": "DS1_IMG_004426",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "ring_162"
+      },
+      {
+        "query_image_id": "DS1_IMG_004427",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 3,
+        "category_reciprocal_rank": 0.3333333333333333,
+        "top1_product_id": "ring_155"
+      },
+      {
+        "query_image_id": "DS1_IMG_004428",
+        "category": "Earrings",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "earring_393"
+      }
+    ],
+    "center_crop": [
+      {
+        "query_image_id": "DS1_IMG_004329",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 1,
+        "first_category_rank": 10,
+        "category_reciprocal_rank": 0.1,
+        "top1_product_id": "IMG_3578_a65f2d66"
+      },
+      {
+        "query_image_id": "DS1_IMG_004330",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "IMG_1409_72ebef04"
+      },
+      {
+        "query_image_id": "DS1_IMG_004331",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 5,
+        "category_reciprocal_rank": 0.2,
+        "top1_product_id": "IMG_0451_412d7d51"
+      },
+      {
+        "query_image_id": "DS1_IMG_004332",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "IMG_0835_6fd40262"
+      },
+      {
+        "query_image_id": "DS1_IMG_004333",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 1,
+        "first_category_rank": 6,
+        "category_reciprocal_rank": 0.16666666666666666,
+        "top1_product_id": "IMG_2422_c277bf70"
+      },
+      {
+        "query_image_id": "DS1_IMG_004334",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "IMG_0447_50c25d6a"
+      },
+      {
+        "query_image_id": "DS1_IMG_004335",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 1,
+        "first_category_rank": 6,
+        "category_reciprocal_rank": 0.16666666666666666,
+        "top1_product_id": "IMG_1862_cff5a31d"
+      },
+      {
+        "query_image_id": "DS1_IMG_004336",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 3,
+        "category_reciprocal_rank": 0.3333333333333333,
+        "top1_product_id": "IMG_3621_d081dd9f"
+      },
+      {
+        "query_image_id": "DS1_IMG_004337",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "necklace_20241125_122545_7c7f44b3"
+      },
+      {
+        "query_image_id": "DS1_IMG_004338",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 4,
+        "category_reciprocal_rank": 0.25,
+        "top1_product_id": "necklace_20241125_122545_0efe8383"
+      },
+      {
+        "query_image_id": "DS1_IMG_004339",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 1,
+        "first_category_rank": 9,
+        "category_reciprocal_rank": 0.1111111111111111,
+        "top1_product_id": "IMG_3107_49466a60"
+      },
+      {
+        "query_image_id": "DS1_IMG_004340",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "necklace_20241125_122545_81819999"
+      },
+      {
+        "query_image_id": "DS1_IMG_004341",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 1,
+        "first_category_rank": 10,
+        "category_reciprocal_rank": 0.1,
+        "top1_product_id": "IMG_1455_0130a1fb"
+      },
+      {
+        "query_image_id": "DS1_IMG_004342",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 3,
+        "category_reciprocal_rank": 0.3333333333333333,
+        "top1_product_id": "IMG_0187_fa1879f6"
+      },
+      {
+        "query_image_id": "DS1_IMG_004343",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "IMG_1406_58d593d9"
+      },
+      {
+        "query_image_id": "DS1_IMG_004344",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 1,
+        "first_category_rank": 10,
+        "category_reciprocal_rank": 0.1,
+        "top1_product_id": "IMG_2269_56abfe73"
+      },
+      {
+        "query_image_id": "DS1_IMG_004345",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "ring_085"
+      },
+      {
+        "query_image_id": "DS1_IMG_004346",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 1,
+        "first_category_rank": 7,
+        "category_reciprocal_rank": 0.14285714285714285,
+        "top1_product_id": "IMG_1299_18b800ce"
+      },
+      {
+        "query_image_id": "DS1_IMG_004347",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 1,
+        "first_category_rank": 9,
+        "category_reciprocal_rank": 0.1111111111111111,
+        "top1_product_id": "IMG_2137_46d22b6f"
+      },
+      {
+        "query_image_id": "DS1_IMG_004348",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "IMG_2521_2f7dd27c"
+      },
+      {
+        "query_image_id": "DS1_IMG_004349",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 1,
+        "first_category_rank": 9,
+        "category_reciprocal_rank": 0.1111111111111111,
+        "top1_product_id": "IMG_0230_f447860f"
+      },
+      {
+        "query_image_id": "DS1_IMG_004350",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "IMG_0578-1-_02688771"
+      },
+      {
+        "query_image_id": "DS1_IMG_004351",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "IMG_3530_ca9ed101"
+      },
+      {
+        "query_image_id": "DS1_IMG_004352",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 5,
+        "category_reciprocal_rank": 0.2,
+        "top1_product_id": "IMG_3051_9b6f682d"
+      },
+      {
+        "query_image_id": "DS1_IMG_004353",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 1,
+        "first_category_rank": 9,
+        "category_reciprocal_rank": 0.1111111111111111,
+        "top1_product_id": "IMG_2269_56abfe73"
+      },
+      {
+        "query_image_id": "DS1_IMG_004354",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 3,
+        "category_reciprocal_rank": 0.3333333333333333,
+        "top1_product_id": "IMG_1339_be32dfe7"
+      },
+      {
+        "query_image_id": "DS1_IMG_004355",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 5,
+        "category_reciprocal_rank": 0.2,
+        "top1_product_id": "IMG_2914_f2b1f19b"
+      },
+      {
+        "query_image_id": "DS1_IMG_004356",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_109"
+      },
+      {
+        "query_image_id": "DS1_IMG_004357",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_075"
+      },
+      {
+        "query_image_id": "DS1_IMG_004358",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 4,
+        "category_reciprocal_rank": 0.25,
+        "top1_product_id": "IMG_2147_98ed9476"
+      },
+      {
+        "query_image_id": "DS1_IMG_004359",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 4,
+        "category_reciprocal_rank": 0.25,
+        "top1_product_id": "necklace_82"
+      },
+      {
+        "query_image_id": "DS1_IMG_004360",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 5,
+        "category_reciprocal_rank": 0.2,
+        "top1_product_id": "necklace_147"
+      },
+      {
+        "query_image_id": "DS1_IMG_004361",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_158"
+      },
+      {
+        "query_image_id": "DS1_IMG_004362",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_167"
+      },
+      {
+        "query_image_id": "DS1_IMG_004363",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "IMG_1506_0374e2bd"
+      },
+      {
+        "query_image_id": "DS1_IMG_004364",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_130"
+      },
+      {
+        "query_image_id": "DS1_IMG_004365",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_232"
+      },
+      {
+        "query_image_id": "DS1_IMG_004366",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "earring_450"
+      },
+      {
+        "query_image_id": "DS1_IMG_004367",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 3,
+        "category_reciprocal_rank": 0.3333333333333333,
+        "top1_product_id": "images-82-"
+      },
+      {
+        "query_image_id": "DS1_IMG_004368",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 3,
+        "category_reciprocal_rank": 0.3333333333333333,
+        "top1_product_id": "earring_210"
+      },
+      {
+        "query_image_id": "DS1_IMG_004369",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "earring_135"
+      },
+      {
+        "query_image_id": "DS1_IMG_004370",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_250"
+      },
+      {
+        "query_image_id": "DS1_IMG_004371",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "earring_20241125_122504_787f7fc3"
+      },
+      {
+        "query_image_id": "DS1_IMG_004372",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_023"
+      },
+      {
+        "query_image_id": "DS1_IMG_004373",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 4,
+        "category_reciprocal_rank": 0.25,
+        "top1_product_id": "earring_24"
+      },
+      {
+        "query_image_id": "DS1_IMG_004374",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 3,
+        "category_reciprocal_rank": 0.3333333333333333,
+        "top1_product_id": "ring_112"
+      },
+      {
+        "query_image_id": "DS1_IMG_004375",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_039"
+      },
+      {
+        "query_image_id": "DS1_IMG_004376",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "IMG_2919_e957f2e2"
+      },
+      {
+        "query_image_id": "DS1_IMG_004377",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_167"
+      },
+      {
+        "query_image_id": "DS1_IMG_004378",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "IMG_2919_e957f2e2"
+      },
+      {
+        "query_image_id": "DS1_IMG_004379",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_109"
+      },
+      {
+        "query_image_id": "DS1_IMG_004380",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_109"
+      },
+      {
+        "query_image_id": "DS1_IMG_004381",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_109"
+      },
+      {
+        "query_image_id": "DS1_IMG_004382",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_124"
+      },
+      {
+        "query_image_id": "DS1_IMG_004383",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_141"
+      },
+      {
+        "query_image_id": "DS1_IMG_004384",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "earring_40"
+      },
+      {
+        "query_image_id": "DS1_IMG_004385",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "earring_47"
+      },
+      {
+        "query_image_id": "DS1_IMG_004386",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 4,
+        "category_reciprocal_rank": 0.25,
+        "top1_product_id": "IMG_1599_fd3daedc"
+      },
+      {
+        "query_image_id": "DS1_IMG_004387",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_109"
+      },
+      {
+        "query_image_id": "DS1_IMG_004388",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_146"
+      },
+      {
+        "query_image_id": "DS1_IMG_004389",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "ring_062"
+      },
+      {
+        "query_image_id": "DS1_IMG_004390",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_233"
+      },
+      {
+        "query_image_id": "DS1_IMG_004391",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 1,
+        "first_category_rank": 9,
+        "category_reciprocal_rank": 0.1111111111111111,
+        "top1_product_id": "ring_179"
+      },
+      {
+        "query_image_id": "DS1_IMG_004392",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_232"
+      },
+      {
+        "query_image_id": "DS1_IMG_004393",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 3,
+        "category_reciprocal_rank": 0.3333333333333333,
+        "top1_product_id": "earring_334"
+      },
+      {
+        "query_image_id": "DS1_IMG_004394",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_064"
+      },
+      {
+        "query_image_id": "DS1_IMG_004395",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 4,
+        "category_reciprocal_rank": 0.25,
+        "top1_product_id": "earring_179"
+      },
+      {
+        "query_image_id": "DS1_IMG_004396",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_067"
+      },
+      {
+        "query_image_id": "DS1_IMG_004397",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_217"
+      },
+      {
+        "query_image_id": "DS1_IMG_004398",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "ring_111"
+      },
+      {
+        "query_image_id": "DS1_IMG_004399",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 3,
+        "category_reciprocal_rank": 0.3333333333333333,
+        "top1_product_id": "earring_334"
+      },
+      {
+        "query_image_id": "DS1_IMG_004400",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "earring_335"
+      },
+      {
+        "query_image_id": "DS1_IMG_004401",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "earring_320"
+      },
+      {
+        "query_image_id": "DS1_IMG_004402",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 1,
+        "first_category_rank": 7,
+        "category_reciprocal_rank": 0.14285714285714285,
+        "top1_product_id": "earring_43"
+      },
+      {
+        "query_image_id": "DS1_IMG_004403",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "necklace_20241125_122545_0e0f0e0e"
+      },
+      {
+        "query_image_id": "DS1_IMG_004404",
+        "category": "Earrings",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "images-29-"
+      },
+      {
+        "query_image_id": "DS1_IMG_004405",
+        "category": "Earrings",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "earring_157"
+      },
+      {
+        "query_image_id": "DS1_IMG_004406",
+        "category": "Earrings",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "earring_334"
+      },
+      {
+        "query_image_id": "DS1_IMG_004407",
+        "category": "Earrings",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "pirouette_by_harry_winston_earrings__diamond__EADPRFPRSPIR_trans-1h"
+      },
+      {
+        "query_image_id": "DS1_IMG_004408",
+        "category": "Earrings",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "necklace_20241125_122545_3ee281b9"
+      },
+      {
+        "query_image_id": "DS1_IMG_004409",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 1,
+        "first_category_rank": 6,
+        "category_reciprocal_rank": 0.16666666666666666,
+        "top1_product_id": "IMG_0430-1-_e8eb3b89"
+      },
+      {
+        "query_image_id": "DS1_IMG_004410",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 3,
+        "category_reciprocal_rank": 0.3333333333333333,
+        "top1_product_id": "necklace_20241125_122545_383e3ebc"
+      },
+      {
+        "query_image_id": "DS1_IMG_004411",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "IMG_0616_6ca1e5d7"
+      },
+      {
+        "query_image_id": "DS1_IMG_004412",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 3,
+        "category_reciprocal_rank": 0.3333333333333333,
+        "top1_product_id": "IMG_2539_a7eb0c18"
+      },
+      {
+        "query_image_id": "DS1_IMG_004413",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 1,
+        "first_category_rank": 9,
+        "category_reciprocal_rank": 0.1111111111111111,
+        "top1_product_id": "IMG_0432_ebfd19c6"
+      },
+      {
+        "query_image_id": "DS1_IMG_004414",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "Screenshot_20181116-202810_1542452183994"
+      },
+      {
+        "query_image_id": "DS1_IMG_004415",
+        "category": "Earrings",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "IMG_2157_340a75b2"
+      },
+      {
+        "query_image_id": "DS1_IMG_004416",
+        "category": "Earrings",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "IMG_2139_3c14d83a"
+      },
+      {
+        "query_image_id": "DS1_IMG_004417",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 5,
+        "category_reciprocal_rank": 0.2,
+        "top1_product_id": "IMG_2918_dbac9ef3"
+      },
+      {
+        "query_image_id": "DS1_IMG_004418",
+        "category": "Earrings",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "earring_334"
+      },
+      {
+        "query_image_id": "DS1_IMG_004419",
+        "category": "Earrings",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "earring_40"
+      },
+      {
+        "query_image_id": "DS1_IMG_004420",
+        "category": "Earrings",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "IMG_2157_340a75b2"
+      },
+      {
+        "query_image_id": "DS1_IMG_004421",
+        "category": "Earrings",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "earring_132"
+      },
+      {
+        "query_image_id": "DS1_IMG_004422",
+        "category": "Earrings",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "earring_325"
+      },
+      {
+        "query_image_id": "DS1_IMG_004423",
+        "category": "Earrings",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "beautiful-fancy-peacock-earring-with-hanging-drops-11-250x250"
+      },
+      {
+        "query_image_id": "DS1_IMG_004424",
+        "category": "Earrings",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "earring_255"
+      },
+      {
+        "query_image_id": "DS1_IMG_004425",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 5,
+        "category_reciprocal_rank": 0.2,
+        "top1_product_id": "ring_113"
+      },
+      {
+        "query_image_id": "DS1_IMG_004426",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 3,
+        "category_reciprocal_rank": 0.3333333333333333,
+        "top1_product_id": "ring_083"
+      },
+      {
+        "query_image_id": "DS1_IMG_004427",
+        "category": "Earrings",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "earring_163"
+      },
+      {
+        "query_image_id": "DS1_IMG_004428",
+        "category": "Earrings",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "earring_422"
+      }
+    ],
+    "resize": [
+      {
+        "query_image_id": "DS1_IMG_004329",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 3,
+        "category_reciprocal_rank": 0.3333333333333333,
+        "top1_product_id": "IMG_3578_a65f2d66"
+      },
+      {
+        "query_image_id": "DS1_IMG_004330",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "necklace_20241125_122545_40014043"
+      },
+      {
+        "query_image_id": "DS1_IMG_004331",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "IMG_0835_6fd40262"
+      },
+      {
+        "query_image_id": "DS1_IMG_004332",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 1,
+        "first_category_rank": 6,
+        "category_reciprocal_rank": 0.16666666666666666,
+        "top1_product_id": "earring_129"
+      },
+      {
+        "query_image_id": "DS1_IMG_004333",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 1,
+        "first_category_rank": 7,
+        "category_reciprocal_rank": 0.14285714285714285,
+        "top1_product_id": "IMG_2422_c277bf70"
+      },
+      {
+        "query_image_id": "DS1_IMG_004334",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "IMG_0828_1a7ccf98"
+      },
+      {
+        "query_image_id": "DS1_IMG_004335",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 4,
+        "category_reciprocal_rank": 0.25,
+        "top1_product_id": "IMG_1862_cff5a31d"
+      },
+      {
+        "query_image_id": "DS1_IMG_004336",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 1,
+        "first_category_rank": 7,
+        "category_reciprocal_rank": 0.14285714285714285,
+        "top1_product_id": "IMG_3521_16d62444"
+      },
+      {
+        "query_image_id": "DS1_IMG_004337",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "IMG_2180_8bf8633d"
+      },
+      {
+        "query_image_id": "DS1_IMG_004338",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 3,
+        "category_reciprocal_rank": 0.3333333333333333,
+        "top1_product_id": "IMG_0607_b8d72a77"
+      },
+      {
+        "query_image_id": "DS1_IMG_004339",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 1,
+        "first_category_rank": 9,
+        "category_reciprocal_rank": 0.1111111111111111,
+        "top1_product_id": "IMG_3107_49466a60"
+      },
+      {
+        "query_image_id": "DS1_IMG_004340",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 1,
+        "first_category_rank": 7,
+        "category_reciprocal_rank": 0.14285714285714285,
+        "top1_product_id": "IMG_3054_8e0538e4"
+      },
+      {
+        "query_image_id": "DS1_IMG_004341",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "IMG_2196_45f1b723"
+      },
+      {
+        "query_image_id": "DS1_IMG_004342",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 3,
+        "category_reciprocal_rank": 0.3333333333333333,
+        "top1_product_id": "IMG_0187_fa1879f6"
+      },
+      {
+        "query_image_id": "DS1_IMG_004343",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "IMG_0387_0c33e2d2"
+      },
+      {
+        "query_image_id": "DS1_IMG_004344",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "IMG_2305_f7da93de"
+      },
+      {
+        "query_image_id": "DS1_IMG_004345",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 1,
+        "first_category_rank": 9,
+        "category_reciprocal_rank": 0.1111111111111111,
+        "top1_product_id": "IMG_1573_3b6aa91a"
+      },
+      {
+        "query_image_id": "DS1_IMG_004346",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 4,
+        "category_reciprocal_rank": 0.25,
+        "top1_product_id": "IMG_1456_e4316976"
+      },
+      {
+        "query_image_id": "DS1_IMG_004347",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "IMG_2212_90baac46"
+      },
+      {
+        "query_image_id": "DS1_IMG_004348",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "IMG_2521_2f7dd27c"
+      },
+      {
+        "query_image_id": "DS1_IMG_004349",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 1,
+        "first_category_rank": 6,
+        "category_reciprocal_rank": 0.16666666666666666,
+        "top1_product_id": "IMG_2236_87c45f0e"
+      },
+      {
+        "query_image_id": "DS1_IMG_004350",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 1,
+        "first_category_rank": 9,
+        "category_reciprocal_rank": 0.1111111111111111,
+        "top1_product_id": "IMG_0702_fc96bc4c"
+      },
+      {
+        "query_image_id": "DS1_IMG_004351",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "IMG_3530_ca9ed101"
+      },
+      {
+        "query_image_id": "DS1_IMG_004352",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 5,
+        "category_reciprocal_rank": 0.2,
+        "top1_product_id": "IMG_3051_9b6f682d"
+      },
+      {
+        "query_image_id": "DS1_IMG_004353",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "IMG_2305_f7da93de"
+      },
+      {
+        "query_image_id": "DS1_IMG_004354",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 1,
+        "first_category_rank": 6,
+        "category_reciprocal_rank": 0.16666666666666666,
+        "top1_product_id": "IMG_1301_a537f31e"
+      },
+      {
+        "query_image_id": "DS1_IMG_004355",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "IMG_2939_24d96ddc"
+      },
+      {
+        "query_image_id": "DS1_IMG_004356",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_109"
+      },
+      {
+        "query_image_id": "DS1_IMG_004357",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "necklace_195"
+      },
+      {
+        "query_image_id": "DS1_IMG_004358",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_170"
+      },
+      {
+        "query_image_id": "DS1_IMG_004359",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 4,
+        "category_reciprocal_rank": 0.25,
+        "top1_product_id": "necklace_181"
+      },
+      {
+        "query_image_id": "DS1_IMG_004360",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 3,
+        "category_reciprocal_rank": 0.3333333333333333,
+        "top1_product_id": "necklace_162"
+      },
+      {
+        "query_image_id": "DS1_IMG_004361",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_158"
+      },
+      {
+        "query_image_id": "DS1_IMG_004362",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_067"
+      },
+      {
+        "query_image_id": "DS1_IMG_004363",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_075"
+      },
+      {
+        "query_image_id": "DS1_IMG_004364",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_130"
+      },
+      {
+        "query_image_id": "DS1_IMG_004365",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_130"
+      },
+      {
+        "query_image_id": "DS1_IMG_004366",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 1,
+        "first_category_rank": 8,
+        "category_reciprocal_rank": 0.125,
+        "top1_product_id": "earring_272"
+      },
+      {
+        "query_image_id": "DS1_IMG_004367",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "IMG_2221_e360d547"
+      },
+      {
+        "query_image_id": "DS1_IMG_004368",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 4,
+        "category_reciprocal_rank": 0.25,
+        "top1_product_id": "IMG_2248_7b9276ab"
+      },
+      {
+        "query_image_id": "DS1_IMG_004369",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "ring_139"
+      },
+      {
+        "query_image_id": "DS1_IMG_004370",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_157"
+      },
+      {
+        "query_image_id": "DS1_IMG_004371",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_262"
+      },
+      {
+        "query_image_id": "DS1_IMG_004372",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_063"
+      },
+      {
+        "query_image_id": "DS1_IMG_004373",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "earring_24"
+      },
+      {
+        "query_image_id": "DS1_IMG_004374",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "necklace_84"
+      },
+      {
+        "query_image_id": "DS1_IMG_004375",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_077"
+      },
+      {
+        "query_image_id": "DS1_IMG_004376",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 3,
+        "category_reciprocal_rank": 0.3333333333333333,
+        "top1_product_id": "necklace_91"
+      },
+      {
+        "query_image_id": "DS1_IMG_004377",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_167"
+      },
+      {
+        "query_image_id": "DS1_IMG_004378",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_170"
+      },
+      {
+        "query_image_id": "DS1_IMG_004379",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_109"
+      },
+      {
+        "query_image_id": "DS1_IMG_004380",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_109"
+      },
+      {
+        "query_image_id": "DS1_IMG_004381",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_109"
+      },
+      {
+        "query_image_id": "DS1_IMG_004382",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_124"
+      },
+      {
+        "query_image_id": "DS1_IMG_004383",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 3,
+        "category_reciprocal_rank": 0.3333333333333333,
+        "top1_product_id": "IMG_1356_b0c1730a"
+      },
+      {
+        "query_image_id": "DS1_IMG_004384",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "sd_hol17_b429g_philippa_hero"
+      },
+      {
+        "query_image_id": "DS1_IMG_004385",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_061"
+      },
+      {
+        "query_image_id": "DS1_IMG_004386",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "ring_074"
+      },
+      {
+        "query_image_id": "DS1_IMG_004387",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_109"
+      },
+      {
+        "query_image_id": "DS1_IMG_004388",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 3,
+        "category_reciprocal_rank": 0.3333333333333333,
+        "top1_product_id": "necklace_153"
+      },
+      {
+        "query_image_id": "DS1_IMG_004389",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_209"
+      },
+      {
+        "query_image_id": "DS1_IMG_004390",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 3,
+        "category_reciprocal_rank": 0.3333333333333333,
+        "top1_product_id": "ariel-elegant-diamond-earrings-jle139-1-750x500"
+      },
+      {
+        "query_image_id": "DS1_IMG_004391",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 1,
+        "first_category_rank": 6,
+        "category_reciprocal_rank": 0.16666666666666666,
+        "top1_product_id": "IMG_0926_6340d852"
+      },
+      {
+        "query_image_id": "DS1_IMG_004392",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_209"
+      },
+      {
+        "query_image_id": "DS1_IMG_004393",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "earring_334"
+      },
+      {
+        "query_image_id": "DS1_IMG_004394",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_067"
+      },
+      {
+        "query_image_id": "DS1_IMG_004395",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "earring_404"
+      },
+      {
+        "query_image_id": "DS1_IMG_004396",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 3,
+        "category_reciprocal_rank": 0.3333333333333333,
+        "top1_product_id": "necklace_153"
+      },
+      {
+        "query_image_id": "DS1_IMG_004397",
+        "category": "Bracelet",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "bracelet_077"
+      },
+      {
+        "query_image_id": "DS1_IMG_004398",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "ring_080"
+      },
+      {
+        "query_image_id": "DS1_IMG_004399",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "necklace_175"
+      },
+      {
+        "query_image_id": "DS1_IMG_004400",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "earring_157"
+      },
+      {
+        "query_image_id": "DS1_IMG_004401",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "earring_320"
+      },
+      {
+        "query_image_id": "DS1_IMG_004402",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "ring_128"
+      },
+      {
+        "query_image_id": "DS1_IMG_004403",
+        "category": "Bracelet",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "IMG_2822_df249f8d"
+      },
+      {
+        "query_image_id": "DS1_IMG_004404",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 3,
+        "category_reciprocal_rank": 0.3333333333333333,
+        "top1_product_id": "bracelet_062"
+      },
+      {
+        "query_image_id": "DS1_IMG_004405",
+        "category": "Earrings",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "earring_340"
+      },
+      {
+        "query_image_id": "DS1_IMG_004406",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "bracelet_169"
+      },
+      {
+        "query_image_id": "DS1_IMG_004407",
+        "category": "Earrings",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "pirouette_by_harry_winston_earrings__diamond__EADPRFPRSPIR_trans-1h"
+      },
+      {
+        "query_image_id": "DS1_IMG_004408",
+        "category": "Earrings",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "IMG_2139_3c14d83a"
+      },
+      {
+        "query_image_id": "DS1_IMG_004409",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "IMG_2327_110cc7f5"
+      },
+      {
+        "query_image_id": "DS1_IMG_004410",
+        "category": "Earrings",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "ramleela-earrings-black"
+      },
+      {
+        "query_image_id": "DS1_IMG_004411",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 0,
+        "top10_category_hit": 0,
+        "first_category_rank": null,
+        "category_reciprocal_rank": 0.0,
+        "top1_product_id": "IMG_0616_6ca1e5d7"
+      },
+      {
+        "query_image_id": "DS1_IMG_004412",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 3,
+        "category_reciprocal_rank": 0.3333333333333333,
+        "top1_product_id": "IMG_2539_a7eb0c18"
+      },
+      {
+        "query_image_id": "DS1_IMG_004413",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "IMG_3474_e19ef664"
+      },
+      {
+        "query_image_id": "DS1_IMG_004414",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 4,
+        "category_reciprocal_rank": 0.25,
+        "top1_product_id": "IMG_3474_e19ef664"
+      },
+      {
+        "query_image_id": "DS1_IMG_004415",
+        "category": "Earrings",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "images-80-"
+      },
+      {
+        "query_image_id": "DS1_IMG_004416",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "IMG_2506_cab336a0"
+      },
+      {
+        "query_image_id": "DS1_IMG_004417",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 5,
+        "category_reciprocal_rank": 0.2,
+        "top1_product_id": "IMG_2918_dbac9ef3"
+      },
+      {
+        "query_image_id": "DS1_IMG_004418",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "bracelet_248"
+      },
+      {
+        "query_image_id": "DS1_IMG_004419",
+        "category": "Earrings",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "Sublime-Gold-Drop-Earrings-2"
+      },
+      {
+        "query_image_id": "DS1_IMG_004420",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "ring_111"
+      },
+      {
+        "query_image_id": "DS1_IMG_004421",
+        "category": "Earrings",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "earring_334"
+      },
+      {
+        "query_image_id": "DS1_IMG_004422",
+        "category": "Earrings",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "earring_340"
+      },
+      {
+        "query_image_id": "DS1_IMG_004423",
+        "category": "Earrings",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "beautiful-fancy-peacock-earring-with-hanging-drops-11-250x250"
+      },
+      {
+        "query_image_id": "DS1_IMG_004424",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "ring_071"
+      },
+      {
+        "query_image_id": "DS1_IMG_004425",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 5,
+        "category_reciprocal_rank": 0.2,
+        "top1_product_id": "IMG_1422_cf8efbc5"
+      },
+      {
+        "query_image_id": "DS1_IMG_004426",
+        "category": "Earrings",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "earring_185"
+      },
+      {
+        "query_image_id": "DS1_IMG_004427",
+        "category": "Earrings",
+        "top1_category_hit": 0,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 2,
+        "category_reciprocal_rank": 0.5,
+        "top1_product_id": "ring_078"
+      },
+      {
+        "query_image_id": "DS1_IMG_004428",
+        "category": "Earrings",
+        "top1_category_hit": 1,
+        "top5_category_hit": 1,
+        "top10_category_hit": 1,
+        "first_category_rank": 1,
+        "category_reciprocal_rank": 1.0,
+        "top1_product_id": "earring_159"
+      }
+    ]
+  }
+}
