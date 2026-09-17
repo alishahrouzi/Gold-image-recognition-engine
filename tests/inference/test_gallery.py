@@ -9,7 +9,12 @@ import pytest
 import torch
 
 from retrieval.gallery import Gallery
-from src.inference.gallery import GalleryLoader, GalleryRuntimeConfig, load_runtime_gallery
+from src.inference.gallery import (
+    DEFAULT_SIAMESE_MODEL,
+    GalleryLoader,
+    GalleryRuntimeConfig,
+    load_runtime_gallery,
+)
 
 
 def _metadata(image_id: str, product_id: str = "p1", category: str = "Ring") -> dict:
@@ -44,7 +49,9 @@ def _gallery() -> Gallery:
     return Gallery(embeddings=embeddings, metadata=metadata)
 
 
-def _write_gallery(root: Path, model_name: str = "s3.5_random") -> tuple[Path, Path]:
+def _write_gallery(
+    root: Path, model_name: str = DEFAULT_SIAMESE_MODEL
+) -> tuple[Path, Path]:
     directory = root / model_name
     directory.mkdir(parents=True)
     embedding_path = directory / "gallery_embeddings.pt"
@@ -56,7 +63,11 @@ def _write_gallery(root: Path, model_name: str = "s3.5_random") -> tuple[Path, P
 def test_load_reads_embeddings_and_metadata_into_memory(tmp_path: Path) -> None:
     embedding_path, metadata_path = _write_gallery(tmp_path)
     loader = GalleryLoader(
-        GalleryRuntimeConfig(model_name="s3.5_random", root=tmp_path, expected_embedding_dim=3)
+        GalleryRuntimeConfig(
+            model_name=DEFAULT_SIAMESE_MODEL,
+            root=tmp_path,
+            expected_embedding_dim=3,
+        )
     )
 
     runtime = loader.load()
@@ -64,7 +75,7 @@ def test_load_reads_embeddings_and_metadata_into_memory(tmp_path: Path) -> None:
     assert runtime.size == 3
     assert runtime.embedding_dim == 3
     assert runtime.product_count == 3
-    assert runtime.model_name == "s3.5_random"
+    assert runtime.model_name == DEFAULT_SIAMESE_MODEL
     assert runtime.embedding_path == embedding_path
     assert runtime.metadata_path == metadata_path
     assert runtime.search_engine.gallery_embeddings.shape == (3, 3)
@@ -78,7 +89,11 @@ def test_load_reads_embeddings_and_metadata_into_memory(tmp_path: Path) -> None:
 def test_loaded_search_engine_is_ready_for_product_search(tmp_path: Path) -> None:
     _write_gallery(tmp_path)
     runtime = GalleryLoader(
-        GalleryRuntimeConfig(model_name="s3.5_random", root=tmp_path, expected_embedding_dim=3)
+        GalleryRuntimeConfig(
+            model_name=DEFAULT_SIAMESE_MODEL,
+            root=tmp_path,
+            expected_embedding_dim=3,
+        )
     ).load()
 
     result = runtime.search_engine.search(torch.tensor([1.0, 0.0, 0.0]), k=2)
@@ -104,7 +119,7 @@ def test_from_gallery_supports_in_memory_runtime(tmp_path: Path) -> None:
 
 
 def test_missing_embeddings_are_rejected(tmp_path: Path) -> None:
-    directory = tmp_path / "s3.5_random"
+    directory = tmp_path / DEFAULT_SIAMESE_MODEL
     directory.mkdir(parents=True)
     (directory / "gallery_metadata.json").write_text("[]", encoding="utf-8")
 
@@ -115,7 +130,7 @@ def test_missing_embeddings_are_rejected(tmp_path: Path) -> None:
 
 
 def test_missing_metadata_are_rejected(tmp_path: Path) -> None:
-    directory = tmp_path / "s3.5_random"
+    directory = tmp_path / DEFAULT_SIAMESE_MODEL
     directory.mkdir(parents=True)
     torch.save(torch.tensor([[1.0, 0.0, 0.0]]), directory / "gallery_embeddings.pt")
 
@@ -126,7 +141,7 @@ def test_missing_metadata_are_rejected(tmp_path: Path) -> None:
 
 
 def test_embedding_dimension_mismatch_is_rejected(tmp_path: Path) -> None:
-    directory = tmp_path / "s3.5_random"
+    directory = tmp_path / DEFAULT_SIAMESE_MODEL
     directory.mkdir(parents=True)
     torch.save(torch.tensor([[1.0, 0.0]]), directory / "gallery_embeddings.pt")
     (directory / "gallery_metadata.json").write_text(
@@ -235,7 +250,7 @@ def test_unit_norm_validation_can_be_disabled() -> None:
 
 
 def test_legacy_metadata_is_normalized_and_accepted(tmp_path: Path) -> None:
-    directory = tmp_path / "s3.5_random"
+    directory = tmp_path / DEFAULT_SIAMESE_MODEL
     directory.mkdir(parents=True)
     torch.save(torch.tensor([[1.0, 0.0, 0.0]]), directory / "gallery_embeddings.pt")
     legacy_metadata = [
@@ -261,13 +276,13 @@ def test_legacy_metadata_is_normalized_and_accepted(tmp_path: Path) -> None:
 
 
 def test_convenience_loader_uses_selected_model_name(tmp_path: Path) -> None:
-    _write_gallery(tmp_path, model_name="s3.5_random")
+    _write_gallery(tmp_path, model_name=DEFAULT_SIAMESE_MODEL)
 
     runtime = load_runtime_gallery(
-        model_name="s3.5_random",
+        model_name=DEFAULT_SIAMESE_MODEL,
         root=tmp_path,
         expected_embedding_dim=3,
     )
 
-    assert runtime.model_name == "s3.5_random"
+    assert runtime.model_name == DEFAULT_SIAMESE_MODEL
     assert runtime.size == 3
