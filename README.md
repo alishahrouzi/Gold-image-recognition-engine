@@ -57,7 +57,11 @@ identity is not an automatic ground truth there. The S4.9 report therefore
 uses category-aware Top-K/MRR metrics and exports Top-10 candidates for later
 human visual-relevance annotation.
 
-See `docs/S4.9-Final-Evaluation.md` for the full protocol.
+The current MVP runtime is aligned with the S4.9 selected model,
+`s3.5_cross_category`, and its corresponding 128-D S3.7 train gallery.
+
+See `docs/S4.9-Final-Evaluation.md` for the full evaluation protocol and
+`docs/S4.7-MVP-UI.md` for the runtime/UI flow.
 
 ## Development
 
