@@ -32,10 +32,11 @@ from .evaluator import (
 )
 from .final_test import (
     FinalEvaluationResult,
-    compare_models,
+    build_model_selection_report,
     evaluate_robustness,
     evaluate_split,
     make_robustness_variants,
+    select_model_from_validation,
 )
 from .generalization import (
     GroupHoldoutSplit,
@@ -71,10 +72,10 @@ __all__ = [
     "build_error_record",
     "build_gate_pairs",
     "build_group_holdout",
+    "build_model_selection_report",
     "build_summary",
     "category_confusion",
     "category_summary",
-    "compare_models",
     "evaluate_gallery",
     "evaluate_leave_one_out_gallery",
     "evaluate_retrieval",
@@ -85,5 +86,6 @@ __all__ = [
     "result_to_dict",
     "score_retrieval_result",
     "select_model",
+    "select_model_from_validation",
     "select_representative_examples",
 ]
