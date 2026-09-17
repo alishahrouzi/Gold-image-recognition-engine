@@ -13,7 +13,7 @@ src/
 ├── data/          # manifest, datasets, preprocessing, pair generation
 ├── models/        # Custom CNN v1 + embedding head
 ├── training/      # S2.5 training infrastructure
-└── evaluation/    # retrieval evaluation metrics/evaluator
+└── evaluation/    # retrieval, generalization, and final-test evaluation
 
 tests/             # unit and integration tests
 experiments/       # experiment tracking
@@ -23,7 +23,7 @@ docs/              # architecture and implementation policies
 
 ## Installation
 
-Python version: 3.12.1
+Python version: 3.12.10
 
 ```bash
 pip install -r requirements.txt
@@ -44,14 +44,20 @@ function.
 
 ## Evaluation
 
-S2.8 scores the existing S2.7 retrieval pipeline with product-level Top-1,
-Top-5, Top-10, and MRR. The baseline protocol is Dataset 1 **train**
-leave-one-image-out against the S2.7 train gallery (`exclude_image_id`).
-Test-set results remain reserved for final evaluation.
+S2.8 scores the original baseline retrieval pipeline with product-level Top-1,
+Top-5, Top-10, and MRR on train leave-one-image-out queries. S3.13 adds a
+product-group-disjoint generalization gate and compares the four current
+Siamese candidates on unseen product groups.
 
-```bash
-python scripts/evaluate_baseline.py --manifest reports/dataset/dataset1_manifest.csv
-```
+S4.9 evaluates frozen candidates on Dataset 1 validation/test images against a
+train-only gallery. Model selection uses validation category-aware retrieval
+only; the test split is confirmation and is not used to select the model.
+Because validation/test product groups are singleton groups, exact product
+identity is not an automatic ground truth there. The S4.9 report therefore
+uses category-aware Top-K/MRR metrics and exports Top-10 candidates for later
+human visual-relevance annotation.
+
+See `docs/S4.9-Final-Evaluation.md` for the full protocol.
 
 ## Development
 
