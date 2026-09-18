@@ -1,0 +1,621 @@
+{
+  "policy": "s4.9-human-visual-relevance-v1",
+  "model": "s3.5_cross_category",
+  "source_split": "valid",
+  "query_sampling": {
+    "strategy": "deterministic_stratified_random",
+    "per_category": 20,
+    "seed": 42
+  },
+  "relevance_scale": {
+    "0": "irrelevant",
+    "1": "weakly similar",
+    "2": "visually similar",
+    "3": "highly similar"
+  },
+  "binary_relevance_threshold": 2,
+  "num_queries": 100,
+  "num_judgments": 1000,
+  "queries": [
+    {
+      "query_index": 1,
+      "query_image_id": "DS1_IMG_004336",
+      "category": "Bracelet",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Bracelet\\IMG_1365_0ce861bf_JPG.rf.064aa19fe402b6aded03e1e43a6edcbd.jpg"
+    },
+    {
+      "query_index": 2,
+      "query_image_id": "DS1_IMG_004337",
+      "category": "Bracelet",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Bracelet\\IMG_1388_f85dd16b_JPG.rf.37dd3c518b09f42467367ddfb959edc1.jpg"
+    },
+    {
+      "query_index": 3,
+      "query_image_id": "DS1_IMG_004344",
+      "category": "Bracelet",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Bracelet\\IMG_2317_1c75d299_JPG.rf.c33c68dcbe3fc589be092481c7003eb4.jpg"
+    },
+    {
+      "query_index": 4,
+      "query_image_id": "DS1_IMG_004347",
+      "category": "Bracelet",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Bracelet\\IMG_2387_c0e1755b_JPG.rf.6536957983807b4575aff91f98716a47.jpg"
+    },
+    {
+      "query_index": 5,
+      "query_image_id": "DS1_IMG_004348",
+      "category": "Bracelet",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Bracelet\\IMG_2411_a9a572d2_JPG.rf.69a578b1dc93c3b0ebd899ae98e560e1.jpg"
+    },
+    {
+      "query_index": 6,
+      "query_image_id": "DS1_IMG_004358",
+      "category": "Bracelet",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Bracelet\\bracelet_005_jpg.rf.3adcc2070daca3191c4cbaf82c780e60.jpg"
+    },
+    {
+      "query_index": 7,
+      "query_image_id": "DS1_IMG_004359",
+      "category": "Bracelet",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Bracelet\\bracelet_007_jpg.rf.7d05d394eb1e0b1dad2094a052bd7e7f.jpg"
+    },
+    {
+      "query_index": 8,
+      "query_image_id": "DS1_IMG_004365",
+      "category": "Bracelet",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Bracelet\\bracelet_034_jpg.rf.3a1beec77fbc6605d72bacdd87298c1e.jpg"
+    },
+    {
+      "query_index": 9,
+      "query_image_id": "DS1_IMG_004368",
+      "category": "Bracelet",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Bracelet\\bracelet_052_jpg.rf.1a5218efb1ee675eda2f81d1b9c00ecf.jpg"
+    },
+    {
+      "query_index": 10,
+      "query_image_id": "DS1_IMG_004372",
+      "category": "Bracelet",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Bracelet\\bracelet_068_jpg.rf.18545669c84f4b08f5de48f3e21389a3.jpg"
+    },
+    {
+      "query_index": 11,
+      "query_image_id": "DS1_IMG_004375",
+      "category": "Bracelet",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Bracelet\\bracelet_072_jpg.rf.4f6ab9578693fa4896574bfa455ac137.jpg"
+    },
+    {
+      "query_index": 12,
+      "query_image_id": "DS1_IMG_004378",
+      "category": "Bracelet",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Bracelet\\bracelet_097_jpg.rf.3d86d4ef6982386b8e41ff176464d5e2.jpg"
+    },
+    {
+      "query_index": 13,
+      "query_image_id": "DS1_IMG_004381",
+      "category": "Bracelet",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Bracelet\\bracelet_120_jpg.rf.6bf7e3bb5e9b145a7485783228d2b50a.jpg"
+    },
+    {
+      "query_index": 14,
+      "query_image_id": "DS1_IMG_004384",
+      "category": "Bracelet",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Bracelet\\bracelet_156_jpg.rf.c375a74d149d8b0f8e0b96c415f72518.jpg"
+    },
+    {
+      "query_index": 15,
+      "query_image_id": "DS1_IMG_004386",
+      "category": "Bracelet",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Bracelet\\bracelet_178_jpg.rf.82e27f61693d1a268da7fa4ee05fbd6e.jpg"
+    },
+    {
+      "query_index": 16,
+      "query_image_id": "DS1_IMG_004388",
+      "category": "Bracelet",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Bracelet\\bracelet_206_jpg.rf.09c5445d941e8a5723c7bb796094b78b.jpg"
+    },
+    {
+      "query_index": 17,
+      "query_image_id": "DS1_IMG_004389",
+      "category": "Bracelet",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Bracelet\\bracelet_207_jpg.rf.b1a3320ef9f018a2c13d4a76049eb580.jpg"
+    },
+    {
+      "query_index": 18,
+      "query_image_id": "DS1_IMG_004392",
+      "category": "Bracelet",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Bracelet\\bracelet_230_jpg.rf.a51a0123c103fc396549f78781351876.jpg"
+    },
+    {
+      "query_index": 19,
+      "query_image_id": "DS1_IMG_004394",
+      "category": "Bracelet",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Bracelet\\bracelet_241_jpg.rf.f6227ba17fb742a9297857fa5583f086.jpg"
+    },
+    {
+      "query_index": 20,
+      "query_image_id": "DS1_IMG_004400",
+      "category": "Bracelet",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Bracelet\\bracelet_271_jpg.rf.77cfbf01e3ebec102ab9f8ae8a86fe3f.jpg"
+    },
+    {
+      "query_index": 21,
+      "query_image_id": "DS1_IMG_004404",
+      "category": "Earrings",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Earrings\\DIDE0015_1Y_jpg.rf.0b2ea4e67373774e1a495bcea5889a46.jpg"
+    },
+    {
+      "query_index": 22,
+      "query_image_id": "DS1_IMG_004410",
+      "category": "Earrings",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Earrings\\IMG_1672_25fe18cc_JPG.rf.d1c79b25abc1fbbb97f8ffe89bb63817.jpg"
+    },
+    {
+      "query_index": 23,
+      "query_image_id": "DS1_IMG_004414",
+      "category": "Earrings",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Earrings\\IMG_2254_c0eca1bf_JPG.rf.d215215ee6b6479f6fe3f16088818e79.jpg"
+    },
+    {
+      "query_index": 24,
+      "query_image_id": "DS1_IMG_004415",
+      "category": "Earrings",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Earrings\\IMG_2255_bf9c1d87_JPG.rf.6c7147e9892511df2cce703b5be8448b.jpg"
+    },
+    {
+      "query_index": 25,
+      "query_image_id": "DS1_IMG_004416",
+      "category": "Earrings",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Earrings\\IMG_2499_93fca753_JPG.rf.792844b0799688696178654c9a21438b.jpg"
+    },
+    {
+      "query_index": 26,
+      "query_image_id": "DS1_IMG_004422",
+      "category": "Earrings",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Earrings\\earring_105_jpg.rf.f8f4633577ed1425f6b633e76c5561a2.jpg"
+    },
+    {
+      "query_index": 27,
+      "query_image_id": "DS1_IMG_004426",
+      "category": "Earrings",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Earrings\\earring_154_jpg.rf.28207bc5737798259b8fc4e0fb00ab81.jpg"
+    },
+    {
+      "query_index": 28,
+      "query_image_id": "DS1_IMG_004434",
+      "category": "Earrings",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Earrings\\earring_224_jpg.rf.b2ac17484a1334fb4b9ceac29f1f7175.jpg"
+    },
+    {
+      "query_index": 29,
+      "query_image_id": "DS1_IMG_004442",
+      "category": "Earrings",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Earrings\\earring_322_jpg.rf.52e6e0cdfc099f7ec8124b4900db9c67.jpg"
+    },
+    {
+      "query_index": 30,
+      "query_image_id": "DS1_IMG_004446",
+      "category": "Earrings",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Earrings\\earring_366_jpg.rf.4411afb11027f9dc91b577af8fdb5435.jpg"
+    },
+    {
+      "query_index": 31,
+      "query_image_id": "DS1_IMG_004447",
+      "category": "Earrings",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Earrings\\earring_370_jpg.rf.9842901dddc105c9f06a42bca7f27d4b.jpg"
+    },
+    {
+      "query_index": 32,
+      "query_image_id": "DS1_IMG_004448",
+      "category": "Earrings",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Earrings\\earring_378_jpg.rf.d20ee5bd1e4a0c54cc422a2327763d11.jpg"
+    },
+    {
+      "query_index": 33,
+      "query_image_id": "DS1_IMG_004451",
+      "category": "Earrings",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Earrings\\earring_417_jpg.rf.e150219d490382419b814039efd35f56.jpg"
+    },
+    {
+      "query_index": 34,
+      "query_image_id": "DS1_IMG_004453",
+      "category": "Earrings",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Earrings\\earring_44_jpg.rf.6335fd7746e978f6d3fd078227b48cc7.jpg"
+    },
+    {
+      "query_index": 35,
+      "query_image_id": "DS1_IMG_004460",
+      "category": "Earrings",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Earrings\\earring_85_jpg.rf.768fe0388b18ca9d312ec5540c32f09d.jpg"
+    },
+    {
+      "query_index": 36,
+      "query_image_id": "DS1_IMG_004469",
+      "category": "Earrings",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Earrings\\images-42-_jpeg.rf.6327910ce27bc3a6d046003b2323d784.jpg"
+    },
+    {
+      "query_index": 37,
+      "query_image_id": "DS1_IMG_004471",
+      "category": "Earrings",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Earrings\\images-69-_jpeg.rf.afc3e51c5e882178c4158c35562b31b8.jpg"
+    },
+    {
+      "query_index": 38,
+      "query_image_id": "DS1_IMG_004473",
+      "category": "Earrings",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Earrings\\images-75-_jpeg.rf.cfffe24d78566b5d29ea27e774fe6d20.jpg"
+    },
+    {
+      "query_index": 39,
+      "query_image_id": "DS1_IMG_004474",
+      "category": "Earrings",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Earrings\\images-88-_jpeg.rf.4a4e9a5f5114dee1022433264a6d6054.jpg"
+    },
+    {
+      "query_index": 40,
+      "query_image_id": "DS1_IMG_004481",
+      "category": "Earrings",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Earrings\\roberto-coin-18k-yellow-gold-new-barocco-diamond-earrings_jpeg.rf.3912887eed8759f839f8052ded13e91a.jpg"
+    },
+    {
+      "query_index": 41,
+      "query_image_id": "DS1_IMG_004504",
+      "category": "Necklace",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Necklace\\IMG_0499_7f5c2215_JPG.rf.f38efbbf25c255b754a623cc49d1b2b0.jpg"
+    },
+    {
+      "query_index": 42,
+      "query_image_id": "DS1_IMG_004511",
+      "category": "Necklace",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Necklace\\IMG_0543_6bd62e53_jpg.rf.7dbf3749a7928f0a00a4cc1d99103a5b.jpg"
+    },
+    {
+      "query_index": 43,
+      "query_image_id": "DS1_IMG_004528",
+      "category": "Necklace",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Necklace\\IMG_0622-1-_JPG.rf.a8f6a4a8c5340cec172126007a857f95.jpg"
+    },
+    {
+      "query_index": 44,
+      "query_image_id": "DS1_IMG_004537",
+      "category": "Necklace",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Necklace\\IMG_1337_ffff2d1c_JPG.rf.ac62daf8f660549b7cac508467f87bd8.jpg"
+    },
+    {
+      "query_index": 45,
+      "query_image_id": "DS1_IMG_004555",
+      "category": "Necklace",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Necklace\\IMG_1528_1f6b84dd_JPG.rf.b48dc8be09e5c7da7d25a2b7ec8965fc.jpg"
+    },
+    {
+      "query_index": 46,
+      "query_image_id": "DS1_IMG_004562",
+      "category": "Necklace",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Necklace\\IMG_1574_2e489f7d_JPG.rf.623bcb2d4c1e4006c7124725a495cc9b.jpg"
+    },
+    {
+      "query_index": 47,
+      "query_image_id": "DS1_IMG_004567",
+      "category": "Necklace",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Necklace\\IMG_1601_85e74e21_JPG.rf.566802cdca59bf1d1c37f8d4cda91463.jpg"
+    },
+    {
+      "query_index": 48,
+      "query_image_id": "DS1_IMG_004569",
+      "category": "Necklace",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Necklace\\IMG_1609_3d648496_JPG.rf.187adbc48b94c3cf1bf45aa62a994168.jpg"
+    },
+    {
+      "query_index": 49,
+      "query_image_id": "DS1_IMG_004573",
+      "category": "Necklace",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Necklace\\IMG_1621_712e3e2a_JPG.rf.23fd46512bdaaecc8ca7ea0065487de7.jpg"
+    },
+    {
+      "query_index": 50,
+      "query_image_id": "DS1_IMG_004578",
+      "category": "Necklace",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Necklace\\IMG_1652_a7780503_JPG.rf.4932270358d7909ff74b534cdc0b1888.jpg"
+    },
+    {
+      "query_index": 51,
+      "query_image_id": "DS1_IMG_004582",
+      "category": "Necklace",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Necklace\\IMG_1676_892ba378_JPG.rf.f1c7228eef29512bee8332900871aaa3.jpg"
+    },
+    {
+      "query_index": 52,
+      "query_image_id": "DS1_IMG_004583",
+      "category": "Necklace",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Necklace\\IMG_1678_aa5ca982_JPG.rf.f81e1ecc3b088938b66a81a30f1b7e1f.jpg"
+    },
+    {
+      "query_index": 53,
+      "query_image_id": "DS1_IMG_004588",
+      "category": "Necklace",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Necklace\\IMG_1870_32f05df2_JPG.rf.e5e4c190b613c075beaf35d23fa41127.jpg"
+    },
+    {
+      "query_index": 54,
+      "query_image_id": "DS1_IMG_004624",
+      "category": "Necklace",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Necklace\\IMG_2842_2e4c4e7e_jpg.rf.f1e38d838a0c07486b3ab8bfb7278d00.jpg"
+    },
+    {
+      "query_index": 55,
+      "query_image_id": "DS1_IMG_004641",
+      "category": "Necklace",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Necklace\\IMG_3138_1042c93c_JPG.rf.5e21f9b8fae653540012640270abda22.jpg"
+    },
+    {
+      "query_index": 56,
+      "query_image_id": "DS1_IMG_004644",
+      "category": "Necklace",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Necklace\\IMG_3481_9cb52c73_JPG.rf.dc09ff04eef125b78e7570ba1957d554.jpg"
+    },
+    {
+      "query_index": 57,
+      "query_image_id": "DS1_IMG_004656",
+      "category": "Necklace",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Necklace\\IMG_3550_99b59fe9_JPG.rf.3f776a2020d47418ca92cc85bc8c76e0.jpg"
+    },
+    {
+      "query_index": 58,
+      "query_image_id": "DS1_IMG_004673",
+      "category": "Necklace",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Necklace\\necklace_176_jpg.rf.9c2843a3f34ad4476526bd075caff7df.jpg"
+    },
+    {
+      "query_index": 59,
+      "query_image_id": "DS1_IMG_004681",
+      "category": "Necklace",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Necklace\\necklace_20241125_122545_1e1c9edc_jpg.rf.0da527b4e12eb23bf616e4f6150e39b7.jpg"
+    },
+    {
+      "query_index": 60,
+      "query_image_id": "DS1_IMG_004688",
+      "category": "Necklace",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Necklace\\necklace_20241125_122545_7c3f6078_jpg.rf.d8902a88c26bc06e737927dd452555f1.jpg"
+    },
+    {
+      "query_index": 61,
+      "query_image_id": "DS1_IMG_004699",
+      "category": "Pendant",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Pendant\\IMG_0542_7607ac76_jpg.rf.691ab2d81ea6f82c39e48f4f8265711e.jpg"
+    },
+    {
+      "query_index": 62,
+      "query_image_id": "DS1_IMG_004700",
+      "category": "Pendant",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Pendant\\IMG_0672_5be3e364_jpg.rf.9fa8e4cde675d71958700d5f6b74ece1.jpg"
+    },
+    {
+      "query_index": 63,
+      "query_image_id": "DS1_IMG_004701",
+      "category": "Pendant",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Pendant\\IMG_0674_ec4fffd2_jpg.rf.b47c11f6b7bd266c06f381c32db31384.jpg"
+    },
+    {
+      "query_index": 64,
+      "query_image_id": "DS1_IMG_004704",
+      "category": "Pendant",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Pendant\\IMG_0734_f4873b57_jpg.rf.10e31b8911198dd9b26cd7b3da9231f8.jpg"
+    },
+    {
+      "query_index": 65,
+      "query_image_id": "DS1_IMG_004705",
+      "category": "Pendant",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Pendant\\IMG_0756_84977a3e_jpg.rf.59aea801d09113610bf5bfbb5943d0b3.jpg"
+    },
+    {
+      "query_index": 66,
+      "query_image_id": "DS1_IMG_004706",
+      "category": "Pendant",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Pendant\\IMG_0800_7f4b5097_JPG.rf.00f76b23327d8238ff2a3927175214fe.jpg"
+    },
+    {
+      "query_index": 67,
+      "query_image_id": "DS1_IMG_004709",
+      "category": "Pendant",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Pendant\\IMG_0906_87f20db8_jpg.rf.f10a07c696157a496b0a769936044abb.jpg"
+    },
+    {
+      "query_index": 68,
+      "query_image_id": "DS1_IMG_004710",
+      "category": "Pendant",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Pendant\\IMG_0931_f286309a_jpg.rf.01d75d23026154f31b5564b4e07e93c0.jpg"
+    },
+    {
+      "query_index": 69,
+      "query_image_id": "DS1_IMG_004711",
+      "category": "Pendant",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Pendant\\IMG_1398_5a544914_JPG.rf.ff701ee5753018da7f220abf0974f380.jpg"
+    },
+    {
+      "query_index": 70,
+      "query_image_id": "DS1_IMG_004712",
+      "category": "Pendant",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Pendant\\IMG_1524_947f0e3b_JPG.rf.3da929c66deed51d13a3c06f55deed7f.jpg"
+    },
+    {
+      "query_index": 71,
+      "query_image_id": "DS1_IMG_004713",
+      "category": "Pendant",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Pendant\\IMG_1554_05234036_JPG.rf.c44a88c6a3998d6f29e584260b75143b.jpg"
+    },
+    {
+      "query_index": 72,
+      "query_image_id": "DS1_IMG_004714",
+      "category": "Pendant",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Pendant\\IMG_1572_42e30247_JPG.rf.92fe9509cdf60ab8a207215fc3ba6777.jpg"
+    },
+    {
+      "query_index": 73,
+      "query_image_id": "DS1_IMG_004715",
+      "category": "Pendant",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Pendant\\IMG_1631_04fe2e2a_JPG.rf.ab19ddde100741a5371b7a634322726b.jpg"
+    },
+    {
+      "query_index": 74,
+      "query_image_id": "DS1_IMG_004717",
+      "category": "Pendant",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Pendant\\IMG_2808_b9e1ceb4_jpg.rf.c6edda412432477140d96448afefb8ce.jpg"
+    },
+    {
+      "query_index": 75,
+      "query_image_id": "DS1_IMG_004718",
+      "category": "Pendant",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Pendant\\IMG_2814_969d926b_jpg.rf.43473350e1417168d251c119f7ca0c00.jpg"
+    },
+    {
+      "query_index": 76,
+      "query_image_id": "DS1_IMG_004719",
+      "category": "Pendant",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Pendant\\IMG_2839_7f34c3df_jpg.rf.52a0451cb8f32d23eaee2bb71cc14710.jpg"
+    },
+    {
+      "query_index": 77,
+      "query_image_id": "DS1_IMG_004721",
+      "category": "Pendant",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Pendant\\IMG_2861_1a0ba5c5_jpg.rf.6bfda3509fb2e0bd25f2397c22c6ec8c.jpg"
+    },
+    {
+      "query_index": 78,
+      "query_image_id": "DS1_IMG_004723",
+      "category": "Pendant",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Pendant\\IMG_3574_7d9fdf51_JPG.rf.09f4d24b369c1ae50a122156efa14970.jpg"
+    },
+    {
+      "query_index": 79,
+      "query_image_id": "DS1_IMG_004724",
+      "category": "Pendant",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Pendant\\necklace_20241125_122545_00071f7f_jpg.rf.255911aef608f4042e044e82f8987a01.jpg"
+    },
+    {
+      "query_index": 80,
+      "query_image_id": "DS1_IMG_004726",
+      "category": "Pendant",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Pendant\\necklace_20241125_122545_4042c0c9_jpg.rf.c884dc4a05ac98aecbe4049555239f15.jpg"
+    },
+    {
+      "query_index": 81,
+      "query_image_id": "DS1_IMG_004729",
+      "category": "Ring",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Ring\\Screenshot_20181116-203002_1542449955458_png.rf.aedb4f607bb9c577f38971d78cf8d5dd.jpg"
+    },
+    {
+      "query_index": 82,
+      "query_image_id": "DS1_IMG_004730",
+      "category": "Ring",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Ring\\Screenshot_20181116-203048_1542449907984_png.rf.d046559452770a61a833deca893929b3.jpg"
+    },
+    {
+      "query_index": 83,
+      "query_image_id": "DS1_IMG_004731",
+      "category": "Ring",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Ring\\Screenshot_20181116-204220_1542449522544_png.rf.5ae08713b81913796a487a792e6a25a5.jpg"
+    },
+    {
+      "query_index": 84,
+      "query_image_id": "DS1_IMG_004734",
+      "category": "Ring",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Ring\\ring_059_jpg.rf.187de8365788457971b7dd785c24a44c.jpg"
+    },
+    {
+      "query_index": 85,
+      "query_image_id": "DS1_IMG_004735",
+      "category": "Ring",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Ring\\ring_061_jpg.rf.296533e32aa41f89897b876634bf061b.jpg"
+    },
+    {
+      "query_index": 86,
+      "query_image_id": "DS1_IMG_004737",
+      "category": "Ring",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Ring\\ring_081_jpg.rf.f48f7d45602e5c4f63983a4440f50039.jpg"
+    },
+    {
+      "query_index": 87,
+      "query_image_id": "DS1_IMG_004739",
+      "category": "Ring",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Ring\\ring_107_jpg.rf.d48f22f46e9118b23c4d26038bdad7ce.jpg"
+    },
+    {
+      "query_index": 88,
+      "query_image_id": "DS1_IMG_004740",
+      "category": "Ring",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Ring\\ring_109_jpg.rf.dcf0917c7ed171b94ed7d7767c06ef75.jpg"
+    },
+    {
+      "query_index": 89,
+      "query_image_id": "DS1_IMG_004743",
+      "category": "Ring",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Ring\\ring_126_jpg.rf.51c9b35f6303701e3e8b02e0e1b26dfd.jpg"
+    },
+    {
+      "query_index": 90,
+      "query_image_id": "DS1_IMG_004744",
+      "category": "Ring",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Ring\\ring_129_jpg.rf.c02c468f436aa4c1fb7046edda8e5e6a.jpg"
+    },
+    {
+      "query_index": 91,
+      "query_image_id": "DS1_IMG_004746",
+      "category": "Ring",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Ring\\ring_136_jpg.rf.5138eceb34910b55bf9831905542f676.jpg"
+    },
+    {
+      "query_index": 92,
+      "query_image_id": "DS1_IMG_004747",
+      "category": "Ring",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Ring\\ring_137_jpg.rf.d40fbbeb89377d2319eab090f8a578c4.jpg"
+    },
+    {
+      "query_index": 93,
+      "query_image_id": "DS1_IMG_004749",
+      "category": "Ring",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Ring\\ring_143_jpg.rf.353dcfc51794a67fc89d88517aa4d884.jpg"
+    },
+    {
+      "query_index": 94,
+      "query_image_id": "DS1_IMG_004750",
+      "category": "Ring",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Ring\\ring_149_jpg.rf.83069136c8aa67bed1543478fcf06b3b.jpg"
+    },
+    {
+      "query_index": 95,
+      "query_image_id": "DS1_IMG_004751",
+      "category": "Ring",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Ring\\ring_150_jpg.rf.f45ab0621f0132572f650a9461b20b6c.jpg"
+    },
+    {
+      "query_index": 96,
+      "query_image_id": "DS1_IMG_004753",
+      "category": "Ring",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Ring\\ring_160_jpg.rf.d4ed3cb7e141be4e72807164e0ebbd49.jpg"
+    },
+    {
+      "query_index": 97,
+      "query_image_id": "DS1_IMG_004754",
+      "category": "Ring",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Ring\\ring_173_jpg.rf.3481709e415a88eece8de6a9bab03611.jpg"
+    },
+    {
+      "query_index": 98,
+      "query_image_id": "DS1_IMG_004755",
+      "category": "Ring",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Ring\\ring_176_jpg.rf.dc7253859ae3f220cf75bdc607eb9aff.jpg"
+    },
+    {
+      "query_index": 99,
+      "query_image_id": "DS1_IMG_004756",
+      "category": "Ring",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Ring\\ring_178_jpg.rf.7553641e7470f839fa29c6c5c2df6982.jpg"
+    },
+    {
+      "query_index": 100,
+      "query_image_id": "DS1_IMG_004757",
+      "category": "Ring",
+      "query_image_path": "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\valid\\Ring\\ring_191_jpg.rf.688c75054946827e3476a098cf4fd14e.jpg"
+    }
+  ]
+}
