@@ -1,0 +1,2217 @@
+{
+  "policy": "s4.9-human-visual-relevance-error-analysis-v1",
+  "model": "s3.5_cross_category",
+  "source_split": "valid",
+  "binary_relevance_threshold": 2,
+  "annotation": {
+    "queries": 100,
+    "judgments": 1000,
+    "annotators": 1
+  },
+  "overall": {
+    "queries": 100,
+    "no_relevant_in_top10": 33,
+    "relevant_in_top10": 67,
+    "top1_relevant": 32,
+    "top5_relevant": 62,
+    "relevant_first_rank_mean": 2.373134328358209,
+    "relevant_first_rank_median": 2,
+    "mean_relevant_count_top10": 2.17,
+    "classification_counts": {
+      "no_relevant_in_top10": 33,
+      "relevant_in_top5_but_not_top1": 30,
+      "relevant_only_in_ranks_6_to_10": 5,
+      "relevant_at_top1_with_additional_top5_relevance": 23,
+      "relevant_at_top1_only_or_sparse": 9
+    }
+  },
+  "overall_label_distribution": {
+    "0": 571,
+    "1": 212,
+    "2": 158,
+    "3": 59
+  },
+  "per_category": {
+    "Bracelet": {
+      "queries": 20,
+      "no_relevant_in_top10": 6,
+      "relevant_in_top10": 14,
+      "top1_relevant": 6,
+      "top5_relevant": 12,
+      "relevant_first_rank_mean": 2.5,
+      "relevant_first_rank_median": 2,
+      "mean_relevant_count_top10": 2.55,
+      "classification_counts": {
+        "no_relevant_in_top10": 6,
+        "relevant_in_top5_but_not_top1": 6,
+        "relevant_only_in_ranks_6_to_10": 2,
+        "relevant_at_top1_with_additional_top5_relevance": 5,
+        "relevant_at_top1_only_or_sparse": 1
+      }
+    },
+    "Earrings": {
+      "queries": 20,
+      "no_relevant_in_top10": 6,
+      "relevant_in_top10": 14,
+      "top1_relevant": 6,
+      "top5_relevant": 14,
+      "relevant_first_rank_mean": 2.0,
+      "relevant_first_rank_median": 2,
+      "mean_relevant_count_top10": 2.15,
+      "classification_counts": {
+        "relevant_at_top1_with_additional_top5_relevance": 4,
+        "no_relevant_in_top10": 6,
+        "relevant_at_top1_only_or_sparse": 2,
+        "relevant_in_top5_but_not_top1": 8
+      }
+    },
+    "Necklace": {
+      "queries": 20,
+      "no_relevant_in_top10": 7,
+      "relevant_in_top10": 13,
+      "top1_relevant": 6,
+      "top5_relevant": 10,
+      "relevant_first_rank_mean": 3.230769230769231,
+      "relevant_first_rank_median": 2,
+      "mean_relevant_count_top10": 1.85,
+      "classification_counts": {
+        "relevant_at_top1_only_or_sparse": 3,
+        "relevant_in_top5_but_not_top1": 4,
+        "relevant_at_top1_with_additional_top5_relevance": 3,
+        "no_relevant_in_top10": 7,
+        "relevant_only_in_ranks_6_to_10": 3
+      }
+    },
+    "Pendant": {
+      "queries": 20,
+      "no_relevant_in_top10": 13,
+      "relevant_in_top10": 7,
+      "top1_relevant": 3,
+      "top5_relevant": 7,
+      "relevant_first_rank_mean": 3.0,
+      "relevant_first_rank_median": 4,
+      "mean_relevant_count_top10": 0.4,
+      "classification_counts": {
+        "no_relevant_in_top10": 13,
+        "relevant_in_top5_but_not_top1": 4,
+        "relevant_at_top1_only_or_sparse": 2,
+        "relevant_at_top1_with_additional_top5_relevance": 1
+      }
+    },
+    "Ring": {
+      "queries": 20,
+      "no_relevant_in_top10": 1,
+      "relevant_in_top10": 19,
+      "top1_relevant": 11,
+      "top5_relevant": 19,
+      "relevant_first_rank_mean": 1.736842105263158,
+      "relevant_first_rank_median": 1,
+      "mean_relevant_count_top10": 3.9,
+      "classification_counts": {
+        "relevant_at_top1_only_or_sparse": 1,
+        "relevant_in_top5_but_not_top1": 8,
+        "relevant_at_top1_with_additional_top5_relevance": 10,
+        "no_relevant_in_top10": 1
+      }
+    }
+  },
+  "query_results": [
+    {
+      "query_index": 1,
+      "query_image_id": "DS1_IMG_004336",
+      "category": "Bracelet",
+      "classification": "no_relevant_in_top10",
+      "relevant_count_top10": 0,
+      "relevant_ranks_top10": [],
+      "first_relevant_rank": null,
+      "top1_relevance": 1,
+      "top5_relevant_count": 0,
+      "top10_relevant_count": 0,
+      "relevance_distribution_top10": {
+        "0": 9,
+        "1": 1,
+        "2": 0,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 2,
+      "query_image_id": "DS1_IMG_004337",
+      "category": "Bracelet",
+      "classification": "relevant_in_top5_but_not_top1",
+      "relevant_count_top10": 1,
+      "relevant_ranks_top10": [
+        4
+      ],
+      "first_relevant_rank": 4,
+      "top1_relevance": 0,
+      "top5_relevant_count": 1,
+      "top10_relevant_count": 1,
+      "relevance_distribution_top10": {
+        "0": 5,
+        "1": 4,
+        "2": 1,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 3,
+      "query_image_id": "DS1_IMG_004344",
+      "category": "Bracelet",
+      "classification": "no_relevant_in_top10",
+      "relevant_count_top10": 0,
+      "relevant_ranks_top10": [],
+      "first_relevant_rank": null,
+      "top1_relevance": 0,
+      "top5_relevant_count": 0,
+      "top10_relevant_count": 0,
+      "relevance_distribution_top10": {
+        "0": 9,
+        "1": 1,
+        "2": 0,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 4,
+      "query_image_id": "DS1_IMG_004347",
+      "category": "Bracelet",
+      "classification": "relevant_only_in_ranks_6_to_10",
+      "relevant_count_top10": 2,
+      "relevant_ranks_top10": [
+        8,
+        9
+      ],
+      "first_relevant_rank": 8,
+      "top1_relevance": 0,
+      "top5_relevant_count": 0,
+      "top10_relevant_count": 2,
+      "relevance_distribution_top10": {
+        "0": 6,
+        "1": 2,
+        "2": 2,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 5,
+      "query_image_id": "DS1_IMG_004348",
+      "category": "Bracelet",
+      "classification": "no_relevant_in_top10",
+      "relevant_count_top10": 0,
+      "relevant_ranks_top10": [],
+      "first_relevant_rank": null,
+      "top1_relevance": 0,
+      "top5_relevant_count": 0,
+      "top10_relevant_count": 0,
+      "relevance_distribution_top10": {
+        "0": 10,
+        "1": 0,
+        "2": 0,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 6,
+      "query_image_id": "DS1_IMG_004358",
+      "category": "Bracelet",
+      "classification": "no_relevant_in_top10",
+      "relevant_count_top10": 0,
+      "relevant_ranks_top10": [],
+      "first_relevant_rank": null,
+      "top1_relevance": 0,
+      "top5_relevant_count": 0,
+      "top10_relevant_count": 0,
+      "relevance_distribution_top10": {
+        "0": 9,
+        "1": 1,
+        "2": 0,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 7,
+      "query_image_id": "DS1_IMG_004359",
+      "category": "Bracelet",
+      "classification": "relevant_in_top5_but_not_top1",
+      "relevant_count_top10": 3,
+      "relevant_ranks_top10": [
+        2,
+        4,
+        5
+      ],
+      "first_relevant_rank": 2,
+      "top1_relevance": 0,
+      "top5_relevant_count": 3,
+      "top10_relevant_count": 3,
+      "relevance_distribution_top10": {
+        "0": 5,
+        "1": 2,
+        "2": 3,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 8,
+      "query_image_id": "DS1_IMG_004365",
+      "category": "Bracelet",
+      "classification": "relevant_at_top1_with_additional_top5_relevance",
+      "relevant_count_top10": 5,
+      "relevant_ranks_top10": [
+        1,
+        2,
+        3,
+        6,
+        8
+      ],
+      "first_relevant_rank": 1,
+      "top1_relevance": 2,
+      "top5_relevant_count": 3,
+      "top10_relevant_count": 5,
+      "relevance_distribution_top10": {
+        "0": 4,
+        "1": 1,
+        "2": 4,
+        "3": 1
+      }
+    },
+    {
+      "query_index": 9,
+      "query_image_id": "DS1_IMG_004368",
+      "category": "Bracelet",
+      "classification": "relevant_in_top5_but_not_top1",
+      "relevant_count_top10": 3,
+      "relevant_ranks_top10": [
+        3,
+        5,
+        8
+      ],
+      "first_relevant_rank": 3,
+      "top1_relevance": 0,
+      "top5_relevant_count": 2,
+      "top10_relevant_count": 3,
+      "relevance_distribution_top10": {
+        "0": 4,
+        "1": 3,
+        "2": 0,
+        "3": 3
+      }
+    },
+    {
+      "query_index": 10,
+      "query_image_id": "DS1_IMG_004372",
+      "category": "Bracelet",
+      "classification": "relevant_at_top1_with_additional_top5_relevance",
+      "relevant_count_top10": 4,
+      "relevant_ranks_top10": [
+        1,
+        2,
+        5,
+        10
+      ],
+      "first_relevant_rank": 1,
+      "top1_relevance": 3,
+      "top5_relevant_count": 3,
+      "top10_relevant_count": 4,
+      "relevance_distribution_top10": {
+        "0": 3,
+        "1": 3,
+        "2": 0,
+        "3": 4
+      }
+    },
+    {
+      "query_index": 11,
+      "query_image_id": "DS1_IMG_004375",
+      "category": "Bracelet",
+      "classification": "relevant_at_top1_with_additional_top5_relevance",
+      "relevant_count_top10": 3,
+      "relevant_ranks_top10": [
+        1,
+        2,
+        3
+      ],
+      "first_relevant_rank": 1,
+      "top1_relevance": 3,
+      "top5_relevant_count": 3,
+      "top10_relevant_count": 3,
+      "relevance_distribution_top10": {
+        "0": 2,
+        "1": 5,
+        "2": 0,
+        "3": 3
+      }
+    },
+    {
+      "query_index": 12,
+      "query_image_id": "DS1_IMG_004378",
+      "category": "Bracelet",
+      "classification": "relevant_only_in_ranks_6_to_10",
+      "relevant_count_top10": 2,
+      "relevant_ranks_top10": [
+        6,
+        10
+      ],
+      "first_relevant_rank": 6,
+      "top1_relevance": 1,
+      "top5_relevant_count": 0,
+      "top10_relevant_count": 2,
+      "relevance_distribution_top10": {
+        "0": 3,
+        "1": 5,
+        "2": 2,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 13,
+      "query_image_id": "DS1_IMG_004381",
+      "category": "Bracelet",
+      "classification": "relevant_at_top1_with_additional_top5_relevance",
+      "relevant_count_top10": 9,
+      "relevant_ranks_top10": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        7,
+        8,
+        9,
+        10
+      ],
+      "first_relevant_rank": 1,
+      "top1_relevance": 3,
+      "top5_relevant_count": 5,
+      "top10_relevant_count": 9,
+      "relevance_distribution_top10": {
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 9
+      }
+    },
+    {
+      "query_index": 14,
+      "query_image_id": "DS1_IMG_004384",
+      "category": "Bracelet",
+      "classification": "relevant_in_top5_but_not_top1",
+      "relevant_count_top10": 2,
+      "relevant_ranks_top10": [
+        2,
+        3
+      ],
+      "first_relevant_rank": 2,
+      "top1_relevance": 0,
+      "top5_relevant_count": 2,
+      "top10_relevant_count": 2,
+      "relevance_distribution_top10": {
+        "0": 7,
+        "1": 1,
+        "2": 2,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 15,
+      "query_image_id": "DS1_IMG_004386",
+      "category": "Bracelet",
+      "classification": "no_relevant_in_top10",
+      "relevant_count_top10": 0,
+      "relevant_ranks_top10": [],
+      "first_relevant_rank": null,
+      "top1_relevance": 0,
+      "top5_relevant_count": 0,
+      "top10_relevant_count": 0,
+      "relevance_distribution_top10": {
+        "0": 8,
+        "1": 2,
+        "2": 0,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 16,
+      "query_image_id": "DS1_IMG_004388",
+      "category": "Bracelet",
+      "classification": "relevant_in_top5_but_not_top1",
+      "relevant_count_top10": 4,
+      "relevant_ranks_top10": [
+        2,
+        8,
+        9,
+        10
+      ],
+      "first_relevant_rank": 2,
+      "top1_relevance": 1,
+      "top5_relevant_count": 1,
+      "top10_relevant_count": 4,
+      "relevance_distribution_top10": {
+        "0": 4,
+        "1": 2,
+        "2": 4,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 17,
+      "query_image_id": "DS1_IMG_004389",
+      "category": "Bracelet",
+      "classification": "relevant_in_top5_but_not_top1",
+      "relevant_count_top10": 1,
+      "relevant_ranks_top10": [
+        2
+      ],
+      "first_relevant_rank": 2,
+      "top1_relevance": 0,
+      "top5_relevant_count": 1,
+      "top10_relevant_count": 1,
+      "relevance_distribution_top10": {
+        "0": 8,
+        "1": 1,
+        "2": 1,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 18,
+      "query_image_id": "DS1_IMG_004392",
+      "category": "Bracelet",
+      "classification": "relevant_at_top1_with_additional_top5_relevance",
+      "relevant_count_top10": 10,
+      "relevant_ranks_top10": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "first_relevant_rank": 1,
+      "top1_relevance": 2,
+      "top5_relevant_count": 5,
+      "top10_relevant_count": 10,
+      "relevance_distribution_top10": {
+        "0": 0,
+        "1": 0,
+        "2": 10,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 19,
+      "query_image_id": "DS1_IMG_004394",
+      "category": "Bracelet",
+      "classification": "relevant_at_top1_only_or_sparse",
+      "relevant_count_top10": 2,
+      "relevant_ranks_top10": [
+        1,
+        6
+      ],
+      "first_relevant_rank": 1,
+      "top1_relevance": 2,
+      "top5_relevant_count": 1,
+      "top10_relevant_count": 2,
+      "relevance_distribution_top10": {
+        "0": 7,
+        "1": 1,
+        "2": 2,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 20,
+      "query_image_id": "DS1_IMG_004400",
+      "category": "Bracelet",
+      "classification": "no_relevant_in_top10",
+      "relevant_count_top10": 0,
+      "relevant_ranks_top10": [],
+      "first_relevant_rank": null,
+      "top1_relevance": 0,
+      "top5_relevant_count": 0,
+      "top10_relevant_count": 0,
+      "relevance_distribution_top10": {
+        "0": 10,
+        "1": 0,
+        "2": 0,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 21,
+      "query_image_id": "DS1_IMG_004404",
+      "category": "Earrings",
+      "classification": "relevant_at_top1_with_additional_top5_relevance",
+      "relevant_count_top10": 7,
+      "relevant_ranks_top10": [
+        1,
+        2,
+        4,
+        5,
+        6,
+        8,
+        9
+      ],
+      "first_relevant_rank": 1,
+      "top1_relevance": 2,
+      "top5_relevant_count": 4,
+      "top10_relevant_count": 7,
+      "relevance_distribution_top10": {
+        "0": 2,
+        "1": 1,
+        "2": 7,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 22,
+      "query_image_id": "DS1_IMG_004410",
+      "category": "Earrings",
+      "classification": "no_relevant_in_top10",
+      "relevant_count_top10": 0,
+      "relevant_ranks_top10": [],
+      "first_relevant_rank": null,
+      "top1_relevance": 1,
+      "top5_relevant_count": 0,
+      "top10_relevant_count": 0,
+      "relevance_distribution_top10": {
+        "0": 7,
+        "1": 3,
+        "2": 0,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 23,
+      "query_image_id": "DS1_IMG_004414",
+      "category": "Earrings",
+      "classification": "no_relevant_in_top10",
+      "relevant_count_top10": 0,
+      "relevant_ranks_top10": [],
+      "first_relevant_rank": null,
+      "top1_relevance": 0,
+      "top5_relevant_count": 0,
+      "top10_relevant_count": 0,
+      "relevance_distribution_top10": {
+        "0": 8,
+        "1": 2,
+        "2": 0,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 24,
+      "query_image_id": "DS1_IMG_004415",
+      "category": "Earrings",
+      "classification": "no_relevant_in_top10",
+      "relevant_count_top10": 0,
+      "relevant_ranks_top10": [],
+      "first_relevant_rank": null,
+      "top1_relevance": 0,
+      "top5_relevant_count": 0,
+      "top10_relevant_count": 0,
+      "relevance_distribution_top10": {
+        "0": 10,
+        "1": 0,
+        "2": 0,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 25,
+      "query_image_id": "DS1_IMG_004416",
+      "category": "Earrings",
+      "classification": "relevant_at_top1_with_additional_top5_relevance",
+      "relevant_count_top10": 2,
+      "relevant_ranks_top10": [
+        1,
+        4
+      ],
+      "first_relevant_rank": 1,
+      "top1_relevance": 3,
+      "top5_relevant_count": 2,
+      "top10_relevant_count": 2,
+      "relevance_distribution_top10": {
+        "0": 8,
+        "1": 0,
+        "2": 1,
+        "3": 1
+      }
+    },
+    {
+      "query_index": 26,
+      "query_image_id": "DS1_IMG_004422",
+      "category": "Earrings",
+      "classification": "relevant_at_top1_only_or_sparse",
+      "relevant_count_top10": 3,
+      "relevant_ranks_top10": [
+        1,
+        6,
+        7
+      ],
+      "first_relevant_rank": 1,
+      "top1_relevance": 2,
+      "top5_relevant_count": 1,
+      "top10_relevant_count": 3,
+      "relevance_distribution_top10": {
+        "0": 4,
+        "1": 3,
+        "2": 3,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 27,
+      "query_image_id": "DS1_IMG_004426",
+      "category": "Earrings",
+      "classification": "no_relevant_in_top10",
+      "relevant_count_top10": 0,
+      "relevant_ranks_top10": [],
+      "first_relevant_rank": null,
+      "top1_relevance": 0,
+      "top5_relevant_count": 0,
+      "top10_relevant_count": 0,
+      "relevance_distribution_top10": {
+        "0": 8,
+        "1": 2,
+        "2": 0,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 28,
+      "query_image_id": "DS1_IMG_004434",
+      "category": "Earrings",
+      "classification": "relevant_at_top1_with_additional_top5_relevance",
+      "relevant_count_top10": 2,
+      "relevant_ranks_top10": [
+        1,
+        3
+      ],
+      "first_relevant_rank": 1,
+      "top1_relevance": 2,
+      "top5_relevant_count": 2,
+      "top10_relevant_count": 2,
+      "relevance_distribution_top10": {
+        "0": 6,
+        "1": 2,
+        "2": 2,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 29,
+      "query_image_id": "DS1_IMG_004442",
+      "category": "Earrings",
+      "classification": "relevant_in_top5_but_not_top1",
+      "relevant_count_top10": 4,
+      "relevant_ranks_top10": [
+        4,
+        5,
+        7,
+        9
+      ],
+      "first_relevant_rank": 4,
+      "top1_relevance": 0,
+      "top5_relevant_count": 2,
+      "top10_relevant_count": 4,
+      "relevance_distribution_top10": {
+        "0": 5,
+        "1": 1,
+        "2": 3,
+        "3": 1
+      }
+    },
+    {
+      "query_index": 30,
+      "query_image_id": "DS1_IMG_004446",
+      "category": "Earrings",
+      "classification": "relevant_at_top1_with_additional_top5_relevance",
+      "relevant_count_top10": 3,
+      "relevant_ranks_top10": [
+        1,
+        2,
+        7
+      ],
+      "first_relevant_rank": 1,
+      "top1_relevance": 2,
+      "top5_relevant_count": 2,
+      "top10_relevant_count": 3,
+      "relevance_distribution_top10": {
+        "0": 5,
+        "1": 2,
+        "2": 3,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 31,
+      "query_image_id": "DS1_IMG_004447",
+      "category": "Earrings",
+      "classification": "relevant_in_top5_but_not_top1",
+      "relevant_count_top10": 3,
+      "relevant_ranks_top10": [
+        3,
+        4,
+        7
+      ],
+      "first_relevant_rank": 3,
+      "top1_relevance": 0,
+      "top5_relevant_count": 2,
+      "top10_relevant_count": 3,
+      "relevance_distribution_top10": {
+        "0": 5,
+        "1": 2,
+        "2": 3,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 32,
+      "query_image_id": "DS1_IMG_004448",
+      "category": "Earrings",
+      "classification": "relevant_in_top5_but_not_top1",
+      "relevant_count_top10": 4,
+      "relevant_ranks_top10": [
+        3,
+        4,
+        6,
+        8
+      ],
+      "first_relevant_rank": 3,
+      "top1_relevance": 1,
+      "top5_relevant_count": 2,
+      "top10_relevant_count": 4,
+      "relevance_distribution_top10": {
+        "0": 3,
+        "1": 3,
+        "2": 4,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 33,
+      "query_image_id": "DS1_IMG_004451",
+      "category": "Earrings",
+      "classification": "relevant_in_top5_but_not_top1",
+      "relevant_count_top10": 3,
+      "relevant_ranks_top10": [
+        2,
+        6,
+        10
+      ],
+      "first_relevant_rank": 2,
+      "top1_relevance": 0,
+      "top5_relevant_count": 1,
+      "top10_relevant_count": 3,
+      "relevance_distribution_top10": {
+        "0": 7,
+        "1": 0,
+        "2": 3,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 34,
+      "query_image_id": "DS1_IMG_004453",
+      "category": "Earrings",
+      "classification": "relevant_at_top1_only_or_sparse",
+      "relevant_count_top10": 2,
+      "relevant_ranks_top10": [
+        1,
+        8
+      ],
+      "first_relevant_rank": 1,
+      "top1_relevance": 2,
+      "top5_relevant_count": 1,
+      "top10_relevant_count": 2,
+      "relevance_distribution_top10": {
+        "0": 6,
+        "1": 2,
+        "2": 2,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 35,
+      "query_image_id": "DS1_IMG_004460",
+      "category": "Earrings",
+      "classification": "relevant_in_top5_but_not_top1",
+      "relevant_count_top10": 4,
+      "relevant_ranks_top10": [
+        3,
+        5,
+        6,
+        8
+      ],
+      "first_relevant_rank": 3,
+      "top1_relevance": 1,
+      "top5_relevant_count": 2,
+      "top10_relevant_count": 4,
+      "relevance_distribution_top10": {
+        "0": 1,
+        "1": 5,
+        "2": 4,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 36,
+      "query_image_id": "DS1_IMG_004469",
+      "category": "Earrings",
+      "classification": "relevant_in_top5_but_not_top1",
+      "relevant_count_top10": 1,
+      "relevant_ranks_top10": [
+        3
+      ],
+      "first_relevant_rank": 3,
+      "top1_relevance": 0,
+      "top5_relevant_count": 1,
+      "top10_relevant_count": 1,
+      "relevance_distribution_top10": {
+        "0": 5,
+        "1": 4,
+        "2": 1,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 37,
+      "query_image_id": "DS1_IMG_004471",
+      "category": "Earrings",
+      "classification": "relevant_in_top5_but_not_top1",
+      "relevant_count_top10": 3,
+      "relevant_ranks_top10": [
+        2,
+        5,
+        9
+      ],
+      "first_relevant_rank": 2,
+      "top1_relevance": 1,
+      "top5_relevant_count": 2,
+      "top10_relevant_count": 3,
+      "relevance_distribution_top10": {
+        "0": 4,
+        "1": 3,
+        "2": 3,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 38,
+      "query_image_id": "DS1_IMG_004473",
+      "category": "Earrings",
+      "classification": "no_relevant_in_top10",
+      "relevant_count_top10": 0,
+      "relevant_ranks_top10": [],
+      "first_relevant_rank": null,
+      "top1_relevance": 0,
+      "top5_relevant_count": 0,
+      "top10_relevant_count": 0,
+      "relevance_distribution_top10": {
+        "0": 9,
+        "1": 1,
+        "2": 0,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 39,
+      "query_image_id": "DS1_IMG_004474",
+      "category": "Earrings",
+      "classification": "no_relevant_in_top10",
+      "relevant_count_top10": 0,
+      "relevant_ranks_top10": [],
+      "first_relevant_rank": null,
+      "top1_relevance": 0,
+      "top5_relevant_count": 0,
+      "top10_relevant_count": 0,
+      "relevance_distribution_top10": {
+        "0": 10,
+        "1": 0,
+        "2": 0,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 40,
+      "query_image_id": "DS1_IMG_004481",
+      "category": "Earrings",
+      "classification": "relevant_in_top5_but_not_top1",
+      "relevant_count_top10": 2,
+      "relevant_ranks_top10": [
+        2,
+        10
+      ],
+      "first_relevant_rank": 2,
+      "top1_relevance": 0,
+      "top5_relevant_count": 1,
+      "top10_relevant_count": 2,
+      "relevance_distribution_top10": {
+        "0": 5,
+        "1": 3,
+        "2": 2,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 41,
+      "query_image_id": "DS1_IMG_004504",
+      "category": "Necklace",
+      "classification": "relevant_at_top1_only_or_sparse",
+      "relevant_count_top10": 3,
+      "relevant_ranks_top10": [
+        1,
+        7,
+        9
+      ],
+      "first_relevant_rank": 1,
+      "top1_relevance": 2,
+      "top5_relevant_count": 1,
+      "top10_relevant_count": 3,
+      "relevance_distribution_top10": {
+        "0": 2,
+        "1": 5,
+        "2": 3,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 42,
+      "query_image_id": "DS1_IMG_004511",
+      "category": "Necklace",
+      "classification": "relevant_in_top5_but_not_top1",
+      "relevant_count_top10": 8,
+      "relevant_ranks_top10": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        8,
+        9,
+        10
+      ],
+      "first_relevant_rank": 2,
+      "top1_relevance": 1,
+      "top5_relevant_count": 4,
+      "top10_relevant_count": 8,
+      "relevance_distribution_top10": {
+        "0": 0,
+        "1": 2,
+        "2": 7,
+        "3": 1
+      }
+    },
+    {
+      "query_index": 43,
+      "query_image_id": "DS1_IMG_004528",
+      "category": "Necklace",
+      "classification": "relevant_in_top5_but_not_top1",
+      "relevant_count_top10": 7,
+      "relevant_ranks_top10": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        10
+      ],
+      "first_relevant_rank": 3,
+      "top1_relevance": 0,
+      "top5_relevant_count": 3,
+      "top10_relevant_count": 7,
+      "relevance_distribution_top10": {
+        "0": 2,
+        "1": 1,
+        "2": 6,
+        "3": 1
+      }
+    },
+    {
+      "query_index": 44,
+      "query_image_id": "DS1_IMG_004537",
+      "category": "Necklace",
+      "classification": "relevant_at_top1_with_additional_top5_relevance",
+      "relevant_count_top10": 2,
+      "relevant_ranks_top10": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top1_relevance": 2,
+      "top5_relevant_count": 2,
+      "top10_relevant_count": 2,
+      "relevance_distribution_top10": {
+        "0": 2,
+        "1": 6,
+        "2": 2,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 45,
+      "query_image_id": "DS1_IMG_004555",
+      "category": "Necklace",
+      "classification": "relevant_in_top5_but_not_top1",
+      "relevant_count_top10": 1,
+      "relevant_ranks_top10": [
+        2
+      ],
+      "first_relevant_rank": 2,
+      "top1_relevance": 0,
+      "top5_relevant_count": 1,
+      "top10_relevant_count": 1,
+      "relevance_distribution_top10": {
+        "0": 8,
+        "1": 1,
+        "2": 1,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 46,
+      "query_image_id": "DS1_IMG_004562",
+      "category": "Necklace",
+      "classification": "relevant_at_top1_with_additional_top5_relevance",
+      "relevant_count_top10": 7,
+      "relevant_ranks_top10": [
+        1,
+        2,
+        3,
+        7,
+        8,
+        9,
+        10
+      ],
+      "first_relevant_rank": 1,
+      "top1_relevance": 2,
+      "top5_relevant_count": 3,
+      "top10_relevant_count": 7,
+      "relevance_distribution_top10": {
+        "0": 0,
+        "1": 3,
+        "2": 7,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 47,
+      "query_image_id": "DS1_IMG_004567",
+      "category": "Necklace",
+      "classification": "no_relevant_in_top10",
+      "relevant_count_top10": 0,
+      "relevant_ranks_top10": [],
+      "first_relevant_rank": null,
+      "top1_relevance": 0,
+      "top5_relevant_count": 0,
+      "top10_relevant_count": 0,
+      "relevance_distribution_top10": {
+        "0": 3,
+        "1": 7,
+        "2": 0,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 48,
+      "query_image_id": "DS1_IMG_004569",
+      "category": "Necklace",
+      "classification": "no_relevant_in_top10",
+      "relevant_count_top10": 0,
+      "relevant_ranks_top10": [],
+      "first_relevant_rank": null,
+      "top1_relevance": 1,
+      "top5_relevant_count": 0,
+      "top10_relevant_count": 0,
+      "relevance_distribution_top10": {
+        "0": 3,
+        "1": 7,
+        "2": 0,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 49,
+      "query_image_id": "DS1_IMG_004573",
+      "category": "Necklace",
+      "classification": "no_relevant_in_top10",
+      "relevant_count_top10": 0,
+      "relevant_ranks_top10": [],
+      "first_relevant_rank": null,
+      "top1_relevance": 1,
+      "top5_relevant_count": 0,
+      "top10_relevant_count": 0,
+      "relevance_distribution_top10": {
+        "0": 0,
+        "1": 10,
+        "2": 0,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 50,
+      "query_image_id": "DS1_IMG_004578",
+      "category": "Necklace",
+      "classification": "relevant_at_top1_only_or_sparse",
+      "relevant_count_top10": 1,
+      "relevant_ranks_top10": [
+        1
+      ],
+      "first_relevant_rank": 1,
+      "top1_relevance": 2,
+      "top5_relevant_count": 1,
+      "top10_relevant_count": 1,
+      "relevance_distribution_top10": {
+        "0": 3,
+        "1": 6,
+        "2": 1,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 51,
+      "query_image_id": "DS1_IMG_004582",
+      "category": "Necklace",
+      "classification": "relevant_at_top1_with_additional_top5_relevance",
+      "relevant_count_top10": 2,
+      "relevant_ranks_top10": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top1_relevance": 3,
+      "top5_relevant_count": 2,
+      "top10_relevant_count": 2,
+      "relevance_distribution_top10": {
+        "0": 4,
+        "1": 4,
+        "2": 1,
+        "3": 1
+      }
+    },
+    {
+      "query_index": 52,
+      "query_image_id": "DS1_IMG_004583",
+      "category": "Necklace",
+      "classification": "relevant_only_in_ranks_6_to_10",
+      "relevant_count_top10": 1,
+      "relevant_ranks_top10": [
+        10
+      ],
+      "first_relevant_rank": 10,
+      "top1_relevance": 1,
+      "top5_relevant_count": 0,
+      "top10_relevant_count": 1,
+      "relevance_distribution_top10": {
+        "0": 2,
+        "1": 7,
+        "2": 1,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 53,
+      "query_image_id": "DS1_IMG_004588",
+      "category": "Necklace",
+      "classification": "no_relevant_in_top10",
+      "relevant_count_top10": 0,
+      "relevant_ranks_top10": [],
+      "first_relevant_rank": null,
+      "top1_relevance": 0,
+      "top5_relevant_count": 0,
+      "top10_relevant_count": 0,
+      "relevance_distribution_top10": {
+        "0": 4,
+        "1": 6,
+        "2": 0,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 54,
+      "query_image_id": "DS1_IMG_004624",
+      "category": "Necklace",
+      "classification": "relevant_in_top5_but_not_top1",
+      "relevant_count_top10": 2,
+      "relevant_ranks_top10": [
+        2,
+        8
+      ],
+      "first_relevant_rank": 2,
+      "top1_relevance": 1,
+      "top5_relevant_count": 1,
+      "top10_relevant_count": 2,
+      "relevance_distribution_top10": {
+        "0": 7,
+        "1": 1,
+        "2": 0,
+        "3": 2
+      }
+    },
+    {
+      "query_index": 55,
+      "query_image_id": "DS1_IMG_004641",
+      "category": "Necklace",
+      "classification": "relevant_only_in_ranks_6_to_10",
+      "relevant_count_top10": 1,
+      "relevant_ranks_top10": [
+        8
+      ],
+      "first_relevant_rank": 8,
+      "top1_relevance": 1,
+      "top5_relevant_count": 0,
+      "top10_relevant_count": 1,
+      "relevance_distribution_top10": {
+        "0": 0,
+        "1": 9,
+        "2": 1,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 56,
+      "query_image_id": "DS1_IMG_004644",
+      "category": "Necklace",
+      "classification": "no_relevant_in_top10",
+      "relevant_count_top10": 0,
+      "relevant_ranks_top10": [],
+      "first_relevant_rank": null,
+      "top1_relevance": 0,
+      "top5_relevant_count": 0,
+      "top10_relevant_count": 0,
+      "relevance_distribution_top10": {
+        "0": 8,
+        "1": 2,
+        "2": 0,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 57,
+      "query_image_id": "DS1_IMG_004656",
+      "category": "Necklace",
+      "classification": "no_relevant_in_top10",
+      "relevant_count_top10": 0,
+      "relevant_ranks_top10": [],
+      "first_relevant_rank": null,
+      "top1_relevance": 1,
+      "top5_relevant_count": 0,
+      "top10_relevant_count": 0,
+      "relevance_distribution_top10": {
+        "0": 3,
+        "1": 7,
+        "2": 0,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 58,
+      "query_image_id": "DS1_IMG_004673",
+      "category": "Necklace",
+      "classification": "no_relevant_in_top10",
+      "relevant_count_top10": 0,
+      "relevant_ranks_top10": [],
+      "first_relevant_rank": null,
+      "top1_relevance": 0,
+      "top5_relevant_count": 0,
+      "top10_relevant_count": 0,
+      "relevance_distribution_top10": {
+        "0": 9,
+        "1": 1,
+        "2": 0,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 59,
+      "query_image_id": "DS1_IMG_004681",
+      "category": "Necklace",
+      "classification": "relevant_at_top1_only_or_sparse",
+      "relevant_count_top10": 1,
+      "relevant_ranks_top10": [
+        1
+      ],
+      "first_relevant_rank": 1,
+      "top1_relevance": 2,
+      "top5_relevant_count": 1,
+      "top10_relevant_count": 1,
+      "relevance_distribution_top10": {
+        "0": 7,
+        "1": 2,
+        "2": 1,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 60,
+      "query_image_id": "DS1_IMG_004688",
+      "category": "Necklace",
+      "classification": "relevant_only_in_ranks_6_to_10",
+      "relevant_count_top10": 1,
+      "relevant_ranks_top10": [
+        9
+      ],
+      "first_relevant_rank": 9,
+      "top1_relevance": 1,
+      "top5_relevant_count": 0,
+      "top10_relevant_count": 1,
+      "relevance_distribution_top10": {
+        "0": 5,
+        "1": 4,
+        "2": 0,
+        "3": 1
+      }
+    },
+    {
+      "query_index": 61,
+      "query_image_id": "DS1_IMG_004699",
+      "category": "Pendant",
+      "classification": "no_relevant_in_top10",
+      "relevant_count_top10": 0,
+      "relevant_ranks_top10": [],
+      "first_relevant_rank": null,
+      "top1_relevance": 1,
+      "top5_relevant_count": 0,
+      "top10_relevant_count": 0,
+      "relevance_distribution_top10": {
+        "0": 7,
+        "1": 3,
+        "2": 0,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 62,
+      "query_image_id": "DS1_IMG_004700",
+      "category": "Pendant",
+      "classification": "no_relevant_in_top10",
+      "relevant_count_top10": 0,
+      "relevant_ranks_top10": [],
+      "first_relevant_rank": null,
+      "top1_relevance": 0,
+      "top5_relevant_count": 0,
+      "top10_relevant_count": 0,
+      "relevance_distribution_top10": {
+        "0": 10,
+        "1": 0,
+        "2": 0,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 63,
+      "query_image_id": "DS1_IMG_004701",
+      "category": "Pendant",
+      "classification": "no_relevant_in_top10",
+      "relevant_count_top10": 0,
+      "relevant_ranks_top10": [],
+      "first_relevant_rank": null,
+      "top1_relevance": 0,
+      "top5_relevant_count": 0,
+      "top10_relevant_count": 0,
+      "relevance_distribution_top10": {
+        "0": 7,
+        "1": 3,
+        "2": 0,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 64,
+      "query_image_id": "DS1_IMG_004704",
+      "category": "Pendant",
+      "classification": "no_relevant_in_top10",
+      "relevant_count_top10": 0,
+      "relevant_ranks_top10": [],
+      "first_relevant_rank": null,
+      "top1_relevance": 0,
+      "top5_relevant_count": 0,
+      "top10_relevant_count": 0,
+      "relevance_distribution_top10": {
+        "0": 9,
+        "1": 1,
+        "2": 0,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 65,
+      "query_image_id": "DS1_IMG_004705",
+      "category": "Pendant",
+      "classification": "no_relevant_in_top10",
+      "relevant_count_top10": 0,
+      "relevant_ranks_top10": [],
+      "first_relevant_rank": null,
+      "top1_relevance": 1,
+      "top5_relevant_count": 0,
+      "top10_relevant_count": 0,
+      "relevance_distribution_top10": {
+        "0": 5,
+        "1": 5,
+        "2": 0,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 66,
+      "query_image_id": "DS1_IMG_004706",
+      "category": "Pendant",
+      "classification": "no_relevant_in_top10",
+      "relevant_count_top10": 0,
+      "relevant_ranks_top10": [],
+      "first_relevant_rank": null,
+      "top1_relevance": 1,
+      "top5_relevant_count": 0,
+      "top10_relevant_count": 0,
+      "relevance_distribution_top10": {
+        "0": 6,
+        "1": 4,
+        "2": 0,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 67,
+      "query_image_id": "DS1_IMG_004709",
+      "category": "Pendant",
+      "classification": "no_relevant_in_top10",
+      "relevant_count_top10": 0,
+      "relevant_ranks_top10": [],
+      "first_relevant_rank": null,
+      "top1_relevance": 0,
+      "top5_relevant_count": 0,
+      "top10_relevant_count": 0,
+      "relevance_distribution_top10": {
+        "0": 10,
+        "1": 0,
+        "2": 0,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 68,
+      "query_image_id": "DS1_IMG_004710",
+      "category": "Pendant",
+      "classification": "relevant_in_top5_but_not_top1",
+      "relevant_count_top10": 1,
+      "relevant_ranks_top10": [
+        4
+      ],
+      "first_relevant_rank": 4,
+      "top1_relevance": 0,
+      "top5_relevant_count": 1,
+      "top10_relevant_count": 1,
+      "relevance_distribution_top10": {
+        "0": 9,
+        "1": 0,
+        "2": 1,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 69,
+      "query_image_id": "DS1_IMG_004711",
+      "category": "Pendant",
+      "classification": "relevant_at_top1_only_or_sparse",
+      "relevant_count_top10": 1,
+      "relevant_ranks_top10": [
+        1
+      ],
+      "first_relevant_rank": 1,
+      "top1_relevance": 3,
+      "top5_relevant_count": 1,
+      "top10_relevant_count": 1,
+      "relevance_distribution_top10": {
+        "0": 3,
+        "1": 6,
+        "2": 0,
+        "3": 1
+      }
+    },
+    {
+      "query_index": 70,
+      "query_image_id": "DS1_IMG_004712",
+      "category": "Pendant",
+      "classification": "no_relevant_in_top10",
+      "relevant_count_top10": 0,
+      "relevant_ranks_top10": [],
+      "first_relevant_rank": null,
+      "top1_relevance": 1,
+      "top5_relevant_count": 0,
+      "top10_relevant_count": 0,
+      "relevance_distribution_top10": {
+        "0": 7,
+        "1": 3,
+        "2": 0,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 71,
+      "query_image_id": "DS1_IMG_004713",
+      "category": "Pendant",
+      "classification": "relevant_at_top1_only_or_sparse",
+      "relevant_count_top10": 1,
+      "relevant_ranks_top10": [
+        1
+      ],
+      "first_relevant_rank": 1,
+      "top1_relevance": 3,
+      "top5_relevant_count": 1,
+      "top10_relevant_count": 1,
+      "relevance_distribution_top10": {
+        "0": 9,
+        "1": 0,
+        "2": 0,
+        "3": 1
+      }
+    },
+    {
+      "query_index": 72,
+      "query_image_id": "DS1_IMG_004714",
+      "category": "Pendant",
+      "classification": "relevant_in_top5_but_not_top1",
+      "relevant_count_top10": 1,
+      "relevant_ranks_top10": [
+        4
+      ],
+      "first_relevant_rank": 4,
+      "top1_relevance": 0,
+      "top5_relevant_count": 1,
+      "top10_relevant_count": 1,
+      "relevance_distribution_top10": {
+        "0": 9,
+        "1": 0,
+        "2": 0,
+        "3": 1
+      }
+    },
+    {
+      "query_index": 73,
+      "query_image_id": "DS1_IMG_004715",
+      "category": "Pendant",
+      "classification": "relevant_in_top5_but_not_top1",
+      "relevant_count_top10": 1,
+      "relevant_ranks_top10": [
+        5
+      ],
+      "first_relevant_rank": 5,
+      "top1_relevance": 0,
+      "top5_relevant_count": 1,
+      "top10_relevant_count": 1,
+      "relevance_distribution_top10": {
+        "0": 8,
+        "1": 1,
+        "2": 1,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 74,
+      "query_image_id": "DS1_IMG_004717",
+      "category": "Pendant",
+      "classification": "relevant_in_top5_but_not_top1",
+      "relevant_count_top10": 1,
+      "relevant_ranks_top10": [
+        5
+      ],
+      "first_relevant_rank": 5,
+      "top1_relevance": 0,
+      "top5_relevant_count": 1,
+      "top10_relevant_count": 1,
+      "relevance_distribution_top10": {
+        "0": 6,
+        "1": 3,
+        "2": 1,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 75,
+      "query_image_id": "DS1_IMG_004718",
+      "category": "Pendant",
+      "classification": "no_relevant_in_top10",
+      "relevant_count_top10": 0,
+      "relevant_ranks_top10": [],
+      "first_relevant_rank": null,
+      "top1_relevance": 0,
+      "top5_relevant_count": 0,
+      "top10_relevant_count": 0,
+      "relevance_distribution_top10": {
+        "0": 8,
+        "1": 2,
+        "2": 0,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 76,
+      "query_image_id": "DS1_IMG_004719",
+      "category": "Pendant",
+      "classification": "no_relevant_in_top10",
+      "relevant_count_top10": 0,
+      "relevant_ranks_top10": [],
+      "first_relevant_rank": null,
+      "top1_relevance": 1,
+      "top5_relevant_count": 0,
+      "top10_relevant_count": 0,
+      "relevance_distribution_top10": {
+        "0": 8,
+        "1": 2,
+        "2": 0,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 77,
+      "query_image_id": "DS1_IMG_004721",
+      "category": "Pendant",
+      "classification": "no_relevant_in_top10",
+      "relevant_count_top10": 0,
+      "relevant_ranks_top10": [],
+      "first_relevant_rank": null,
+      "top1_relevance": 0,
+      "top5_relevant_count": 0,
+      "top10_relevant_count": 0,
+      "relevance_distribution_top10": {
+        "0": 9,
+        "1": 1,
+        "2": 0,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 78,
+      "query_image_id": "DS1_IMG_004723",
+      "category": "Pendant",
+      "classification": "no_relevant_in_top10",
+      "relevant_count_top10": 0,
+      "relevant_ranks_top10": [],
+      "first_relevant_rank": null,
+      "top1_relevance": 0,
+      "top5_relevant_count": 0,
+      "top10_relevant_count": 0,
+      "relevance_distribution_top10": {
+        "0": 9,
+        "1": 1,
+        "2": 0,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 79,
+      "query_image_id": "DS1_IMG_004724",
+      "category": "Pendant",
+      "classification": "no_relevant_in_top10",
+      "relevant_count_top10": 0,
+      "relevant_ranks_top10": [],
+      "first_relevant_rank": null,
+      "top1_relevance": 0,
+      "top5_relevant_count": 0,
+      "top10_relevant_count": 0,
+      "relevance_distribution_top10": {
+        "0": 10,
+        "1": 0,
+        "2": 0,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 80,
+      "query_image_id": "DS1_IMG_004726",
+      "category": "Pendant",
+      "classification": "relevant_at_top1_with_additional_top5_relevance",
+      "relevant_count_top10": 2,
+      "relevant_ranks_top10": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top1_relevance": 3,
+      "top5_relevant_count": 2,
+      "top10_relevant_count": 2,
+      "relevance_distribution_top10": {
+        "0": 5,
+        "1": 3,
+        "2": 1,
+        "3": 1
+      }
+    },
+    {
+      "query_index": 81,
+      "query_image_id": "DS1_IMG_004729",
+      "category": "Ring",
+      "classification": "relevant_at_top1_only_or_sparse",
+      "relevant_count_top10": 2,
+      "relevant_ranks_top10": [
+        1,
+        10
+      ],
+      "first_relevant_rank": 1,
+      "top1_relevance": 3,
+      "top5_relevant_count": 1,
+      "top10_relevant_count": 2,
+      "relevance_distribution_top10": {
+        "0": 8,
+        "1": 0,
+        "2": 1,
+        "3": 1
+      }
+    },
+    {
+      "query_index": 82,
+      "query_image_id": "DS1_IMG_004730",
+      "category": "Ring",
+      "classification": "relevant_in_top5_but_not_top1",
+      "relevant_count_top10": 3,
+      "relevant_ranks_top10": [
+        3,
+        4,
+        7
+      ],
+      "first_relevant_rank": 3,
+      "top1_relevance": 0,
+      "top5_relevant_count": 2,
+      "top10_relevant_count": 3,
+      "relevance_distribution_top10": {
+        "0": 6,
+        "1": 1,
+        "2": 3,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 83,
+      "query_image_id": "DS1_IMG_004731",
+      "category": "Ring",
+      "classification": "relevant_at_top1_with_additional_top5_relevance",
+      "relevant_count_top10": 2,
+      "relevant_ranks_top10": [
+        1,
+        3
+      ],
+      "first_relevant_rank": 1,
+      "top1_relevance": 2,
+      "top5_relevant_count": 2,
+      "top10_relevant_count": 2,
+      "relevance_distribution_top10": {
+        "0": 7,
+        "1": 1,
+        "2": 2,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 84,
+      "query_image_id": "DS1_IMG_004734",
+      "category": "Ring",
+      "classification": "relevant_at_top1_with_additional_top5_relevance",
+      "relevant_count_top10": 6,
+      "relevant_ranks_top10": [
+        1,
+        4,
+        5,
+        8,
+        9,
+        10
+      ],
+      "first_relevant_rank": 1,
+      "top1_relevance": 2,
+      "top5_relevant_count": 3,
+      "top10_relevant_count": 6,
+      "relevance_distribution_top10": {
+        "0": 4,
+        "1": 0,
+        "2": 5,
+        "3": 1
+      }
+    },
+    {
+      "query_index": 85,
+      "query_image_id": "DS1_IMG_004735",
+      "category": "Ring",
+      "classification": "relevant_in_top5_but_not_top1",
+      "relevant_count_top10": 3,
+      "relevant_ranks_top10": [
+        3,
+        4,
+        8
+      ],
+      "first_relevant_rank": 3,
+      "top1_relevance": 0,
+      "top5_relevant_count": 2,
+      "top10_relevant_count": 3,
+      "relevance_distribution_top10": {
+        "0": 7,
+        "1": 0,
+        "2": 3,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 86,
+      "query_image_id": "DS1_IMG_004737",
+      "category": "Ring",
+      "classification": "relevant_at_top1_with_additional_top5_relevance",
+      "relevant_count_top10": 4,
+      "relevant_ranks_top10": [
+        1,
+        4,
+        8,
+        10
+      ],
+      "first_relevant_rank": 1,
+      "top1_relevance": 2,
+      "top5_relevant_count": 2,
+      "top10_relevant_count": 4,
+      "relevance_distribution_top10": {
+        "0": 6,
+        "1": 0,
+        "2": 4,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 87,
+      "query_image_id": "DS1_IMG_004739",
+      "category": "Ring",
+      "classification": "relevant_in_top5_but_not_top1",
+      "relevant_count_top10": 4,
+      "relevant_ranks_top10": [
+        2,
+        6,
+        8,
+        10
+      ],
+      "first_relevant_rank": 2,
+      "top1_relevance": 0,
+      "top5_relevant_count": 1,
+      "top10_relevant_count": 4,
+      "relevance_distribution_top10": {
+        "0": 6,
+        "1": 0,
+        "2": 4,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 88,
+      "query_image_id": "DS1_IMG_004740",
+      "category": "Ring",
+      "classification": "relevant_at_top1_with_additional_top5_relevance",
+      "relevant_count_top10": 3,
+      "relevant_ranks_top10": [
+        1,
+        3,
+        5
+      ],
+      "first_relevant_rank": 1,
+      "top1_relevance": 2,
+      "top5_relevant_count": 3,
+      "top10_relevant_count": 3,
+      "relevance_distribution_top10": {
+        "0": 7,
+        "1": 0,
+        "2": 3,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 89,
+      "query_image_id": "DS1_IMG_004743",
+      "category": "Ring",
+      "classification": "relevant_at_top1_with_additional_top5_relevance",
+      "relevant_count_top10": 5,
+      "relevant_ranks_top10": [
+        1,
+        2,
+        3,
+        8,
+        10
+      ],
+      "first_relevant_rank": 1,
+      "top1_relevance": 2,
+      "top5_relevant_count": 3,
+      "top10_relevant_count": 5,
+      "relevance_distribution_top10": {
+        "0": 5,
+        "1": 0,
+        "2": 5,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 90,
+      "query_image_id": "DS1_IMG_004744",
+      "category": "Ring",
+      "classification": "relevant_in_top5_but_not_top1",
+      "relevant_count_top10": 4,
+      "relevant_ranks_top10": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "first_relevant_rank": 2,
+      "top1_relevance": 0,
+      "top5_relevant_count": 4,
+      "top10_relevant_count": 4,
+      "relevance_distribution_top10": {
+        "0": 6,
+        "1": 0,
+        "2": 2,
+        "3": 2
+      }
+    },
+    {
+      "query_index": 91,
+      "query_image_id": "DS1_IMG_004746",
+      "category": "Ring",
+      "classification": "relevant_in_top5_but_not_top1",
+      "relevant_count_top10": 3,
+      "relevant_ranks_top10": [
+        3,
+        5,
+        6
+      ],
+      "first_relevant_rank": 3,
+      "top1_relevance": 0,
+      "top5_relevant_count": 2,
+      "top10_relevant_count": 3,
+      "relevance_distribution_top10": {
+        "0": 7,
+        "1": 0,
+        "2": 2,
+        "3": 1
+      }
+    },
+    {
+      "query_index": 92,
+      "query_image_id": "DS1_IMG_004747",
+      "category": "Ring",
+      "classification": "relevant_in_top5_but_not_top1",
+      "relevant_count_top10": 6,
+      "relevant_ranks_top10": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "first_relevant_rank": 3,
+      "top1_relevance": 0,
+      "top5_relevant_count": 3,
+      "top10_relevant_count": 6,
+      "relevance_distribution_top10": {
+        "0": 4,
+        "1": 0,
+        "2": 3,
+        "3": 3
+      }
+    },
+    {
+      "query_index": 93,
+      "query_image_id": "DS1_IMG_004749",
+      "category": "Ring",
+      "classification": "relevant_at_top1_with_additional_top5_relevance",
+      "relevant_count_top10": 7,
+      "relevant_ranks_top10": [
+        1,
+        3,
+        4,
+        5,
+        6,
+        8,
+        9
+      ],
+      "first_relevant_rank": 1,
+      "top1_relevance": 3,
+      "top5_relevant_count": 4,
+      "top10_relevant_count": 7,
+      "relevance_distribution_top10": {
+        "0": 3,
+        "1": 0,
+        "2": 4,
+        "3": 3
+      }
+    },
+    {
+      "query_index": 94,
+      "query_image_id": "DS1_IMG_004750",
+      "category": "Ring",
+      "classification": "relevant_at_top1_with_additional_top5_relevance",
+      "relevant_count_top10": 5,
+      "relevant_ranks_top10": [
+        1,
+        2,
+        3,
+        7,
+        9
+      ],
+      "first_relevant_rank": 1,
+      "top1_relevance": 3,
+      "top5_relevant_count": 3,
+      "top10_relevant_count": 5,
+      "relevance_distribution_top10": {
+        "0": 5,
+        "1": 0,
+        "2": 1,
+        "3": 4
+      }
+    },
+    {
+      "query_index": 95,
+      "query_image_id": "DS1_IMG_004751",
+      "category": "Ring",
+      "classification": "relevant_in_top5_but_not_top1",
+      "relevant_count_top10": 3,
+      "relevant_ranks_top10": [
+        3,
+        5,
+        6
+      ],
+      "first_relevant_rank": 3,
+      "top1_relevance": 0,
+      "top5_relevant_count": 2,
+      "top10_relevant_count": 3,
+      "relevance_distribution_top10": {
+        "0": 7,
+        "1": 0,
+        "2": 1,
+        "3": 2
+      }
+    },
+    {
+      "query_index": 96,
+      "query_image_id": "DS1_IMG_004753",
+      "category": "Ring",
+      "classification": "relevant_at_top1_with_additional_top5_relevance",
+      "relevant_count_top10": 2,
+      "relevant_ranks_top10": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top1_relevance": 3,
+      "top5_relevant_count": 2,
+      "top10_relevant_count": 2,
+      "relevance_distribution_top10": {
+        "0": 5,
+        "1": 3,
+        "2": 0,
+        "3": 2
+      }
+    },
+    {
+      "query_index": 97,
+      "query_image_id": "DS1_IMG_004754",
+      "category": "Ring",
+      "classification": "no_relevant_in_top10",
+      "relevant_count_top10": 0,
+      "relevant_ranks_top10": [],
+      "first_relevant_rank": null,
+      "top1_relevance": 0,
+      "top5_relevant_count": 0,
+      "top10_relevant_count": 0,
+      "relevance_distribution_top10": {
+        "0": 8,
+        "1": 2,
+        "2": 0,
+        "3": 0
+      }
+    },
+    {
+      "query_index": 98,
+      "query_image_id": "DS1_IMG_004755",
+      "category": "Ring",
+      "classification": "relevant_at_top1_with_additional_top5_relevance",
+      "relevant_count_top10": 6,
+      "relevant_ranks_top10": [
+        1,
+        2,
+        3,
+        5,
+        6,
+        7
+      ],
+      "first_relevant_rank": 1,
+      "top1_relevance": 2,
+      "top5_relevant_count": 4,
+      "top10_relevant_count": 6,
+      "relevance_distribution_top10": {
+        "0": 3,
+        "1": 1,
+        "2": 4,
+        "3": 2
+      }
+    },
+    {
+      "query_index": 99,
+      "query_image_id": "DS1_IMG_004756",
+      "category": "Ring",
+      "classification": "relevant_in_top5_but_not_top1",
+      "relevant_count_top10": 3,
+      "relevant_ranks_top10": [
+        3,
+        5,
+        10
+      ],
+      "first_relevant_rank": 3,
+      "top1_relevance": 0,
+      "top5_relevant_count": 2,
+      "top10_relevant_count": 3,
+      "relevance_distribution_top10": {
+        "0": 6,
+        "1": 1,
+        "2": 0,
+        "3": 3
+      }
+    },
+    {
+      "query_index": 100,
+      "query_image_id": "DS1_IMG_004757",
+      "category": "Ring",
+      "classification": "relevant_at_top1_with_additional_top5_relevance",
+      "relevant_count_top10": 7,
+      "relevant_ranks_top10": [
+        1,
+        2,
+        4,
+        6,
+        8,
+        9,
+        10
+      ],
+      "first_relevant_rank": 1,
+      "top1_relevance": 2,
+      "top5_relevant_count": 3,
+      "top10_relevant_count": 7,
+      "relevance_distribution_top10": {
+        "0": 3,
+        "1": 0,
+        "2": 4,
+        "3": 3
+      }
+    }
+  ],
+  "interpretation": {
+    "no_relevant_in_top10": "No candidate with relevance >= 2 in Top-10; candidate-generation/retrieval failure at this cutoff.",
+    "relevant_only_in_ranks_6_to_10": "A relevant candidate exists but ranking places it below Top-5.",
+    "relevant_in_top5_but_not_top1": "A relevant candidate is retrievable but Top-1 ranking is incorrect.",
+    "relevant_at_top1_only_or_sparse": "Top-1 is relevant, but additional Top-5 relevance is sparse.",
+    "relevant_at_top1_with_additional_top5_relevance": "Top-1 is relevant and at least one additional relevant result is present in Top-5."
+  },
+  "limitations": [
+    "These categories describe ranking behavior, not visual root causes.",
+    "Angle, lighting, crop, background, and fine-grained design causes require image-level inspection.",
+    "One annotator means inter-annotator agreement is unavailable.",
+    "This analysis uses validation annotations and does not use test labels for model selection."
+  ]
+}
