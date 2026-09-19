@@ -44,13 +44,19 @@ def benchmark(url: str, images: list[Path], k: int, warmup: int, repeats: int, t
     with httpx.Client(timeout=timeout) as client:
         for image in images:
             for _ in range(warmup):
-                with image.open("rb") as handle:
-                    response = client.post(
-                        f"{url.rstrip('/')}/search?k={k}",
-                        files={"file": (image.name, handle, "image/jpeg")},
-                    )
-                if response.status_code != 200:
-                    warmup_errors += 1
+                try:
+                    with image.open("rb") as handle:
+                        response = client.post(
+                            f"{url.rstrip('/')}/search?k={k}",
+                            files={"file": (image.name, handle, "image/jpeg")},
+                        )
+                    if response.status_code != 200:
+                        warmup_errors += 1
+                except httpx.RequestError as exc:
+                    raise RuntimeError(
+                        f"Could not connect to the MVP API at {url!r}. "
+                        "Start it first with scripts/run_api.py and the selected checkpoint."
+                    ) from exc
 
             for _ in range(repeats):
                 started = time.perf_counter()
@@ -71,7 +77,7 @@ def benchmark(url: str, images: list[Path], k: int, warmup: int, repeats: int, t
                         categories.append(str(body["category"]))
                 except httpx.RequestError as exc:
                     measured_errors += 1
-                    if total == 0:
+                    if not latencies:
                         raise RuntimeError(
                             f"Could not connect to the MVP API at {url!r}. "
                             "Start it first with scripts/run_api.py and the selected checkpoint."
@@ -81,7 +87,6 @@ def benchmark(url: str, images: list[Path], k: int, warmup: int, repeats: int, t
                     raise RuntimeError(f"Benchmark request failed for {image}: {exc}") from exc
 
     total = len(latencies)
-    total_seconds = sum(latencies) / 1000.0
     return {
         "protocol": {
             "warmup_per_image": warmup,
