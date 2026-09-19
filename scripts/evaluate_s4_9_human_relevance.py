@@ -60,8 +60,18 @@ def load_rows(path: Path):
 
 
 def score_query(rows):
-    rows = sorted(rows, key=lambda row: row["_rank"])
-    labels = [row["_label"] for row in rows]
+    """Score one query from loader-normalized or raw CSV-like rows."""
+    normalized = []
+    for row in rows:
+        try:
+            rank = int(row.get("_rank", row["rank"]))
+            label = int(row.get("_label", row["relevance"]))
+        except (KeyError, TypeError, ValueError) as exc:
+            raise ValueError("Each row must contain valid rank and relevance values.") from exc
+        normalized.append((rank, label, row))
+    normalized.sort(key=lambda item: item[0])
+    labels = [label for _, label, _ in normalized]
+    rows = [row for _, _, row in normalized]
     binary = [1 if label >= 2 else 0 for label in labels]
     return {
         "category": rows[0]["query_category"],
