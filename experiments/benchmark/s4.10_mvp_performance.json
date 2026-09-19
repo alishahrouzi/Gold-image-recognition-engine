@@ -1,0 +1,37 @@
+{
+  "protocol": {
+    "warmup_per_image": 2,
+    "measured_repeats_per_image": 10,
+    "k": 5,
+    "images": [
+      "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\test\\Ring\\ring_146_jpg.rf.2d6479a2eb0722309c7ce20fc5bc421b.jpg",
+      "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\test\\Necklace\\IMG_3083_90ebcd79_JPG.rf.cde770ce6e213d0a1fe4b0b3308a2496.jpg",
+      "E:\\Programming Project\\Visual Recognition Engine\\dataset\\ai-tool-pool-jewelry-vision\\test\\Earrings\\earring_318_jpg.rf.7d08acc45dbe1124ff8aa72b9a1ca5e9.jpg"
+    ],
+    "cold_start_included": false,
+    "scope": "warm HTTP /search path"
+  },
+  "environment": {
+    "python": "3.12.10",
+    "platform": "Windows-11-10.0.26200-SP0"
+  },
+  "results": {
+    "requests_measured": 30,
+    "errors": 0,
+    "error_rate": 0.0,
+    "latency_ms": {
+      "mean": 130.88663999963805,
+      "median_p50": 89.74194999973406,
+      "p95": 278.94341999908613,
+      "p99": 329.50407899817947,
+      "min": 80.00639999954728,
+      "max": 329.6243999975559
+    },
+    "sequential_requests_per_second": 7.640199183069909,
+    "mean_result_count": 5.0,
+    "returned_categories": {
+      "earrings": 20,
+      "necklace": 10
+    }
+  }
+}
