@@ -58,4 +58,14 @@ def test_selection_is_deterministic_and_excludes_dense_successes():
             r["_rank"] = int(r["rank"]); r["_label"] = int(r["relevance"])
         grouped[(str(q), f"q{q}")] = items
     selected = module.select(grouped, per_category=3, seed=42)
-    assert [x[0]["query_index"] for x in selected] == ["1", "2", "3"]
+    selected_again = module.select(grouped, per_category=3, seed=42)
+
+    selected_ids = [x[0]["query_index"] for x in selected]
+    selected_again_ids = [x[0]["query_index"] for x in selected_again]
+
+    # Selection is intentionally randomized but must be deterministic for a
+    # fixed seed. Query 4 is a dense Top-5 success and must be excluded.
+    assert selected_ids == selected_again_ids
+    assert len(selected_ids) == 3
+    assert set(selected_ids).issubset({"1", "2", "3", "5"})
+    assert "4" not in selected_ids
