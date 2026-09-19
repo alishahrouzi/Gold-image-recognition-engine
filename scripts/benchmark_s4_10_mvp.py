@@ -36,7 +36,8 @@ def benchmark(url: str, images: list[Path], k: int, warmup: int, repeats: int, t
     if not images:
         raise ValueError("At least one image is required.")
     latencies: list[float] = []
-    errors = 0
+    measured_errors = 0
+    warmup_errors = 0
     result_counts: list[int] = []
     categories: list[str] = []
 
@@ -49,7 +50,7 @@ def benchmark(url: str, images: list[Path], k: int, warmup: int, repeats: int, t
                         files={"file": (image.name, handle, "image/jpeg")},
                     )
                 if response.status_code != 200:
-                    errors += 1
+                    warmup_errors += 1
 
             for _ in range(repeats):
                 started = time.perf_counter()
@@ -62,14 +63,22 @@ def benchmark(url: str, images: list[Path], k: int, warmup: int, repeats: int, t
                     elapsed = (time.perf_counter() - started) * 1000.0
                     latencies.append(elapsed)
                     if response.status_code != 200:
-                        errors += 1
+                        measured_errors += 1
                         continue
                     body = response.json()
                     result_counts.append(len(body.get("results", [])))
                     if body.get("category"):
                         categories.append(str(body["category"]))
-                except Exception:
-                    errors += 1
+                except httpx.RequestError as exc:
+                    measured_errors += 1
+                    if total == 0:
+                        raise RuntimeError(
+                            f"Could not connect to the MVP API at {url!r}. "
+                            "Start it first with scripts/run_api.py and the selected checkpoint."
+                        ) from exc
+                except (OSError, ValueError) as exc:
+                    measured_errors += 1
+                    raise RuntimeError(f"Benchmark request failed for {image}: {exc}") from exc
 
     total = len(latencies)
     total_seconds = sum(latencies) / 1000.0
@@ -88,8 +97,9 @@ def benchmark(url: str, images: list[Path], k: int, warmup: int, repeats: int, t
         },
         "results": {
             "requests_measured": total,
-            "errors": errors,
-            "error_rate": errors / (errors + total) if errors + total else 0.0,
+            "errors": measured_errors,
+            "warmup_errors": warmup_errors,
+            "error_rate": measured_errors / total if total else 0.0,
             "latency_ms": {
                 "mean": statistics.fmean(latencies) if latencies else 0.0,
                 "median_p50": percentile(latencies, 0.50),
